@@ -6,18 +6,75 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="iniciar_sesion">
-        <h1>
-            Formulario de Inicio de Sesion
-        </h1>
-        <article>
-            <label for="nombre">Usuario:</label>    
-            <input type="text" name="username" id="nombre">
-        </article>
-        <article>
-            <label for="contrasenia">Contraseña:</label>    
-            <input type="text" name="password" id="contrasenia">
-        </article>
-    </form>
+
+    <header>
+        <nav>
+            <img src="./public/imgs/logoUno%201.png" alt="logo-de-empresa">
+            <ul>
+                <li><h3><a href="#">MEN&Uacute;</a></h3></li>
+                <li><h3><a href="#">PROMOS</a></h3></li>
+                <li><h3><a href="#">SUCURSALES</a></h3></li>
+                <li><h3><a href="#">NOTICIAS</a></h3></li>
+                <li>
+                    <h3><a href="#">SERVICIOS</a></h3>
+                    <button>▼</button>
+                    <button>▲</button> 
+                    <ul>
+                        <li><h3><a href="#">PEDIR</a></h3></li>
+                        <li><h3><a href="#">RESERVAR</a></h3></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        
+        <h1>Login</h1>
+    
+        <form action="iniciar_sesion">
+            
+            <h4>
+                Formulario de Inicio de Sesi&oacute;n
+            </h4>
+            <fieldset>
+                <label for="nombre">Usuario:</label>    
+                <input type="text" name="username" id="nombre">
+            </fieldset>
+            <fieldset>
+                <label for="contrasenia">Contrase&ntilde;a:</label>    
+                <input type="text" name="password" id="contrasenia">
+            </fieldset>
+            <input type="submit" value="iniciar sesion">
+        </form>
+
+    </main>
+
+    <footer>
+       
+        <ul>
+            <li>Sobre Nosotros</li>
+            <li>Sucursales</li>
+            <li>Reserva</li>
+        </ul>
+
+        <a href="http://link_al_home"><img src="./public/imgs/icono_empresa.png" alt="icono-empresa-link-a-home"></a>
+
+        <ul>
+            <li>Trabaja con Nosotros</li>
+            <li>Promociones</li>
+            <li>Pedi Online</li>
+        </ul>
+
+        <a href="#"><h6>Big Burger Est 2024</h6></a>
+        
+        <a href="http://link_red-social-1"><img src="./public/imgs/icono_red-social-1.png" alt="icono-red-social-X"></a>
+        <a href="http://link_red-social-2"><img src="./public/imgs/icono_red-social-2.png" alt="icono-red-social-Y"></a>
+        <a href="http://link_red-social-n"><img src="./public/imgs/icono_red-social-n.png" alt="icono-red-social-Z"></a>
+        
+        <a href="#"><h6>Bigburguerba@gmail.com</h6></a>
+
+    </footer>
 </body>
 </html>
