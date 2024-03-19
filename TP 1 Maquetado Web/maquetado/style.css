@@ -10,3 +10,59 @@
     list-style: none;
 }
 
+ul:first-child {
+    border: 1px solid red;
+}
+
+ul li, ul img {
+    background-color: aqua; 
+}
+
+ul {
+    display: flex;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+}
+
+header section {
+    display: flex;
+}
+
+ul .subindice {
+    position: relative;
+}
+
+ul .subindice ul {
+    position: absolute;
+    background-color: blueviolet;
+    bottom: 0;
+    left: 0;
+    
+    transform: translateY(105%);    
+    display: flex;
+    flex-direction: column;
+
+}
+
+.botones-datos-sesion {
+    position: relative;
+}
+
+.datos-sesion {
+    display: flex;
+}
+
+.sesion {
+    
+}
+
+.btn-derecha {
+    position: absolute;
+    left: 0;
+    display: none;
+}
+
