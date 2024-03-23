@@ -9,7 +9,7 @@
 
 <body>
     <header>
-        <h1><a href="#">Paw Burger</a></h1>
+        <h1><a href="/">Paw Burger</a></h1>
         <nav>
             <ul>
                 <li>
@@ -47,40 +47,42 @@
             </ul>
         </nav>
     </header>
-
-    <figure>
-        <img src="./public/imgs/img_principal-home.png" alt="imagen-principal-home">
-        <figcaption>Nuestro Menu</figcaption>
-    </figure>
-
     <main>
 
         <!--CONTENIDO DE LA VIEW SUCURSAL-->
+        <h1>Nuestro Menu</h1>
 
-        <h3>SUCURSALES</h3>
+        <h2>SUCURSALES</h2>
 
-        <figure>
-            <img src="./public/imgs/img_sucursal.png" alt="imagen-sucursal-X">
-            <img src="./public/imgs/img_reservar.png" alt="imagen-reservar"> <!--icono de reservar-->
-            <h6>RESERVAR</h6>
-            <figcaption>Av. Colon 1555, CABA</figcaption>
-        </figure>
-
-        <figure>
-            <img src="./public/imgs/img_sucursal.png" alt="imagen-sucursal-Y">
-            <img src="./public/imgs/img_reservar.png" alt="imagen-reservar"> <!--icono de reservar-->
-            <h6>RESERVAR</h6>
-            <figcaption>Av. Colon 1555, CABA</figcaption>
-        </figure>
-
-        <figure>
-            <img src="./public/imgs/img_sucursal.png" alt="imagen-sucursal-Z">
-            <img src="./public/imgs/img_reservar.png" alt="imagen-reservar"> <!--icono de reservar-->
-            <h6>RESERVAR</h6>
-            <figcaption>Av. Colon 1555, CABA</figcaption>
-        </figure>
-
-
+        <ul>
+            <li>
+                <figure>
+                    <img src="./public/imgs/img_sucursal.png" alt="imagen-sucursal-X">
+                    <figcaption>
+                        <a href="/pedir?=id_sucursal">Pedir</a>
+                        <a href="/reservar?=id_sucursal">Reservar</a>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="./public/imgs/img_sucursal.png" alt="imagen-sucursal-X">
+                    <figcaption>
+                        <a href="/pedir?=id_sucursal">Pedir</a>
+                        <a href="/reservar?=id_sucursal">Reservar</a>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="./public/imgs/img_sucursal.png" alt="imagen-sucursal-X">
+                    <figcaption>
+                        <a href="/pedir?=id_sucursal">Pedir</a>
+                        <a href="/reservar?=id_sucursal">Reservar</a>
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
 
     </main>
 
@@ -100,7 +102,6 @@
             </ul>
 
         </nav>
-
         <nav>
             <ul>
                 <li><a href="#">Big Burger Est 2024</a></li>
@@ -122,8 +123,6 @@
             </ul>
         </nav>
     </footer>
-
-
 </body>
 
 </html>
