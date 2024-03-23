@@ -43,34 +43,89 @@
 
     <main>
 
-        <figure>
-            <img src="./public/imgs/img_principal-home.png" alt="imagen-principal-home">
-            <figcaption>Nuestro Menu</figcaption>
-        </figure>
+        <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
+            <!--acá esta la imagen de la portada
+                mas el anchor al home y
+                los dos enlaces al menu y reserva
+            -->
+            <a href="/">Home</a>
+            <h1><a href="/menu">Menu</a></h1>
+            <h1><a href="/resevar">Reservar</a></h1>
+        </section>
 
-        <section> <!--SECCION DESTACADOS-->
-            <h4>Los destacados de Big</h4>
-            <figure>
-                <h4>$ 500</h4>
-                <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
-                <img src="./public/imgs/img_mano_pedir.png" alt="imagen-mano-pedir"> <!--icono de pedir-->
-                <h6>PEDIR</h6>
-                <figcaption>BIG Burger con aceite</figcaption>
-            </figure>
-            <figure>
-                <h4>$ 500</h4>
-                <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
-                <img src="./public/imgs/img_mano_pedir.png" alt="imagen-mano-pedir"> <!--icono de pedir-->
-                <h6>PEDIR</h6>
-                <figcaption>La Big con Queso</figcaption>
-            </figure>
+
+        <section> 
+            <!--SECCION DESTACADOS-->
+            <h2>Los destacados de Big</h2>
+            <ul>
+                <li>
+                    <figure>
+                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <figcaption>
+                            BIG Burger con aceite
+                            <p>$ 500</p>
+                            <a href="/pedir?comida=id_comida">Pedir</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <figcaption>
+                            BIG Burger con aceite
+                            <p>$ 500</p>
+                            <a href="/pedir?comida=id_comida">Pedir</a>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
         </section>
 
         <section> <!--NUESTRAS SUCURSALES-->
-            <h4>Nuestras Sucursales</h4>
-            <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_1">
-            <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_2">
-            <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_3">
+            <h3>Nuestras Sucursales</h3>
+            <ul>
+                <li>
+                    <figure>
+                        <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_1">
+                        <figcaption>
+                            Nombre Sucursal
+                            <p>Direccion del local</p>
+                            <a href="/pedir?sucursal=id_sucursal_1">Resevar</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_1">
+                        <figcaption>
+                            Nombre Sucursal
+                            <p>Direccion del local</p>
+                            <a href="/pedir?sucursal=id_sucursal_1">Resevar</a>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <!--Promos imperdibles-->         
+            <h3><a href="/promociones">Promos</a></h3>
+            
+            <figure>
+                <img src="./public/imgs/img_promo_1.png" alt="imagen-promo"> <!--imagen-->
+                <figcaption>
+                    2X1 Todos los jueves en nuestras burgers
+                    <a href="/pedir?comida=id_comida">Pedir</a>
+                </figcaption>
+            </figure>
+    
+        </section>
+
+        <section>
+            <p>
+                Queremos que seas <strong>parte de nuestro equipo</strong> 
+            </p>
+            <a href="/trabaja_con_nosotros">Trabaja con nosotros</a>
         </section>
 
     </main>
