@@ -10,18 +10,23 @@
         <h1><a href="/">Paw Burger</a></h1>
         <nav>
             <ul>
-                <li><h3><a href="#">MEN&Uacute;</a></h3></li>
-                <li><h3><a href="#">PROMOS</a></h3></li>
-                <li><h3><a href="#">SUCURSALES</a></h3></li>
-                <li><h3><a href="#">NOTICIAS</a></h3></li>
                 <li>
-                    <h3><a href="#">SERVICIOS</a></h3>
-                    <button>▼</button>
-                    <button>▲</button> 
-                    <ul>
-                        <li><h3><a href="#">PEDIR</a></h3></li>
-                        <li><h3><a href="#">RESERVAR</a></h3></li>
-                    </ul>
+                    <a href="#">MEN&Uacute;</a>
+                </li>
+                <li>
+                    <a href="#">PROMOS</a>
+                </li>
+                <li>
+                    <a href="#">SUCURSALES</a>
+                </li>
+                <li>
+                    <a href="#">NOTICIAS</a>
+                </li>
+                <li>
+                    <a href="#">agregar</a>
+                </li>
+                <li>
+                    <a href="#">RESERVAR</a>
                 </li>
                 <li>
                     <p>Nombre de Usuario</p>
@@ -30,6 +35,7 @@
                         <li><a href="#">Cerrar Sesion</a></li>
                     </ul>
                 </li>
+
             </ul>
         </nav>
     </header>
@@ -39,10 +45,78 @@
     
     <main>
         
-        <figure>
-            <img src="./public/imgs/img_principal-home.png" alt="imagen-principal-home">
-            <figcaption>Nuestro Menu</figcaption>
-        </figure>
+        <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
+            <!--acá esta la imagen de la portada
+                mas el anchor al home y
+                los dos enlaces al menu y reserva
+            -->
+            <a href="/">Home</a>
+            <h2><a href="/menu">Menu</a></h2>
+            <h2><a href="/resevar">Reservar</a></h2>
+        </section>
+
+        <section>
+            <fieldset>
+                <h3>PLATOS</h3>
+                <ul>
+                    <li>
+                        <figure>
+                            <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                            <figcaption>
+                                BIG Burger con aceite
+                                <p>$ 500</p>
+                                <a href="/agregar?comida=id_comida">Agregar</a>
+                            </figcaption>
+                        </figure>
+                    </li>                    
+                    <li>
+                        <figure>
+                            <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                            <figcaption>
+                                BIG Burger con aceite
+                                <p>$ 500</p>
+                                <a href="/agregar?comida=id_comida">Agregar</a>
+                            </figcaption>
+                        </figure>
+                    </li>                    
+                    <li>
+                        <figure>
+                            <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                            <figcaption>
+                                BIG Burger con aceite
+                                <p>$ 500</p>
+                                <a href="/agregar?comida=id_comida">Agregar</a>
+                            </figcaption>
+                        </figure>
+                    </li>                    
+                </ul>
+            </fieldset>
+                <h3>BEBIDAS</h3>
+            <fieldset>
+                <ul>
+                    <li>
+                        <figure>
+                            <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                            <figcaption>
+                                Bebida
+                                <p>$ 1000</p>
+                                <a href="/agregar?bebida=id_bebida">agregar</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                            <figcaption>
+                                Bebida
+                                <p>$ 1000</p>
+                                <a href="/agregar?bebida=id_bebida">agregar</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </fieldset>
+        </section>
 
 
     </main>

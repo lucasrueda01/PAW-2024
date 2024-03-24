@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
     <header>
         <h1><a href="/">Paw Burger</a></h1>
         <nav>
@@ -41,11 +40,11 @@
 
             </ul>
         </nav>
-
     </header>
 
     <main>
-        
+
+        <!--CONTENIDO DE LA VIEW SOBRE-NOSOTROS-->
         <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
             <!--acá esta la imagen de la portada
                 mas el anchor al home y
@@ -56,27 +55,22 @@
             <h2><a href="/resevar">Reservar</a></h2>
         </section>
 
-        <h1>Registro Usuario</h1>
+        <section>
+            <h3>Unite a nuestro Equipo</h3>
+            <form action="/contactanos">
+                <label for="email">Ingrese su email:</label>    
+                <input type="text" name="email" id="email">
+                <label for="nombre">Ingrese su Nombre:</label>    
+                <input type="text" name="nombre" id="nombre">
+                <label for="telefono">Ingrese su Telefono de Contacto</label>
+                <input type="number" name="telefono">
+                <label for="link_a_cv">Ingrese su Linkin o enlace a Drive</label>
+                <input type="text" name="link_a_cv">
+                <input type="submit" value="Enviar">
+            </form>
+        </section>
 
-        <form action="registro">
 
-            <h2>Formulario de Registro de Usuario</h2>
-
-
-            <label for="email">Ingrese su email:</label>
-            <input type="text" name="email" id="email">
-
-            <label for="nombre">Ingrese su nombre completo:</label>
-            <input type="text" name="nombre" id="nombre">
-
-            <label for="contrasenia">Ingrese Contrase&ntvilde;a:</label>
-            <input type="text" name="password" id="contrasenia">
-            <label for="password_repetida">Confirme la Contrase&ntvilde;a:</label>
-            <input type="password" name="password_repetida" id="password_repetida">
-
-            <input type="submit" value="registrar_usuario">
-
-        </form>
 
     </main>
 
@@ -94,9 +88,9 @@
                 <li><a href="#">Promociones</a></li>
                 <li><a href="#">Pedi Online</a></li>
             </ul>
-
+    
         </nav>
-
+    
         <nav>
             <ul>
                 <li><a href="#">Big Burger Est 2024</a></li>
@@ -118,6 +112,7 @@
             </ul>
         </nav>
     </footer>
+
 
 </body>
 
