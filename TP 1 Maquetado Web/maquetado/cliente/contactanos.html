@@ -25,7 +25,7 @@
                     <a href="#">NOTICIAS</a>
                 </li>
                 <li>
-                    <a href="#">agregar</a>
+                    <a href="#">PEDIR</a>
                 </li>
                 <li>
                     <a href="#">RESERVAR</a>
@@ -44,34 +44,28 @@
 
     <main>
 
-        <!--CONTENIDO DE LA VIEW SOBRE-NOSOTROS-->
-        <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
-            <!--acá esta la imagen de la portada
-                mas el anchor al home y
-                los dos enlaces al menu y reserva
-            -->
-            <a href="/">Home</a>
-            <h2><a href="/menu">Menu</a></h2>
-            <h2><a href="/resevar">Reservar</a></h2>
-        </section>
+        <h2>Contactanos</h2>
+        <p>¿Querés contactarnos? Envianos un mensaje si tenes preguntas o comentarios sobre PAW Power</p>
 
-        <section>
-            <h3>Unite a nuestro Equipo</h3>
-            <form action="/contactanos">
+        <form action="/contactanos">
+            <fieldset>
                 <label for="email">Ingrese su email:</label>    
-                <input type="text" name="email" id="email">
+                <input required type="text" name="email" id="email">
+            </fieldset>
+            <fieldset>
                 <label for="nombre">Ingrese su Nombre:</label>    
-                <input type="text" name="nombre" id="nombre">
+                <input required type="text" name="nombre" id="nombre">
+            </fieldset>
+            <fieldset>
                 <label for="telefono">Ingrese su Telefono de Contacto</label>
-                <input type="number" name="telefono">
-                <textarea name="consulta" id="consulta" cols="30" rows="10">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus omnis tempore, dolores dignissimos soluta iusto optio tempora officia ipsum, error rerum ab. Molestias, quam nesciunt. Neque quo voluptas eum autem?
-                </textarea>
-                <input type="submit" value="Enviar">
-            </form>
-        </section>
-
-
+                <input required type="number" name="telefono">
+            </fieldset>
+            <fieldset>
+                <label for="consulta">Escribanos su consulta</label>
+                <textarea name="consulta" id="consulta" cols="30" rows="10" maxlength="100"></textarea>
+            </fieldset>
+            <input type="submit" value="Enviar">
+        </form>
 
     </main>
 

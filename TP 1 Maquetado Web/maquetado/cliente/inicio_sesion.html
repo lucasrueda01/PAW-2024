@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nombre de la Empresa</title>
 </head>
-
 <body>
+
     <header>
         <h1><a href="/">Paw Burger</a></h1>
         <nav>
@@ -25,7 +24,7 @@
                     <a href="#">NOTICIAS</a>
                 </li>
                 <li>
-                    <a href="#">agregar</a>
+                    <a href="#">PEDIR</a>
                 </li>
                 <li>
                     <a href="#">RESERVAR</a>
@@ -40,31 +39,27 @@
 
             </ul>
         </nav>
+
     </header>
 
     <main>
-
-        <!--CONTENIDO DE LA VIEW SOBRE-NOSOTROS-->
-        <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
-            <!--acá esta la imagen de la portada
-                mas el anchor al home y
-                los dos enlaces al menu y reserva
-            -->
-            <a href="/">Home</a>
-            <h2><a href="/menu">Menu</a></h2>
-            <h2><a href="/resevar">Reservar</a></h2>
-        </section>
-
-        <section>
-            <h3>Mision</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptatem itaque alias ipsa quod voluptatibus placeat recusandae! Exercitationem amet tempora obcaecati corrupti? Ducimus recusandae perferendis accusamus iusto minima quos voluptatem!</p>
-        </section>
-        <section>
-            <h3>Vision</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptatem itaque alias ipsa quod voluptatibus placeat recusandae! Exercitationem amet tempora obcaecati corrupti? Ducimus recusandae perferendis accusamus iusto minima quos voluptatem!</p>
-        </section>
-
-        <h4><a href="/contactanos">Contactanos</a></h4>
+        
+        <h2>Login</h2>
+    
+        <form action="iniciar_sesion">
+            
+            <h3> Bienvenido</h3>
+            <fieldset>
+                <label for="nombre">USUARIO</label>    
+                <input required type="text" name="username" id="nombre">
+            </fieldset>
+            <fieldset>
+                <label for="contrasenia">PASSWORD</label>    
+                <input required type="text" name="password" id="contrasenia">
+            </fieldset>
+            <input type="submit" value="iniciar sesion">
+            <p>¿No tenes cuenta? <a href="#">Registrate aca</a> </p>
+        </form>
 
     </main>
 
@@ -107,7 +102,5 @@
         </nav>
     </footer>
 
-
 </body>
-
 </html>

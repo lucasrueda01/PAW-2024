@@ -45,34 +45,29 @@
     </header>
 
     <main>
-        
-        <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
-            <!--acá esta la imagen de la portada
-                mas el anchor al home y
-                los dos enlaces al menu y reserva
-            -->
-            <a href="/">Home</a>
-            <h2><a href="/menu">Menu</a></h2>
-            <h2><a href="/resevar">Reservar</a></h2>
-        </section>
 
-        <h1>Registro Usuario</h1>
+        <h2>Registrar Usuario</h1>
 
         <form action="registro">
 
-            <h2>Formulario de Registro de Usuario</h2>
+            <h3>Bienvenido</h2>
 
-
-            <label for="email">Ingrese su email:</label>
-            <input type="text" name="email" id="email">
-
-            <label for="nombre">Ingrese su nombre completo:</label>
-            <input type="text" name="nombre" id="nombre">
-
-            <label for="contrasenia">Ingrese Contrase&ntvilde;a:</label>
-            <input type="text" name="password" id="contrasenia">
-            <label for="password_repetida">Confirme la Contrase&ntvilde;a:</label>
-            <input type="password" name="password_repetida" id="password_repetida">
+            <fieldset>
+                <label for="email">Ingrese su email</label>
+                <input required type="text" name="email" id="email">
+            </fieldset>
+            <fieldset>
+                <label for="nombre">Ingrese su nombre completo</label>
+                <input required type="text" name="nombre" id="nombre">
+            </fieldset>
+            <fieldset>
+                <label for="contrasenia">Ingrese Password</label>
+                <input required type="text" name="password" id="contrasenia">
+            </fieldset>
+            <fieldset>
+                <label for="password_repetida">Confirme el Password</label>
+                <input required type="password" name="password_repetida" id="password_repetida">
+            </fieldset>
 
             <input type="submit" value="registrar_usuario">
 

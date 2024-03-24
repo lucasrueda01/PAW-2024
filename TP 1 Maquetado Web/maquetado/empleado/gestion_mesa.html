@@ -16,19 +16,13 @@
                     <a href="#">MEN&Uacute;</a>
                 </li>
                 <li>
-                    <a href="#">PROMOS</a>
-                </li>
-                <li>
-                    <a href="#">SUCURSALES</a>
-                </li>
-                <li>
                     <a href="#">NOTICIAS</a>
                 </li>
                 <li>
-                    <a href="#">agregar</a>
+                    <a href="#">GESTION MESAS</a>
                 </li>
                 <li>
-                    <a href="#">RESERVAR</a>
+                    <a href="#">PEDIDOS ENTRANTES</a>
                 </li>
                 <li>
                     <p>Nombre de Usuario</p>
@@ -44,13 +38,13 @@
 
     <main>
         <h2>Gestion Mesa X</h2>
-        <h3><a href="/mesas"></a>regresar a mesas</h3>
+        <a href="/mesas">REGRESAR A MESAS</a>
         <p>
             Apertura de mesa
-            Fecha/ Hora
+            Fecha / Hora
         </p>
         <section>
-            <h4>Orden N° 4</h4>
+            <h3>Orden N° 4</h3>
             <a href="/cerrar_mesa?mesa=id_mesa">Cerrar Mesa</a>
             <table>
                 <thead>
@@ -66,21 +60,30 @@
                     <tr>
                         <td>
                             <a href="/sacar_producto?producto=id_producto&mesa=id_mesa">-</a>
+                            <a href="/eliminar_producto?producto=id_producto&mesa=id_mesa">-</a>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <p>Nombre producto<p>
+                        </td>
+                        <td>
+                            <p>Dato Cantidad</td>p>
+                        </td>
+                        <td>
+                            <p>Dato Subtotal</td>p>
+                        </td>
+                        <td>
+                            <p>Dato Observaciones</p>
+                        </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="5">Total:  $$$</td>
+                        <td colspan="5"><p>Total:  $$$</p></td>
                     </tr>
                 </tfoot>
             </table>
-            <h5><a href="/agregar_producto?mesa=id_mesa">Agregar Producto</a></h5>
-            <h5><a href="/finalizar_pedido?pedido=id_pedido">Finalizar Pedido</a></h5>
+            <a href="/agregar_producto?mesa=id_mesa">Agregar Producto</a>
+            <a href="/finalizar_pedido?pedido=id_pedido">Finalizar Pedido</a>
         </section>
 
     </main>
