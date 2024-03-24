@@ -38,5 +38,4 @@ En dicha plataforma se debe generar un nuevo proyecto (design file) y compartirl
 > [!NOTE]
 > Dejamos el link a la [Resolucion](/TP%201%20Maquetado%20Web/maquetado) 
 
-@nvnardoni Nardoni Valentin
 
