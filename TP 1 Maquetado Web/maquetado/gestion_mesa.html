@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre de la Empresa</title>
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">Paw Burger</a></h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">MEN&Uacute;</a>
+                </li>
+                <li>
+                    <a href="#">PROMOS</a>
+                </li>
+                <li>
+                    <a href="#">SUCURSALES</a>
+                </li>
+                <li>
+                    <a href="#">NOTICIAS</a>
+                </li>
+                <li>
+                    <a href="#">agregar</a>
+                </li>
+                <li>
+                    <a href="#">RESERVAR</a>
+                </li>
+                <li>
+                    <p>Nombre de Usuario</p>
+                    <ul>
+                        <li><a href="#">Cliente</a></li>
+                        <li><a href="#">Cerrar Sesion</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Gestion Mesa X</h2>
+        <h3><a href="/mesas"></a>regresar a mesas</h3>
+        <p>
+            Apertura de mesa
+            Fecha/ Hora
+        </p>
+        <section>
+            <h4>Orden N° 4</h4>
+            <a href="/cerrar_mesa?mesa=id_mesa">Cerrar Mesa</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Acciones</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="/sacar_producto?producto=id_producto&mesa=id_mesa">-</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">Total:  $$$</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h5><a href="/agregar_producto?mesa=id_mesa">Agregar Producto</a></h5>
+            <h5><a href="/finalizar_pedido?pedido=id_pedido">Finalizar Pedido</a></h5>
+        </section>
+
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Sucursales</a></li>
+                <li><a href="#">Reserva</a></li>
+                <li>
+                    <a href="http://link_al_home"><img src="./public/imgs/icono_empresa.png"
+                            alt="icono-empresa-link-a-home"></a>
+                </li>
+                <li><a href="#">Trabaja con Nosotros</a></li>
+                <li><a href="#">Promociones</a></li>
+                <li><a href="#">Pedi Online</a></li>
+            </ul>
+    
+        </nav>
+    
+        <nav>
+            <ul>
+                <li><a href="#">Big Burger Est 2024</a></li>
+                <li>
+                    <a href="http://link_red-social-1"><img src="./public/imgs/icono_red-social-1.png"
+                            alt="icono-red-social-X"></a>
+                </li>
+                <li>
+                    <a href="http://link_red-social-2"><img src="./public/imgs/icono_red-social-2.png"
+                            alt="icono-red-social-Y"></a>
+                </li>
+                <li>
+                    <a href="http://link_red-social-n"><img src="./public/imgs/icono_red-social-n.png"
+                            alt="icono-red-social-Z"></a>
+                </li>
+                <li>
+                    <a href="#">Bigburguerba@gmail.com</a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+
+</body>
+
+</html>
