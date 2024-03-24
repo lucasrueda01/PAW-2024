@@ -16,20 +16,20 @@ En dicha plataforma se debe generar un nuevo proyecto (design file) y compartirl
 
 ### Gestión de mesas:
 
-a. El sistema debe permitir la reserva de mesas para los clientes.
-b. Los clientes deben poder ver la disponibilidad de mesas en tiempo real.
-c. Debe ser posible asignar mesas a los clientes que llegan sin reserva.
+- a. El sistema debe permitir la reserva de mesas para los clientes.
+- b. Los clientes deben poder ver la disponibilidad de mesas en tiempo real.
+- c. Debe ser posible asignar mesas a los clientes que llegan sin reserva.
 
 ### Registro de pedidos:
 
-a. Los empleados deben poder ingresar pedidos de comida de los clientes de manera rápida y eficiente.
-b. Los clientes pueden ingresar pedidos desde la mesa o desde sus casas para delivery o take away de manera clara y sencilla.
+- a. Los empleados deben poder ingresar pedidos de comida de los clientes de manera rápida y eficiente.
+- b. Los clientes pueden ingresar pedidos desde la mesa o desde sus casas para delivery o take away de manera clara y sencilla.
 
 ### Los pedidos:
 
-a. Debe haber una lista de productos disponibles que se puedan seleccionar para cada pedido.
-b. Los pedidos pueden incluir opciones personalizadas como agregar ingredientes extra o quitar ingredientes.
-c. Se deben poder registrar pedidos especiales o alergias alimentarias para tenerlas en cuenta en la preparación.
+- a. Debe haber una lista de productos disponibles que se puedan seleccionar para cada pedido.
+- b. Los pedidos pueden incluir opciones personalizadas como agregar ingredientes extra o quitar ingredientes.
+- c. Se deben poder registrar pedidos especiales o alergias alimentarias para tenerlas en cuenta en la preparación.
 
 4. Realice la maquetación de todos los wireframes. Refleje en cada sección los tags HTML que mejor consideren que se adaptan al contenido de la página a mostrar.
 
