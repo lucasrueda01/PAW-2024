@@ -10,7 +10,7 @@
 
 En dicha plataforma se debe generar un nuevo proyecto (design file) y compartirlo (share) con todos los integrantes del equipo de trabajo incluyendo al usuario pcchale@gmail.com para poder ayudarlos y hacer la posterior corrección.
 
-- La resolucion de la consigna se encuentra en el siguiente [enlace](https://www.figma.com/file/inLYqyIMxmiy6WxPlx6cey/wireframe-grupo-paw?type=design&node-id=106-21&mode=design&t=vSd7L3pOcuZodUKa-0)
+> La resolucion de la consigna se encuentra en el siguiente enlace a [FIGMA](https://www.figma.com/file/inLYqyIMxmiy6WxPlx6cey/wireframe-grupo-paw?type=design&node-id=106-21&mode=design&t=vSd7L3pOcuZodUKa-0)
 
 3. Para el planeo de las secciones que implican interacción con el usuario les damos algunas ideas para que puedan empezar a plantear los campos de los formularios necesarios:
 
