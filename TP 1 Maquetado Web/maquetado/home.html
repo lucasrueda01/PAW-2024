@@ -1,99 +1,173 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Nombre de la Empresa</title>
 </head>
+
 <body>
     <header>
+        <h1><a href="/">Paw Burger</a></h1>
         <nav>
-            <img src="./public/imgs/logoUno%201.png" alt="logo-de-empresa">
             <ul>
-                <li><h3><a href="#">MEN&Uacute;</a></h3></li>
-                <li><h3><a href="#">PROMOS</a></h3></li>
-                <li><h3><a href="#">SUCURSALES</a></h3></li>
-                <li><h3><a href="#">NOTICIAS</a></h3></li>
                 <li>
-                    <h3><a href="#">SERVICIOS</a></h3>
-                    <button>▼</button>
-                    <button>▲</button> 
+                    <h3><a href="#">MEN&Uacute;</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#">PROMOS</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#">SUCURSALES</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#">NOTICIAS</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#">PEDIR</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#">RESERVAR</a></h3>
+                </li>
+                <li>
+                    <p>Nombre de Usuario</p>
                     <ul>
-                        <li><h3><a href="#">PEDIR</a></h3></li>
-                        <li><h3><a href="#">RESERVAR</a></h3></li>
+                        <li><a href="#">Cliente</a></li>
+                        <li><a href="#">Cerrar Sesion</a></li>
                     </ul>
                 </li>
             </ul>
-            <section>
-                <h4>Nombre del Usuario</h4>
-                <button>▼</button>
-                <button>▲</button> 
-                <img src="./public/imgs/img-usuario.png" alt="imagen-usuario">
-                <section>
-                    <h5>Juan Natello</h5>
-                    <a href="#"><h5>Cliente</h5></a>
-                    <a href="#"><h5>Cerrar Sesion</h5></a>
-                </section>
-            </section>
         </nav>
-
     </header>
+
+    <main>
+
+        <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
+            <!--acá esta la imagen de la portada
+                mas el anchor al home y
+                los dos enlaces al menu y reserva
+            -->
+            <a href="/">Home</a>
+            <h1><a href="/menu">Menu</a></h1>
+            <h1><a href="/resevar">Reservar</a></h1>
+        </section>
+
+
+        <section> 
+            <!--SECCION DESTACADOS-->
+            <h2>Los destacados de Big</h2>
+            <ul>
+                <li>
+                    <figure>
+                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <figcaption>
+                            BIG Burger con aceite
+                            <p>$ 500</p>
+                            <a href="/pedir?comida=id_comida">Pedir</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <figcaption>
+                            BIG Burger con aceite
+                            <p>$ 500</p>
+                            <a href="/pedir?comida=id_comida">Pedir</a>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+
+        <section> <!--NUESTRAS SUCURSALES-->
+            <h3>Nuestras Sucursales</h3>
+            <ul>
+                <li>
+                    <figure>
+                        <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_1">
+                        <figcaption>
+                            Nombre Sucursal
+                            <p>Direccion del local</p>
+                            <a href="/pedir?sucursal=id_sucursal_1">Resevar</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_1">
+                        <figcaption>
+                            Nombre Sucursal
+                            <p>Direccion del local</p>
+                            <a href="/pedir?sucursal=id_sucursal_1">Resevar</a>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <!--Promos imperdibles-->         
+            <h3><a href="/promociones">Promos</a></h3>
+            
+            <figure>
+                <img src="./public/imgs/img_promo_1.png" alt="imagen-promo"> <!--imagen-->
+                <figcaption>
+                    2X1 Todos los jueves en nuestras burgers
+                    <a href="/pedir?comida=id_comida">Pedir</a>
+                </figcaption>
+            </figure>
     
-    <figure>
-        <img src="./public/imgs/img_principal-home.png" alt="imagen-principal-home">
-        <figcaption>Nuestro Menu</figcaption>
-    </figure>
+        </section>
 
-    <section> <!--SECCION DESTACADOS-->
-        <h4>Los destacados de Big</h4>
-        <figure>
-            <h4>$ 500</h4>
-            <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
-            <img src="./public/imgs/img_mano_pedir.png" alt="imagen-mano-pedir"> <!--icono de pedir-->
-            <h6>PEDIR</h6>
-            <figcaption>BIG Burger con aceite</figcaption>
-        </figure>
-        <figure>
-            <h4>$ 500</h4>
-            <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
-            <img src="./public/imgs/img_mano_pedir.png" alt="imagen-mano-pedir"> <!--icono de pedir-->
-            <h6>PEDIR</h6>
-            <figcaption>La Big con Queso</figcaption>
-        </figure>
-    </section>
+        <section>
+            <p>
+                Queremos que seas <strong>parte de nuestro equipo</strong> 
+            </p>
+            <a href="/trabaja_con_nosotros">Trabaja con nosotros</a>
+        </section>
 
-    <section> <!--NUESTRAS SUCURSALES-->
-        <h4>Nuestras Sucursales</h4>
-        <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_1">
-        <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_2">
-        <img src="/public/imgs/img_sucursal_1.png" alt="imagen-sucursal_3">
-    </section>
+    </main>
 
     <footer>
-       
-        <ul>
-            <li><a href="#">Sobre Nosotros</a></li>
-            <li><a href="#">Sucursales</a></li>
-            <li><a href="#">Reserva</a></li>
-        </ul>
+        <nav>
+            <ul>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Sucursales</a></li>
+                <li><a href="#">Reserva</a></li>
+                <li>
+                    <a href="http://link_al_home"><img src="./public/imgs/icono_empresa.png"
+                            alt="icono-empresa-link-a-home"></a>
+                </li>
+                <li><a href="#">Trabaja con Nosotros</a></li>
+                <li><a href="#">Promociones</a></li>
+                <li><a href="#">Pedi Online</a></li>
+            </ul>
 
-        <a href="http://link_al_home"><img src="./public/imgs/icono_empresa.png" alt="icono-empresa-link-a-home"></a>
+        </nav>
 
-        <ul>
-            <li><a href="#">Trabaja con Nosotros</a></li>
-            <li><a href="#">Promociones</a></li>
-            <li><a href="#">Pedi Online</a></li>
-        </ul>
-
-        <a href="#"><h6>Big Burger Est 2024</h6></a>
-        
-        <a href="http://link_red-social-1"><img src="./public/imgs/icono_red-social-1.png" alt="icono-red-social-X"></a>
-        <a href="http://link_red-social-2"><img src="./public/imgs/icono_red-social-2.png" alt="icono-red-social-Y"></a>
-        <a href="http://link_red-social-n"><img src="./public/imgs/icono_red-social-n.png" alt="icono-red-social-Z"></a>
-        
-        <a href="#"><h6>Bigburguerba@gmail.com</h6></a>
-
+        <nav>
+            <ul>
+                <li><a href="#">Big Burger Est 2024</a></li>
+                <li>
+                    <a href="http://link_red-social-1"><img src="./public/imgs/icono_red-social-1.png"
+                            alt="icono-red-social-X"></a>
+                </li>
+                <li>
+                    <a href="http://link_red-social-2"><img src="./public/imgs/icono_red-social-2.png"
+                            alt="icono-red-social-Y"></a>
+                </li>
+                <li>
+                    <a href="http://link_red-social-n"><img src="./public/imgs/icono_red-social-n.png"
+                            alt="icono-red-social-Z"></a>
+                </li>
+                <li>
+                    <a href="#">Bigburguerba@gmail.com</a>
+                </li>
+            </ul>
+        </nav>
     </footer>
 
 </body>
+
 </html>

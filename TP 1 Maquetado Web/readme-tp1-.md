@@ -2,7 +2,7 @@
 
 1. Realizar un SiteMap del Sitio, planteando la jerarquía de las secciones y las páginas. El sitio debe constar de al menos 7 secciones, entre las que se encuentren: La Página inicial o Home; Nuestros Locales; El menú; Formulario de reserva de mesa para clientes ocasionales; Sistema de gestión de consumos en el local; Sección institucional (misión, valores, quienes somos); Noticias de la marca (blog);  etc. 
 
-[SiteMap](/TP%201%20Maquetado%20Web/SiteMap.jpg)
+[SiteMap](/TP%201%20Maquetado%20Web/Sitemap.png)
 
 ## Análisis y Maquetado de Wireframes
 

@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nombre de la Empresa</title>
 </head>
+
 <body>
+
     <header>
         <h1><a href="/">Paw Burger</a></h1>
         <nav>
             <ul>
-                <li><h3><a href="#">MEN&Uacute;</a></h3></li>
-                <li><h3><a href="#">PROMOS</a></h3></li>
-                <li><h3><a href="#">SUCURSALES</a></h3></li>
-                <li><h3><a href="#">NOTICIAS</a></h3></li>
+                <li>
+                    <h3><a href="#">MEN&Uacute;</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#">PROMOS</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#">SUCURSALES</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#">NOTICIAS</a></h3>
+                </li>
                 <li>
                     <h3><a href="#">SERVICIOS</a></h3>
                     <button>▼</button>
-                    <button>▲</button> 
+                    <button>▲</button>
                     <ul>
-                        <li><h3><a href="#">PEDIR</a></h3></li>
-                        <li><h3><a href="#">RESERVAR</a></h3></li>
+                        <li>
+                            <h3><a href="#">PEDIR</a></h3>
+                        </li>
+                        <li>
+                            <h3><a href="#">RESERVAR</a></h3>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -30,20 +45,30 @@
                         <li><a href="#">Cerrar Sesion</a></li>
                     </ul>
                 </li>
+
             </ul>
         </nav>
-    </header>
-    
-    
-    <!--CONTENIDO DE LA VIEW NUESTRO MENU-->
-    
-    <main>
-        
-        <figure>
-            <img src="./public/imgs/img_principal-home.png" alt="imagen-principal-home">
-            <figcaption>Nuestro Menu</figcaption>
-        </figure>
 
+    </header>
+
+    <main>
+
+        <h1>Login</h1>
+
+        <form action="iniciar_sesion">
+
+            <h2>Formulario de Registro de Usuario</h2>
+
+            <fieldset>
+                <label for="email">Ingrese su email:</label>
+                <input type="text" name="email" id="email">
+            </fieldset>
+            <fieldset>
+                <label for="contrasenia">Contrase&ntvilde;a:</label>
+                <input type="text" name="password" id="contrasenia">
+            </fieldset>
+            <input type="submit" value="iniciar sesion">
+        </form>
 
     </main>
 
@@ -61,9 +86,9 @@
                 <li><a href="#">Promociones</a></li>
                 <li><a href="#">Pedi Online</a></li>
             </ul>
-    
+
         </nav>
-    
+
         <nav>
             <ul>
                 <li><a href="#">Big Burger Est 2024</a></li>
@@ -86,6 +111,6 @@
         </nav>
     </footer>
 
-
 </body>
+
 </html>
