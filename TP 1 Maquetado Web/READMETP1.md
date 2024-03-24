@@ -3,7 +3,7 @@
 1. Realizar un SiteMap del Sitio, planteando la jerarquía de las secciones y las páginas. El sitio debe constar de al menos 7 secciones, entre las que se encuentren: La Página inicial o Home; Nuestros Locales; El menú; Formulario de reserva de mesa para clientes ocasionales; Sistema de gestión de consumos en el local; Sección institucional (misión, valores, quienes somos); Noticias de la marca (blog);  etc. 
 
 > [!NOTE]
-> [SiteMap](/TP%201%20Maquetado%20Web/Sitemap.png)
+> Link al [SiteMap](/TP%201%20Maquetado%20Web/Sitemap.png)
 
 ## Análisis y Maquetado de Wireframes
 
@@ -11,6 +11,7 @@
 
 En dicha plataforma se debe generar un nuevo proyecto (design file) y compartirlo (share) con todos los integrantes del equipo de trabajo incluyendo al usuario pcchale@gmail.com para poder ayudarlos y hacer la posterior corrección.
 
+> [!NOTE]
 > La resolucion de la consigna se encuentra en el siguiente enlace a [FIGMA](https://www.figma.com/file/inLYqyIMxmiy6WxPlx6cey/wireframe-grupo-paw?type=design&node-id=106-21&mode=design&t=vSd7L3pOcuZodUKa-0)
 
 3. Para el planeo de las secciones que implican interacción con el usuario les damos algunas ideas para que puedan empezar a plantear los campos de los formularios necesarios:
@@ -34,7 +35,8 @@ En dicha plataforma se debe generar un nuevo proyecto (design file) y compartirl
 
 4. Realice la maquetación de todos los wireframes. Refleje en cada sección los tags HTML que mejor consideren que se adaptan al contenido de la página a mostrar.
 
+> [!NOTE]
 > Dejamos el link a la [Resolucion](/TP%201%20Maquetado%20Web/maquetado) 
 
-@autores
+@nvnardoni Nardoni Valentin
 
