@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'ArchivoBlack-Regular';
+    src: url('../fonts/ArchivoBlack-Regular.ttf') format('truetype');
+    /* Agrega otros formatos aquí si son necesarios para mayor compatibilidad */
+}
+
+@font-face {
+    font-family: 'Century_Gothic';
+    src: url('../fonts/century_gothic.ttf') format('truetype');
+    /* Agrega otros formatos aquí si son necesarios para mayor compatibilidad */
+}
+
+* {
+    font-family: 'ArchivoBlack-Regular', 'Century_Gothic';
+}
