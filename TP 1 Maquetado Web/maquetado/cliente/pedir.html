@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/base.css">
     <title>PAW POWER | PEDI</title>
 </head>
+
 <body>
     <header>
         <h1><a href="/">Paw Burger</a></h1>
@@ -40,19 +43,19 @@
     </header>
 
     <main>
-        
-            <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
-                <!--acá esta la imagen de la portada
+
+        <section> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
+            <!--acá esta la imagen de la portada
                     mas el anchor al home y
                     los dos enlaces al menu y reserva
                 -->
-                <a href="/">Home</a>
-                <h2><a href="/menu">Menu</a></h2>
-                <h2><a href="/resevar">Reservar</a></h2>
-            </section>
-                    
+            <a href="/">Home</a>
+            <h2><a href="/menu">Menu</a></h2>
+            <h2><a href="/resevar">Reservar</a></h2>
+        </section>
+
         <!--CONTENIDO DE LA VIEW PEDIDOS-->
-        
+
         <section>
             <h2>Pedir</h2>
 
@@ -80,8 +83,8 @@
                                 <td colspan="4">Total:</td>
                             </tr>
                         </tfoot>
-                    </table>                   
-                    <button> <a href="/menu">Agregar +</a></button>
+                    </table>
+                    <a href="/menu">Agregar +</a>
                 </fieldset>
                 <fieldset>
                     <h3>Delivery</h3>
@@ -93,16 +96,16 @@
                     <input type="text" name="observaciones" id="observaciones">
                     <label for="forma_delivery">Selecciona una forma de pago:</label>
                     <select id="forma_delivery" name="forma_delivery">
-                      <option value="mercado_pago">Mercado Pago</option>
-                      <option value="efectivo">Pago en efectivo</option>
-                    </select>                    
+                        <option value="mercado_pago">Mercado Pago</option>
+                        <option value="efectivo">Pago en efectivo</option>
+                    </select>
                     <aside>
                         <h2>Resumen de compra</h2>
                         <ul>
-                          <li>Producto 1 - $10</li>
-                          <li>Producto 2 - $20</li>
-                          <li>Producto 3 - $15</li>
-                          <li>Total: $45</li>
+                            <li>Producto 1 - $10</li>
+                            <li>Producto 2 - $20</li>
+                            <li>Producto 3 - $15</li>
+                            <li>Total: $45</li>
                         </ul>
                     </aside>
                 </fieldset>
@@ -112,23 +115,23 @@
                     <input type="text" name="nombre_take_away" id="nombre_take_away">
                     <label for="numero_sucursal_take_away">Selecciona la sucursal:</label>
                     <select id="numero_sucursal_take_away" name="numero_sucursal_take_away">
-                      <option value="1">1 sucursal</option>
-                      <option value="2">2 sucursales</option>
-                      <option value="3">n sucursales</option>
+                        <option value="1">1 sucursal</option>
+                        <option value="2">2 sucursales</option>
+                        <option value="3">n sucursales</option>
                     </select>
                     <select id="forma_pago_take_away" name="forma_pago_take_away">
                         <option value="mercado_pago">Mercado Pago</option>
                         <option value="efectivo">Pago en efectivo</option>
-                    </select>                      
+                    </select>
                     <aside>
                         <h2>Resumen de compra</h2>
                         <ul>
-                          <li>Producto 1 - $10</li>
-                          <li>Producto 2 - $20</li>
-                          <li>Producto 3 - $15</li>
-                          <li>Total: $45</li>
+                            <li>Producto 1 - $10</li>
+                            <li>Producto 2 - $20</li>
+                            <li>Producto 3 - $15</li>
+                            <li>Total: $45</li>
                         </ul>
-                      </aside>
+                    </aside>
                 </fieldset>
                 <fieldset>
                     <h3>En el Lugar</h3>
@@ -142,26 +145,26 @@
                     </select>
                     <label for="numero_mesa">Selecciona el n&uacute;mero de mesa:</label>
                     <select id="numero_mesa" name="numero_mesa">
-                      <option value="1">Mesa 1</option>
-                      <option value="2">Mesa 2</option>
-                      <option value="3">Mesa 3</option>
-                    </select>                    
+                        <option value="1">Mesa 1</option>
+                        <option value="2">Mesa 2</option>
+                        <option value="3">Mesa 3</option>
+                    </select>
                     <aside>
                         <h2>Resumen de compra</h2>
                         <ul>
-                          <li>Producto 1 - $10</li>
-                          <li>Producto 2 - $20</li>
-                          <li>Producto 3 - $15</li>
-                          <li>Total: $45</li>
+                            <li>Producto 1 - $10</li>
+                            <li>Producto 2 - $20</li>
+                            <li>Producto 3 - $15</li>
+                            <li>Total: $45</li>
                         </ul>
-                      </aside>                     
+                    </aside>
                 </fieldset>
                 <input type="submit" value="Pagar">
                 <input type="submit" value="Pedir"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO
                                                         ELIGE LA OPCION PEDIR EN EL LUGAR
                                                     -->
-            </form>        
-            
+            </form>
+
         </section>
 
 
@@ -208,4 +211,5 @@
 
 
 </body>
+
 </html>

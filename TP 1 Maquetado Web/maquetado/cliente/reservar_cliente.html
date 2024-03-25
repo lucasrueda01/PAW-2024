@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/base.css">
     <title>PAW POWER | RESERVAR</title>
 </head>
 
 <body>
-   <header>
+    <header>
         <h1><a href="/">Paw Burger</a></h1>
         <nav>
             <ul>
@@ -45,13 +46,12 @@
     <!--CONTENIDO DE LA VIEW RESERVAR - CLIENTE-->
 
     <main>
-                
+
 
         <h2>Reservar Mesa</h2>
 
         <form action="/reservar_cliente.php">
             <fieldset>
-                <label for="id_sucursal">Elija una sucursal</label>
                 <label for="sucursal">Selecciona una sucursal:</label>
                 <select id="sucursal" name="sucursal">
                     <option value="sucursal1">Sucursal 1</option>
@@ -59,20 +59,22 @@
                     <option value="sucursal3">Sucursal 3</option>
                     <option value="sucursal4">Sucursal 4</option>
                 </select>
-                <label for="date">Seleccione fecha y hora</label>
-                <input type="datetime" name="datetime" id="datetime">
+                <label for="date">Seleccione fecha</label>
+                <input type="date" name="time" id="date">
+                <label for="time">Seleccione hora</label>
+                <input type="time" name="time" id="time">
                 <label for="mesas_disponibles">Mesas Disponibles</label>
-                <select name="mesas_disponibles">
+                <select name="mesas_disponibles" id="mesas_disponibles">
                     <option value="mesa-s1">Mesa Salon 1</option>
                     <option value="mesa-s2">Mesa Salon 2</option>
                     <option value="mesa-pf1">Mesa Pet Friendly 1</option>
                     <option value="mesa-pf2">Mesa Pet Friendly 1</option>
                 </select>
-    
+
                 <label for="nombre">Ingrese su nombre completo</label>
-                <input type="text" name="nombre">
+                <input type="text" name="nombre" id="nombre">
                 <label for="dni">Ingrese su DNI</label>
-                <input type="text" name="dni">
+                <input type="text" name="dni" id="dni">
             </fieldset>
             <aside>
                 <h2>Resumen de reserva</h2>
@@ -87,7 +89,7 @@
         </form>
     </main>
 
-   <footer>
+    <footer>
         <nav> <!-- NAV ARRIBA -->
             <ul>
                 <li><a href="#">Sobre Nosotros</a></li>
