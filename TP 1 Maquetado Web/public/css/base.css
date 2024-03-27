@@ -12,16 +12,82 @@
     
 }
 
+:root {
+    --color-amarillo : #FFAF10;
+    --color-rojo : #D82427;
+}
+
 html {
     font-family: 'ArchivoBlack-Regular', 'Century_Gothic';
+    font-size: 10px;
+}   
 
+header {
+    position: relative;
+    display: flex;
+}
+
+.opciones_nav {
+    display: inline;
 }
 
 .logo {
     display: inline-block;
-    width: 110px;
-    height: 30px;
     text-indent: -9999px;
-    background-image: url(../imgs/svg/Imagotipo_PAWPOWER.svg);
     background-size: cover;
+}
+
+.logo_chico {
+    width: 3.5rem;
+    height: 4.7rem;
+    background-image: url(../imgs/svg/Isotipo_PAWPOWER.svg);
+    
+}
+
+.logo_grande {
+    width: 11.3rem;
+    height: 3.2rem;
+    background-image: url(../imgs/svg/Imagotipo_PAWPOWER.svg);
+}
+
+.icono_usuario {
+    display: inline-block;
+    width: 3.5rem;
+    height: 3rem;
+    text-indent: -9999px;
+    background-size: cover; 
+    background-image: url(../imgs/icons/icon-usuario-amarillo.png);
+    filter: drop-shadow(1px 1px 1px var(--color-amarillo));
+}
+
+.boton {
+    font-size: 1.1rem;
+}
+
+.boton_amarillo {
+    color: black;
+    background-color: var(--color-amarillo);
+}
+
+.titulo {
+    font-size: 2.92rem;
+}
+
+.titulo_amarillo {
+    background-color: var(--color-amarillo);
+    color: white;
+}
+
+.titulo_rojo {
+    background-color: var(--color-rojo);
+    color: white;
+}
+
+@media screen and (max-width: 45rem) {
+    .icono_usuario {
+        width: 3.6rem;
+        height: 3.5rem;
+        background-image: url(../imgs/icons/icon-usuario-negro.png);
+        filter: drop-shadow(1px 1px 1px #000000);
+    }    
 }

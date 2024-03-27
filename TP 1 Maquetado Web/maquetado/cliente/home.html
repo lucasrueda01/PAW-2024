@@ -6,37 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/fav.ico">
     <link rel="stylesheet" href="../../public/css/base.css">
+    <link rel="icon" href="../../public/imgs/svg/Isotipo_PAWPOWER.svg" type="image/svg+xml">
     <title>PAW POWER | HOME</title>
 </head>
 
 <body>
     <header>
-        <h1><a href="/" class="logo">Paw Burger</a></h1>
-        <nav>
+        <h1><a href="/" class="logo logo_chico">Paw Burger</a></h1>
+        <nav class="nav_menu">
             <ul>
-                <li>
+                <li class="opciones_nav">
                     <a href="#">MENU</a>
                 </li>
-                <li>
+                <li class="opciones_nav">
                     <a href="#">PROMOS</a>
                 </li>
-                <li>
+                <li class="opciones_nav">
                     <a href="#">SUCURSALES</a>
                 </li>
-                <li>
+                <li class="opciones_nav">
                     <a href="#">NOTICIAS</a>
                 </li>
-                <li>
+                <li class="opciones_nav">
                     <a href="#">PEDIR</a>
                 </li>
-                <li>
+                <li class="opciones_nav">
                     <a href="#">RESERVAR</a>
                 </li>
-                <li>
-                    <p>Nombre de Usuario</p>
+                <li class="opciones_nav">
+                    <p class="icono_usuario">Nombre de Usuario</p>
                     <ul>
-                        <li><a href="#">Cliente</a></li>
-                        <li><a href="#">Cerrar Sesion</a></li>
+                        <li class="opciones_nav opciones_nav_oculto"><a href="#">Cliente</a></li>
+                        <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
                     </ul>
                 </li>
             </ul>
@@ -51,14 +52,15 @@
                 los dos enlaces al menu y reserva
             -->
             <!-- LOGO -->
-            <h2><a href="/menu">Menu</a></h2>
-            <h2><a href="/resevar">Reservar</a></h2>
+            <a href="/" class="logo logo_grande">Home</a>
+            <h2><a href="/menu" class="boton boton_amarillo">Menu</a></h2>
+            <h2><a href="/resevar" class="boton boton_amarillo">Reservar</a></h2>
         </section>
 
 
         <section>
             <!--SECCION DESTACADOS-->
-            <h2>Los destacados de Power</h2>
+            <h2 class="titulo titulo_amarillo">Los destacados de Power</h2>
             <ul>
                 <li>
                     <figure>
@@ -66,7 +68,7 @@
                         <figcaption>
                             <h3>BIG Burger con aceite</h3>
                             <p>$ 500</p>
-                            <a href="/pedir?comida=id_comida">Pedir</a>
+                            <a href="/pedir?comida=id_comida" class="boton boton_amarillo">Pedir</a>
                         </figcaption>
                     </figure>
                 </li>
@@ -76,7 +78,7 @@
                         <figcaption>
                             <h3>BIG Burger con aceite</h3>
                             <p>$ 500</p>
-                            <a href="/pedir?comida=id_comida">Pedir</a>
+                            <a href="/pedir?comida=id_comida" class="boton boton_amarillo">Pedir</a>
                         </figcaption>
                     </figure>
                 </li>
@@ -84,7 +86,7 @@
         </section>
 
         <section> <!--NUESTRAS SUCURSALES-->
-            <h2>Nuestras Sucursales</h2>
+            <h2 class="titulo titulo_amarillo">Nuestras Sucursales</h2>
             <ul>
                 <li>
                     <figure>
@@ -92,7 +94,7 @@
                         <figcaption>
                             <h3>PALERMO</h3>
                             <p>Direccion del local</p>
-                            <a href="/pedir?sucursal=id_sucursal_1">Resevar</a>
+                            <a href="/pedir?sucursal=id_sucursal_1" class="boton boton_amarillo">Resevar</a>
                         </figcaption>
                     </figure>
                 </li>
@@ -102,7 +104,7 @@
                         <figcaption>
                             <h3>BELGRANO</h3>
                             <p>Direccion del local</p>
-                            <a href="/pedir?sucursal=id_sucursal_1">Resevar</a>
+                            <a href="/pedir?sucursal=id_sucursal_1" class="boton boton_amarillo">Resevar</a>
                         </figcaption>
                     </figure>
                 </li>
@@ -117,7 +119,7 @@
                 <img src="./public/imgs/img_promo_1.png" alt="imagen-promo"> <!--imagen-->
                 <figcaption>
                     <h3>2X1 Todos los jueves en nuestras burgers</h3>
-                    <a href="/pedir?comida=id_comida">Pedir</a>
+                    <a href="/pedir?comida=id_comida" class="boton boton_amarillo">Pedir</a>
                 </figcaption>
             </figure>
 
@@ -125,7 +127,7 @@
 
         <section>
             <h2> Queremos que seas <strong>parte de nuestro equipo</strong> </h2>
-            <a href="/trabaja_con_nosotros">Trabaja con nosotros</a>
+            <a href="/trabaja_con_nosotros" class="boton boton_negro">Trabaja con nosotros</a>
         </section>
 
     </main>
