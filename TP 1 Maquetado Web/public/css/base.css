@@ -3,29 +3,31 @@
 @font-face {
     font-family: 'ArchivoBlack-Regular';
     src: url('../fonts/ArchivoBlack-Regular.ttf') format('truetype');
-    
+
 }
 
 @font-face {
     font-family: 'Century_Gothic';
     src: url('../fonts/century_gothic.ttf') format('truetype');
-    
+
 }
 
 :root {
-    --color-amarillo : #FFAF10;
-    --color-rojo : #D82427;
+    --color-amarillo: #FFAF10;
+    --color-rojo: #D82427;
+    --tamanio-logo-empresa: 6px;
 }
 
 html {
     font-family: 'ArchivoBlack-Regular', 'Century_Gothic';
     font-size: 10px;
-}   
+}
 
 header {
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 a {
@@ -68,7 +70,7 @@ a {
     width: 3.5rem;
     height: 4.7rem;
     background-image: url(../imgs/svg/Isotipo_PAWPOWER.svg);
-    
+
 }
 
 .logo_grande {
@@ -84,7 +86,7 @@ a {
     width: 3.5rem;
     height: 3rem;
     text-indent: -9999px;
-    background-size: cover; 
+    background-size: cover;
     background-image: url(../imgs/icons/icon-usuario-amarillo.png);
     filter: drop-shadow(1px 1px 1px var(--color-amarillo));
 }
@@ -101,13 +103,13 @@ a {
 .boton_amarillo {
     width: 8rem;
     color: black;
-    background-color: var(--color-amarillo);   
+    background-color: var(--color-amarillo);
 }
 
 .boton_negro {
     width: 20rem;
     color: white;
-    background-color: black;        
+    background-color: black;
 }
 
 .titulo {
@@ -138,7 +140,8 @@ a {
 .lista::after {
     content: '';
     position: absolute;
-    width: 10rem; /*el width es 5 % mas chico que el height*/
+    width: 10rem;
+    /*el width es 5 % mas chico que el height*/
     height: 15rem;
     background-repeat: no-repeat;
     background-size: cover;
@@ -182,8 +185,15 @@ a {
     color: var(--color-amarillo);
 }
 
+/* .empresa {
+    display: flex;
+} */
+
 .empresa h2 {
+    display: block;
     font-size: 10rem;
+    margin-bottom: 1rem;
+    width: 60%;
     color: black;
 }
 
@@ -191,6 +201,72 @@ a {
     color: var(--color-amarillo)
 }
 
+.pie_pagina {
+    background-color: #000000;
+}
+
+.pie_pagina a {
+    color: white;
+}
+
+.link_internos {
+    display: grid;
+    grid-template-areas:
+        "col_i11 logo_empresa col_i31"
+        "col_i12 logo_empresa col_i32"
+        "col_i13 logo_empresa col_i33";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 20px 20px 20px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.col {
+    display: inline-block;
+    text-align: center;
+}
+
+.col_i11 {
+    grid-area: col_i11;
+}
+
+.col_i12 {
+    grid-area: col_i12;
+}
+
+.col_i13 {
+    grid-area: col_i13;
+}
+
+.logo_empresa {
+    grid-area: logo_empresa;
+}
+
+.logo_empresa a img {
+    width: 60px;
+    height: 60px;
+}
+
+.col_i31 {
+    grid-area: col_i31;
+}
+
+.col_i32 {
+    grid-area: col_i32;
+}
+
+.col_i33 {
+    grid-area: col_i33;
+}
+
+.link_red_social a img {
+    display: inline;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.link_externos {}
 
 @media screen and (max-width: 45rem) {
     .icono_usuario {
@@ -198,5 +274,5 @@ a {
         height: 3.5rem;
         background-image: url(../imgs/icons/icon-usuario-negro.png);
         filter: drop-shadow(1px 1px 1px #000000);
-    }    
+    }
 }
