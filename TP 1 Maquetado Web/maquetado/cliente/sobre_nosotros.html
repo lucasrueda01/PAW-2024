@@ -4,44 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/fav.ico">
     <link rel="stylesheet" href="../../public/css/base.css">
     <link rel="icon" href="../../public/imgs/svg/Isotipo_PAWPOWER.svg" type="image/svg+xml">
-    <title>PAW POWER | SOBRE NOSOTROS</title>
+    <title>PAW POWER | HOME</title>
 </head>
 
 <body>
     <header>
-        <h1><a href="/" class="logo">Paw Burger</a></h1>
+        <h1><a href="home.html" class="logo logo_chico">Paw Burger</a></h1>
         <nav>
-            <ul>
-                <li>
-                    <a href="#">MENU</a>
+            <ul class="nav_menu">
+                <li class="opciones_nav">
+                    <a href="nuestro_menu.html">MENU</a>
                 </li>
-                <li>
-                    <a href="#">PROMOS</a>
+                <li class="opciones_nav">
+                    <a href="promociones.html">PROMOS</a>
                 </li>
-                <li>
-                    <a href="#">SUCURSALES</a>
+                <li class="opciones_nav">
+                    <a href="sucursales.html">SUCURSALES</a>
                 </li>
-                <li>
-                    <a href="#">NOTICIAS</a>
+                <li class="opciones_nav">
+                    <a href="noticias.html">NOTICIAS</a>
                 </li>
-                <li>
-                    <a href="#">PEDIR</a>
+                <li class="opciones_nav">
+                    <a href="pedir.html">PEDIR</a>
                 </li>
-                <li>
-                    <a href="#">RESERVAR</a>
+                <li class="opciones_nav">
+                    <a href="reservar_cliente.html">RESERVAR</a>
                 </li>
-                <li>
-                    <p>Nombre de Usuario</p>
-                    <ul>
-                        <li><a href="#">Cliente</a></li>
-                        <li><a href="#">Cerrar Sesion</a></li>
+                <li class="opciones_nav">
+                    <p class="icono_usuario">Nombre de Usuario</p>
+                    <ul class="opciones_usuario">
+                        <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
+                        <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </header>
+
 
 
     <main>
@@ -63,46 +65,48 @@
 
     </main>
 
-    <footer>
+    <footer class="pie_pagina">
         <nav> <!-- NAV ARRIBA -->
-            <ul>
-                <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="#">Sucursales</a></li>
-                <li><a href="#">Reserva</a></li>
-                <li>
-                    <a href="http://link_al_home"><img src="./public/imgs/icono_empresa.png"
+            <ul class="pie_pagina link_internos">
+                <li class="col col_i11"><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li class="col col_i12"><a href="sucursales.html">Sucursales</a></li>
+                <li class="col col_i13"><a href="reservar_cliente.html">Reserva</a></li>
+                <li class="col logo_empresa">
+                    <a href="home.html"><img src="../../public/imgs/svg/Isotipo_PAWPOWER-blanco.svg"
                             alt="icono-empresa-link-a-home"></a>
                 </li>
-                <li><a href="#">Trabaja con Nosotros</a></li>
-                <li><a href="#">Promociones</a></li>
-                <li><a href="#">Pedi Online</a></li>
+                <li class="col col_i31"><a href="sobre_nosotros.html">Trabaja con Nosotros</a></li>
+                <li class="col col_i32"><a href="promociones.html">Promociones</a></li>
+                <li class="col col_i33"><a href="pedir.html">Pedi Online</a></li>
             </ul>
-
         </nav>
-
+    
         <nav> <!-- NAV ABAJO -->
-            <ul>
-                <li><small>PAW Power EST 2024</small></li>
+            <ul class="pie_pagina link_externos">
+                <li class="derechos"><small>PAW Power EST 2024</small></li>
                 <li>
-                    <a href="http://link_red-social-1"><img src="./public/imgs/icono_red-social-1.png"
-                            alt="icono-red-social-X"></a>
+                    <ul class="redes_sociales facebook">
+                        <li class="red_social">
+                            <a href="https://www.facebook.com/?locale=es_LA" target="_blank"><img
+                                    src="../../public/imgs/svg/icono-facebook.svg" alt="facebook"></a>
+                        </li>
+                        <li class="red_social instagram">
+                            <a href="https://www.instagram.com/" target="_blank"><img src="../../public/imgs/svg/icono-instagram.svg"
+                                    alt="instagram"></a>
+                        </li>
+                        <li class="red_social twitter">
+                            <a href="https://twitter.com/redessocialeses?lang=es" target="_blank"><img
+                                    src="../../public/imgs/svg/icono-x.svg" alt="twitter"></a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="http://link_red-social-2"><img src="./public/imgs/icono_red-social-2.png"
-                            alt="icono-red-social-Y"></a>
-                </li>
-                <li>
-                    <a href="http://link_red-social-n"><img src="./public/imgs/icono_red-social-n.png"
-                            alt="icono-red-social-Z"></a>
-                </li>
-                <li>
+                <li class="email">
                     <a href="mailto:pawpowerburger@gmail.com">pawpowerburger@gmail.com</a>
                 </li>
             </ul>
         </nav>
     </footer>
-
-
-</body>
-
+    
+    </body>
+    
 </html>

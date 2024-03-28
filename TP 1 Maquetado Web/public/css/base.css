@@ -34,8 +34,13 @@ a {
     text-decoration: none;
 }
 
-.opciones_nav {
-    display: inline;
+main {
+    min-height: 57.5vh;
+}
+
+.nav_menu {
+    display: flex;
+    align-items: center;
 }
 
 .opciones_nav a {
@@ -43,6 +48,9 @@ a {
     text-decoration: none;
     color: #000000;
     font-weight: lighter;
+    display: inline-block;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .opciones_usuario {
@@ -64,6 +72,7 @@ a {
     display: inline-block;
     text-indent: -9999px;
     background-size: cover;
+    margin-right: 10rem;
 }
 
 .logo_chico {
@@ -85,6 +94,7 @@ a {
     display: inline-block;
     width: 3.5rem;
     height: 3rem;
+    margin-left: 10rem;
     text-indent: -9999px;
     background-size: cover;
     background-image: url(../imgs/icons/icon-usuario-amarillo.png);
@@ -185,10 +195,6 @@ a {
     color: var(--color-amarillo);
 }
 
-/* .empresa {
-    display: flex;
-} */
-
 .empresa h2 {
     display: block;
     font-size: 10rem;
@@ -203,6 +209,9 @@ a {
 
 .pie_pagina {
     background-color: #000000;
+    font-family: 'Century Gothic';
+    font-style: italic;
+    height: 10vh;
 }
 
 .pie_pagina a {
@@ -225,6 +234,8 @@ a {
 .col {
     display: inline-block;
     text-align: center;
+    margin-top: 5rem;
+    font-size: large;
 }
 
 .col_i11 {
@@ -244,8 +255,10 @@ a {
 }
 
 .logo_empresa a img {
-    width: 60px;
-    height: 60px;
+    display: inline;
+    width: 8rem;
+    height: 8rem;
+
 }
 
 .col_i31 {
@@ -260,13 +273,43 @@ a {
     grid-area: col_i33;
 }
 
-.link_red_social a img {
+
+.link_externos {
+    display: grid;
+    grid-template-areas:
+        "derechos redes_sociales email";
+    justify-content: space-around;
+    align-items: center;
+    height: 15rem;
+    color: white;
+}
+
+.derechos {
+    grid-area: derechos;
+
+}
+
+.redes_sociales {
+    grid-area: redes_sociales;
+    display: flex;
+    margin-left: 5rem;
+}
+
+.instagram {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.red_social a img {
     display: inline;
     width: 2.5rem;
     height: 2.5rem;
 }
 
-.link_externos {}
+.email {
+    grid-area: email;
+}
+
 
 @media screen and (max-width: 45rem) {
     .icono_usuario {
@@ -276,3 +319,4 @@ a {
         filter: drop-shadow(1px 1px 1px #000000);
     }
 }
+
