@@ -25,10 +25,37 @@ html {
 header {
     position: relative;
     display: flex;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
 }
 
 .opciones_nav {
     display: inline;
+}
+
+.opciones_nav a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #000000;
+    font-weight: lighter;
+}
+
+.opciones_usuario {
+    display: none;
+}
+
+.portada_sitio {
+    width: 100%;
+    height: 60rem;
+    background-image: url(../imgs/imagen-portada.png);
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .logo {
@@ -45,9 +72,11 @@ header {
 }
 
 .logo_grande {
-    width: 11.3rem;
-    height: 3.2rem;
+    display: block;
+    width: 36rem;
+    height: 10.2rem;
     background-image: url(../imgs/svg/Imagotipo_PAWPOWER.svg);
+    margin-bottom: 2rem;
 }
 
 .icono_usuario {
@@ -61,12 +90,24 @@ header {
 }
 
 .boton {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
 }
 
 .boton_amarillo {
+    width: 8rem;
     color: black;
-    background-color: var(--color-amarillo);
+    background-color: var(--color-amarillo);   
+}
+
+.boton_negro {
+    width: 20rem;
+    color: white;
+    background-color: black;        
 }
 
 .titulo {
@@ -76,12 +117,80 @@ header {
 .titulo_amarillo {
     background-color: var(--color-amarillo);
     color: white;
+    text-align: center;
 }
 
 .titulo_rojo {
     background-color: var(--color-rojo);
     color: white;
 }
+
+.lista {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.lista::before,
+.lista::after {
+    content: '';
+    position: absolute;
+    width: 10rem; /*el width es 5 % mas chico que el height*/
+    height: 15rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.lista::before {
+    top: 50%;
+    left: -1rem;
+    transform: translateY(-50%);
+    background-image: url(../imgs/pseudoelementos/flecha-izquierda.png);
+}
+
+.lista::after {
+
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background-image: url(../imgs/pseudoelementos/flecha-derecha.png);
+}
+
+
+.item {
+    position: relative;
+}
+
+.item figcaption {
+    position: absolute;
+    top: 60%;
+    right: 44%;
+}
+
+.promos {
+    display: flex;
+}
+
+.promos h2 {
+    font-size: 10rem;
+}
+
+.promos h2 a {
+    color: var(--color-amarillo);
+}
+
+.empresa h2 {
+    font-size: 10rem;
+    color: black;
+}
+
+.empresa h2 strong {
+    color: var(--color-amarillo)
+}
+
 
 @media screen and (max-width: 45rem) {
     .icono_usuario {
