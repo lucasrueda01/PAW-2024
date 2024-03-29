@@ -64,8 +64,9 @@
             <h2 class="titulo titulo_amarillo">Pedir</h2>
 
             <form action="/pagar" method="post">
-                <fieldset>
-                    <table>
+                <fieldset> <!--Fieldset Carrito-->
+                    <legend>Mi Carrito</legend>
+                    <table >
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -88,10 +89,10 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <a href="/menu">Agregar +</a>
+                    <a href="/menu" class="boton boton_violeta">Agregar +</a>
                 </fieldset>
                 <fieldset>
-                    <h3>Delivery</h3>
+                    <legend>Delivery</legend>
                     <label for="nombre_delivery">Ingrese su nombre</label>
                     <input type="text" name="nombre_delivery" id="nombre_delivery">
                     <label for="direccion">Ingrese su direccion</label>
@@ -114,7 +115,7 @@
                     </aside>
                 </fieldset>
                 <fieldset>
-                    <h3>Take Away</h3>
+                    <legend>Take Away</legend>
                     <label for="nombre_take_away">Ingrese su nombre</label>
                     <input type="text" name="nombre_take_away" id="nombre_take_away">
                     <label for="numero_sucursal_take_away">Selecciona la sucursal:</label>
@@ -138,7 +139,7 @@
                     </aside>
                 </fieldset>
                 <fieldset>
-                    <h3>En el Lugar</h3>
+                    <legend>En el Lugar</legend>
                     <label for="nombre_en_el_lugar">Ingrese su nombre</label>
                     <input type="text" name="nombre_en_el_lugar" id="nombre_en_el_lugar">
                     <label for="numero_sucursal_en_el_lugar">Selecciona la sucursal:</label>
@@ -163,8 +164,8 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <input type="submit" value="Pagar">
-                <input type="submit" value="Pedir"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO
+                <input type="submit" value="Pagar" class="boton boton_violeta">
+                <input type="submit" value="Pedir" class="boton boton_violeta"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO
                                                         ELIGE LA OPCION PEDIR EN EL LUGAR
                                                     -->
             </form>

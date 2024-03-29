@@ -16,6 +16,7 @@
     --color-amarillo: #FFAF10;
     --color-rojo: #D82427;
     --color-gris: #BDBDBD;
+    --color-violeta: #7A5CFA;
     --tamanio-logo-empresa: 6px;
 }
 
@@ -106,11 +107,12 @@ main {
 
 .boton {
     font-size: 1.6rem;
-    display: block;
+    display: inline-block;
     text-align: center;
     padding: 1rem;
     border-radius: 1rem;
     margin-bottom: 1rem;
+    border: 2px solid transparent;
 }
 
 .boton_amarillo {
@@ -123,6 +125,12 @@ main {
     width: 20rem;
     color: white;
     background-color: black;
+}
+
+.boton_violeta {
+    background-color: var(--color-violeta);
+    color: white;
+    
 }
 
 .titulo {
