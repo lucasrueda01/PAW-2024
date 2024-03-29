@@ -60,19 +60,16 @@
         </section>
         
         <h2 class="titulo titulo_amarillo">Login</h2>
-    
-        <form action="iniciar_sesion">
-            
-            <h3> Bienvenido</h3>
-            <fieldset>
-                <label for="nombre">USUARIO</label>    
-                <input required type="text" name="username" id="nombre">
-            </fieldset>
-            <fieldset>
-                <label for="contrasenia">PASSWORD</label>    
-                <input required type="text" name="password" id="contrasenia">
-            </fieldset>
-            <input type="submit" value="iniciar sesion">
+        
+        <form action="iniciar_sesion" class="formulario form_amarillo">
+
+                <h3> Bienvenido</h3>
+
+                <label for="nombre" class="etiqueta">USUARIO</label>    
+                <input required type="text" name="username" id="nombre" class="campo">
+                <label for="contrasenia" class="etiqueta">PASSWORD</label>    
+                <input required type="text" name="password" id="contrasenia" class="campo">
+                <input type="submit" value="iniciar sesion" class="campo">
             <p>¿No tenes cuenta? <a href="#">Registrate aca</a> </p>
         </form>
 

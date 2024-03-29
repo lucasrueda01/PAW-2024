@@ -58,31 +58,20 @@
             <h2><a href="reservar_cliente.html" class="boton boton_amarillo" target="_blank">Reservar</a></h2>
         </section>
 
-        <section>
+        <section class="section_formulario">
             <h3 class="titulo titulo_amarillo">Unite a nuestro Equipo</h3>
-            <form action="/contactanos">
+            <form action="/contactanos" class="formulario form_gris">
 
-                <fieldset>
-                    <label for="email">Ingrese su email:</label>
-                    <input required type="text" name="email" id="email">
-                </fieldset>
+                    <label for="email" class="etiqueta">Ingrese su email:</label>
+                    <input required type="text" name="email" id="email" class="campo">
+                    <label for="nombre" class="etiqueta">Ingrese su Nombre:</label>
+                    <input required type="text" name="nombre" id="nombre" class="campo">
+                    <label for="telefono" class="etiqueta">Ingrese su Telefono de Contacto</label>
+                    <input required type="number" name="telefono" id="telefono" class="campo">
+                    <label for="link_a_cv" class="etiqueta">Ingrese su Linkin o enlace a Drive</label>
+                    <input required type="text" name="link_a_cv" id="link_a_cv" class="campo">
 
-                <fieldset>
-                    <label for="nombre">Ingrese su Nombre:</label>
-                    <input required type="text" name="nombre" id="nombre">
-                </fieldset>
-
-                <fieldset>
-                    <label for="telefono">Ingrese su Telefono de Contacto</label>
-                    <input required type="number" name="telefono" id="telefono">
-                </fieldset>
-
-                <fieldset>
-                    <label for="link_a_cv">Ingrese su Linkin o enlace a Drive</label>
-                    <input required type="text" name="link_a_cv" id="link_a_cv">
-                </fieldset>
-
-                <input type="submit" value="Enviar">
+                    <input type="submit" value="Enviar" class="boton boton_amarillo">
             </form>
         </section>
 
