@@ -47,25 +47,14 @@
 
     <main>
 
-        <section class="imagen portada_sitio"> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
-            <!--acá esta la imagen de la portada
-                                mas el anchor al home y
-                                los dos enlaces al menu y reserva
-                            -->
-            <!-- LOGO -->
-            <a href="/" class="logo logo_grande">Home</a>
-            <h2><a href="nuestro_menu.html" class="boton boton_amarillo" target="_blank">Menu</a></h2>
-            <h2><a href="reservar_cliente.html" class="boton boton_amarillo" target="_blank">Reservar</a></h2>
-        </section>
-
         <!--CONTENIDO DE LA VIEW PEDIDOS-->
 
         <section>
             <h2 class="titulo titulo_amarillo">Pedir</h2>
 
-            <form action="/pagar" method="post">
-                <fieldset> <!--Fieldset Carrito-->
-                    <legend>Mi Carrito</legend>
+            <form action="/pagar" method="post" class="formulario_pedido">
+                <fieldset class="container container_carrito"> <!--Fieldset Carrito-->
+                    <legend class="titulo_sector titulo_carrito">Mi Carrito</legend>
                     <table >
                         <thead>
                             <tr>
@@ -82,17 +71,24 @@
                                 <td></td>
                                 <td></td>
                             </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4">Total:</td>
+                                <td colspan="4">Total: $ 100</td>
                             </tr>
                         </tfoot>
                     </table>
                     <a href="/menu" class="boton boton_violeta">Agregar +</a>
                 </fieldset>
-                <fieldset>
-                    <legend>Delivery</legend>
+                <fieldset class="container container_delivery">
+                    <legend class="titulo_sector">Delivery</legend>
+
                     <label for="nombre_delivery">Ingrese su nombre</label>
                     <input type="text" name="nombre_delivery" id="nombre_delivery">
                     <label for="direccion">Ingrese su direccion</label>
@@ -105,7 +101,7 @@
                         <option value="efectivo">Pago en efectivo</option>
                     </select>
                     <aside>
-                        <h2>Resumen de compra</h2>
+                        <h2>Resumen</h2>
                         <ul>
                             <li>Producto 1 - $10</li>
                             <li>Producto 2 - $20</li>
@@ -114,8 +110,8 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <fieldset>
-                    <legend>Take Away</legend>
+                <fieldset class="container container_take_away">
+                    <legend class="titulo_sector">Take Away</legend>
                     <label for="nombre_take_away">Ingrese su nombre</label>
                     <input type="text" name="nombre_take_away" id="nombre_take_away">
                     <label for="numero_sucursal_take_away">Selecciona la sucursal:</label>
@@ -129,7 +125,7 @@
                         <option value="efectivo">Pago en efectivo</option>
                     </select>
                     <aside>
-                        <h2>Resumen de compra</h2>
+                        <h2>Resumen</h2>
                         <ul>
                             <li>Producto 1 - $10</li>
                             <li>Producto 2 - $20</li>
@@ -138,8 +134,8 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <fieldset>
-                    <legend>En el Lugar</legend>
+                <fieldset class="container container_lugar">
+                    <legend class="titulo_sector">En el Lugar</legend>
                     <label for="nombre_en_el_lugar">Ingrese su nombre</label>
                     <input type="text" name="nombre_en_el_lugar" id="nombre_en_el_lugar">
                     <label for="numero_sucursal_en_el_lugar">Selecciona la sucursal:</label>
@@ -155,7 +151,7 @@
                         <option value="3">Mesa 3</option>
                     </select>
                     <aside>
-                        <h2>Resumen de compra</h2>
+                        <h2>Resumen</h2>
                         <ul>
                             <li>Producto 1 - $10</li>
                             <li>Producto 2 - $20</li>

@@ -17,6 +17,7 @@
     --color-rojo: #D82427;
     --color-gris: #BDBDBD;
     --color-violeta: #7A5CFA;
+    --color-celeste: #CBCBCB;
     --tamanio-logo-empresa: 6px;
 }
 
@@ -130,7 +131,9 @@ main {
 .boton_violeta {
     background-color: var(--color-violeta);
     color: white;
-    
+    width: 8rem;
+    margin-left: 1rem;
+
 }
 
 .titulo {
@@ -193,6 +196,12 @@ main {
     position: absolute;
     top: 60%;
     right: 44%;
+}
+
+.item figcaption h3,
+.item figcaption p {
+    font-size: 3rem;
+    color: white;
 }
 
 .promos {
@@ -341,6 +350,77 @@ main {
 
 .form_amarillo {
     background-color: var(--color-amarillo);
+}
+
+
+.titulo_sector {
+    background-color: var(--color-celeste);
+    display: inline-block;
+    width: 20rem;
+    height: 3rem;
+    align-self: center;
+    border: .1rem solid var(--color-violeta);
+    border-radius: .5rem;
+    text-align: center;
+}
+
+.container {
+    background-color: var(--color-celeste);
+    font-size: 2rem;
+    font-family: 'Century Gothic';
+    margin-top: 2rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    border-radius: .6rem;
+}
+
+.container table {
+    border-collapse: collapse;
+}
+
+.container table,
+.container table th,
+.container table td {
+    border: .1rem solid #666666;
+    padding: .8rem;
+}
+
+.container table th {
+    font-weight: 600;
+    color: var(--color-violeta);
+}
+
+.container table tfoot td {
+    text-align: right;
+}
+
+.titulo_carrito {
+    position: relative;
+
+}
+
+.container_carrito {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container_carrito table {
+    margin: 1rem 1rem;
+}
+
+.titulo_carrito::after {
+    content: '';
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../imgs/svg/icono-carrito.svg');
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    left: 15rem;
+    top: -.1rem;
+    border: none;
 }
 
 .formulario input[type="submit"] {
