@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/fav.ico">
     <link rel="stylesheet" href="../../public/css/base.css">
+    <link rel="stylesheet" href="../../public/css/cliente.css">
     <link rel="icon" href="../../public/imgs/svg/Isotipo_PAWPOWER.svg" type="image/svg+xml">
     <title>PAW POWER | PEDIDOS</title>
 </head>
@@ -86,7 +87,7 @@
                     </table>
                     <a href="/menu" class="boton boton_violeta">Agregar +</a>
                 </fieldset>
-                <fieldset class="container container_delivery">
+                <fieldset class="container container_formulario">
                     <legend class="titulo_sector">Delivery</legend>
 
                     <label for="nombre_delivery">Ingrese su nombre</label>
@@ -110,7 +111,7 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <fieldset class="container container_take_away">
+                <fieldset class="container container_formulario">
                     <legend class="titulo_sector">Take Away</legend>
                     <label for="nombre_take_away">Ingrese su nombre</label>
                     <input type="text" name="nombre_take_away" id="nombre_take_away">
@@ -120,6 +121,7 @@
                         <option value="2">2 sucursales</option>
                         <option value="3">n sucursales</option>
                     </select>
+                    <label for="forma_delivery">Selecciona una forma de pago:</label>
                     <select id="forma_pago_take_away" name="forma_pago_take_away">
                         <option value="mercado_pago">Mercado Pago</option>
                         <option value="efectivo">Pago en efectivo</option>
@@ -134,7 +136,7 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <fieldset class="container container_lugar">
+                <fieldset class="container container_formulario">
                     <legend class="titulo_sector">En el Lugar</legend>
                     <label for="nombre_en_el_lugar">Ingrese su nombre</label>
                     <input type="text" name="nombre_en_el_lugar" id="nombre_en_el_lugar">

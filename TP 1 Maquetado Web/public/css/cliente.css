@@ -1,0 +1,200 @@
+.formulario_pedido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background-color: var(--color-celeste);
+    font-size: 2rem;
+    font-family: 'Century Gothic';
+    margin-top: 2rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    border-radius: .6rem;
+}
+
+.container table {
+    border-collapse: collapse;
+    width: 60vw;
+}
+
+.container table,
+.container table th,
+.container table td {
+    border: .1rem solid #666666;
+    padding: .8rem;
+}
+
+.container table th {
+    font-weight: 600;
+    color: var(--color-violeta);
+}
+
+.container table tfoot td {
+    text-align: right;
+}
+
+.titulo_carrito {
+    position: relative;
+
+}
+
+.container_carrito {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container_carrito table {
+    margin: 1rem 1rem;
+}
+
+.titulo_carrito::after {
+    content: '';
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../imgs/svg/icono-carrito.svg');
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    left: 15rem;
+    top: -.1rem;
+    border: none;
+}
+
+.etiqueta,
+.campo {
+    display: inline;
+    width: 75%;
+    height: 3rem;
+    border-radius: .9rem;
+    border: 2px solid transparent;
+}
+
+.etiqueta {
+    font-size: 1.5rem;
+    color: rgb(66, 64, 64);
+}
+
+.etiqueta:not(:first-of-type) {
+    margin-top: 1rem;
+}
+
+.container_formulario {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 2rem;
+    width: 60vw;
+}
+
+.container_formulario label, 
+.container_formulario input, 
+.container_formulario legend,
+.container_formulario select
+{
+    display: inline-block;
+    width: 35rem;
+    margin-left: 2rem;
+}
+
+.container_formulario aside {
+    position: absolute;
+    right: 10rem;
+    top: .9rem;
+    border: .1rem solid gray;
+    padding: 1rem;
+}
+
+.container_noticia {
+    display: flex;
+    justify-content: center;
+}
+
+.noticia {
+    border: .3rem dotted gray;
+    border-radius: 1rem;
+    margin: 1rem 0; /*arriba-abajo a-los-costados*/
+    display: grid;
+    grid-template-areas: 
+    "imagen titulo"
+    "imagen descripcion"
+    "imagen fecha";
+    width: 70%;
+    padding: 1rem;
+}
+
+.noticia img {
+    grid-area: imagen;
+    width: 10rem;
+    height: 20rem;
+}
+
+.noticia h3 {
+    grid-area: titulo;
+    font-size: x-large;
+    justify-self: center;
+}
+
+.noticia p {
+    grid-area: descripcion;
+    font-family: 'Century Gothic';
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.noticia time {
+    grid-area: fecha;
+    justify-self: end;
+}
+
+
+.sucursal {
+    display: inline-block;
+    margin: .2rem ;
+    width: 25%;
+
+}
+
+.sucursal figure {
+    position: relative;
+    width: 100%;
+}
+
+.sucursal h3 {
+    /* background-color: blue; */
+    /* font-size: .5rem; */
+    text-align: center;
+}
+
+.sucursal p {
+    /* background-color: yellow; */
+    /* font-size: 100%; */
+    text-align: center;
+}
+
+.sucursal img {
+    width: 100%;
+    height: 100%;
+    border: 0;  
+    padding: 0; 
+    display: block;
+    border-radius: .9rem;
+}
+
+.sucursal figcaption {
+    /* font-size: .5rem; */
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+}
+
+.boton_amarillo_chico {
+    font-size: 1rem;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: .2rem;
+}
