@@ -150,10 +150,35 @@
     justify-self: end;
 }
 
+.titulo_sucursales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../imgs/sucursales/Sucursal_Interior.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 30rem;
+    text-align: center;   
+}
+
+.titulo_sucursales h2 {
+    color: #ffffff;
+    font-size: 8rem;
+    font-weight: 800;
+}
+
+.titulo_sucursales p {
+    font-family: Century_Gothic;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
 
 .container_sucursales {
     font-size: 1.5rem;
-    margin: 10rem 0 10rem 0;
+    margin: 5rem 0 10rem 0;
 }
 
 .sucursal {
@@ -171,7 +196,8 @@
 
 .sucursal figure {
     position: relative;
-    width: inherit;
+    width: 500px;
+    height: 300px;
     display: block;
 }
 
@@ -196,6 +222,7 @@
     /* border: 0;   */
     display: block;
     width: inherit;
+
 }
 
 .sucursal figcaption {

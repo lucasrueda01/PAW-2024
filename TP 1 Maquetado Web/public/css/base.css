@@ -253,12 +253,11 @@ main {
 
 .pie_pagina {
     background-color: #000000;
-    font-family: 'Century Gothic';
-    font-style: italic;
-    height: 10vh;
 }
 
 .pie_pagina a {
+    font-family: 'Century_Gothic';
+    font-size: small;
     color: white;
 }
 
