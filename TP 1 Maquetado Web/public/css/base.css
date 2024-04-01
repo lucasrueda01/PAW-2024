@@ -198,6 +198,10 @@ main {
     position: relative;
 }
 
+.item img {
+    width: 100vw;
+}
+
 .item figcaption {
     position: absolute;
     top: 60%;
