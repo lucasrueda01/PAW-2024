@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/fav.ico">
     <link rel="stylesheet" href="../../public/css/base.css">
+    <link rel="stylesheet" href="../../public/css/cliente.css">
     <link rel="icon" href="../../public/imgs/svg/Isotipo_PAWPOWER.svg" type="image/svg+xml">
     <title>PAW POWER | MENU</title>
 </head>
@@ -50,66 +51,58 @@
 
     <main>
 
-        <section class="imagen portada_sitio"> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
-            <!--acá esta la imagen de la portada
-                                mas el anchor al home y
-                                los dos enlaces al menu y reserva
-                            -->
-            <!-- LOGO -->
-            <a href="/" class="logo logo_grande">Home</a>
-            <h2><a href="nuestro_menu.html" class="boton boton_amarillo" target="_blank">Menu</a></h2>
-            <h2><a href="reservar_cliente.html" class="boton boton_amarillo" target="_blank">Reservar</a></h2>
-        </section>
 
+        <h2 class="titulo titulo_amarillo">
+            <a href="../cliente/pedir.html" class="titulo_seccion">MENU</a>
+        </h2>
+        <!-- <a href="../cliente/pedir.html" class="boton boton_amarillo">IR AL CARRITO</a> -->
 
-        <h2 class="titulo titulo_amarillo">MENU</h2>
+        <section class="container_articulos"> <!-- SECCION HAMBURGUESAS -->
 
-        <section> <!-- SECCION HAMBURGUESAS -->
-            <h3>Hamburguesas</h3>
-            <ul>
-                <li>
+            <nav class="selector_tipo_articulo">
+                <ul>
+                    <li class="boton">
+                        <a href="#hamburguesas">Hamburguesas</a>
+                    </li>
+                    <li class="boton">
+                        <a href="#bebidas">Bebidas</a>
+                    </li>
+                    <li class="boton">
+                        <a href="#otros_platos">Otros Platos</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <ul id="hamburguesas" class="lista_articulos">
+
+                <li class="articulo">
                     <figure>
-                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <img src="../../public/imgs/destacados/comida-destacada-1.png" alt="hamburguesa"> <!--imagen-->
                         <figcaption>
                             <h4>BURGER CON CHEDDAR</h4>
                             <p>Descripcion</p>
                             <p>$8000</p>
-                            <a href="/agregar?comida=id_comida">Agregar</a>
+                            <a href="/agregar?comida=id_comida" class="boton boton_gris">Agregar</a>
                         </figcaption>
                     </figure>
                 </li>
-                <li>
+                <li class="articulo">
                     <figure>
-                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <img src="../../public/imgs/destacados/comida-destacada-1.png" alt="hamburguesa"> <!--imagen-->
                         <figcaption>
-                            <h4>OKLAHOMA</h4>
+                            <h4>BURGER CON CHEDDAR</h4>
                             <p>Descripcion</p>
-                            <p>$9500</p>
-                            <a href="/agregar?comida=id_comida">Agregar</a>
+                            <p>$8000</p>
+                            <a href="/agregar?comida=id_comida" class="boton boton_gris">Agregar</a>
                         </figcaption>
                     </figure>
                 </li>
-                <li>
-                    <figure>
-                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
-                        <figcaption>
-                            <h4>BIG POWER</h4>
-                            <p>Descripcion</p>
-                            <p>$9800</p>
-                            <a href="/agregar?comida=id_comida">Agregar</a>
-                        </figcaption>
-                    </figure>
-                </li>
+
             </ul>
-        </section>
-
-
-        <section> <!-- SECCION BEBIDAS -->
-            <h3>BEBIDAS</h3>
-            <ul>
-                <li>
+            <ul id="bebidas" class="lista_articulos">
+                <li class="articulo">
                     <figure>
-                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <img src="../../public/imgs/menu/bebida-1.jpg" alt="coca-cola"> <!--imagen-->
                         <figcaption>
                             <h4>Bebida #1</h4>
                             <p>$ 1000</p>
@@ -117,9 +110,9 @@
                         </figcaption>
                     </figure>
                 </li>
-                <li>
+                <li class="articulo">
                     <figure>
-                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <img src="../../public/imgs/menu/bebida-1.jpg" alt="coca-cola"> <!--imagen-->
                         <figcaption>
                             <h4>Bebida #2</h4>
                             <p>$ 1000</p>
@@ -128,14 +121,11 @@
                     </figure>
                 </li>
             </ul>
-        </section>
 
-        <section> <!-- SECCION OTROS PLATOS -->
-            <h3>OTROS PLATOS</h3>
-            <ul>
-                <li>
+            <ul id="otros_platos" class="lista_articulos">
+                <li class="articulo">
                     <figure>
-                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <img src="../../public/imgs/menu/otra-comida-1.webp" alt="guiso"> <!--imagen-->
                         <figcaption>
                             <h4>Papas Fritas</h4>
                             <p>$ 1000</p>
@@ -143,9 +133,9 @@
                         </figcaption>
                     </figure>
                 </li>
-                <li>
+                <li class="articulo">
                     <figure>
-                        <img src="./public/imgs/img_comida_1.png" alt="imagen-comida"> <!--imagen-->
+                        <img src="../../public/imgs/menu/otra-comida-1.webp" alt="guiso"> <!--imagen-->
                         <figcaption>
                             <h4>Papas con cheddar #2</h4>
                             <p>$ 1000</p>
@@ -154,9 +144,8 @@
                     </figure>
                 </li>
             </ul>
-        </section>
 
-        <a href="#">IR AL CARRITO</a>
+        </section>
 
     </main>
 
@@ -186,8 +175,8 @@
                                     src="../../public/imgs/svg/icono-facebook.svg" alt="facebook"></a>
                         </li>
                         <li class="red_social instagram">
-                            <a href="https://www.instagram.com/" target="_blank"><img src="../../public/imgs/svg/icono-instagram.svg"
-                                    alt="instagram"></a>
+                            <a href="https://www.instagram.com/" target="_blank"><img
+                                    src="../../public/imgs/svg/icono-instagram.svg" alt="instagram"></a>
                         </li>
                         <li class="red_social twitter">
                             <a href="https://twitter.com/redessocialeses?lang=es" target="_blank"><img

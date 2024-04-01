@@ -38,9 +38,7 @@ a {
 }
 
 main {
-    min-height: 57.5vh;
-    background: rgb(113, 109, 179);
-    background: linear-gradient(90deg, rgba(113, 109, 179, 1) 0%, rgba(120, 120, 164, 0.5242471988795518) 1%, rgba(0, 30, 251, 0.6923144257703081) 100%);
+    min-height: 57.5vh;    
 }
 
 .nav_menu {
@@ -52,7 +50,7 @@ main {
     font-size: 2rem;
     text-decoration: none;
     color: #000000;
-    font-weight: lighter;
+    /* font-weight: lighter; */
     display: inline-block;
     margin-left: 2rem;
     margin-right: 2rem;
@@ -77,7 +75,7 @@ main {
     display: inline-block;
     text-indent: -9999px;
     background-size: cover;
-    margin-right: 10rem;
+    /* margin-right: 10rem; */
 }
 
 .logo_chico {
@@ -128,6 +126,12 @@ main {
     background-color: black;
 }
 
+.boton_gris {
+    width: fit-content;
+    color: black;
+    background-color: gray;
+}
+
 .boton_violeta {
     background-color: var(--color-violeta);
     color: white;
@@ -138,6 +142,7 @@ main {
 
 .titulo {
     font-size: 2.92rem;
+    padding: 1rem;
 }
 
 .titulo_amarillo {
