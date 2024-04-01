@@ -117,7 +117,7 @@ main {
 }
 
 .boton_amarillo {
-    width: 8rem;
+    width: 16rem;
     color: black;
     background-color: var(--color-amarillo);
 }
@@ -142,6 +142,7 @@ main {
 
 .titulo_amarillo {
     background-color: var(--color-amarillo);
+    padding: 1rem;
     color: white;
     text-align: center;
 }
