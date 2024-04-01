@@ -131,6 +131,7 @@
 
 .noticia img {
     grid-area: imagen;
+    margin-right: 5rem;
     width: 20rem;
     height: 20rem;
 }
