@@ -206,3 +206,61 @@
     margin-bottom: 1rem;
     padding: .2rem;
 }
+
+.titulo_seccion {
+    position: relative;
+    color: white;
+}
+
+.titulo_carrito a {
+    text-decoration: none;
+}
+
+.titulo_seccion::before {
+    content: '';
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../imgs/svg/icono-carrito-negro.svg');
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    left: 40vw;
+    top: .2rem;
+    border: none;
+}
+
+.selector_tipo_articulo {
+    display: flex;
+    justify-content: center;
+}
+
+.selector_tipo_articulo ul li a{
+    font-size: 200%;
+}
+
+.lista_articulos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.articulo {
+    position: relative;
+    margin: 1rem 2rem;
+    display: block;
+}
+
+.articulo img {
+    display: block;
+    width: 30rem;
+}
+
+.articulo figcaption {
+    background-color: green;
+    position: absolute;
+    z-index: 1;
+    bottom: .5rem;
+    right: .5rem;
+}
+
