@@ -113,35 +113,38 @@
     justify-content: center;
 }
 
+.noticias ul li:nth-child(2n+1) {
+
+}
+
 .noticia {
-    border: .3rem dotted gray;
-    border-radius: 1rem;
+    border-bottom: 0.1rem solid var(--color-amarillo);
     margin: 1rem 0; /*arriba-abajo a-los-costados*/
     display: grid;
     grid-template-areas: 
     "imagen titulo"
     "imagen descripcion"
     "imagen fecha";
-    width: 70%;
+    width: 80%;
     padding: 1rem;
 }
 
 .noticia img {
     grid-area: imagen;
-    width: 10rem;
+    width: 20rem;
     height: 20rem;
 }
 
 .noticia h3 {
     grid-area: titulo;
-    font-size: x-large;
+    font-size: xx-large;
     justify-self: center;
 }
 
 .noticia p {
     grid-area: descripcion;
-    font-family: 'Century Gothic';
-    font-size: 2rem;
+    font-family: 'Century_Gothic';
+    font-size: 1.2rem;
     padding: 1rem;
 }
 
@@ -150,7 +153,7 @@
     justify-self: end;
 }
 
-.titulo_sucursales {
+.titulo_portada {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -160,16 +163,17 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 30rem;
-    text-align: center;   
+    text-align: center;
+    margin-bottom: 5rem;   
 }
 
-.titulo_sucursales h2 {
+.titulo_portada h2 {
     color: #ffffff;
     font-size: 8rem;
     font-weight: 800;
 }
 
-.titulo_sucursales p {
+.titulo_portada p {
     font-family: Century_Gothic;
     color: #ffffff;
     font-size: 1.2rem;
@@ -178,7 +182,6 @@
 
 .container_sucursales {
     font-size: 1.5rem;
-    margin: 5rem 0 10rem 0;
 }
 
 .sucursal {
