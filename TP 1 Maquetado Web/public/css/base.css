@@ -29,9 +29,11 @@ html {
 header {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    padding: 0.5rem;
 }
+
 
 a {
     text-decoration: none;
@@ -47,13 +49,19 @@ main {
 }
 
 .opciones_nav a {
-    font-size: 2rem;
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+    font-weight: 800;
     text-decoration: none;
     color: #000000;
     /* font-weight: lighter; */
     display: inline-block;
     margin-left: 2rem;
     margin-right: 2rem;
+}
+
+.opciones_nav a:hover {
+    color:  var(--color-amarillo);
 }
 
 .opciones_usuario {
