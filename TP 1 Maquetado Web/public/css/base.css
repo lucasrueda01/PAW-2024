@@ -216,10 +216,15 @@ main {
 
 .promos {
     display: flex;
+    flex-wrap: wrap;
 }
 
-.promos h2 {
-    font-size: 10rem;
+.promo img {
+    width: 50vw;
+}
+
+.promos h2 {    
+    font-size: 5rem;
 }
 
 .promos h2 a {
