@@ -153,12 +153,13 @@
 
 .container_sucursales {
     font-size: 1.5rem;
+    margin: 10rem 0 10rem 0;
 }
 
 .sucursal {
     width: 50rem;
     display: inline-block;
-    margin: 1rem;
+    margin: 3rem;
 }
 
 .lista_sucursales {
@@ -175,36 +176,56 @@
 }
 
 .sucursal h3 {
-    text-align: center;
+    font-family: Century_Gothic;
+    letter-spacing: 0.5rem;
+    font-size: 5rem;
+    font-weight: bold;
     display: block;
+    margin-bottom: 1rem;
 }
 
 .sucursal p {
-    background-color: #666666;
-    color: aliceblue;
-    text-align: center;
     display: block;
+    font-size: small;
+    color: grey;
+    font-family: Century_Gothic;
+    margin-bottom: 1rem;
 }
 
 .sucursal img {
     /* border: 0;   */
     display: block;
     width: inherit;
-    border-radius: .9rem;
 }
 
 .sucursal figcaption {
     position: absolute;
     bottom: 0;
     right: 1rem;
-    display: block;
+    display: inline-block;
+}
+
+.sucursal figcaption a {
+    font-family: Century_Gothic;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: x-small;
+
+
 }
 
 .boton_amarillo_chico {
-    width: fit-content;
+    opacity: 70%;
+    width: 5rem;
     margin: auto;
     margin-bottom: 1rem;
-    padding: .2rem;
+    padding: .5rem;
+    border-radius: 0;
+    border-color: var(--color-amarillo);
+}
+
+.boton_amarillo_chico:hover {
+    opacity: 100%;
 }
 
 .titulo_seccion {
