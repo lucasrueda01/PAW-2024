@@ -332,7 +332,10 @@
     display: block;
     width: 40rem;
     height: 35rem;
-    border: 1px solid black;
+    border: .1rem;
+    border-style: dotted;
+    border-color: gray;
+    border-width: .5rem;
     border-radius: 1rem;
 }
 
@@ -370,7 +373,7 @@
     left: 20%;
 }
 
-.boton_gris {
+.boton_gris a {
     text-decoration: none;
     color: white;
     margin-left: 0 20rem;
