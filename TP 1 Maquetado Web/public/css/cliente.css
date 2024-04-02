@@ -353,9 +353,9 @@
     right: 1rem;
 }
 
-.articulo h4 {
+.articulo h3 {
     position: absolute;
-    font-size: large;
+    font-size: 2rem;
     bottom: 6rem;
     left: 20%;
 }
