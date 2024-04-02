@@ -108,14 +108,14 @@
     padding: 1rem;
 }
 
+
+
+
 .container_noticia {
     display: flex;
     justify-content: center;
 }
 
-.noticias ul li:nth-child(2n+1) {
-
-}
 
 .noticia {
     border-bottom: 0.1rem solid var(--color-amarillo);
@@ -168,6 +168,8 @@
     margin-bottom: 5rem;   
 }
 
+
+
 .titulo_portada h2 {
     color: #ffffff;
     font-size: 8rem;
@@ -180,7 +182,32 @@
     font-size: 1.2rem;
 }
 
+.titulo_sobrenosotros {
+    background-image: none;
+    background-color: var(--color-amarillo);
+}
 
+.titulo_sobrenosotros h2{
+    color: #000000;
+}
+
+.titulo_sobrenosotros p {
+    color: #000000;
+}
+
+.sobre_nosotros article {
+    margin: 5rem;
+}
+
+.sobre_nosotros h3 {
+    font-size: 7rem;
+}
+
+.sobre_nosotros p {
+    font-family: Century_Gothic;
+    font-size: 1.5rem; 
+
+}
 .container_sucursales {
     font-size: 1.5rem;
 }
