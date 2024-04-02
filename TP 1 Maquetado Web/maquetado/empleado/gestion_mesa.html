@@ -7,6 +7,7 @@
     <link rel="icon" href="/images/fav.ico">
     <link rel="stylesheet" href="../../public/css/base.css">
     <link rel="stylesheet" href="../../public/css/cliente.css">
+    <link rel="stylesheet" href="../../public/css/empleado.css">
     <link rel="icon" href="../../public/imgs/svg/Isotipo_PAWPOWER.svg" type="image/svg+xml">
     <title>PAW POWER | MESA</title>
 </head>
@@ -54,16 +55,20 @@
             <p>Nuestras hamburguesas te esperan cerca tuyo</p>
         </section>
 
-        <h2 class="titulo titulo_amarillo">Gestion Mesa X</h2>
-        <a href="/mesas">REGRESAR A MESAS</a>
-        <p>
-            Apertura de mesa
-            Fecha / Hora
-        </p>
-        <section>
+        <section class="container_acciones_mesa">
+            <h2 class="titulo titulo_amarillo">Gestion Mesa X</h2>
+            <a href="gestion_lista_mesas.html"></a>
+    
+            <p class="info_mesa">
+                Apertura de mesa
+                Fecha / Hora
+            </p>
+        </section>
+
+        <section class="container_gestion_mesa">
             <h3>Orden N° 4</h3>
-            <a href="/cerrar_mesa?mesa=id_mesa">Cerrar Mesa</a>
-            <table>
+            <a href="/cerrar_mesa?mesa=id_mesa" class="boton boton_negro boton_negro_gestion_mesa ">Cerrar Mesa</a>
+            <table class="tabla_gestion_mesa">
                 <thead>
                     <tr>
                         <th>Acciones</th>
@@ -94,13 +99,13 @@
                 <tfoot>
                     <tr>
                         <td colspan="5">
-                            <p>Total: $$$</p>
+                            Total: $$$
                         </td>
                     </tr>
                 </tfoot>
             </table>
-            <a href="/agregar_producto?mesa=id_mesa">Agregar Producto</a>
-            <a href="/finalizar_pedido?pedido=id_pedido">Finalizar Pedido</a>
+            <a href="/agregar_producto?mesa=id_mesa" class="boton boton_violeta">Agregar Producto</a>
+            <a href="/finalizar_pedido?pedido=id_pedido" class="boton boton_rojo">Finalizar Pedido</a>
         </section>
 
     </main>
