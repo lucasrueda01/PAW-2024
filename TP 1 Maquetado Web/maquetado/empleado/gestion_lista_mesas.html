@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/fav.ico">
     <link rel="stylesheet" href="../../public/css/base.css">
+    <link rel="stylesheet" href="../../public/css/cliente.css">
     <link rel="icon" href="../../public/imgs/svg/Isotipo_PAWPOWER.svg" type="image/svg+xml">
     <title>PAW POWER | MESAS</title>
 </head>
@@ -48,70 +49,83 @@
 
     <main>
 
-        <section class="imagen portada_sitio"> <!--Seccion Portada del sitio, va a estar en la mayoria de los sitios-->
-            <!--acá esta la imagen de la portada
-                                mas el anchor al home y
-                                los dos enlaces al menu y reserva
-                            -->
-            <!-- LOGO -->
-            <a href="../cliente/index.html" class="logo logo_grande">Home</a>
-            <h2><a href="../cliente/nuestro_menu.html" class="boton boton_amarillo" target="_blank">Menu</a></h2>
-            <h2><a href="../cliente/reservar_cliente.html" class="boton boton_amarillo" target="_blank">Reservar</a>
-            </h2>
+        <section class="titulo titulo_portada">
+            <h2>RESERVAS</h2>
+            <p>Nuestras hamburguesas te esperan cerca tuyo</p>
         </section>
 
         <h2 class="titulo titulo_amarillo">Gestion Mesas</h2>
 
-        <nav>
+        <nav class="nav_mesas">
             <ul>
-                <li>SECCION A</li>
-                <li>SECCION B</li>
-                <li>SECCION C</li>
-                <li>SECCION D</li>
+                <li class="boton selector_sector sector_seleccionado"><a href="#sector_a">SECTOR A</a></li>
+                <li class="boton selector_sector"><a href="#sector_b">SECTOR B</a></li>
+                <li class="boton selector_sector"><a href="#sector_c">SECTOR C</a></li>
+                <li class="boton selector_sector"><a href="#sector_d">SECTOR D</a></li>
             </ul>
         </nav>
 
-        <section> <!-- SECCION A -->
-            <h3>Seccion A</h3>
+        <section class="sectores"> <!-- SECCION A -->
 
-            <ol>
-                <li> <!--MESA 1-->
-                    <a href="/ver_detalle_mesa?mesa=id_mesa">MESA A1</a>
+            <ul class="sector">
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
+                </li>
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
+                </li>
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
+                </li>
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
+                </li>
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
+                </li>
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
+                </li>
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
+                </li>
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
+                </li>
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
 
-                <li> <!--MESA 2 -->
-                    <a href="/ver_detalle_mesa?mesa=id_mesa">MESA A2</a>
+                <li class="mesa mesa_ocupada"> <!--MESA 2 -->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A2</a>
                 </li>
 
-                <li> <!--MESA 3 -->
-                    <a href="/ver_detalle_mesa?mesa=id_mesa">MESA A3</a>
+                <li class="mesa mesa_ocupada"> <!--MESA 3 -->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A3</a>
                 </li>
 
-                <li> <!--MESA 4 -->
-                    <a href="/ver_detalle_mesa?mesa=id_mesa">MESA A4</a>
+                <li class="mesa mesa_libre"> <!--MESA 4 -->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">A4</a>
                 </li>
-            </ol>
-        </section>
-        <section> <!-- SECCION B -->
-            <h3>Seccion B</h3>
+            </ul>
 
-            <ol>
-                <li> <!--MESA 1-->
-                    <a href="/ver_detalle_mesa?mesa=id_mesa">MESA B1</a>
+            <ul class="sector">
+                <li class="mesa mesa_libre"> <!--MESA 1-->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">B1</a>
                 </li>
 
-                <li> <!--MESA 2 -->
-                    <a href="/ver_detalle_mesa?mesa=id_mesa">MESA B2</a>
+                <li class="mesa mesa_ocupada"> <!--MESA 2 -->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">B2</a>
                 </li>
 
-                <li> <!--MESA 3 -->
-                    <a href="/ver_detalle_mesa?mesa=id_mesa">MESA B3</a>
+                <li class="mesa mesa_libre"> <!--MESA 3 -->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">B3</a>
                 </li>
 
-                <li> <!--MESA 4 -->
-                    <a href="/ver_detalle_mesa?mesa=id_mesa">MESA BA1</a>
+                <li class="mesa mesa_ocupada"> <!--MESA 4 -->
+                    <a href="/ver_detalle_mesa?mesa=id_mesa">BA1</a>
                 </li>
-            </ol>
+            </ul>
 
         </section>
 

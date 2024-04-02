@@ -400,7 +400,6 @@
     display: flex;
     justify-content: center;
     margin: 1rem 9rem;
-    /* background-color: var(--color-amarillo); */
     font-size: inherit;
     padding-bottom: 5rem;
 }
@@ -423,4 +422,69 @@ input[type="submit"] {
 .resumen ul {
     list-style: decimal;
     padding-left: 5rem;
+}
+
+.nav_mesas ul{
+    display: flex;
+    justify-content: center;
+}
+
+.nav_mesas ul li a {
+    color: black;
+}
+
+.selector_sector:not(:nth-last-child(1)) {
+    display: inline-flex;
+    border-right: .1rem solid var(--color-amarillo);
+    border-radius: 0;    
+    padding: .8rem .8rem;
+}
+
+.sector_seleccionado {
+    text-decoration: underline;
+}
+
+.sectores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sector {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-bottom: 1rem;
+    border-bottom: 1rem solid var(--color-amarillo);
+}
+
+.mesa {
+    margin: 1rem 1rem;
+    border-radius: 3rem;
+    width: 10rem;
+    height: 8rem;
+    display: block;
+}
+
+.mesa a {
+    width: 72%;
+    height: 71%;
+    display: inline-block;
+    margin: 1rem 1rem;
+    text-decoration: none;
+    background-image: url('../imgs/svg/mesa.svg');
+    background-size: cover;
+    color: black;
+    text-align: center;
+}
+
+
+.mesa_libre {
+    background-color: rgb(0, 128, 0);
+}
+
+.mesa_ocupada {
+    background-color: red;
 }
