@@ -90,11 +90,10 @@
     width: 60vw;
 }
 
-.container_formulario label, 
-.container_formulario input, 
+.container_formulario label,
+.container_formulario input,
 .container_formulario legend,
-.container_formulario select
-{
+.container_formulario select {
     display: inline-block;
     width: 35rem;
     margin-left: 2rem;
@@ -119,12 +118,13 @@
 
 .noticia {
     border-bottom: 0.1rem solid var(--color-amarillo);
-    margin: 1rem 0; /*arriba-abajo a-los-costados*/
+    margin: 1rem 0;
+    /*arriba-abajo a-los-costados*/
     display: grid;
-    grid-template-areas: 
-    "imagen titulo"
-    "imagen descripcion"
-    "imagen fecha";
+    grid-template-areas:
+        "imagen titulo"
+        "imagen descripcion"
+        "imagen fecha";
     width: 80%;
     padding: 1rem;
 }
@@ -165,7 +165,7 @@
     background-attachment: fixed;
     height: 30rem;
     text-align: center;
-    margin-bottom: 5rem;   
+    margin-bottom: 5rem;
 }
 
 
@@ -187,7 +187,7 @@
     background-color: var(--color-amarillo);
 }
 
-.titulo_sobrenosotros h2{
+.titulo_sobrenosotros h2 {
     color: #000000;
 }
 
@@ -205,9 +205,10 @@
 
 .sobre_nosotros p {
     font-family: Century_Gothic;
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
 
 }
+
 .container_sucursales {
     font-size: 1.5rem;
 }
@@ -315,7 +316,7 @@
     justify-content: center;
 }
 
-.selector_tipo_articulo ul li a{
+.selector_tipo_articulo ul li a {
     font-size: 200%;
 }
 
@@ -329,18 +330,49 @@
     position: relative;
     margin: 1rem 2rem;
     display: block;
+    width: 40rem;
+    height: 35rem;
+    border: 1px solid black;
+    border-radius: 1rem;
 }
 
 .articulo img {
     display: block;
-    width: 30rem;
+    width: 95%;
+    height: 60%;
+    margin: 1rem auto;
+    border-radius: 1rem;
 }
 
-.articulo figcaption {
-    background-color: green;
+.articulo a {
     position: absolute;
-    z-index: 1;
-    bottom: .5rem;
-    right: .5rem;
+    bottom: 0;
+    right: 1rem;
+}
+
+.articulo h4 {
+    position: absolute;
+    font-size: large;
+    bottom: 6rem;
+    left: 20%;
+}
+
+.articulo p {
+    position: absolute;
+    font-size: large;
+    bottom: 8rem;
+    left: 20%;
+}
+.articulo p:nth-child(3) {
+    position: absolute;
+    font-size: 2rem;
+    bottom: 10rem;
+    left: 20%;
+}
+
+.boton_gris {
+    text-decoration: none;
+    color: white;
+    margin-left: 0 20rem;
 }
 
