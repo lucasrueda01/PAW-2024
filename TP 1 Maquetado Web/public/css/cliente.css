@@ -366,6 +366,7 @@
     bottom: 8rem;
     left: 20%;
 }
+
 .articulo p:nth-child(3) {
     position: absolute;
     font-size: 2rem;
@@ -379,3 +380,31 @@
     margin-left: 0 20rem;
 }
 
+.form_reserva {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 9rem;
+    /* background-color: var(--color-amarillo); */
+    font-size: inherit;
+    padding-bottom: 5rem;
+}
+
+.form_reserva fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="submit"] {
+    margin-top: 10px;
+}
+
+.resumen {
+    margin: 1em 1em;
+    border: 1px solid black;
+    width: 40rem;
+}
+
+.resumen ul {
+    list-style: decimal;
+    padding-left: 5rem;
+}
