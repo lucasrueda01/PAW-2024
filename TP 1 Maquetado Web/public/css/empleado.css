@@ -81,13 +81,13 @@
     background-image: url('../imgs/svg/flecha-regresar.svg');
     background-size: cover;
     left: .1rem;
-    top: 1rem
+    top: 1rem;
 }
 
 .info_mesa {
     position: absolute;
     top: 6rem;
-    right: 1rem;    
+    right: 1rem;
     z-index: 1;
 }
 
@@ -132,7 +132,25 @@
 }
 
 .tabla_gestion_mesa tfoot td {
-    text-align: right;
+    text-align: center;
     padding-right: 1rem;
 }
 
+.icon {
+    display: inline-block;
+    text-indent: -9999px;
+    background-size: cover;
+    margin: 1rem auto;
+}
+
+.icon_aceptar {
+    width: 4rem;
+    height: 4rem;
+    background-image: url(../imgs/svg/icono-aceptar.svg);
+}
+
+.icon_rechazar {
+    width: 4rem;
+    height: 4rem;
+    background-image: url(../imgs/svg/icono-rechazar.svg);
+}

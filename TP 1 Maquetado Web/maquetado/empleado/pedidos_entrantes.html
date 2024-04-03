@@ -7,6 +7,7 @@
     <link rel="icon" href="/images/fav.ico">
     <link rel="stylesheet" href="../../public/css/base.css">
     <link rel="stylesheet" href="../../public/css/cliente.css">
+    <link rel="stylesheet" href="../../public/css/empleado.css">
     <link rel="icon" href="../../public/imgs/svg/Isotipo_PAWPOWER.svg" type="image/svg+xml">
     <title>PAW POWER | PEDIDOS</title>
 </head>
@@ -55,9 +56,9 @@
 
         <h2 class="titulo titulo_amarillo">Pedidos Entrantes</h2>
 
-        <section>
+        <section class="container_gestion_mesa">
             <h3>PEDIDOS</h3>
-            <table>
+            <table class="tabla_gestion_mesa">
                 <thead>
                     <tr>
                         <th>Fecha/Hora</th>
@@ -80,8 +81,8 @@
                         <td></td>
                         <td>Pendiente/ en Preparacion/ rechazado/ terminado</td>
                         <td>
-                            <a href="/aceptar_pedido?pedido=id_pedido">Aceptar</a>
-                            <a href="/rechazar_pedido?pedido=id_pedido">Rechazar</a>
+                            <a href="/aceptar_pedido?pedido=id_pedido" class="icon icon_aceptar">Aceptar</a>
+                            <a href="/rechazar_pedido?pedido=id_pedido" class="icon icon_rechazar">Rechazar</a>
                         </td>
                     </tr>
                 </tbody>

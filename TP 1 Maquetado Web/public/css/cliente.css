@@ -103,10 +103,6 @@
     text-align: left;
 }
 
-.titulo_en_el_lugar {
-
-}
-
 .container_formulario aside {
     position: absolute;
     right: 10rem;
@@ -114,9 +110,6 @@
     border: .1rem solid gray;
     padding: 1rem;
 }
-
-
-
 
 @media screen and (max-width:75.9rem) {
     .container_formulario aside {
