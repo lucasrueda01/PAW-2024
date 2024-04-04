@@ -32,6 +32,16 @@
     width: 4rem;
 }
 
+.container table td button {
+    background-color: var(--color-violeta);
+    border: 0;
+    border-radius: .5rem;
+    font-size: 2rem;
+    width: 3rem;
+    text-align: center;
+    margin: 0 auto
+}
+
 .container table th {
     font-weight: 600;
     color: var(--color-violeta);
