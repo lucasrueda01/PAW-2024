@@ -385,6 +385,12 @@ main {
     background-color: var(--color-gris);
 }
 
+
+.form_gris fieldset,
+.form_gris aside {
+    display: inline;
+}
+
 .form_amarillo {
     background-color: var(--color-amarillo);
 }
