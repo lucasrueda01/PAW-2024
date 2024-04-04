@@ -27,6 +27,11 @@
     text-align: center;
 }
 
+.container table td input{
+    text-align: center;
+    width: 4rem;
+}
+
 .container table th {
     font-weight: 600;
     color: var(--color-violeta);
