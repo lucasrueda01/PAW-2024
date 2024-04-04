@@ -113,13 +113,14 @@ main {
 }
 
 .boton {
-    font-size: 1.6rem;
+    font-family: Century_Gothic;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 800;
     display: inline-block;
     text-align: center;
     padding: 1rem;
-    border-radius: 1rem;
     margin: 1rem 1rem;
-    border: 2px solid transparent;
 }
 
 .boton_amarillo {
@@ -261,6 +262,7 @@ main {
 
 .pie_pagina {
     background-color: #000000;
+    margin-top: 5%;
 }
 
 .pie_pagina a {
@@ -365,13 +367,13 @@ main {
 
 .formulario {
     margin: 1rem 25%;
-    padding: 1rem;
-    border-radius: 1rem;
+    padding: 8rem 1rem 0rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .form_gris {
@@ -380,6 +382,10 @@ main {
 
 .form_amarillo {
     background-color: var(--color-amarillo);
+}
+
+.form_transparente {
+    background-color: transparent;
 }
 
 
@@ -395,13 +401,9 @@ main {
 }
 
 .formulario input[type="submit"] {
-    margin: 5rem 40%;
     width: 10rem;
 }
 
-.formulario input {
-    border: 2px solid transparent;
-}
 
 .formulario h3 {
     font-size: 3rem;

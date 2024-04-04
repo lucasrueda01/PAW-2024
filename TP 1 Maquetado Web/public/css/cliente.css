@@ -64,22 +64,50 @@
     border: none;
 }
 
-.etiqueta,
-.campo {
-    display: inline;
-    width: 75%;
-    height: 3rem;
-    border-radius: .9rem;
-    border: 2px solid transparent;
+.titulo_form_unite {
+    font-family: Century_Gothic;
+    font-size: smaller;
+    position: absolute;
+    top: 2rem;
 }
 
 .etiqueta {
-    font-size: 1.5rem;
-    color: rgb(66, 64, 64);
+    width: 75%;
+    display: inline;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.campo {
+    padding-left: .5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: inline;
+    width: 75%;
+    height: 3rem;
+}
+
+
+.etiqueta {
+    font-family: Century_Gothic;
+    font-size: 1.2rem;
+    color: #000000;
 }
 
 .etiqueta:not(:first-of-type) {
     margin-top: 1rem;
+}
+
+.boton_enviar_unete {
+    background-color: var(--color-amarillo);
+    border-radius: 0;
+    width: 75%;
+    font-family: Century_Gothic;
+    font-size: small;
+}
+
+.boton_enviar_unete:hover {
+    background-color: #eec53f;
 }
 
 .container_formulario {
@@ -321,12 +349,36 @@
 }
 
 .selector_tipo_articulo {
+    background-color: var(--color-amarillo);
     display: flex;
     justify-content: center;
+
+}
+
+.selector_tipo_articulo li {
+    display: inline-block;
+    padding: 1rem;
+}
+
+.selector_tipo_articulo ul li:first-child {
+    border-right: 1px solid rgb(202, 131, 0);
+}
+
+.selector_tipo_articulo ul li:last-child {
+    border-left: 1px solid rgb(202, 131, 0);
+}
+
+.selector_tipo_articulo li:hover {
+    background-color: rgb(253, 185, 58);
 }
 
 .selector_tipo_articulo ul li a {
-    font-size: 200%;
+    color: #000000;
+    font-family: Century_Gothic;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 800;
+
 }
 
 .lista_articulos {
@@ -335,17 +387,23 @@
     justify-content: center;
 }
 
+.seccion_hamburguesas h3 {
+    display: flex;
+    justify-content: center;
+    font-family: Century_Gothic;
+    font-size: 4rem;
+    margin: 2rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-amarillo);
+}
+
 .articulo {
     position: relative;
     margin: 1rem 2rem;
     display: block;
     width: 40rem;
-    height: 35rem;
-    border: .1rem;
-    border-style: dotted;
-    border-color: gray;
-    border-width: .5rem;
-    border-radius: 1rem;
+    height: 35rem;  
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .articulo img {
@@ -353,34 +411,32 @@
     width: 95%;
     height: 60%;
     margin: 1rem auto;
-    border-radius: 1rem;
+    border-radius: .5rem;
+}
+
+.articulo h4 {
+    position: relative;
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+    margin: 1rem;
+    font-weight: 800;
+    border-bottom: 2px solid var(--color-amarillo);
 }
 
 .articulo a {
-    position: absolute;
-    bottom: 0;
-    right: 1rem;
-}
-
-.articulo h3 {
-    position: absolute;
-    font-size: 2rem;
-    bottom: 6rem;
-    left: 20%;
+    position: relative;
 }
 
 .articulo p {
-    position: absolute;
-    font-size: large;
-    bottom: 8rem;
-    left: 20%;
+    position: relative;
+    font-size: 1.rem;
+    font-family: Century_Gothic;
+    margin-left: 1rem;
 }
 
-.articulo p:nth-child(3) {
-    position: absolute;
-    font-size: 2rem;
-    bottom: 10rem;
-    left: 20%;
+.articulo_precio {
+    font-size: 1.5rem;
+    margin-top: 2rem;
 }
 
 .boton_gris a {
