@@ -14,6 +14,7 @@
 
 :root {
     --color-amarillo: #FFAF10;
+    --color-amarrillohover: #fad07c;
     --color-rojo: #D82427;
     --color-gris: #BDBDBD;
     --color-violeta: #7A5CFA;
@@ -127,6 +128,10 @@ main {
     width: 16rem;
     color: black;
     background-color: var(--color-amarillo);
+}
+
+.boton_amarillo:hover {
+    background-color: var(--color-amarrillohover)
 }
 
 .boton_negro {

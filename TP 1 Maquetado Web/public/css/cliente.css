@@ -387,7 +387,7 @@
     justify-content: center;
 }
 
-.seccion_hamburguesas h3 {
+.container_articulos section h3 {
     display: flex;
     justify-content: center;
     font-family: Century_Gothic;
@@ -408,6 +408,7 @@
 
 .articulo img {
     display: block;
+    object-fit: contain;
     width: 95%;
     height: 60%;
     margin: 1rem auto;
