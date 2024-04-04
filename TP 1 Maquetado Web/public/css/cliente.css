@@ -24,6 +24,7 @@
 .container table td {
     border: .1rem solid #666666;
     padding: .8rem;
+    text-align: center;
 }
 
 .container table th {
