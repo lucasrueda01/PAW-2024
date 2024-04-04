@@ -387,7 +387,7 @@
     justify-content: center;
 }
 
-.container_articulos section h3 {
+.container_articulos section h3{
     display: flex;
     justify-content: center;
     font-family: Century_Gothic;
@@ -397,12 +397,26 @@
     border-bottom: 1px solid var(--color-amarillo);
 }
 
+.container_articulos section > h4 {
+    display: flex;
+    justify-content: center;
+    font-family: Century_Gothic;
+    font-size: 1rem;
+    font-weight: 800;
+    color: red;
+    margin: 2rem;
+    padding: 1rem;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+
 .articulo {
     position: relative;
     margin: 1rem 2rem;
     display: block;
     width: 40rem;
-    height: 35rem;  
+    height: 40rem;  
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
