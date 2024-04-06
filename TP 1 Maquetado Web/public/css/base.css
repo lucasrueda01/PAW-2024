@@ -21,6 +21,7 @@
     --color-celeste: #CBCBCB;
     --color-fondo: #D9D9D9;
     --tamanio-logo-empresa: 6px;
+    --color-fondo-menu-mobile: rgba(128, 128, 128, .8);
 }
 
 html {
@@ -48,6 +49,7 @@ main {
 .nav_menu {
     display: flex;
     align-items: center;
+    /* flex-direction: column; */
 }
 
 .opciones_nav a {
@@ -60,6 +62,80 @@ main {
     display: inline-block;
     margin-left: 2rem;
     margin-right: 2rem;
+    
+}
+
+#menuHamburguesa, #menuMobile{
+    display: none;
+}
+
+.logo_grande_mobile {
+    display: none;
+}
+
+@media screen and (max-width: 980px) {
+    .icono_usuario {
+        width: 3.6rem;
+        height: 3.5rem;
+        background-image: url(../imgs/icons/icon-usuario-negro.png);
+        filter: drop-shadow(1px 1px 1px #000000);
+    }
+
+    header {
+        position: relative;
+        justify-content: flex-start;
+    }
+
+    .nav_menu {
+        flex-direction: column;
+        position: absolute;
+        top: 5.6rem;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        background-color: var(--color-fondo-menu-mobile);
+    }
+
+    .logo_grande_mobile {
+        display: block;
+        width: 18rem;
+        height: 5rem;
+        background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
+        margin-left: 10rem;
+    }
+
+    #menuMobile {
+        display: block;
+        position: relative;
+    }
+
+    #menuDesktop {
+        display: none;
+    }
+    nav {
+        display: none;
+        transition: opacity 0.5s ease;
+        opacity: 0;
+    }
+
+
+    #menuHamburguesa ~ label {
+        margin-left: 20rem;
+    }
+
+    #menuHamburguesa:checked + label + nav {
+        display: block;
+        opacity: 1;
+    }
+
+    .opciones_nav a {
+        display: block;
+        width: 100%;
+        color: white;
+        margin: 1rem 2rem;
+    }
+
+
 }
 
 .opciones_nav a:hover {
@@ -432,11 +508,3 @@ main {
     background-size: cover;
 }
 
-@media screen and (max-width: 45rem) {
-    .icono_usuario {
-        width: 3.6rem;
-        height: 3.5rem;
-        background-image: url(../imgs/icons/icon-usuario-negro.png);
-        filter: drop-shadow(1px 1px 1px #000000);
-    }
-}

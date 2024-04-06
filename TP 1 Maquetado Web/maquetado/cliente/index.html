@@ -12,7 +12,10 @@
 
 <body class="home">
     <header> <!--block-->
-        <h1><a href="index.html" class="logo logo_chico">Paw Burger</a></h1> <!--block-->
+        <h1><a href="../cliente/index.html" class="logo logo_chico" id="menuDesktop">Paw Burger</a></h1>
+        <input type="checkbox" name="menuHamburguesa" id="menuHamburguesa">
+        <label for="menuHamburguesa"class="logo logo_chico" id="menuMobile">Paw Burger</label>
+        <h1><a href="../cliente/index.html" class="logo logo_grande_mobile">Paw Burger</a></h1>
         <nav> <!--block-->
             <ul class="nav_menu"> <!--block-->
                 <li class="opciones_nav">
@@ -33,20 +36,28 @@
                 <li class="opciones_nav">
                     <a href="../cliente/reservar_cliente.html">RESERVAR</a>
                 </li>
-                <li class="opciones_nav">
-                    <a href="../empleado/gestion_lista_mesas.html">GESTION MESAS</a>
+                <li>
+                    <ul>
+                        <li class="opciones_nav">
+                            <a href="../empleado/gestion_lista_mesas.html">GESTION MESAS</a>
+                        </li>
+                        <li class="opciones_nav">
+                            <a href="../empleado/gestion_mesa.html">GESTION MESA</a>
+                        </li>
+                        <li class="opciones_nav">
+                            <a href="../empleado/pedidos_entrantes.html">PEDIDOS ENTRANTES</a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="opciones_nav">
-                    <a href="../empleado/gestion_mesa.html">GESTION MESA</a>
-                </li>
-                <li class="opciones_nav">
-                    <a href="../empleado/pedidos_entrantes.html">PEDIDOS ENTRANTES</a>
-                </li>
-                <li class="opciones_nav">
-                    <p class="icono_usuario"><a href="mi_perfil.html">Nombre de Usuario</a></p> <!--block-->
-                    <ul class="opciones_usuario">
-                        <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
-                        <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
+                <li>
+                    <ul>
+                        <li class="opciones_nav">
+                            <p class="icono_usuario"><a href="mi_perfil.html">Nombre de Usuario</a></p> <!--block-->
+                            <ul class="opciones_usuario">
+                                <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
+                                <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
