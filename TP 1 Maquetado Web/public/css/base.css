@@ -46,6 +46,10 @@ main {
     min-height: 57.5vh;    
 }
 
+.container_nav {
+    display: flex;
+}
+
 .nav_menu {
     display: flex;
     align-items: center;
@@ -58,20 +62,20 @@ main {
     font-weight: 800;
     text-decoration: none;
     color: #000000;
-    /* font-weight: lighter; */
     display: inline-block;
     margin-left: 2rem;
     margin-right: 2rem;
     
 }
 
-#menuHamburguesa, #menuMobile{
+#menuHamburguesa, #menuMobile, #menuPerfil{
     display: none;
 }
 
 .logo_grande_mobile {
     display: none;
 }
+
 
 .submenu {
     position: absolute;
@@ -85,11 +89,33 @@ main {
     padding: 1rem 1rem;
 }
 
-li.opciones_nav a:hover + ul {
+.nav_menu li:hover a + ul {
     display: block;
 }
 
+.submenu li a {
+    display: block;
+}
+
+.nav_usuario {
+    display: block;
+    margin-left: 10rem;
+}
+
+
+.icono_usuario {
+    display: inline-block;
+    width: 3.5rem;
+    height: 3rem;
+    margin-left: 1rem;
+    text-indent: -9999px;
+    background-size: cover;
+    background-image: url(../imgs/icons/icon-usuario-amarillo.png);
+    filter: drop-shadow(1px 1px 1px var(--color-amarillo));
+}
+
 @media screen and (max-width: 980px) {
+
     .icono_usuario {
         width: 3.6rem;
         height: 3.5rem;
@@ -151,8 +177,6 @@ li.opciones_nav a:hover + ul {
         color: white;
         margin: 1rem 2rem;
     }
-
-
 }
 
 .opciones_nav a:hover {
@@ -195,16 +219,7 @@ li.opciones_nav a:hover + ul {
     margin-bottom: 2rem;
 }
 
-.icono_usuario {
-    display: inline-block;
-    width: 3.5rem;
-    height: 3rem;
-    margin-left: 10rem;
-    text-indent: -9999px;
-    background-size: cover;
-    background-image: url(../imgs/icons/icon-usuario-amarillo.png);
-    filter: drop-shadow(1px 1px 1px var(--color-amarillo));
-}
+
 
 .boton {
     font-family: Century_Gothic;
