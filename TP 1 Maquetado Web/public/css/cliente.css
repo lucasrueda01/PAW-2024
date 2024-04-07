@@ -11,7 +11,7 @@
     margin-top: 2rem;
     margin-right: 1rem;
     margin-left: 1rem;
-    border-radius: .6rem;
+    
 }
 
 .container table {
@@ -60,11 +60,23 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    position: relative;
+    margin-top: 4rem;
+}
+
+.titulo_fieldset {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    padding: 1rem;
+    background-color: var(--color-celeste);
 }
 
 .container_carrito table {
     margin: 1rem 1rem;
 }
+
+
 
 .titulo_carrito::after {
     content: '';

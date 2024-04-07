@@ -18,6 +18,7 @@
     --color-rojo: #D82427;
     --color-gris: #BDBDBD;
     --color-violeta: #7A5CFA;
+    --color-violetahover: #b5a7f2;
     --color-celeste: #CBCBCB;
     --color-fondo: #D9D9D9;
     --tamanio-logo-empresa: 6px;
@@ -35,6 +36,7 @@ header {
     justify-content: space-around;
     align-items: center;
     padding: 0.5rem;
+                 /*0.5 x 10px */
 }
 
 
@@ -58,12 +60,12 @@ main {
 
 .opciones_nav a {
     font-family: Century_Gothic;
-    font-size: 1.5rem;
+    font-size: 1.5rem; 
     font-weight: 800;
     text-decoration: none;
     color: #000000;
     display: inline-block;
-    margin-left: 2rem;
+    margin-left: 2rem; 
     margin-right: 2rem;
     
 }
@@ -113,6 +115,7 @@ main {
     background-image: url(../imgs/icons/icon-usuario-amarillo.png);
     filter: drop-shadow(1px 1px 1px var(--color-amarillo));
 }
+
 
 @media screen and (max-width: 980px) {
 
@@ -262,9 +265,22 @@ main {
     background-color: var(--color-violeta);
     color: white;
     width: fit-content;
-
-
+    /* transition: background-color 1s ease; */
 }
+
+.boton_violeta:hover {
+    background-color: var(--color-violetahover);
+    /* font-size: large; */
+    /* letter-spacing: .5rem; */
+    /* color: black ; */
+}
+
+.boton_violeta:hover::after{
+    content: '+';
+    color: var(--color-rojo);
+    margin-left: 1rem;
+}
+
 
 .boton_rojo {
     background-color: var(--color-rojo);
