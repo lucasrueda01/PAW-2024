@@ -46,6 +46,10 @@ main {
     min-height: 57.5vh;    
 }
 
+.container_nav {
+    display: flex;
+}
+
 .nav_menu {
     display: flex;
     align-items: center;
@@ -58,14 +62,13 @@ main {
     font-weight: 800;
     text-decoration: none;
     color: #000000;
-    /* font-weight: lighter; */
     display: inline-block;
     margin-left: 2rem;
     margin-right: 2rem;
     
 }
 
-#menuHamburguesa, #menuMobile{
+#menuHamburguesa, #menuMobile, #menuPerfil{
     display: none;
 }
 
@@ -73,7 +76,46 @@ main {
     display: none;
 }
 
+
+.submenu {
+    position: absolute;
+    display: none;
+    width: 20rem;
+    background-color: rgba(252, 252, 252, 0.5);
+    margin-top: 2rem;
+}
+
+.submenu a {
+    padding: 1rem 1rem;
+}
+
+.nav_menu li:hover a + ul {
+    display: block;
+}
+
+.submenu li a {
+    display: block;
+}
+
+.nav_usuario {
+    display: block;
+    margin-left: 10rem;
+}
+
+
+.icono_usuario {
+    display: inline-block;
+    width: 3.5rem;
+    height: 3rem;
+    margin-left: 1rem;
+    text-indent: -9999px;
+    background-size: cover;
+    background-image: url(../imgs/icons/icon-usuario-amarillo.png);
+    filter: drop-shadow(1px 1px 1px var(--color-amarillo));
+}
+
 @media screen and (max-width: 980px) {
+
     .icono_usuario {
         width: 3.6rem;
         height: 3.5rem;
@@ -101,7 +143,7 @@ main {
         width: 18rem;
         height: 5rem;
         background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
-        margin-left: 10rem;
+        margin-left: 13rem;
     }
 
     #menuMobile {
@@ -112,7 +154,8 @@ main {
     #menuDesktop {
         display: none;
     }
-    nav {
+
+    .nav_menu {
         display: none;
         transition: opacity 0.5s ease;
         opacity: 0;
@@ -123,10 +166,11 @@ main {
         margin-left: 20rem;
     }
 
-    #menuHamburguesa:checked + label + nav {
-        display: block;
+    #menuHamburguesa:checked + label + h1 + nav > ul{
+        display: flex;
         opacity: 1;
     }
+
 
     .opciones_nav a {
         display: block;
@@ -134,8 +178,6 @@ main {
         color: white;
         margin: 1rem 2rem;
     }
-
-
 }
 
 .opciones_nav a:hover {
@@ -181,16 +223,7 @@ main {
     margin-bottom: 2rem;
 }
 
-.icono_usuario {
-    display: inline-block;
-    width: 3.5rem;
-    height: 3rem;
-    margin-left: 10rem;
-    text-indent: -9999px;
-    background-size: cover;
-    background-image: url(../imgs/icons/icon-usuario-amarillo.png);
-    filter: drop-shadow(1px 1px 1px var(--color-amarillo));
-}
+
 
 .boton {
     font-family: Century_Gothic;

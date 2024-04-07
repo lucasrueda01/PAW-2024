@@ -16,7 +16,7 @@
         <input type="checkbox" name="menuHamburguesa" id="menuHamburguesa">
         <label for="menuHamburguesa"class="logo logo_chico" id="menuMobile">Paw Burger</label>
         <h1><a href="../cliente/index.html" class="logo logo_grande_mobile">Paw Burger</a></h1>
-        <nav> <!--block-->
+        <nav class="container_nav"> <!--block-->
             <ul class="nav_menu"> <!--block-->
                 <li class="opciones_nav">
                     <a href="../cliente/nuestro_menu.html">MENU</a>
@@ -36,8 +36,9 @@
                 <li class="opciones_nav">
                     <a href="../cliente/reservar_cliente.html">RESERVAR</a>
                 </li>
-                <li>
-                    <ul>
+                <li class="opciones_nav">
+                    <a href="#">PERFIL EMPLEADO</a>
+                    <ul class="submenu">
                         <li class="opciones_nav">
                             <a href="../empleado/gestion_lista_mesas.html">GESTION MESAS</a>
                         </li>
@@ -49,15 +50,14 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <ul>
-                        <li class="opciones_nav">
-                            <p class="icono_usuario"><a href="mi_perfil.html">Nombre de Usuario</a></p> <!--block-->
-                            <ul class="opciones_usuario">
-                                <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
-                                <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
-                            </ul>
-                        </li>
+            </ul>
+             <ul class="nav_usuario">
+                <li class="opciones_nav">
+                    <input type="checkbox" name="menuPerfil" id="menuPerfil">
+                    <label for="menuPerfil" class="icono_usuario">Perfil Usuario</label>
+                    <ul class="submenu">
+                        <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
+                        <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
                     </ul>
                 </li>
             </ul>
