@@ -73,6 +73,22 @@ main {
     display: none;
 }
 
+.submenu {
+    position: absolute;
+    display: none;
+    width: 20rem;
+    background-color: rgba(252, 252, 252, 0.5);
+    margin-top: 2rem;
+}
+
+.submenu a {
+    padding: 1rem 1rem;
+}
+
+li.opciones_nav a:hover + ul {
+    display: block;
+}
+
 @media screen and (max-width: 980px) {
     .icono_usuario {
         width: 3.6rem;
