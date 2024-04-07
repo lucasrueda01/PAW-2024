@@ -323,6 +323,7 @@ main {
 }
 
 .lista::before {
+    display: none;
     top: 50%;
     left: -1rem;
     transform: translateY(-50%);
@@ -330,32 +331,68 @@ main {
 }
 
 .lista::after {
+    display: none;
     top: 50%;
     right: 1rem;
     transform: translateY(-50%);
     background-image: url(../imgs/pseudoelementos/flecha-derecha.png);
 }
 
-.item figcaption {
-    display: none;
-    position: relative;
-    margin: 0 auto;
-    transition: transform 0.5s ease;
-}
 
 .item {
     position: relative;
     margin: 2rem;
 }
 
+.destacados ul {
+    display: flex;
+
+}
+
+.destacados li {
+    width: 50%;
+    height: 30rem;
+}
+
+
+.destacados p {
+    font-size: 5rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 10px black;
+    color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: filter 1s ease;
 }
 
 
+.sucursales li {
+    width: 25%;
+}
+
+.sucursales .item figcaption {
+    position: relative;
+    margin: 0 auto;
+}
+
+.sucursales .item img, 
+.sucursal img {
+    transition: filter 1s ease;
+}
+
+.sucursales .item figcaption {
+    display: none;
+    position: relative;
+    margin: 0 auto;
+    transition: transform 0.5s ease;
+}
 
 .sucursales .item figure {
     display: block;
@@ -383,11 +420,12 @@ main {
     
 }
 
-.item figure:hover img{
+.sucursales .item figure:hover img,
+.sucursal figure:hover img {
     filter:brightness(0.3);
 }
 
-.item figure:hover figcaption {
+.sucursales .item figure:hover figcaption {
     animation-name: moverFig;
     animation-duration: 1s;
     animation-timing-function: ease;
