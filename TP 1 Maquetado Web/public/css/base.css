@@ -101,7 +101,7 @@ main {
         width: 18rem;
         height: 5rem;
         background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
-        margin-left: 10rem;
+        margin-left: 13rem;
     }
 
     #menuMobile {
@@ -112,6 +112,7 @@ main {
     #menuDesktop {
         display: none;
     }
+
     nav {
         display: none;
         transition: opacity 0.5s ease;
@@ -123,7 +124,7 @@ main {
         margin-left: 20rem;
     }
 
-    #menuHamburguesa:checked + label + nav {
+    #menuHamburguesa:checked + label + h1 + nav {
         display: block;
         opacity: 1;
     }
