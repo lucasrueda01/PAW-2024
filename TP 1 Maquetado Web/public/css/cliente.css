@@ -169,7 +169,17 @@ input[type=number]::-webkit-inner-spin-button {
     display: inline-block;
     width: 35rem;
     margin-left: 2rem;
+    margin-bottom: 1rem;
 }
+
+.titulo_resumen {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* .container_formulario label {
+    margin: 1rem 1rem;
+} */
 
 .titulo_delivery {
     text-align: left;
@@ -177,10 +187,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 .container_formulario aside {
     position: absolute;
-    right: 10rem;
-    top: .9rem;
+    right: 15rem;
+    top: 3rem;
     border: .1rem solid gray;
     padding: 1rem;
+    border-radius: 10px;
+    width: 50rem;
 }
 
 @media screen and (max-width:75.9rem) {
