@@ -11,7 +11,11 @@
     margin-top: 2rem;
     margin-right: 1rem;
     margin-left: 1rem;
-    
+    transition: .5s ease-in-out;
+}
+
+.container:hover {
+    background-color: var(--color-ligthgrishover);
 }
 
 .container table {
@@ -55,7 +59,6 @@ input[type=number]::-webkit-inner-spin-button {
 
 .container table th {
     font-weight: 600;
-    color: var(--color-violeta);
 }
 
 .container table tfoot td {
@@ -88,10 +91,16 @@ input[type=number]::-webkit-inner-spin-button {
 
 .titulo_fieldset {
     position: absolute;
-    top: -30px;
+    top: -40px;
     left: 0;
     padding: 1rem;
     background-color: var(--color-celeste);
+}
+
+.titulo_fieldset:hover {
+    background-color: var(--color-grishover);
+    font-weight: 800;
+    letter-spacing: .2rem;
 }
 
 .container_carrito table {
@@ -187,18 +196,20 @@ input[type=number]::-webkit-inner-spin-button {
 
 .container_formulario aside {
     position: absolute;
-    right: 15rem;
+    right: 1rem;
     top: 3rem;
     border: .1rem solid gray;
     padding: 1rem;
     border-radius: 10px;
-    width: 50rem;
+    width: 40rem;
 }
 
 @media screen and (max-width:75.9rem) {
     .container_formulario aside {
         position:static;
         margin: 1rem 1rem;
+        width: 90%;
+        align-self: center;
     }
 }
 

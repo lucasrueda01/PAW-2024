@@ -17,6 +17,9 @@
     --color-amarrillohover: #fad07c;
     --color-rojo: #D82427;
     --color-gris: #BDBDBD;
+    --color-grishover: #b3afaf;
+    --color-ligthgrishover: #c3c7cb;
+
     --color-violeta: #7A5CFA;
     --color-violetahover: #b5a7f2;
     --color-celeste: #CBCBCB;
@@ -46,6 +49,8 @@ a {
 
 main {
     min-height: 57.5vh;    
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgb(237, 189, 118) 50%, rgba(255,255,255,1) 100%);
 }
 
 .container_nav {
@@ -478,7 +483,7 @@ main {
 
 .pie_pagina {
     background-color: #000000;
-    margin-top: 5%;
+    /* margin-top: 5%; */
 }
 
 .pie_pagina a {
