@@ -25,11 +25,18 @@
     border: .1rem solid #666666;
     padding: .8rem;
     text-align: center;
+    align-self: center;
+    /* width: 98%; */
+    
 }
 
 .container table td input{
     text-align: center;
     width: 4rem;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 .container table td button {
@@ -39,7 +46,11 @@
     font-size: 2rem;
     width: 3rem;
     text-align: center;
-    margin: 0 auto
+    margin: 10px;
+}
+
+.container table td button:hover {
+    background-color: var(--color-violetahover);
 }
 
 .container table th {
@@ -61,7 +72,18 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    margin-top: 4rem;
+    margin-top: 5rem;
+    width: 70%;
+}
+
+.container_formulario {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 2rem;
+    width: 70%;
+    margin-top: 5rem;
+    padding-top: 1.5rem;
 }
 
 .titulo_fieldset {
@@ -138,13 +160,7 @@
     background-color: #eec53f;
 }
 
-.container_formulario {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding-bottom: 2rem;
-    width: 60vw;
-}
+
 
 .container_formulario label,
 .container_formulario input,
