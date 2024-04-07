@@ -155,7 +155,7 @@ main {
         display: none;
     }
 
-    nav {
+    .nav_menu {
         display: none;
         transition: opacity 0.5s ease;
         opacity: 0;
@@ -166,10 +166,11 @@ main {
         margin-left: 20rem;
     }
 
-    #menuHamburguesa:checked + label + h1 + nav {
-        display: block;
+    #menuHamburguesa:checked + label + h1 + nav > ul{
+        display: flex;
         opacity: 1;
     }
+
 
     .opciones_nav a {
         display: block;
