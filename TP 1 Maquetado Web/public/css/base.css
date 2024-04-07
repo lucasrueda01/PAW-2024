@@ -148,13 +148,16 @@ main {
 
 .portada_sitio {
     width: 100%;
-    height: 60rem;
+    height: 40rem;
     background-image: url(../imgs/imagen-portada.png);
-    background-size: 100% 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .logo {
@@ -256,13 +259,22 @@ main {
     color: white;
 }
 
+.subtitulo {
+    text-align: center;
+    font-family: Century_Gothic;
+    font-size: 4rem;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+    padding: 1rem;
+    margin: 2rem;
+    border-bottom: 1px solid var(--color-amarillo);
+}
+
 .lista {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
 }
 
 .lista::before,
@@ -291,38 +303,77 @@ main {
     background-image: url(../imgs/pseudoelementos/flecha-derecha.png);
 }
 
+.item figcaption {
+    display: none;
+    position: relative;
+    margin: 0 auto;
+    transition: transform 0.5s ease;
+}
 
 .item {
     position: relative;
+    margin: 2rem;
 }
 
 .item img {
-    width: 100vw;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 1s ease;
 }
 
-.item figcaption {
-    position: absolute;
-    top: 60%;
-    right: 44%;
+
+
+.sucursales .item figure {
+    display: block;
+    height: 50rem;
+    text-align: center;
 }
+
 
 .item figcaption h3,
-.item figcaption p {
-    font-size: 3rem;
+.item figcaption p,
+.item figcaption a {
+    font-family: Century_Gothic;
+    text-transform: uppercase;
+    font-size: 1rem;
     color: white;
+}
+
+@keyframes moverFig {
+    0% {
+        bottom: 100%;
+    }
+    100% {
+        bottom: 50%;
+    }
+    
+}
+
+.item figure:hover img{
+    filter:brightness(0.3);
+}
+
+.item figure:hover figcaption {
+    animation-name: moverFig;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    display: block;
+}
+
+.item figure figcaption a:hover {
+    color: #BDBDBD;
 }
 
 .promos {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .promo img {
     width: 50vw;
-}
-
-.promos h2 {    
-    font-size: 5rem;
 }
 
 .promos h2 a {

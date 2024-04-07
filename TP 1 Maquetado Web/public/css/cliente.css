@@ -248,19 +248,67 @@
     color: #000000;
 }
 
-.sobre_nosotros article {
-    margin: 5rem;
-}
 
 .sobre_nosotros h3 {
+    margin-bottom: 2rem;
     font-size: 7rem;
 }
 
-.sobre_nosotros p {
+.sobre_nosotros img:first-child {
+    height: 15rem;
+    display: block;
+    margin: 5rem auto 5rem auto;
+
+}
+
+.sn_isotipo {
+    height: 5rem;
+    display: block;
+    margin: 5rem auto 5rem auto;
+
+}
+
+
+.sobre_nosotros > p {
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 5rem 0 5rem;
+
+}
+
+.sobre_nosotros section {
+    margin: 5rem;
+    display: flex;
+}
+
+.mision p {
     font-family: Century_Gothic;
     font-size: 1.5rem;
 
 }
+
+.vision {
+    background-color: var(--color-amarillo);
+}
+
+.vision p {
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+.vision h3 {
+    color: #FFFFFF;
+}
+
+
+.sobre_nosotros article {
+    padding: 5rem;
+    width: 50%;
+}
+
+
 
 .container_sucursales {
     font-size: 1.5rem;
