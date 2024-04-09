@@ -15,6 +15,7 @@
     --color-amarillo: #FFAF10;
     --color-amarrillohover: #fad07c;
     --color-rojo: #D82427;
+    --color-rojohover: #d57879;
     --color-gris: #BDBDBD;
     --color-grishover: #b3afaf;
     --color-ligthgrishover: #c3c7cb;
@@ -340,6 +341,10 @@ main {
 .boton_rojo {
     background-color: var(--color-rojo);
     color: white;
+}
+
+.boton_rojo:hover {
+    background-color: var(--color-rojohover);
 }
 
 .boton_informacion {

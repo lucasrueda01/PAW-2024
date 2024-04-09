@@ -92,12 +92,12 @@
 }
 
 .container_gestion_mesa {
-    background-color: var(--color-fondo);
     padding: 1rem 1rem;
     margin: 5rem 1rem 1rem 1rem;
     min-height: 50rem;
     position: relative;
 }
+
 
 .container_gestion_mesa h3 {
     font-size: large;
@@ -115,8 +115,12 @@
     margin-top: 7rem;
     width: 100%;
     height: 80;
+    transition: .5s ease-in-out;
 }
 
+.tabla_gestion_mesa:hover {
+    background-color: var(--color-amarillo);
+}
 .tabla_gestion_mesa th {
     font-size: 2rem;
 }
@@ -149,8 +153,17 @@
     background-image: url(../imgs/svg/icono-aceptar.svg);
 }
 
+.icon_aceptar:hover {
+    background-image: url(../imgs/svg/icono-aceptar-hover.svg);
+}
+
 .icon_rechazar {
     width: 4rem;
     height: 4rem;
     background-image: url(../imgs/svg/icono-rechazar.svg);
+}
+
+.icon_rechazar:hover {
+    background-image: url(../imgs/svg/icono-rechazar-hover.svg);
+
 }
