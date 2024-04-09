@@ -19,7 +19,7 @@
     --color-gris: #BDBDBD;
     --color-grishover: #b3afaf;
     --color-ligthgrishover: #c3c7cb;
-
+    --color-negroahover: rgb(116, 114, 114);
     --color-violeta: #7A5CFA;
     --color-violetahover: #b5a7f2;
     --color-celeste: #CBCBCB;
@@ -255,10 +255,17 @@ main {
 }
 
 .boton_negro {
-    width: fit-content;
+    width: 16rem;
     color: white;
     background-color: black;
+    border-radius: .5rem;
+    padding: 1rem 1rem;
 }
+
+.boton_negro:hover {
+    background-color: var(--color-negroahover);
+}
+
 
 .boton_gris {
     width: fit-content;

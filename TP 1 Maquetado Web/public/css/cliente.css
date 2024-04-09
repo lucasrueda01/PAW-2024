@@ -502,6 +502,22 @@ input[type=number]::-webkit-inner-spin-button {
     justify-content: center;
 }
 
+.container_articulos {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.regulador {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0px;
+}
+
 .container_articulos section h3{
     display: flex;
     justify-content: center;
