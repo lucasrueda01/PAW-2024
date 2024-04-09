@@ -9,7 +9,7 @@
 }
 
 .container {
-    background-color: var(--color-celeste);
+    
     font-size: 2rem;
     font-family: 'Century Gothic';
     margin-top: 2rem;
@@ -19,7 +19,7 @@
 }
 
 .container:hover {
-    background-color: var(--color-ligthgrishover);
+    background-color: var(--color-amarillo);
 }
 
 .container table {
@@ -111,10 +111,8 @@ input[type=number]::-webkit-inner-spin-button {
 .titulo_fieldset {
     position: absolute;
     top: -42px;
-    left: 0;
+    left: .2rem;
     padding: 1rem;
-    background-color: var(--color-celeste);
-    border: 1px solid var(--color-grishover);  
 }
 
 .titulo_fieldset_take_away {
@@ -127,8 +125,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .titulo_fieldset:hover {
-    background-color: var(--color-grishover);
+    border: 1px solid var(--color-amarillo);  
+    background-color: var(--color-amarillo);
     font-weight: 800;
+}
+
+.selector_fieldset h3:hover {
+    background-color: var(--color-amarillo);
 }
 
 .selector_fieldset {
@@ -136,7 +139,6 @@ input[type=number]::-webkit-inner-spin-button {
     flex-direction: row;
     justify-content: flex-start;
     padding-left: 1rem;
-
 }
 
 .selector_fieldset {
@@ -145,7 +147,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .selector_fieldset h3 {
     padding: 1rem;
-    background-color: var(--color-celeste);
+    
     border: 1px solid var(--color-grishover);  
 }
 
