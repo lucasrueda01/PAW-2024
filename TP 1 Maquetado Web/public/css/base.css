@@ -321,14 +321,14 @@ main {
 }
 
 .boton_violeta {
-    background-color: var(--color-violeta);
+    background-color: black;
     color: white;
     width: fit-content;
     /* transition: background-color 1s ease; */
 }
 
 .boton_violeta:hover {
-    background-color: var(--color-violetahover);
+    background-color: var(--color-negroahover);
 }
 
 .boton_violeta:hover::after{
