@@ -79,6 +79,7 @@
             <h2 class="titulo titulo_amarillo">Pedir</h2>
 
             <form action="/pagar" method="post" class="formulario_pedido">
+                
                 <fieldset class="container container_carrito"> <!--Fieldset Carrito-->
                     <h3 class="titulo_fieldset">Mi Carrito</h3>
                     <table>
@@ -116,8 +117,17 @@
                     </table>
                     <a href="../cliente/nuestro_menu.html" class="boton boton_violeta">Agregar</a>
                 </fieldset>
-                <fieldset class="container container_formulario">
-                    <h3 class="titulo_fieldset">Delivery</h3>
+
+                <nav class="selector_fieldset">
+                    <h3 class="titulo_fieldset_delivery">
+                        <input type="checkbox" name="menuDelivery" id="menuDelivery">
+                        <label for="menuDelivery" class="menuFieldSets" ="menuMobile">Delivery</label>
+                    </h3>
+                    <h3 class="titulo_fieldset_take_away">Take Away</h3>
+                    <h3 class="titulo_fieldset_en_el_lugar">En el Lugar</h3>
+                </nav>
+
+                <fieldset class="container container_formulario container_delivery">
 
                     <label for="nombre_delivery">Ingrese su nombre</label>
                     <input type="text" name="nombre_delivery" id="nombre_delivery">
@@ -140,8 +150,9 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <fieldset class="container container_formulario">
-                    <h3 class="titulo_fieldset">Take Away</h3>
+
+                <fieldset class="container container_formulario container_take_away"> <!-- .container_take_away { display: none }-->
+                    
                     <label for="nombre_take_away">Ingrese su nombre</label>
                     <input type="text" name="nombre_take_away" id="nombre_take_away">
                     <label for="numero_sucursal_take_away">Selecciona la sucursal:</label>
@@ -165,8 +176,9 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <fieldset class="container container_formulario">
-                    <h3 class="titulo_fieldset">En el Lugar</h3>
+
+                <fieldset class="container container_formulario container_en_el_lugar">
+                    
                     <label for="nombre_en_el_lugar">Ingrese su nombre</label>
                     <input type="text" name="nombre_en_el_lugar" id="nombre_en_el_lugar">
                     <label for="numero_sucursal_en_el_lugar">Selecciona la sucursal:</label>

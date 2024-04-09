@@ -9,7 +9,6 @@
 @font-face {
     font-family: 'Century_Gothic';
     src: url('../fonts/century_gothic.ttf') format('truetype');
-
 }
 
 :root {
@@ -60,7 +59,6 @@ main {
 .nav_menu {
     display: flex;
     align-items: center;
-    /* flex-direction: column; */
 }
 
 .opciones_nav a {
@@ -151,7 +149,7 @@ main {
         width: 18rem;
         height: 5rem;
         background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
-        margin-left: 13rem;
+        margin-left: 5rem;
     }
 
     #menuMobile {
@@ -171,7 +169,7 @@ main {
 
 
     #menuHamburguesa ~ label {
-        margin-left: 20rem;
+        margin-left: 13rem;
     }
 
     #menuHamburguesa:checked + label + h1 + nav > ul{

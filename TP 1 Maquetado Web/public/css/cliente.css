@@ -1,7 +1,11 @@
 .formulario_pedido {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-areas:
+        "area_carrito"
+        "nav_fieldsets"
+        "area_pedido";
+    justify-content: center;
+
 }
 
 .container {
@@ -37,6 +41,7 @@
 .container table td input{
     text-align: center;
     width: 4rem;
+    
 }
 
 input[type=number]::-webkit-inner-spin-button {
@@ -71,42 +76,86 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .container_carrito {
+    grid-area: area_carrito;
     display: flex;
     justify-content: center;
     flex-direction: column;
     position: relative;
     margin-top: 5rem;
+    margin-bottom: 2rem;
     width: 70%;
 }
 
+.titulo_fieldset_delivery input {
+    display: none;
+}
+
+
 .container_formulario {
+    grid-area: area_pedido;
     display: flex;
     flex-direction: column;
     position: relative;
     padding-bottom: 2rem;
-    width: 70%;
+    width: 97.8%;
     margin-top: 5rem;
     padding-top: 1.5rem;
+    border: 1px solid var(--color-grishover);  
+}
+
+.container_en_el_lugar,
+.container_take_away {
+    display: none;
 }
 
 .titulo_fieldset {
     position: absolute;
-    top: -40px;
+    top: -42px;
     left: 0;
     padding: 1rem;
     background-color: var(--color-celeste);
+    border: 1px solid var(--color-grishover);  
+}
+
+.titulo_fieldset_take_away {
+    left: 9.7rem;  
+    
+}
+
+.titulo_fieldset_en_el_lugar {
+    left: calc(8.6rem + 13.5rem);    /*8.6 + 11.6*/
 }
 
 .titulo_fieldset:hover {
     background-color: var(--color-grishover);
     font-weight: 800;
-    letter-spacing: .2rem;
+}
+
+.selector_fieldset {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 1rem;
+
+}
+
+.selector_fieldset {
+    grid-area: nav_fieldsets;
+}
+
+.selector_fieldset h3 {
+    padding: 1rem;
+    background-color: var(--color-celeste);
+    border: 1px solid var(--color-grishover);  
 }
 
 .container_carrito table {
     margin: 1rem 1rem;
 }
 
+.container_delivery {
+    margin-top: 0;
+}
 
 
 .titulo_carrito::after {
@@ -169,7 +218,10 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #eec53f;
 }
 
-
+.container_formulario input,
+.container_formulario select {
+    font-size: 1.8rem;
+}
 
 .container_formulario label,
 .container_formulario input,
@@ -178,7 +230,7 @@ input[type=number]::-webkit-inner-spin-button {
     display: inline-block;
     width: 35rem;
     margin-left: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem;    
 }
 
 .titulo_resumen {
@@ -204,7 +256,7 @@ input[type=number]::-webkit-inner-spin-button {
     width: 40rem;
 }
 
-@media screen and (max-width:75.9rem) {
+@media screen and (max-width:1332px) {
     .container_formulario aside {
         position:static;
         margin: 1rem 1rem;
