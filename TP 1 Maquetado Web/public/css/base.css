@@ -9,15 +9,19 @@
 @font-face {
     font-family: 'Century_Gothic';
     src: url('../fonts/century_gothic.ttf') format('truetype');
-
 }
 
 :root {
     --color-amarillo: #FFAF10;
     --color-amarrillohover: #fad07c;
     --color-rojo: #D82427;
+    --color-rojohover: #d57879;
     --color-gris: #BDBDBD;
+    --color-grishover: #b3afaf;
+    --color-ligthgrishover: #c3c7cb;
+    --color-negroahover: rgb(116, 114, 114);
     --color-violeta: #7A5CFA;
+    --color-violetahover: #b5a7f2;
     --color-celeste: #CBCBCB;
     --color-fondo: #D9D9D9;
     --tamanio-logo-empresa: 6px;
@@ -35,6 +39,7 @@ header {
     justify-content: space-around;
     align-items: center;
     padding: 0.5rem;
+                 /*0.5 x 10px */
 }
 
 
@@ -44,6 +49,8 @@ a {
 
 main {
     min-height: 57.5vh;    
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgb(237, 189, 118) 50%, rgba(255,255,255,1) 100%);
 }
 
 .container_nav {
@@ -53,17 +60,27 @@ main {
 .nav_menu {
     display: flex;
     align-items: center;
-    /* flex-direction: column; */
 }
 
-.opciones_nav a {
+.labelPerfilEmpleado {
     font-family: Century_Gothic;
-    font-size: 1.5rem;
+    font-size: 1.5rem; 
     font-weight: 800;
     text-decoration: none;
     color: #000000;
     display: inline-block;
-    margin-left: 2rem;
+    margin-left: 2rem; 
+    margin-right: 2rem;
+}
+
+.opciones_nav a {
+    font-family: Century_Gothic;
+    font-size: 1.5rem; 
+    font-weight: 800;
+    text-decoration: none;
+    color: #000000;
+    display: inline-block;
+    margin-left: 2rem; 
     margin-right: 2rem;
     
 }
@@ -83,10 +100,11 @@ main {
     width: 20rem;
     background-color: rgba(252, 252, 252, 0.5);
     margin-top: 2rem;
+    text-align: left;
 }
 
 .submenu a {
-    padding: 1rem 1rem;
+    padding: 1rem 0 1rem 0;
 }
 
 .nav_menu li:hover a + ul {
@@ -95,6 +113,7 @@ main {
 
 .submenu li a {
     display: block;
+    
 }
 
 .nav_usuario {
@@ -113,6 +132,17 @@ main {
     background-image: url(../imgs/icons/icon-usuario-amarillo.png);
     filter: drop-shadow(1px 1px 1px var(--color-amarillo));
 }
+
+#checkPerfilEmpleado {
+    display: none;
+}
+
+#checkPerfilEmpleado:checked + label + ul {
+    display: block;
+    background-color: var(--color-fondo-menu-mobile);
+    z-index: 1;
+}
+
 
 @media screen and (max-width: 980px) {
 
@@ -143,7 +173,7 @@ main {
         width: 18rem;
         height: 5rem;
         background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
-        margin-left: 13rem;
+        margin-left: 5rem;
     }
 
     #menuMobile {
@@ -162,14 +192,39 @@ main {
     }
 
 
+
+    .submenu {
+        top: 22.5rem;
+        left: 0;
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .submenu li a {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
     #menuHamburguesa ~ label {
-        margin-left: 20rem;
+        margin-left: 13rem;
     }
 
     #menuHamburguesa:checked + label + h1 + nav > ul{
         display: flex;
         opacity: 1;
     }
+
+    .labelPerfilEmpleado {
+        display: block;
+        width: 100%;
+        color: white;
+        margin: 1rem 2rem;
+    }
+
+    
+
+
 
 
     .opciones_nav a {
@@ -247,10 +302,17 @@ main {
 }
 
 .boton_negro {
-    width: fit-content;
+    width: 16rem;
     color: white;
     background-color: black;
+    border-radius: .5rem;
+    padding: 1rem 1rem;
 }
+
+.boton_negro:hover {
+    background-color: var(--color-negroahover);
+}
+
 
 .boton_gris {
     width: fit-content;
@@ -262,13 +324,27 @@ main {
     background-color: var(--color-violeta);
     color: white;
     width: fit-content;
-
-
+    /* transition: background-color 1s ease; */
 }
+
+.boton_violeta:hover {
+    background-color: var(--color-violetahover);
+}
+
+.boton_violeta:hover::after{
+    content: '+';
+    color: var(--color-rojo);
+    margin-left: 1rem;
+}
+
 
 .boton_rojo {
     background-color: var(--color-rojo);
     color: white;
+}
+
+.boton_rojo:hover {
+    background-color: var(--color-rojohover);
 }
 
 .boton_informacion {
@@ -455,6 +531,7 @@ main {
     display: block;
     font-size: 10rem;
     margin-bottom: 1rem;
+    margin-top: 3rem;
     width: 60%;
     color: black;
 }
@@ -465,7 +542,7 @@ main {
 
 .pie_pagina {
     background-color: #000000;
-    margin-top: 5%;
+    /* margin-top: 5%; */
 }
 
 .pie_pagina a {

@@ -1,17 +1,25 @@
 .formulario_pedido {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-areas:
+        "area_carrito"
+        "nav_fieldsets"
+        "area_pedido";
+    justify-content: center;
+
 }
 
 .container {
-    background-color: var(--color-celeste);
+    
     font-size: 2rem;
     font-family: 'Century Gothic';
     margin-top: 2rem;
     margin-right: 1rem;
     margin-left: 1rem;
-    border-radius: .6rem;
+    transition: .5s ease-in-out;
+}
+
+.container:hover {
+    background-color: var(--color-amarillo);
 }
 
 .container table {
@@ -25,11 +33,19 @@
     border: .1rem solid #666666;
     padding: .8rem;
     text-align: center;
+    align-self: center;
+    /* width: 98%; */
+    
 }
 
 .container table td input{
     text-align: center;
     width: 4rem;
+    
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 .container table td button {
@@ -39,12 +55,15 @@
     font-size: 2rem;
     width: 3rem;
     text-align: center;
-    margin: 0 auto
+    margin: 10px;
+}
+
+.container table td button:hover {
+    background-color: var(--color-violetahover);
 }
 
 .container table th {
     font-weight: 600;
-    color: var(--color-violeta);
 }
 
 .container table tfoot td {
@@ -57,14 +76,89 @@
 }
 
 .container_carrito {
+    grid-area: area_carrito;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    position: relative;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    width: 70%;
+}
+
+.titulo_fieldset_delivery input {
+    display: none;
+}
+
+
+.container_formulario {
+    grid-area: area_pedido;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 2rem;
+    width: 97.8%;
+    margin-top: 5rem;
+    padding-top: 1.5rem;
+    border: 1px solid var(--color-grishover);  
+}
+
+.container_en_el_lugar,
+.container_take_away {
+    display: none;
+}
+
+.titulo_fieldset {
+    position: absolute;
+    top: -42px;
+    left: .2rem;
+    padding: 1rem;
+}
+
+.titulo_fieldset_take_away {
+    left: 9.7rem;  
+    
+}
+
+.titulo_fieldset_en_el_lugar {
+    left: calc(8.6rem + 13.5rem);    /*8.6 + 11.6*/
+}
+
+.titulo_fieldset:hover {
+    border: 1px solid var(--color-amarillo);  
+    background-color: var(--color-amarillo);
+    font-weight: 800;
+}
+
+.selector_fieldset h3:hover {
+    background-color: var(--color-amarillo);
+}
+
+.selector_fieldset {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+.selector_fieldset {
+    grid-area: nav_fieldsets;
+}
+
+.selector_fieldset h3 {
+    padding: 1rem;
+    
+    border: 1px solid var(--color-grishover);  
 }
 
 .container_carrito table {
     margin: 1rem 1rem;
 }
+
+.container_delivery {
+    margin-top: 0;
+}
+
 
 .titulo_carrito::after {
     content: '';
@@ -126,12 +220,9 @@
     background-color: #eec53f;
 }
 
-.container_formulario {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding-bottom: 2rem;
-    width: 60vw;
+.container_formulario input,
+.container_formulario select {
+    font-size: 1.8rem;
 }
 
 .container_formulario label,
@@ -141,7 +232,17 @@
     display: inline-block;
     width: 35rem;
     margin-left: 2rem;
+    margin-bottom: 1rem;    
 }
+
+.titulo_resumen {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* .container_formulario label {
+    margin: 1rem 1rem;
+} */
 
 .titulo_delivery {
     text-align: left;
@@ -149,16 +250,20 @@
 
 .container_formulario aside {
     position: absolute;
-    right: 10rem;
-    top: .9rem;
+    right: 1rem;
+    top: 3rem;
     border: .1rem solid gray;
     padding: 1rem;
+    border-radius: 10px;
+    width: 40rem;
 }
 
-@media screen and (max-width:75.9rem) {
+@media screen and (max-width:1332px) {
     .container_formulario aside {
         position:static;
         margin: 1rem 1rem;
+        width: 90%;
+        align-self: center;
     }
 }
 
@@ -449,6 +554,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.container_articulos {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.regulador {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0px;
 }
 
 .container_articulos section h3{
