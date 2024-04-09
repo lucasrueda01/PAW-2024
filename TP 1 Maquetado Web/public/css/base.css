@@ -18,10 +18,10 @@
     --color-rojohover: #d57879;
     --color-gris: #BDBDBD;
     --color-grishover: #b3afaf;
+    --color-verde: #398643;
+    --color-verdehover: #7fcc8a;
     --color-ligthgrishover: #c3c7cb;
-    --color-negroahover: rgb(116, 114, 114);
-    --color-violeta: #7A5CFA;
-    --color-violetahover: #b5a7f2;
+    --color-negroahover: #313131;
     --color-celeste: #CBCBCB;
     --color-fondo: #D9D9D9;
     --tamanio-logo-empresa: 6px;
@@ -50,7 +50,7 @@ a {
 main {
     min-height: 57.5vh;    
     background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgb(237, 189, 118) 50%, rgba(255,255,255,1) 100%);
+    /*background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgb(237, 189, 118) 50%, rgba(255,255,255,1) 100%);*/
 }
 
 .container_nav {
@@ -320,11 +320,15 @@ main {
     background-color: gray;
 }
 
-.boton_negro {
-    background-color: black;
+.boton_verde {
+    background-color: var(--color-verde);
     color: white;
     width: fit-content;
     /* transition: background-color 1s ease; */
+}
+
+.boton_verde:hover {
+    background-color: var(--color-verdehover);
 }
 
 .boton_negro:hover {
@@ -427,7 +431,7 @@ main {
 
 
 .destacados p {
-    font-size: 5rem;
+    font-size: 4vw;
     text-transform: uppercase;
     text-shadow: 1px 1px 10px black;
     color: #FFFFFF;
