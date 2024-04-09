@@ -100,10 +100,11 @@
 
 
 .container_gestion_mesa h3 {
+    text-align: center;
     font-size: large;
 }
 
-.boton_negro_gestion_mesa {
+.boton_rojo_gestion_mesa {
     position: absolute;
     top: 1rem;
     right: 1rem;

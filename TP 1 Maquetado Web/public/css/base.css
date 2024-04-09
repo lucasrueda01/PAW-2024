@@ -320,14 +320,14 @@ main {
     background-color: gray;
 }
 
-.boton_violeta {
+.boton_negro {
     background-color: black;
     color: white;
     width: fit-content;
     /* transition: background-color 1s ease; */
 }
 
-.boton_violeta:hover {
+.boton_negro:hover {
     background-color: var(--color-negroahover);
 }
 
