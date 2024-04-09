@@ -99,10 +99,11 @@ main {
     width: 20rem;
     background-color: rgba(252, 252, 252, 0.5);
     margin-top: 2rem;
+    text-align: left;
 }
 
 .submenu a {
-    padding: 1rem 1rem;
+    padding: 1rem 0 1rem 0;
 }
 
 .nav_menu li:hover a + ul {
@@ -111,6 +112,7 @@ main {
 
 .submenu li a {
     display: block;
+    
 }
 
 .nav_usuario {
