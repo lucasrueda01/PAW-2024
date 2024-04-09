@@ -331,11 +331,6 @@ main {
     background-color: var(--color-negroahover);
 }
 
-.boton_violeta:hover::after{
-    content: '+';
-    color: var(--color-rojo);
-    margin-left: 1rem;
-}
 
 
 .boton_rojo {
