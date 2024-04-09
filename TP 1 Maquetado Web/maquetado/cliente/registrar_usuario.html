@@ -16,7 +16,7 @@
         <input type="checkbox" name="menuHamburguesa" id="menuHamburguesa">
         <label for="menuHamburguesa"class="logo logo_chico" id="menuMobile">Paw Burger</label>
         <h1><a href="../cliente/index.html" class="logo logo_grande_mobile">Paw Burger</a></h1>
-        <nav>
+        <nav class="container_nav"> <!--block-->
             <ul class="nav_menu"> <!--block-->
                 <li class="opciones_nav">
                     <a href="../cliente/nuestro_menu.html">MENU</a>
@@ -37,7 +37,8 @@
                     <a href="../cliente/reservar_cliente.html">RESERVAR</a>
                 </li>
                 <li class="opciones_nav">
-                    <a href="#">PERFIL EMPLEADO</a>
+                    <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
+                    <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
                     <ul class="submenu">
                         <li class="opciones_nav">
                             <a href="../empleado/gestion_lista_mesas.html">GESTION MESAS</a>

@@ -61,6 +61,17 @@ main {
     align-items: center;
 }
 
+.labelPerfilEmpleado {
+    font-family: Century_Gothic;
+    font-size: 1.5rem; 
+    font-weight: 800;
+    text-decoration: none;
+    color: #000000;
+    display: inline-block;
+    margin-left: 2rem; 
+    margin-right: 2rem;
+}
+
 .opciones_nav a {
     font-family: Century_Gothic;
     font-size: 1.5rem; 
@@ -119,6 +130,16 @@ main {
     filter: drop-shadow(1px 1px 1px var(--color-amarillo));
 }
 
+#checkPerfilEmpleado {
+    display: none;
+}
+
+#checkPerfilEmpleado:checked + label + ul {
+    display: block;
+    background-color: var(--color-fondo-menu-mobile);
+    z-index: 1;
+}
+
 
 @media screen and (max-width: 980px) {
 
@@ -168,6 +189,20 @@ main {
     }
 
 
+
+    .submenu {
+        top: 22.5rem;
+        left: 0;
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .submenu li a {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
     #menuHamburguesa ~ label {
         margin-left: 13rem;
     }
@@ -176,6 +211,15 @@ main {
         display: flex;
         opacity: 1;
     }
+
+    .labelPerfilEmpleado {
+        display: block;
+        width: 100%;
+        color: white;
+        margin: 1rem 2rem;
+    }
+
+
 
 
     .opciones_nav a {
