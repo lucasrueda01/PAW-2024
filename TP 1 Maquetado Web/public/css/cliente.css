@@ -551,6 +551,11 @@ input[type=number]::-webkit-inner-spin-button {
 
 }
 
+.articulo h3, .articulo p {
+    margin-left: 2rem;
+}
+
+
 .lista_articulos {
     display: flex;
     flex-wrap: wrap;
@@ -615,7 +620,7 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: .5rem;
 }
 
-.articulo h4 {
+.articulo h4, .articulo h3 {
     position: relative;
     font-family: Century_Gothic;
     font-size: 1.5rem;
