@@ -19,7 +19,7 @@
 }
 
 .container:hover {
-    background-color: var(--color-amarillo);
+    background-color: var(--color-amarrillohover);
 }
 
 .container table {
@@ -102,6 +102,7 @@ input[type=number]::-webkit-inner-spin-button {
     margin-top: 5rem;
     padding-top: 1.5rem;
     border: 1px solid var(--color-grishover);  
+    border-radius: 20px;
 }
 
 .container_en_el_lugar,
@@ -657,9 +658,10 @@ input[type=number]::-webkit-inner-spin-button {
 .form_reserva {
     display: flex;
     justify-content: center;
-    margin: 1rem 9rem;
+    margin: auto;
     font-size: inherit;
     padding-bottom: 5rem;
+    width: 75vw;
 }
 
 .form_reserva fieldset {
