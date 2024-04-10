@@ -139,7 +139,7 @@ main {
 
 #checkPerfilEmpleado:checked + label + ul {
     display: block;
-    background-color: var(--color-fondo-menu-mobile);
+    background-color: #ffffff;
     z-index: 1;
 }
 
@@ -235,7 +235,8 @@ main {
     }
 }
 
-.opciones_nav a:hover {
+.opciones_nav a:hover,
+.opciones_nav label:hover {
     color:  var(--color-amarillo);
 }
 
