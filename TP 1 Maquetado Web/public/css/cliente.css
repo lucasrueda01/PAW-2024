@@ -613,11 +613,14 @@ input[type=number]::-webkit-inner-spin-button {
 
 .articulo img {
     display: block;
-    object-fit: contain;
+    object-fit: cover;
     width: 95%;
     height: 60%;
     margin: 1rem auto;
-    border-radius: .5rem;
+}
+
+.seccion_bebidas img {
+    object-fit: contain;
 }
 
 .articulo h4, .articulo h3 {
