@@ -20,7 +20,7 @@
 
 
         <section class="section_formulario">
-            <form action="/contactanos" class="formulario form_transparente">
+            <form action="/contactanos" method="post" class="formulario form_transparente">
                 <h3 class="titulo_form_unite">COMPLETÁ EL FORMULARIO</h3>
 
                 <label for="email" class="etiqueta">Ingrese su email</label>

@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <?php require __DIR__ . '\../parts/head.view.php'; ?>
+
+<?php require __DIR__.'/../parts/head.view.php' ?>
+
 </head>
 
 <body>
+    
+    <?php require __DIR__.'/../parts/header.view.php' ?>
 
+   
+<main>
+        
+        <section class="titulo titulo_portada">
+            <h2>NOT FOUND</h2>
+            <p>No pudimos encontrar la pagina que buscas</p>
+        </section>
+        
+</main>
 
-    <?php require __DIR__ . '\../parts/nav.view.php'; ?>
-
-    <br>
-    <h1>Page Not Found<h1>
-
-
+    <?php require __DIR__.'/../parts/footer.view.php' ?>
+    
 </body>
-
 </html>
