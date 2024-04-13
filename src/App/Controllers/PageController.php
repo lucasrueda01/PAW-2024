@@ -56,6 +56,11 @@ class PageController {
         require $this->viewsDir. 'promociones.view.php';
     }
 
+    public function noticias() {
+        $titulo = "PAW POWER | NOTICIAS" ;
+        require $this->viewsDir. 'noticias.view.php';
+    }
+
     public function about() 
     {
         $titulo = 'Nosotros';

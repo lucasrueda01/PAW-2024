@@ -40,7 +40,7 @@ $router->setLogger($log);
 $router->get('/', 'PageController@index');
 $router->get('/nuestro_menu', 'PageController@nuestroMenu');
 $router->get('/promociones', 'PageController@promociones');
-$router->get('/about', 'PageController@about');
+$router->get('/noticias', 'PageController@noticias');
 $router->get('/services', 'PageController@services');
 $router->get('/contact', 'PageController@contact');
 $router->post('/contact', 'PageController@contactProccess');
