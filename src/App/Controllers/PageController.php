@@ -12,12 +12,12 @@ class PageController {
 
         $this->menu = [
             [
-                'href' => '/',
-                'name' => 'Home'
+                'href' => '/nuestro_menu',
+                'name' => 'MENU'
             ],
             [
-                'href' => '/about',
-                'name' => 'Quienes Somos'
+                'href' => '/promociones',
+                'name' => 'PROMOS'
             ],
             [
                 'href' => '/services',
@@ -36,6 +36,15 @@ class PageController {
         $titulo = "PAW POWER | HOME" ;
         require $this->viewsDir. 'index.view.php';
     }
+
+    public function nuestroMenu() 
+    {
+
+        $titulo = "PAW POWER | MENU" ;
+        require $this->viewsDir. 'nuestro_menu.view.php';
+
+    }
+
     public function about() 
     {
         $titulo = 'Nosotros';

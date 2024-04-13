@@ -5,7 +5,7 @@
                 <li class="col col_i12"><a href="sucursales.html">Sucursales</a></li>
                 <li class="col col_i13"><a href="reservar_cliente.html">Reserva</a></li>
                 <li class="col logo_empresa">
-                    <a href="index.html"><img src="../../public/imgs/svg/Isotipo_PAWPOWER-blanco.svg"
+                    <a href="index.html"><img src="/assets/imgs/svg/Isotipo_PAWPOWER-blanco.svg"
                             alt="icono-empresa-link-a-home"></a>
                 </li>
                 <li class="col col_i31"><a href="unete_al_equipo.html">Trabaja con Nosotros</a></li>
@@ -21,15 +21,15 @@
                     <ul class="redes_sociales facebook">
                         <li class="red_social">
                             <a href="https://www.facebook.com/?locale=es_LA" target="_blank" rel="noopener"><img
-                                    src="../../public/imgs/svg/icono-facebook.svg" alt="facebook"></a>
+                                    src="/assets/imgs/svg/icono-facebook.svg" alt="facebook"></a>
                         </li>
                         <li class="red_social instagram">
                             <a href="https://www.instagram.com/" target="_blank" rel="noopener"><img
-                                    src="../../public/imgs/svg/icono-instagram.svg" alt="instagram"></a>
+                                    src="/assets/imgs/svg/icono-instagram.svg" alt="instagram"></a>
                         </li>
                         <li class="red_social twitter">
                             <a href="https://twitter.com/redessocialeses?lang=es" target="_blank" rel="noopener"><img
-                                    src="../../public/imgs/svg/icono-x.svg" alt="twitter"></a>
+                                    src="/assets/imgs/svg/icono-x.svg" alt="twitter"></a>
                         </li>
                     </ul>
                 </li>
