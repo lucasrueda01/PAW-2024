@@ -12,20 +12,28 @@ class ErrorController {
 
         $this->menu = [
             [
-                'href' => '/',
-                'name' => 'Home'
+                'href' => '/nuestro_menu',
+                'name' => 'MENU'
             ],
             [
-                'href' => '/about',
-                'name' => 'Quienes Somos'
+                'href' => '/promociones',
+                'name' => 'PROMOS'
             ],
             [
-                'href' => '/services',
-                'name' => 'Servicios'
+                'href' => '/sucursales',
+                'name' => 'SUCURSALES'
             ],
             [
-                'href' => '/contact',
-                'name' => 'Contactos'
+                'href' => '/noticias',
+                'name' => 'NOTICIAS'
+            ],
+            [
+                'href' => '/pedir',
+                'name' => 'PEDIR'
+            ],
+            [
+                'href' => '/reservar_cliente',
+                'name' => 'RESERVAR'
             ]
         ];
         
