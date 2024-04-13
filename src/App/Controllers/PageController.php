@@ -71,5 +71,18 @@ class PageController {
         require $this->viewsDir. 'pedir.view.php';
     }
 
+    public function sobre_nosotros() {
+        $titulo = 'PAW POWER | SOBRE_NOSOTROS';
+        require $this->viewsDir. 'sobre_nosotros.view.php';
+    }
+    public function reservar_cliente() {
+        $titulo = 'PAW POWER | RESERVAR CLIENTE';
+        require $this->viewsDir. 'reservar_cliente.view.php';
+    }
+    public function unete_al_equipo() {
+        $titulo = 'PAW POWER | UNETE AL EQUIPO';
+        require $this->viewsDir. 'unete_al_equipo.view.php';
+    }
+
 
 }

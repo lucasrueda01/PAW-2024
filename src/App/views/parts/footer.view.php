@@ -1,16 +1,16 @@
 <footer class="pie_pagina">
         <nav> <!-- NAV ARRIBA -->
             <ul class="pie_pagina link_internos">
-                <li class="col col_i11"><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li class="col col_i11"><a href="/sobre_nosotros">Sobre Nosotros</a></li>
                 <li class="col col_i12"><a href="/sucursales">Sucursales</a></li>
-                <li class="col col_i13"><a href="reservar_cliente.html">Reserva</a></li>
+                <li class="col col_i13"><a href="/reservar_cliente">Reserva</a></li>
                 <li class="col logo_empresa">
-                    <a href="index.html"><img src="/assets/imgs/svg/Isotipo_PAWPOWER-blanco.svg"
+                    <a href="/"><img src="/assets/imgs/svg/Isotipo_PAWPOWER-blanco.svg"
                             alt="icono-empresa-link-a-home"></a>
                 </li>
-                <li class="col col_i31"><a href="unete_al_equipo.html">Trabaja con Nosotros</a></li>
+                <li class="col col_i31"><a href="/unete_al_equipo">Trabaja con Nosotros</a></li>
                 <li class="col col_i32"><a href="/promociones">Promociones</a></li>
-                <li class="col col_i33"><a href="pedir.html">Pedi Online</a></li>
+                <li class="col col_i33"><a href="/pedir">Pedi Online</a></li>
             </ul>
         </nav>
 
