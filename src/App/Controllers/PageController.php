@@ -56,23 +56,16 @@ class PageController {
         require $this->viewsDir. 'promociones.view.php';
     }
 
+    public function sucursales() {
+        $titulo = "PAW POWER | SUCURSALES" ;
+        require $this->viewsDir. 'sucursales.view.php';
+    }
+
     public function noticias() {
         $titulo = "PAW POWER | NOTICIAS" ;
         require $this->viewsDir. 'noticias.view.php';
     }
 
-    public function about() 
-    {
-        $titulo = 'Nosotros';
-        $main = 'Pagina sobre Nosotros';
-        require $this->viewsDir. 'about.view.php';            
-    }
-    public function contact($procesado= false)  
-    {
-        $titulo = 'Contactos';
-        $main = 'Formas de Contacto';        
-        require $this->viewsDir. 'contact.view.php';            
-    }
 
 
 }

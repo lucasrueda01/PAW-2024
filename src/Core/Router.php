@@ -46,7 +46,7 @@ Class Router
             
         if(!$this->exists($path, $http_method)){
             throw new RouteNotFoundException("No existe ruta para este Path");
-    }
+        }
 
         return explode('@', $this->routes[$http_method][$path]);
     }
