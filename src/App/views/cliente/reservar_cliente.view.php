@@ -3,15 +3,15 @@
 
 <head>
 
-<?php require __DIR__.'/parts/head.view.php' ?>
+    <?php require __DIR__ . '\../parts/head.view.php' ?>
 
 </head>
 
 <body>
-    
-    <?php require __DIR__.'/parts/header.view.php' ?>
 
-<main>
+    <?php require __DIR__ . '\../parts/header.view.php' ?>
+
+    <main>
 
         <section class="titulo titulo_portada">
             <h2>RESERVAR</h2>
@@ -21,7 +21,7 @@
         <section>
 
 
-            <form action="/reservar_cliente.php" class="form_reserva">
+            <form action="/reservar_cliente" class="form_reserva">
                 <fieldset class="container container_formulario container_delivery">
                     <label for="nombre">Ingrese su nombre completo</label>
                     <input type="text" name="nombre" id="nombre">
@@ -45,7 +45,7 @@
                         <option value="mesa-pf1">Mesa Pet Friendly 1</option>
                         <option value="mesa-pf2">Mesa Pet Friendly 1</option>
                     </select>
-        
+
                     <aside class="resumen">
                         <h4 class="titulo_resumen">Resumen de reserva</h4>
                         <ul>
@@ -60,12 +60,12 @@
 
                     <input type="submit" value="Reservar" class="boton boton_verde">
                 </fieldset>
-        
+
             </form>
-    </section>
+        </section>
     </main>
 
-    <?php require __DIR__.'/parts/footer.view.php' ?>
+    <?php require __DIR__ . '\../parts/footer.view.php' ?>
 
 </body>
 

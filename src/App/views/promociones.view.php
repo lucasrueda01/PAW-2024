@@ -23,28 +23,28 @@
             
             <ul class="lista_articulos">
                 <li class="articulo">
-                    <img src="../../public/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
+                    <img src="assets/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
                     <h3>Nombre de la Comida</h3>
                     <p>Descripcion</p>
                     <p class="articulo_precio">$8000</p>
                     <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
                 </li>
                 <li class="articulo">
-                    <img src="../../public/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
+                    <img src="assets/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
                     <h3>Nombre de la Comida</h3>
                     <p>Descripcion</p>
                     <p class="articulo_precio">$8000</p>
                     <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
                 </li>
                 <li class="articulo">
-                    <img src="../../public/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
+                    <img src="assets/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
                     <h3>Nombre de la Comida</h3>
                     <p>Descripcion</p>
                     <p class="articulo_precio">$8000</p>
                     <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
                 </li>
                 <li class="articulo">
-                    <img src="../../public/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
+                    <img src="assets/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
                     <h3>Nombre de la Comida</h3>
                     <p>Descripcion</p>
                     <p class="articulo_precio">$8000</p>
@@ -52,7 +52,7 @@
                 </li>
             </ul>
 
-            <a href="nuestro_menu.html" target="_blank" class="boton boton_negro link">Ver Menu Completo</a>
+            <a href="/nuestro_menu" target="_blank" class="boton boton_negro link">Ver Menu Completo</a>
 
         </section>
     </main>

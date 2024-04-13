@@ -21,8 +21,8 @@
                             -->
             <!-- LOGO -->
             <h2 class="logo logo_grande">Home</h2>
-            <h2><a href="nuestro_menu.html" class="boton boton_amarillo" target="_blank">Menu</a></h2>
-            <h2><a href="reservar_cliente.html" class="boton boton_amarillo" target="_blank">Reservar</a></h2>
+            <h2><a href="/nuestro_menu" class="boton boton_amarillo">Menu</a></h2>
+            <h2><a href="/reservar_cliente" class="boton boton_amarillo">Reservar</a></h2>
         </section>
 
 
@@ -70,7 +70,7 @@
                         <figcaption>
                             <h3>PILAR</h3>
                             <p>Autopista Panamericana KM50</p><br>
-                            <a href="../cliente/sucursales.html">VER MAS</a>
+                            <a href="/sucursalel">VER MAS</a>
                         </figcaption>
                     </figure>
                 </li>
@@ -83,7 +83,7 @@
                         <figcaption>
                             <h3>PALERMO</h3>
                             <p>Av. Juan Bautista Justo 154</p><br>
-                            <a href="../cliente/sucursales.html">VER MAS</a>
+                            <a href="/sucursales">VER MAS</a>
                         </figcaption>
                     </figure>
                 </li>
@@ -96,7 +96,7 @@
                         <figcaption>
                             <h3>RECOLETA</h3>
                             <p>Av. Alvear 1750</p><br>
-                            <a href="../cliente/sucursales.html">VER MAS</a>
+                            <a href="/sucursales">VER MAS</a>
                         </figcaption>
                     </figure>
                 </li>
@@ -111,7 +111,7 @@
                 <img src="/assets/imgs/promos/promo-1.png" alt="imagen-promo"> 
                 <figcaption>
                     <h3>2X1 Todos los jueves en nuestras burgers</h3>
-                    <a href="/pedir?comida=id_comida" class="boton boton_amarillo" target="_blank">Pedir</a>
+                    <a href="/pedir?comida=id_comida" class="boton boton_amarillo">Pedir</a>
                 </figcaption>
             </figure>
 
@@ -119,7 +119,7 @@
 
         <section class="empresa">
             <h2> Queremos que seas <strong>parte de nuestro equipo</strong> </h2>
-            <a href="unete_al_equipo.html" class="boton boton_negro">Trabaja con nosotros</a>
+            <a href="/unete_al_equipo" class="boton boton_negro">Trabaja con nosotros</a>
         </section>
 
     </main>

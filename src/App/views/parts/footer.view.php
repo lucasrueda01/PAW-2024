@@ -20,7 +20,7 @@
                 <li>
                     <ul class="redes_sociales facebook">
                         <li class="red_social">
-                            <a href="https://www.facebook.com/?locale=es_LA" target="_blank" rel="noopener"><img
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener"><img
                                     src="/assets/imgs/svg/icono-facebook.svg" alt="facebook"></a>
                         </li>
                         <li class="red_social instagram">
@@ -28,7 +28,7 @@
                                     src="/assets/imgs/svg/icono-instagram.svg" alt="instagram"></a>
                         </li>
                         <li class="red_social twitter">
-                            <a href="https://twitter.com/redessocialeses?lang=es" target="_blank" rel="noopener"><img
+                            <a href="https://twitter.com/" target="_blank" rel="noopener"><img
                                     src="/assets/imgs/svg/icono-x.svg" alt="twitter"></a>
                         </li>
                     </ul>

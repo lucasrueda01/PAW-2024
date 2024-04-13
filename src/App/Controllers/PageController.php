@@ -2,12 +2,14 @@
 
 namespace Paw\App\Controllers;
 
-class PageController {
+class PageController
+{
 
     public string $viewsDir;
     public array $menu;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->viewsDir = __DIR__ . '/../views/';
 
         $this->menu = [
@@ -36,53 +38,72 @@ class PageController {
                 'name' => 'RESERVAR'
             ]
         ];
-        
     }
 
-    public function index() 
+    public function index()
     {
-        $titulo = "PAW POWER | HOME" ;
-        require $this->viewsDir. 'index.view.php';
+        $titulo = "PAW POWER | HOME";
+        require $this->viewsDir . 'index.view.php';
     }
 
-    public function nuestroMenu() 
+    public function nuestroMenu()
     {
-        $titulo = "PAW POWER | MENU" ;
-        require $this->viewsDir. 'nuestro_menu.view.php';
+        $titulo = "PAW POWER | MENU";
+        require $this->viewsDir . 'nuestro_menu.view.php';
     }
 
-    public function promociones() {
-        $titulo = "PAW POWER | PROMOCIONES" ;
-        require $this->viewsDir. 'promociones.view.php';
+    public function promociones()
+    {
+        $titulo = "PAW POWER | PROMOCIONES";
+        require $this->viewsDir . 'promociones.view.php';
     }
 
-    public function sucursales() {
-        $titulo = "PAW POWER | SUCURSALES" ;
-        require $this->viewsDir. 'sucursales.view.php';
+    public function sucursales()
+    {
+        $titulo = "PAW POWER | SUCURSALES";
+        require $this->viewsDir . 'sucursales.view.php';
     }
 
-    public function noticias() {
-        $titulo = "PAW POWER | NOTICIAS" ;
-        require $this->viewsDir. 'noticias.view.php';
+    public function noticias()
+    {
+        $titulo = "PAW POWER | NOTICIAS";
+        require $this->viewsDir . 'noticias.view.php';
     }
 
-    public function pedir() {
+    public function pedir()
+    {
         $titulo = 'PAW POWER | PEDIR';
-        require $this->viewsDir. 'pedir.view.php';
+        require $this->viewsDir . 'cliente/pedir.view.php';
     }
 
-    public function sobre_nosotros() {
+    public function sobre_nosotros()
+    {
         $titulo = 'PAW POWER | SOBRE_NOSOTROS';
-        require $this->viewsDir. 'sobre_nosotros.view.php';
+        require $this->viewsDir . 'sobre_nosotros.view.php';
     }
-    public function reservar_cliente() {
+    public function reservar_cliente()
+    {
         $titulo = 'PAW POWER | RESERVAR CLIENTE';
-        require $this->viewsDir. 'reservar_cliente.view.php';
+        require $this->viewsDir . 'cliente/reservar_cliente.view.php';
     }
-    public function unete_al_equipo() {
+    public function unete_al_equipo()
+    {
         $titulo = 'PAW POWER | UNETE AL EQUIPO';
-        require $this->viewsDir. 'unete_al_equipo.view.php';
+        require $this->viewsDir . 'unete_al_equipo.view.php';
     }
-
-
+    public function gestion_lista_mesas()
+    {
+        $titulo = 'PAW POWER | GESTION MESAS';
+        require $this->viewsDir . 'empleado/gestion_lista_mesas.view.php';
+    }
+    public function gestion_mesa()
+    {
+        $titulo = 'PAW POWER | GESTION MESA';
+        require $this->viewsDir . 'empleado/gestion_mesa.view.php';
+    }
+    public function pedidos_entrantes()
+    {
+        $titulo = 'PAW POWER | PEDIDOS';
+        require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
+    }
 }

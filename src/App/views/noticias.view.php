@@ -26,7 +26,7 @@
                 <li class="container_noticia">
                     <article class="noticia">
                         <h3>¡ESTAMOS EN LUJAN!</h3>
-                        <img src="../../public/imgs/sucursales/sucursalLujan.jpg" alt="Noticia 1">
+                        <img src="assets/imgs/sucursales/sucursalLujan.jpg" alt="Noticia 1">
                         <!--si no hay una foto, por defecto se mostraria el icono de la empresa-->
                         <p>Ya inauguramos la nueva sucursal ubicada 1 hora de la Capital Federal. Esta ciudad con
                             gran cultura hamburguesera nos incentivo para que aterricemos acá. Desde este viernes ya
@@ -38,7 +38,7 @@
                 <li class="container_noticia">
                     <article class="noticia">
                         <h3>¡PROXIMAMENTE ... !</h3>
-                        <img src="../../public/imgs/svg/Imagotipo_PAWPOWER-negro.svg" alt="Noticia 2">
+                        <img src="assets/imgs/svg/Imagotipo_PAWPOWER-negro.svg" alt="Noticia 2">
                         <!--si no hay una foto, por defecto se mostraria el icono de la empresa-->
                         <p>
                             Ya falta poco para que conozcas las mejores hamburguesas. Vamos a contar con sucursales en Capital

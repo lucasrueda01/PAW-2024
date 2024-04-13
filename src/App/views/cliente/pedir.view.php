@@ -3,13 +3,13 @@
 
 <head>
 
-    <?php require __DIR__.'/parts/head.view.php' ?>
-    
+    <?php require __DIR__ . '\../parts/head.view.php' ?>
+
 </head>
 
 <body>
-    
-    <?php require __DIR__.'/parts/header.view.php' ?>
+
+    <?php require __DIR__ . '\../parts/header.view.php' ?>
 
 
     <main>
@@ -23,7 +23,7 @@
         <section>
 
             <form action="/pagar" method="post" class="formulario_pedido">
-                
+
                 <fieldset class="container container_carrito"> <!--Fieldset Carrito-->
                     <h3 class="titulo_fieldset">Mi Carrito</h3>
                     <table>
@@ -59,13 +59,13 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <a href="../cliente/nuestro_menu.html" class="boton boton_negro">Agregar</a>
+                    <a href="/nuestro_menu" class="boton boton_negro">Agregar</a>
                 </fieldset>
 
                 <nav class="selector_fieldset">
                     <h3 class="titulo_fieldset_delivery">
                         <input type="checkbox" name="menuDelivery" id="menuDelivery">
-                        <label for="menuDelivery" class="menuFieldSets" ="menuMobile">Delivery</label>
+                        <label for="menuDelivery" class="menuFieldSets"="menuMobile">Delivery</label>
                     </h3>
                     <h3 class="titulo_fieldset_take_away">Take Away</h3>
                     <h3 class="titulo_fieldset_en_el_lugar">En el Lugar</h3>
@@ -85,7 +85,7 @@
                         <option value="efectivo">Pago en efectivo</option>
                     </select>
                     <aside>
-                        <h4  class="titulo_resumen">Resumen</h4>
+                        <h4 class="titulo_resumen">Resumen</h4>
                         <ul>
                             <li>Producto 1 - $10</li>
                             <li>Producto 2 - $20</li>
@@ -96,7 +96,7 @@
                 </fieldset>
 
                 <fieldset class="container container_formulario container_take_away"> <!-- .container_take_away { display: none }-->
-                    
+
                     <label for="nombre_take_away">Ingrese su nombre</label>
                     <input type="text" name="nombre_take_away" id="nombre_take_away">
                     <label for="numero_sucursal_take_away">Selecciona la sucursal:</label>
@@ -122,7 +122,7 @@
                 </fieldset>
 
                 <fieldset class="container container_formulario container_en_el_lugar">
-                    
+
                     <label for="nombre_en_el_lugar">Ingrese su nombre</label>
                     <input type="text" name="nombre_en_el_lugar" id="nombre_en_el_lugar">
                     <label for="numero_sucursal_en_el_lugar">Selecciona la sucursal:</label>
@@ -138,7 +138,7 @@
                         <option value="3">Mesa 3</option>
                     </select>
                     <aside>
-                        <h4  class="titulo_resumen">Resumen</h4>
+                        <h4 class="titulo_resumen">Resumen</h4>
                         <ul>
                             <li>Producto 1 - $10</li>
                             <li>Producto 2 - $20</li>
@@ -158,7 +158,7 @@
 
     </main>
 
-    <?php require __DIR__.'/parts/footer.view.php' ?>
+    <?php require __DIR__ . '\../parts/footer.view.php' ?>
 
 </body>
 

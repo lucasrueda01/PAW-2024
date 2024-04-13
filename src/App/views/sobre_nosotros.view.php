@@ -19,14 +19,14 @@
         </section>
 
         <section class="sobre_nosotros">
-            <img src="../../public/imgs/svg/Imagotipo_PAWPOWER-negro.svg" alt="logo Paw Power">
+            <img src="assets/imgs/svg/Imagotipo_PAWPOWER-negro.svg" alt="logo Paw Power">
             <p>En Paw Power, nuestra historia comenzó en la encantadora ciudad de Luján en el año 2024, cuando nos propusimos llevar la pasión por las hamburguesas a un nivel superior. Desde entonces, nos hemos convertido en un referente de sabor y calidad en el mundo de la comida rápida, con tres sucursales estratégicamente ubicadas en Pilar, Palermo y Recoleta.
 
                 Nuestro compromiso es claro: ofrecer las mejores hamburguesas elaboradas con ingredientes frescos y de la más alta calidad. Cada una de nuestras creaciones es una obra maestra gastronómica, cuidadosamente diseñada para satisfacer tu paladar y superar tus expectativas en cada visita.
                 
                 En Paw Power, valoramos profundamente la comunidad que nos rodea. Colaboramos estrechamente con productores locales, apoyamos iniciativas sostenibles y nos esforzamos por crear un impacto positivo en nuestro entorno. Creemos en el poder de la comida para unir a las personas y construir relaciones duraderas.
             </p>
-            <img class="sn_isotipo" src="../../public/imgs/svg/Isotipo_PAWPOWER-negro.svg" alt="Isotipo Paw Power">
+            <img class="sn_isotipo" src="assets/imgs/svg/Isotipo_PAWPOWER-negro.svg" alt="Isotipo Paw Power">
             <section>
                 <article class="mision">
                     <h3>MISION</h3>

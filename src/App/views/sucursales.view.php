@@ -27,7 +27,7 @@
                     <h3>LUJAN</h3>
                     <p>San Martin 560</p>
                     <figure>
-                        <img src="../../public/imgs/sucursales/sucursalLujan.jpg" alt="Sucursal Lujan">
+                        <img src="assets/imgs/sucursales/sucursalLujan.jpg" alt="Sucursal Lujan">
                         <figcaption>
                             <a href="/pedir?=id_sucursal" class="boton boton_amarillo boton_amarillo_chico">Pedir</a>
                             <a href="/reservar?=id_sucursal"
@@ -39,7 +39,7 @@
                     <h3>PILAR</h3>
                     <p>Autopista Panamericana KM50</p>
                     <figure>
-                        <img src="../../public/imgs/sucursales/sucursalPilar.jpg" alt="Sucursal Pilar">
+                        <img src="assets/imgs/sucursales/sucursalPilar.jpg" alt="Sucursal Pilar">
                         <figcaption>
                             <a href="/pedir?=id_sucursal" class="boton boton_amarillo boton_amarillo_chico">Pedir</a>
                             <a href="/reservar?=id_sucursal"
@@ -51,7 +51,7 @@
                     <h3>PALERMO</h3>
                     <p>Av. Juan Bautista Justo 154</p>
                     <figure>
-                        <img src="../../public/imgs/sucursales/sucursalPalermo.jpg" alt="Sucursal Palermo">
+                        <img src="assets/imgs/sucursales/sucursalPalermo.jpg" alt="Sucursal Palermo">
                         <figcaption>
                             <a href="/pedir?=id_sucursal" class="boton boton_amarillo boton_amarillo_chico">Pedir</a>
                             <a href="/reservar?=id_sucursal"
@@ -63,7 +63,7 @@
                     <h3>RECOLETA</h3>
                     <p>Av. Alvear 1750</p>
                     <figure>
-                        <img src="../../public/imgs/sucursales/sucursalRecoleta.jpg" alt="Sucursal Recoleta">
+                        <img src="assets/imgs/sucursales/sucursalRecoleta.jpg" alt="Sucursal Recoleta">
                         <figcaption>
                             <a href="/pedir?=id_sucursal" class="boton boton_amarillo boton_amarillo_chico">Pedir</a>
                             <a href="/reservar?=id_sucursal"

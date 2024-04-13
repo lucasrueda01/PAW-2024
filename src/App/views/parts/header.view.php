@@ -5,7 +5,6 @@
         <h1><a href="/" class="logo logo_grande_mobile">Paw Burger</a></h1>
 
 
-
         <nav class="container_nav"> 
             <ul class="nav_menu"> 
 
@@ -16,13 +15,13 @@
                     <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
                     <ul class="submenu">
                         <li class="opciones_nav">
-                            <a href="/empleado/gestion_lista_mesas.html">GESTION MESAS</a>
+                            <a href="/gestion_lista_mesas">GESTION MESAS</a>
                         </li>
                         <li class="opciones_nav">
-                            <a href="/empleado/gestion_mesa.html">GESTION MESA</a>
+                            <a href="/gestion_mesa">GESTION MESA</a>
                         </li>
                         <li class="opciones_nav">
-                            <a href="/empleado/pedidos_entrantes.html">PEDIDOS ENTRANTES</a>
+                            <a href="/pedidos_entrantes">PEDIDOS ENTRANTES</a>
                         </li>
                     </ul>
                 </li>

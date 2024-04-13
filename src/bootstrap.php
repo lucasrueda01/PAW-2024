@@ -46,3 +46,7 @@ $router->get('/sobre_nosotros', 'PageController@sobre_nosotros');
 $router->get('/reservar_cliente', 'PageController@reservar_cliente');
 $router->get('/unete_al_equipo', 'PageController@unete_al_equipo');
 $router->get('/pedir', 'PageController@pedir');
+$router->get('/gestion_lista_mesas', 'PageController@gestion_lista_mesas');
+$router->get('/gestion_mesa', 'PageController@gestion_mesa');
+$router->get('/pedidos_entrantes', 'PageController@pedidos_entrantes');
+
