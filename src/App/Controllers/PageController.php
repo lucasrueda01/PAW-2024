@@ -66,6 +66,10 @@ class PageController {
         require $this->viewsDir. 'noticias.view.php';
     }
 
+    public function pedir() {
+        $titulo = 'PAW POWER | PEDIR';
+        require $this->viewsDir. 'pedir.view.php';
+    }
 
 
 }

@@ -45,3 +45,4 @@ $router->get('/noticias', 'PageController@noticias');
 $router->get('/services', 'PageController@services');
 $router->get('/contact', 'PageController@contact');
 $router->post('/contact', 'PageController@contactProccess');
+$router->get('/pedir', 'PageController@pedir');
