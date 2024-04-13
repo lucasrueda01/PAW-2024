@@ -20,12 +20,20 @@ class PageController {
                 'name' => 'PROMOS'
             ],
             [
-                'href' => '/services',
-                'name' => 'Servicios'
+                'href' => '/sucursales',
+                'name' => 'SUCURSALES'
             ],
             [
-                'href' => '/contact',
-                'name' => 'Contactos'
+                'href' => '/noticias',
+                'name' => 'NOTICIAS'
+            ],
+            [
+                'href' => '/pedir',
+                'name' => 'PEDIR'
+            ],
+            [
+                'href' => '/reservar_cliente',
+                'name' => 'RESERVAR'
             ]
         ];
         
@@ -39,10 +47,13 @@ class PageController {
 
     public function nuestroMenu() 
     {
-
         $titulo = "PAW POWER | MENU" ;
         require $this->viewsDir. 'nuestro_menu.view.php';
+    }
 
+    public function promociones() {
+        $titulo = "PAW POWER | PROMOCIONES" ;
+        require $this->viewsDir. 'promociones.view.php';
     }
 
     public function about() 

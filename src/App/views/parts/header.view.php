@@ -8,24 +8,9 @@
 
         <nav class="container_nav"> 
             <ul class="nav_menu"> 
-                <li class="opciones_nav">
-                    <a href="/nuestro_menu">MENU</a>
-                </li>
-                <li class="opciones_nav">
-                    <a href="promociones">PROMOS</a>
-                </li>
-                <li class="opciones_nav">
-                    <a href="sucursales">SUCURSALES</a>
-                </li>
-                <li class="opciones_nav">
-                    <a href="noticias">NOTICIAS</a>
-                </li>
-                <li class="opciones_nav">
-                    <a href="pedir">PEDIR</a>
-                </li>
-                <li class="opciones_nav">
-                    <a href="reservar_cliente">RESERVAR</a>
-                </li>
+
+                <?php require __DIR__.'/nav.view.php' ?>            
+
                 <li class="opciones_nav">
                     <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
                     <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
