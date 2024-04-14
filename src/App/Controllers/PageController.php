@@ -109,9 +109,9 @@ class PageController
         require $this->viewsDirCliente . 'nuevo_plato.view.php';
     }
     
-    public function varificar_imagen($archivo_imagen){
+    public function varificar_imagen($archivo_imagen, $datos_plato){
         // Verifica si el archivo se ha subido correctamente
-        
+
         if (isset($archivo_imagen['imagen_plato']) && $archivo_imagen['imagen_plato']['error'] === UPLOAD_ERR_OK) {
             // Obtén información sobre el archivo subido
             $file = $archivo_imagen['imagen_plato'];
@@ -149,7 +149,10 @@ class PageController
             if (move_uploaded_file($fileTmpName, $uploadPath)) {
                 return [
                     'exito' => self::UPLOAD_COMPLETED,
-                    'description' => "El archivo se ha subido correctamente."
+                    'description' => "El archivo se ha subido correctamente.",
+                    'path_imagen' => $uploadPath,
+                    'nombre_comida' => $datos_plato['nombre_plato'],
+                    'ingredientes_comida' => $datos_plato['ingredientes']
                 ];                
             } else {
                 return [
@@ -166,9 +169,8 @@ class PageController
     }
 
     public function datos_plato(){
-        $formulario_plato = $_POST;
 
-        $resultado = $this->varificar_imagen($_FILES);
+        $resultado = $this->varificar_imagen($_FILES, $_POST);
 
         require $this->viewsDirCliente . 'nuevo_plato.view.php';
     }

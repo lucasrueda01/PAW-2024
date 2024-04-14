@@ -612,6 +612,19 @@ input[type=number]::-webkit-inner-spin-button {
     border-bottom: 1px solid red;    
 }
 
+.imagen_subida {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.imagen_subida img{
+    width: 30%;
+    height: 50%;
+}
+
 .container_articulos section > h4 {
     display: flex;
     justify-content: center;

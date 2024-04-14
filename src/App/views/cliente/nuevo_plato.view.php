@@ -22,6 +22,13 @@
             <h4 class="msj msj_exito">
                    <?= $resultado['description']; ?>
             </h4>
+            <figure class="imagen_subida">
+                <img src="/<?= $resultado['path_imagen'] ?>" alt="comida">
+                <figcaption>
+                    <h3><?= $resultado['nombre_comida'] ?></h3>
+                    <p><?= $resultado['ingredientes_comida'] ?></p><br>
+                </figcaption>
+            </figure>
         <?php endif ?>
 
 
