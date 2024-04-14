@@ -8,7 +8,7 @@ class ErrorController {
     public array $menu;
 
     public function __construct(){
-        $this->viewsDir = __DIR__ . '/../views/error/';
+        $this->viewsDir = __DIR__ . '/../views/errors/';
 
         $this->menu = [
             [
@@ -52,4 +52,6 @@ class ErrorController {
         $main = 'Internal Server Error';
         require $this->viewsDir. 'internal-error.view.php';
     }
+
+    
 }
