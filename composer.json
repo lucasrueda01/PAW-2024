@@ -1,0 +1,43 @@
+{
+    "name": "paw/static-to-dinamic",
+    "description": "Proyecto del grupo MLVJ de los TPs Lujan 2024",
+    "keywords": ["php", "mvc"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas Rueda",
+            "email": "lucas@gmail.com",
+            "homepage": "http://github.com/lucasrueda01",
+            "role": "Creator / Main Developer"
+        },
+        {
+            "name": "Matias Consentino",
+            "email": "matias@gmail.com",
+            "homepage": "http://github.com/mconsentino",
+            "role": "Creator / Main Developer"
+        },
+        {
+            "name": "Valentin Nardoni",
+            "email": "valentin@gmail.com",
+            "homepage": "http://github.com/vnardoni",
+            "role": "Creator / Main Developer"
+        },
+        {
+            "name": "Juan Natello",
+            "email": "juanmannat@gmail.com",
+            "homepage": "http://github.com/jnatmed",
+            "role": "Creator / Main Developer"
+        }
+    ],
+    "require": {
+        "php" : ">= 7.4.0",
+        "filp/whoops": "~2",
+        "monolog/monolog": "^3.5",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Paw\\": "src/"
+        }
+    }
+}

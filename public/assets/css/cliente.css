@@ -1,0 +1,722 @@
+.formulario_pedido {
+    display: grid;
+    grid-template-areas:
+        "area_carrito"
+        "nav_fieldsets"
+        "area_pedido";
+    justify-content: center;
+
+}
+
+.container {
+    
+    font-size: 2rem;
+    font-family: 'Century Gothic';
+    margin-top: 2rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    transition: .5s ease-in-out;
+}
+
+.container:hover {
+    background-color: var(--color-amarrillohover);
+}
+
+.container table {
+    border-collapse: collapse;
+    width: 60vw;
+}
+
+.container table,
+.container table th,
+.container table td {
+    border: .1rem solid #666666;
+    padding: .8rem;
+    text-align: center;
+    align-self: center;
+    /* width: 98%; */
+    
+}
+
+.container table td input{
+    text-align: center;
+    width: 4rem;
+    
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.container table td button {
+    background-color: #000000;
+    color: white;
+    border: 0;
+    border-radius: .5rem;
+    font-size: 2rem;
+    width: 3rem;
+    text-align: center;
+    margin: 10px;
+}
+
+.container table td button:hover {
+    background-color: #313131;
+}
+
+.container table th {
+    font-weight: 600;
+}
+
+.container table tfoot td {
+    text-align: right;
+}
+
+.titulo_carrito {
+    position: relative;
+
+}
+
+.container_carrito {
+    grid-area: area_carrito;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    width: 70%;
+}
+
+.titulo_fieldset_delivery input {
+    display: none;
+}
+
+
+.container_formulario {
+    grid-area: area_pedido;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 2rem;
+    width: 97.8%;
+    margin-top: 5rem;
+    padding-top: 1.5rem;
+    border: 1px solid var(--color-grishover);  
+    border-radius: 20px;
+}
+
+.container_en_el_lugar,
+.container_take_away {
+    display: none;
+}
+
+.titulo_fieldset {
+    position: absolute;
+    top: -42px;
+    left: .2rem;
+    padding: 1rem;
+}
+
+.titulo_fieldset_take_away {
+    left: 9.7rem;  
+    
+}
+
+.titulo_fieldset_en_el_lugar {
+    left: calc(8.6rem + 13.5rem);    /*8.6 + 11.6*/
+}
+
+.titulo_fieldset:hover {
+    border: 1px solid var(--color-amarillo);  
+    background-color: var(--color-amarillo);
+    font-weight: 800;
+}
+
+.selector_fieldset h3:hover {
+    background-color: var(--color-amarillo);
+}
+
+.selector_fieldset {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+.selector_fieldset {
+    grid-area: nav_fieldsets;
+}
+
+.selector_fieldset h3 {
+    padding: 1rem;
+    
+    border: 1px solid var(--color-grishover);  
+}
+
+.container_carrito table {
+    margin: 1rem 1rem;
+}
+
+.container_delivery {
+    margin-top: 0;
+}
+
+
+.titulo_carrito::after {
+    content: '';
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../imgs/svg/icono-carrito.svg');
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    left: 15rem;
+    top: -.1rem;
+    border: none;
+}
+
+.titulo_form_unite {
+    font-family: Century_Gothic;
+    font-size: smaller;
+    position: absolute;
+    top: 2rem;
+}
+
+.etiqueta {
+    width: 75%;
+    display: inline;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.campo {
+    padding-left: .5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: inline;
+    width: 75%;
+    height: 3rem;
+}
+
+
+.etiqueta {
+    font-family: Century_Gothic;
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.etiqueta:not(:first-of-type) {
+    margin-top: 1rem;
+}
+
+.boton_enviar_unete {
+    background-color: var(--color-amarillo);
+    border-radius: 0;
+    width: 75%;
+    font-family: Century_Gothic;
+    font-size: small;
+}
+
+.boton_enviar_unete:hover {
+    background-color: #eec53f;
+}
+
+.container_formulario input,
+.container_formulario select {
+    font-size: 1.8rem;
+}
+
+.container_formulario label,
+.container_formulario input,
+.container_formulario legend,
+.container_formulario select {
+    display: inline-block;
+    width: 35rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;    
+}
+
+.titulo_resumen {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* .container_formulario label {
+    margin: 1rem 1rem;
+} */
+
+.titulo_delivery {
+    text-align: left;
+}
+
+.container_formulario aside {
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+    border: .1rem solid gray;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 40rem;
+}
+
+@media screen and (max-width:1332px) {
+    .container_formulario aside {
+        position:static;
+        margin: 1rem 1rem;
+        width: 90%;
+        align-self: center;
+    }
+}
+
+
+.container_noticia {
+    display: flex;
+    justify-content: center;
+}
+
+
+.noticia {
+    border-bottom: 0.1rem solid var(--color-amarillo);
+    margin: 1rem 0;
+    /*arriba-abajo a-los-costados*/
+    display: grid;
+    grid-template-areas:
+        "imagen titulo"
+        "imagen descripcion"
+        "imagen fecha";
+    width: 80%;
+    padding: 1rem;
+}
+
+.noticia img {
+    grid-area: imagen;
+    margin-right: 5rem;
+    width: 20rem;
+    height: 20rem;
+}
+
+.noticia h3 {
+    grid-area: titulo;
+    font-size: xx-large;
+    justify-self: center;
+}
+
+.noticia p {
+    grid-area: descripcion;
+    font-family: 'Century_Gothic';
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+.noticia time {
+    grid-area: fecha;
+    justify-self: end;
+}
+
+.titulo_portada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../imgs/sucursales/sucursalLujan.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 30rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+
+
+.titulo_portada h2 {
+    color: #ffffff;
+    font-size: 8rem;
+    font-weight: 800;
+}
+
+.titulo_portada p {
+    font-family: Century_Gothic;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.titulo_sobrenosotros {
+    background-image: none;
+    background-color: var(--color-amarillo);
+}
+
+.titulo_sobrenosotros h2 {
+    color: #000000;
+}
+
+.titulo_sobrenosotros p {
+    color: #000000;
+}
+
+
+.sobre_nosotros h3 {
+    margin-bottom: 2rem;
+    font-size: 7rem;
+}
+
+.sobre_nosotros img:first-child {
+    height: 15rem;
+    display: block;
+    margin: 5rem auto 5rem auto;
+
+}
+
+.sn_isotipo {
+    height: 5rem;
+    display: block;
+    margin: 5rem auto 5rem auto;
+
+}
+
+
+.sobre_nosotros > p {
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 5rem 0 5rem;
+
+}
+
+.sobre_nosotros section {
+    margin: 5rem;
+    display: flex;
+}
+
+.mision p {
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+
+}
+
+.vision {
+    background-color: var(--color-amarillo);
+}
+
+.vision p {
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+.vision h3 {
+    color: #FFFFFF;
+}
+
+
+.sobre_nosotros article {
+    padding: 5rem;
+    width: 50%;
+}
+
+
+
+.container_sucursales {
+    font-size: 1.5rem;
+}
+
+.sucursal {
+    width: 50rem;
+    display: inline-block;
+    margin: 3rem;
+}
+
+.lista_sucursales {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.sucursal figure {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    display: block;
+}
+
+.sucursal h3 {
+    font-family: Century_Gothic;
+    letter-spacing: 0.5rem;
+    font-size: 5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.sucursal p {
+    display: block;
+    font-size: small;
+    color: grey;
+    font-family: Century_Gothic;
+    margin-bottom: 1rem;
+}
+
+.sucursal img {
+    /* border: 0;   */
+    display: block;
+    width: inherit;
+    height: inherit;
+
+}
+
+.sucursal figcaption {
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    display: inline-block;
+}
+
+.sucursal figcaption a {
+    font-family: Century_Gothic;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: x-small;
+
+
+}
+
+.boton_amarillo_chico {
+    opacity: 70%;
+    width: 5rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: .5rem;
+    border-radius: 0;
+    border-color: var(--color-amarillo);
+}
+
+.boton_amarillo_chico:hover {
+    opacity: 100%;
+}
+
+.titulo_seccion {
+    position: relative;
+    color: white;
+}
+
+.titulo_carrito a {
+    text-decoration: none;
+}
+
+.titulo_seccion::before {
+    content: '';
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../imgs/svg/icono-carrito-negro.svg');
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    left: 40vw;
+    top: .2rem;
+    border: none;
+}
+
+.selector_tipo_articulo {
+    background-color: var(--color-amarillo);
+    display: flex;
+    justify-content: center;
+
+}
+
+.selector_tipo_articulo li {
+    display: inline-block;
+    padding: 1rem;
+}
+
+.selector_tipo_articulo ul li:first-child {
+    border-right: 1px solid rgb(202, 131, 0);
+}
+
+.selector_tipo_articulo ul li:last-child {
+    border-left: 1px solid rgb(202, 131, 0);
+}
+
+.selector_tipo_articulo li:hover {
+    background-color: rgb(253, 185, 58);
+}
+
+.selector_tipo_articulo ul li a {
+    color: #000000;
+    font-family: Century_Gothic;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 800;
+
+}
+
+.articulo h3, .articulo p {
+    margin-left: 2rem;
+}
+
+
+.lista_articulos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container_articulos {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.regulador {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0px;
+}
+
+.container_articulos section h3{
+    display: flex;
+    justify-content: center;
+    font-family: Century_Gothic;
+    font-size: 4rem;
+    margin: 2rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-amarillo);
+}
+
+.msj {
+    display: flex;
+    justify-content: center;
+    font-family: Century_Gothic;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 2rem;
+    padding: 1rem;
+
+}
+
+.msj_exito {
+    color: green;
+    border-top: 1px solid green;
+    border-bottom: 1px solid green;    
+}
+
+.msj_error {
+    color: red;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;    
+}
+
+.imagen_subida {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.imagen_subida img{
+    width: 30%;
+    height: 50%;
+}
+
+.container_articulos section > h4 {
+    display: flex;
+    justify-content: center;
+    font-family: Century_Gothic;
+    font-size: 1rem;
+    font-weight: 800;
+    color: red;
+    margin: 2rem;
+    padding: 1rem;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+
+.articulo {
+    position: relative;
+    margin: 1rem 2rem;
+    display: block;
+    width: 40rem;
+    height: 40rem;  
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.articulo img {
+    display: block;
+    object-fit: cover;
+    width: 95%;
+    height: 60%;
+    margin: 1rem auto;
+}
+
+.seccion_bebidas img {
+    object-fit: contain;
+}
+
+.articulo h4, .articulo h3 {
+    position: relative;
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+    margin: 1rem;
+    font-weight: 800;
+    border-bottom: 2px solid var(--color-amarillo);
+}
+
+.articulo a {
+    position: relative;
+}
+
+.articulo p {
+    position: relative;
+    font-size: 1.rem;
+    font-family: Century_Gothic;
+    margin-left: 1rem;
+}
+
+.articulo_precio {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.boton_gris a {
+    text-decoration: none;
+    color: white;
+    margin-left: 0 20rem;
+}
+
+.form_reserva {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    font-size: inherit;
+    padding-bottom: 5rem;
+    width: 75vw;
+}
+
+.form_reserva fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="submit"] {
+    margin-top: 10px;
+}
+
+.resumen {
+    margin: 1em 1em;
+    border: 1px solid black;
+    width: 40rem;
+}
+
+.resumen ul {
+    list-style: decimal;
+    padding-left: 5rem;
+}
+

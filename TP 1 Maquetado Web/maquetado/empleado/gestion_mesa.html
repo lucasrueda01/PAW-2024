@@ -18,8 +18,8 @@
         <input type="checkbox" name="menuHamburguesa" id="menuHamburguesa">
         <label for="menuHamburguesa"class="logo logo_chico" id="menuMobile">Paw Burger</label>
         <h1><a href="../cliente/index.html" class="logo logo_grande_mobile">Paw Burger</a></h1>
-        <nav>
-            <ul class="nav_menu">
+        <nav class="container_nav"> <!--block-->
+            <ul class="nav_menu"> <!--block-->
                 <li class="opciones_nav">
                     <a href="../cliente/nuestro_menu.html">MENU</a>
                 </li>
@@ -39,7 +39,8 @@
                     <a href="../cliente/reservar_cliente.html">RESERVAR</a>
                 </li>
                 <li class="opciones_nav">
-                    <a href="#">PERFIL EMPLEADO</a>
+                    <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
+                    <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
                     <ul class="submenu">
                         <li class="opciones_nav">
                             <a href="../empleado/gestion_lista_mesas.html">GESTION MESAS</a>
@@ -52,9 +53,12 @@
                         </li>
                     </ul>
                 </li>
+            </ul>
+             <ul class="nav_usuario">
                 <li class="opciones_nav">
-                    <p class="icono_usuario">Nombre de Usuario</p>
-                    <ul class="opciones_usuario">
+                    <input type="checkbox" name="menuPerfil" id="menuPerfil">
+                    <label for="menuPerfil" class="icono_usuario">Perfil Usuario</label>
+                    <ul class="submenu">
                         <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
                         <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
                     </ul>
@@ -65,8 +69,13 @@
 
     <main>
 
+        
+        <section class="titulo titulo_portada">
+            <h2>GESTION MESA</h2>
+            <p>Nuestras hamburguesas te esperan cerca tuyo</p>
+        </section>
+        
         <section class="container_acciones_mesa">
-            <h2 class="titulo titulo_amarillo">Gestion Mesa X</h2>
             <a href="gestion_lista_mesas.html"></a>
 
             <p class="info_mesa">
@@ -77,7 +86,7 @@
 
         <section class="container_gestion_mesa">
             <h3>Orden N° 4</h3>
-            <a href="/cerrar_mesa?mesa=id_mesa" class="boton boton_negro boton_negro_gestion_mesa ">Cerrar Mesa</a>
+            <a href="/cerrar_mesa?mesa=id_mesa" class="boton boton_rojo boton_rojo_gestion_mesa ">Cerrar Mesa</a>
             <table class="tabla_gestion_mesa">
                 <thead>
                     <tr>
@@ -114,8 +123,8 @@
                     </tr>
                 </tfoot>
             </table>
-            <a href="/agregar_producto?mesa=id_mesa" class="boton boton_violeta">Agregar Producto</a>
-            <a href="/finalizar_pedido?pedido=id_pedido" class="boton boton_rojo">Finalizar Pedido</a>
+            <a href="/agregar_producto?mesa=id_mesa" class="boton boton_negro">Agregar Producto</a>
+            <a href="/finalizar_pedido?pedido=id_pedido" class="boton boton_verde">Finalizar Pedido</a>
         </section>
 
     </main>

@@ -17,8 +17,8 @@
         <input type="checkbox" name="menuHamburguesa" id="menuHamburguesa">
         <label for="menuHamburguesa"class="logo logo_chico" id="menuMobile">Paw Burger</label>
         <h1><a href="../cliente/index.html" class="logo logo_grande_mobile">Paw Burger</a></h1>
-        <nav>
-            <ul class="nav_menu">
+        <nav class="container_nav"> <!--block-->
+            <ul class="nav_menu"> <!--block-->
                 <li class="opciones_nav">
                     <a href="../cliente/nuestro_menu.html">MENU</a>
                 </li>
@@ -35,10 +35,11 @@
                     <a href="../cliente/pedir.html">PEDIR</a>
                 </li>
                 <li class="opciones_nav">
-                    <a href="reservar_cliente.html">RESERVAR</a>
+                    <a href="../cliente/reservar_cliente.html">RESERVAR</a>
                 </li>
                 <li class="opciones_nav">
-                    <a href="#">PERFIL EMPLEADO</a>
+                    <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
+                    <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
                     <ul class="submenu">
                         <li class="opciones_nav">
                             <a href="../empleado/gestion_lista_mesas.html">GESTION MESAS</a>
@@ -51,9 +52,12 @@
                         </li>
                     </ul>
                 </li>
+            </ul>
+             <ul class="nav_usuario">
                 <li class="opciones_nav">
-                    <p class="icono_usuario">Nombre de Usuario</p>
-                    <ul class="opciones_usuario">
+                    <input type="checkbox" name="menuPerfil" id="menuPerfil">
+                    <label for="menuPerfil" class="icono_usuario">Perfil Usuario</label>
+                    <ul class="submenu">
                         <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
                         <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
                     </ul>
@@ -69,50 +73,55 @@
     <main>
 
         <section class="titulo titulo_portada">
-            <h2>RESERVAS</h2>
+            <h2>RESERVAR</h2>
             <p>Nuestras hamburguesas te esperan cerca tuyo</p>
         </section>
 
-        <form action="/reservar_cliente.php" class="form_reserva">
-            <fieldset>
-                <label for="nombre">Ingrese su nombre completo</label>
-                <input type="text" name="nombre" id="nombre">
-                <label for="dni">Ingrese su DNI</label>
-                <input type="text" name="dni" id="dni">
-                <label for="sucursal">Selecciona una sucursal:</label>
-                <select id="sucursal" name="sucursal">
-                    <option value="sucursal1">Sucursal 1</option>
-                    <option value="sucursal2">Sucursal 2</option>
-                    <option value="sucursal3">Sucursal 3</option>
-                    <option value="sucursal4">Sucursal 4</option>
-                </select>
-                <label for="date">Seleccione fecha:</label>
-                <input type="date" name="time" id="date">
-                <label for="time">Seleccione hora:</label>
-                <input type="time" name="time" id="time">
-                <label for="mesas_disponibles">Mesas Disponibles</label>
-                <select name="mesas_disponibles" id="mesas_disponibles">
-                    <option value="mesa-s1">Mesa Salon 1</option>
-                    <option value="mesa-s2">Mesa Salon 2</option>
-                    <option value="mesa-pf1">Mesa Pet Friendly 1</option>
-                    <option value="mesa-pf2">Mesa Pet Friendly 1</option>
-                </select>
+        <section>
+
+
+            <form action="/reservar_cliente.php" class="form_reserva">
+                <fieldset class="container container_formulario container_delivery">
+                    <label for="nombre">Ingrese su nombre completo</label>
+                    <input type="text" name="nombre" id="nombre">
+                    <label for="dni">Ingrese su DNI</label>
+                    <input type="text" name="dni" id="dni">
+                    <label for="sucursal">Selecciona una sucursal:</label>
+                    <select id="sucursal" name="sucursal">
+                        <option value="sucursal1">Sucursal 1</option>
+                        <option value="sucursal2">Sucursal 2</option>
+                        <option value="sucursal3">Sucursal 3</option>
+                        <option value="sucursal4">Sucursal 4</option>
+                    </select>
+                    <label for="date">Seleccione fecha:</label>
+                    <input type="date" name="time" id="date">
+                    <label for="time">Seleccione hora:</label>
+                    <input type="time" name="time" id="time">
+                    <label for="mesas_disponibles">Mesas Disponibles</label>
+                    <select name="mesas_disponibles" id="mesas_disponibles">
+                        <option value="mesa-s1">Mesa Salon 1</option>
+                        <option value="mesa-s2">Mesa Salon 2</option>
+                        <option value="mesa-pf1">Mesa Pet Friendly 1</option>
+                        <option value="mesa-pf2">Mesa Pet Friendly 1</option>
+                    </select>
         
-                <input type="submit" value="Reservar">
-            </fieldset>
-            <aside class="resumen">
-                <h2>Resumen de reserva</h2>
-                <ul>
-                    <li>Nombre del usuario</li>
-                    <li>DNI: 12.456.789</li>
-                    <li>Sucursal elegida: Av. de Mayo 450</li>
-                    <li>Fecha: 05/03/2023</li>
-                    <li>Hora: 12:45 hs</li>
-                    <li>Mesa elegida: A45</li>
-                </ul>
-            </aside>
+                    <aside class="resumen">
+                        <h4 class="titulo_resumen">Resumen de reserva</h4>
+                        <ul>
+                            <li>Nombre del usuario</li>
+                            <li>DNI: 12.456.789</li>
+                            <li>Sucursal elegida: Av. de Mayo 450</li>
+                            <li>Fecha: 05/03/2023</li>
+                            <li>Hora: 12:45 hs</li>
+                            <li>Mesa elegida: A45</li>
+                        </ul>
+                    </aside>
+
+                    <input type="submit" value="Reservar" class="boton boton_verde">
+                </fieldset>
         
-        </form>
+            </form>
+    </section>
     </main>
 
     <footer class="pie_pagina">

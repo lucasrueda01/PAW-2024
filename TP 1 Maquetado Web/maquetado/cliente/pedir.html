@@ -17,8 +17,8 @@
         <input type="checkbox" name="menuHamburguesa" id="menuHamburguesa">
         <label for="menuHamburguesa"class="logo logo_chico" id="menuMobile">Paw Burger</label>
         <h1><a href="../cliente/index.html" class="logo logo_grande_mobile">Paw Burger</a></h1>
-        <nav>
-            <ul class="nav_menu">
+        <nav class="container_nav"> <!--block-->
+            <ul class="nav_menu"> <!--block-->
                 <li class="opciones_nav">
                     <a href="../cliente/nuestro_menu.html">MENU</a>
                 </li>
@@ -38,7 +38,8 @@
                     <a href="../cliente/reservar_cliente.html">RESERVAR</a>
                 </li>
                 <li class="opciones_nav">
-                    <a href="#">PERFIL EMPLEADO</a>
+                    <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
+                    <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
                     <ul class="submenu">
                         <li class="opciones_nav">
                             <a href="../empleado/gestion_lista_mesas.html">GESTION MESAS</a>
@@ -51,15 +52,19 @@
                         </li>
                     </ul>
                 </li>
+            </ul>
+             <ul class="nav_usuario">
                 <li class="opciones_nav">
-                    <p class="icono_usuario">Nombre de Usuario</p>
-                    <ul class="opciones_usuario">
+                    <input type="checkbox" name="menuPerfil" id="menuPerfil">
+                    <label for="menuPerfil" class="icono_usuario">Perfil Usuario</label>
+                    <ul class="submenu">
                         <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
                         <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
+
     </header>
 
 
@@ -72,11 +77,11 @@
         </section>
 
         <section>
-            <h2 class="titulo titulo_amarillo">Pedir</h2>
 
             <form action="/pagar" method="post" class="formulario_pedido">
+                
                 <fieldset class="container container_carrito"> <!--Fieldset Carrito-->
-                    <legend class="titulo_sector titulo_carrito">Mi Carrito</legend>
+                    <h3 class="titulo_fieldset">Mi Carrito</h3>
                     <table>
                         <thead>
                             <tr>
@@ -91,10 +96,10 @@
                                 <td>Hamburgesa con queso</td>
                                 <td>hamburguesa simple, con queso y cheddar</td>
                                 <td>$ 500,00</td>
-                                <td>
-                                    <button>-</button>
-                                    <input type="number" name="cantidad" id="cantidad" value="1">
+                                <td class="regulador">
                                     <button>+</button>
+                                    <input type="number" name="cantidad" id="cantidad" value="1">
+                                    <button>-</button>
                                 </td>
                             </tr>
                             <tr>
@@ -106,14 +111,23 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4">Total: $ 100</td>
+                                <td colspan="4">Total: $ 500</td>
                             </tr>
                         </tfoot>
                     </table>
-                    <a href="../cliente/nuestro_menu.html" class="boton boton_violeta">Agregar +</a>
+                    <a href="../cliente/nuestro_menu.html" class="boton boton_negro">Agregar</a>
                 </fieldset>
-                <fieldset class="container container_formulario">
-                    <legend class="titulo_sector titulo_delivery">Delivery</legend>
+
+                <nav class="selector_fieldset">
+                    <h3 class="titulo_fieldset_delivery">
+                        <input type="checkbox" name="menuDelivery" id="menuDelivery">
+                        <label for="menuDelivery" class="menuFieldSets" ="menuMobile">Delivery</label>
+                    </h3>
+                    <h3 class="titulo_fieldset_take_away">Take Away</h3>
+                    <h3 class="titulo_fieldset_en_el_lugar">En el Lugar</h3>
+                </nav>
+
+                <fieldset class="container container_formulario container_delivery">
 
                     <label for="nombre_delivery">Ingrese su nombre</label>
                     <input type="text" name="nombre_delivery" id="nombre_delivery">
@@ -127,7 +141,7 @@
                         <option value="efectivo">Pago en efectivo</option>
                     </select>
                     <aside>
-                        <h2>Resumen</h2>
+                        <h4  class="titulo_resumen">Resumen</h4>
                         <ul>
                             <li>Producto 1 - $10</li>
                             <li>Producto 2 - $20</li>
@@ -136,8 +150,9 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <fieldset class="container container_formulario">
-                    <legend class="titulo_sector">Take Away</legend>
+
+                <fieldset class="container container_formulario container_take_away"> <!-- .container_take_away { display: none }-->
+                    
                     <label for="nombre_take_away">Ingrese su nombre</label>
                     <input type="text" name="nombre_take_away" id="nombre_take_away">
                     <label for="numero_sucursal_take_away">Selecciona la sucursal:</label>
@@ -152,7 +167,7 @@
                         <option value="efectivo">Pago en efectivo</option>
                     </select>
                     <aside>
-                        <h2>Resumen</h2>
+                        <h4 class="titulo_resumen">Resumen</h4>
                         <ul>
                             <li>Producto 1 - $10</li>
                             <li>Producto 2 - $20</li>
@@ -161,8 +176,9 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <fieldset class="container container_formulario">
-                    <legend class="titulo_sector titulo_en_el_lugar">En el Lugar</legend>
+
+                <fieldset class="container container_formulario container_en_el_lugar">
+                    
                     <label for="nombre_en_el_lugar">Ingrese su nombre</label>
                     <input type="text" name="nombre_en_el_lugar" id="nombre_en_el_lugar">
                     <label for="numero_sucursal_en_el_lugar">Selecciona la sucursal:</label>
@@ -178,7 +194,7 @@
                         <option value="3">Mesa 3</option>
                     </select>
                     <aside>
-                        <h2>Resumen</h2>
+                        <h4  class="titulo_resumen">Resumen</h4>
                         <ul>
                             <li>Producto 1 - $10</li>
                             <li>Producto 2 - $20</li>
@@ -187,8 +203,8 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <input type="submit" value="Pagar" class="boton boton_violeta">
-                <input type="submit" value="Pedir" class="boton boton_violeta"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO
+                <input type="submit" value="Pagar" class="boton boton_negro">
+                <input type="submit" value="Pedir" class="boton boton_negro"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO
                                                         ELIGE LA OPCION PEDIR EN EL LUGAR
                                                     -->
             </form>

@@ -1,6 +1,14 @@
-# PAW-2024
-Repositorio de Trabajos Practicos para la asignatura Programacion Ambiente Web 2024
+# Proyecto Paw
 
 
-[Enlace al Trabajo Practico N° 1](./TP%201%20Maquetado%20Web/READMETP1.md)
+## Instalacion y Ejecucion (local)
 
+* git clone <url-repo>
+* cd composer install
+* cp .env.example .env # Editar el .env con los valores deseados
+* Ejecutar php -S localhost:8080 -t public/
+
+LICENSE.md
+CHANGELOG.md
+CONTRIBUTION.md
+AUTORES.md

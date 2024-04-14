@@ -17,8 +17,8 @@
         <input type="checkbox" name="menuHamburguesa" id="menuHamburguesa">
         <label for="menuHamburguesa"class="logo logo_chico" id="menuMobile">Paw Burger</label>
         <h1><a href="../cliente/index.html" class="logo logo_grande_mobile">Paw Burger</a></h1>
-        <nav>
-            <ul class="nav_menu">
+        <nav class="container_nav"> <!--block-->
+            <ul class="nav_menu"> <!--block-->
                 <li class="opciones_nav">
                     <a href="../cliente/nuestro_menu.html">MENU</a>
                 </li>
@@ -38,7 +38,8 @@
                     <a href="../cliente/reservar_cliente.html">RESERVAR</a>
                 </li>
                 <li class="opciones_nav">
-                    <a href="#">PERFIL EMPLEADO</a>
+                    <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
+                    <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
                     <ul class="submenu">
                         <li class="opciones_nav">
                             <a href="../empleado/gestion_lista_mesas.html">GESTION MESAS</a>
@@ -51,9 +52,12 @@
                         </li>
                     </ul>
                 </li>
+            </ul>
+             <ul class="nav_usuario">
                 <li class="opciones_nav">
-                    <p class="icono_usuario">Nombre de Usuario</p>
-                    <ul class="opciones_usuario">
+                    <input type="checkbox" name="menuPerfil" id="menuPerfil">
+                    <label for="menuPerfil" class="icono_usuario">Perfil Usuario</label>
+                    <ul class="submenu">
                         <li class="opciones_nav opciones_nav_oculto"><a href="inicio_sesion.html">Cliente</a></li>
                         <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
                     </ul>
@@ -78,7 +82,7 @@
                 <li class="container_noticia">
                     <article class="noticia">
                         <h3>¡ESTAMOS EN LUJAN!</h3>
-                        <img src="../../public/imgs/noticias/noticia-1.png" alt="imagen-noticia">
+                        <img src="../../public/imgs/sucursales/sucursalLujan.jpg" alt="Noticia 1">
                         <!--si no hay una foto, por defecto se mostraria el icono de la empresa-->
                         <p>Ya inauguramos la nueva sucursal ubicada 1 hora de la Capital Federal. Esta ciudad con
                             gran cultura hamburguesera nos incentivo para que aterricemos acá. Desde este viernes ya
@@ -89,26 +93,17 @@
                 </li>
                 <li class="container_noticia">
                     <article class="noticia">
-                        <h3>Titulo de la noticia</h3>
-                        <img src="../../public/imgs/noticias/noticia-1.png" alt="imagen-noticia">
+                        <h3>¡PROXIMAMENTE ... !</h3>
+                        <img src="../../public/imgs/svg/Imagotipo_PAWPOWER-negro.svg" alt="Noticia 2">
                         <!--si no hay una foto, por defecto se mostraria el icono de la empresa-->
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nam, veniam magni at rem
-                            commodi eos minima maiores? Magni aperiam, quia deleniti at dolorem officiis eius quibusdam
-                            rem voluptatem autem.</p>
-                        <time datetime="2024-03-24">viernes, 17 de marzo de 2024</time>
+                        <p>
+                            Ya falta poco para que conozcas las mejores hamburguesas. Vamos a contar con sucursales en Capital
+                            Federal y el Gran Buenos Aires. 
+                        </p>
+                        <time datetime="2024-02-10">Sabado, 10 de febrero de 2024</time>
                     </article>
                 </li>
-                <li class="container_noticia">
-                    <article class="noticia">
-                        <h3>Titulo de la noticia</h3>
-                        <img src="../../public/imgs/destacados/comida-destacada-1.png" alt="imagen-noticia">
-                        <!--si no hay una foto, por defecto se mostraria el icono de la empresa-->
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nam, veniam magni at rem
-                            commodi eos minima maiores? Magni aperiam, quia deleniti at dolorem officiis eius quibusdam
-                            rem voluptatem autem.</p>
-                        <time datetime="2024-03-24">viernes, 17 de marzo de 2024</time>
-                    </article>
-                </li>
+
             </ul>
         </section>
 
