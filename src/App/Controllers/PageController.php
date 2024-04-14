@@ -109,12 +109,12 @@ class PageController
         require $this->viewsDirCliente . 'nuevo_plato.view.php';
     }
     
-    public function varificar_imagen(){
+    public function varificar_imagen($archivo_imagen){
         // Verifica si el archivo se ha subido correctamente
         
-        if (isset($_FILES['imagen_plato']) && $_FILES['imagen_plato']['error'] === UPLOAD_ERR_OK) {
+        if (isset($archivo_imagen['imagen_plato']) && $archivo_imagen['imagen_plato']['error'] === UPLOAD_ERR_OK) {
             // Obtén información sobre el archivo subido
-            $file = $_FILES['imagen_plato'];
+            $file = $archivo_imagen['imagen_plato'];
             $fileName = $file['name'];
             $fileType = $file['type'];
             $fileSize = $file['size'];
@@ -140,7 +140,7 @@ class PageController
             
             // Si todo es correcto, guarda el archivo en el servidor
             // Establece el directorio donde se guardará el archivo
-            $uploadDirectory = '/../uploads/';
+            $uploadDirectory = 'uploads/';
             // Genera un nombre de archivo único para evitar colisiones
             $newFileName = uniqid() . '_' . basename($fileName);
             $uploadPath = $uploadDirectory . $newFileName;
@@ -168,7 +168,7 @@ class PageController
     public function datos_plato(){
         $formulario_plato = $_POST;
 
-        $resultado = $this->varificar_imagen();
+        $resultado = $this->varificar_imagen($_FILES);
 
         require $this->viewsDirCliente . 'nuevo_plato.view.php';
     }

@@ -1,7 +1,7 @@
 <header> <!--block-->
         <h1><a href="/" class="logo logo_chico" id="menuDesktop">Paw Burger</a></h1>
         <input type="checkbox" name="menuHamburguesa" id="menuHamburguesa">
-        <label for="menuHamburguesa"class="logo logo_chico" id="menuMobile">Paw Burger</label>
+        <label for="menuHamburguesa" class="logo logo_chico" id="menuMobile">Paw Burger</label>
         <h1><a href="/" class="logo logo_grande_mobile">Paw Burger</a></h1>
 
 
