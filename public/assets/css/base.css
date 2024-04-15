@@ -154,14 +154,26 @@ main {
 }
 
 .submenuEmpleado {
-    left: 70vw;
+    left: 77vw;
 }
 
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 1663px) {
     .submenuEmpleado {
-        left: 65vw;
+        left: 75vw;
     }
     
+}
+
+@media screen and (max-width: 1495px) {
+    .submenuEmpleado {
+        left: 65vw;
+    }   
+}
+
+@media screen and (min-width: 2110px) {
+    .submenu{
+        right: 10rem;
+    }   
 }
 
 @media screen and (max-width: 980px) {
