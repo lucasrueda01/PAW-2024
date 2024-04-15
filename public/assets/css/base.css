@@ -139,7 +139,7 @@ main {
 
 #checkPerfilEmpleado:checked + label + ul {
     display: block;
-    background-color: #ffffff;
+    background-color: var(--color-fondo-menu-mobile);
     z-index: 1;
 }
 
@@ -173,7 +173,7 @@ main {
         width: 18rem;
         height: 5rem;
         background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
-        margin-left: 5rem;
+        margin-left: 20%;
     }
 
     #menuMobile {
@@ -194,7 +194,7 @@ main {
 
 
     .submenu {
-        top: 22.5rem;
+        top: 26rem;
         left: 0;
         width: 100%;
         text-align: center;
@@ -207,7 +207,7 @@ main {
     }
 
     #menuHamburguesa ~ label {
-        margin-left: 13rem;
+        margin-left: 9%;
     }
 
     #menuHamburguesa:checked + label + h1 + nav > ul{
