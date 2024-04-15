@@ -30,9 +30,10 @@
                 <li class="opciones_nav">
                     <input type="checkbox" name="menuPerfil" id="menuPerfil">
                     <label for="menuPerfil" class="icono_usuario">Perfil Usuario</label>
-                    <ul class="submenu">
-                        <li class="opciones_nav opciones_nav_oculto"><a href="/inicio_sesion">Cliente</a></li>
-                        <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
+                    <ul class="submenu submenu_">
+                        <li class="opciones_nav opciones_nav_oculto"><a href="/iniciar_sesion">Iniciar Sesion</a></li>
+                        <li class="opciones_nav opciones_nav_oculto"><a href="/registrar_usuario">Registrar Usuario Sesion</a></li>
+                        <li class="opciones_nav opciones_nav_oculto"><a href="/cerrar_sesion">Cerrar Sesion</a></li>
                     </ul>
                 </li>
             </ul>

@@ -51,4 +51,7 @@ $router->post('/datos_plato', 'PageController@datos_plato');
 $router->get('/gestion_lista_mesas', 'PageController@gestion_lista_mesas');
 $router->get('/gestion_mesa', 'PageController@gestion_mesa');
 $router->get('/pedidos_entrantes', 'PageController@pedidos_entrantes');
+$router->get('/iniciar_sesion', 'PageController@inicio_sesion');
+$router->get('/registrar_usuario', 'PageController@registrar_usuario');
+$router->get('/perfil_usuario', 'PageController@perfil_usuario');
 
