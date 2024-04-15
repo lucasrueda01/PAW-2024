@@ -694,7 +694,7 @@ main {
 }
 
 .formulario input[type="submit"] {
-    width: 10rem;
+    width: fit-content;
 }
 
 

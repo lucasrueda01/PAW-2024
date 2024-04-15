@@ -26,23 +26,23 @@
 
         <h2 class="titulo titulo_amarillo">Registrar Usuario</h2>
 
-        <form action="registro">
+        <form action="registro" method="post" class="formulario form_amarillo">
 
             <h3>Bienvenido</h3>
 
-            <label for="email">Ingrese su email</label>
-            <input required type="text" name="email" id="email">
+            <label for="email" class="etiqueta">Ingrese su email</label>
+            <input required type="text" name="email" id="email" class="campo">
 
-            <label for="nombre">Ingrese su nombre completo</label>
-            <input required type="text" name="nombre" id="nombre">
+            <label for="nombre" class="etiqueta">Ingrese su nombre completo</label>
+            <input required type="text" name="nombre" id="nombre" class="campo">
 
-            <label for="contrasenia">Ingrese Password</label>
-            <input required type="text" name="password" id="contrasenia">
+            <label for="contrasenia" class="etiqueta">Ingrese Password</label>
+            <input required type="text" name="password" id="contrasenia" class="campo">
 
-            <label for="password_repetida">Confirme el Password</label>
-            <input required type="password" name="password_repetida" id="password_repetida">
+            <label for="password_repetida" class="etiqueta">Confirme el Password</label>
+            <input required type="password" name="password_repetida" id="password_repetida" class="campo">
 
-            <input type="submit" value="registrar_usuario">
+            <input type="submit" value="Registrar Usuario" class="boton boton_negro">
 
         </form>
 
