@@ -2,7 +2,7 @@
 
 namespace Paw\App\Controllers;
 
-class ImagenController 
+class UploadController 
 {
     public string $path_promociones = '/';
     const ERROR_TIPO_NO_PERMITIDO = 'tipo_no_permitido';

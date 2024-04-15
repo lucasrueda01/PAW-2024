@@ -2,7 +2,7 @@
 
 namespace Paw\App\Controllers;
 
-use Paw\App\Controllers\ImagenController;
+use Paw\App\Controllers\UploadController;
 
 
 class PageController
@@ -11,7 +11,7 @@ class PageController
     public string $viewsDir;
     public string $viewsDirCliente;
     public array $menu;
-    public ImagenController $imgController;
+    public UploadController $uploadController;
 
 
     public function __construct()
@@ -50,7 +50,7 @@ class PageController
             ]
         ];
 
-        $this->imgController = new ImagenController;
+        $this->uploadController = new UploadController;
     }
 
     public function index()
@@ -112,8 +112,8 @@ class PageController
     
 
     public function datos_plato(){
-    
-        $resultado = $this->imgController->varificar_imagen($_FILES, $_POST);
+
+        $resultado = $this->uploadController->varificar_imagen($_FILES, $_POST);
 
         require $this->viewsDirCliente . 'nuevo_plato.view.php';
     }
