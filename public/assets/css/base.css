@@ -201,12 +201,23 @@ main {
         opacity: 0;
     }
 
-    .submenu {
+    .submenuEmpleado {
+        top: 26rem;
+        left: 0;
+        width: 100%;
+    }
+
+    .submenuPerfil {
         top: 4rem;
         left: 70vw;
         width: 30%;
-        text-align: center;
+    }
 
+    .submenu {
+        /* top: 4rem;
+        left: 70vw;
+        width: 30%; */
+        text-align: center;
     }
 
     .submenu li a {

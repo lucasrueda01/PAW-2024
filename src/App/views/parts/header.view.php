@@ -13,7 +13,7 @@
                 <li class="opciones_nav">
                     <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
                     <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
-                    <ul class="submenu">
+                    <ul class="submenu submenuEmpleado">
                         <li class="opciones_nav">
                             <a href="/gestion_lista_mesas">GESTION MESAS</a>
                         </li>
