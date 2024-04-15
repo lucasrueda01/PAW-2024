@@ -112,7 +112,7 @@ class PageController
     
 
     public function datos_plato(){
-
+    
         $resultado = $this->imgController->varificar_imagen($_FILES, $_POST);
 
         require $this->viewsDirCliente . 'nuevo_plato.view.php';
