@@ -4,15 +4,14 @@ namespace Paw\App\Controllers;
 
 use Paw\App\Controllers\UploadController;
 
+use Paw\App\Controllers\MenuMaster;
 
 class PageController
 {
 
     public string $viewsDir;
     public string $viewsDirCliente;
-    public array $menu;
-    public array $menuEmpleado;
-    public array $menuPerfil;
+    public MenuMaster $menuMaster;
     public UploadController $uploadController;
 
 
@@ -21,70 +20,7 @@ class PageController
         $this->viewsDir = __DIR__ . '/../views/';
         $this->viewsDirCliente = __DIR__ . '/../views/cliente/';
 
-        $this->menu = [
-            [
-                'href' => '/nuestro_menu',
-                'name' => 'MENU'
-            ],
-            [
-                'href' => '/promociones',
-                'name' => 'PROMOS'
-            ],
-            [
-                'href' => '/sucursales',
-                'name' => 'SUCURSALES'
-            ],
-            [
-                'href' => '/noticias',
-                'name' => 'NOTICIAS'
-            ],
-            [
-                'href' => '/pedir',
-                'name' => 'PEDIR'
-            ],
-            [
-                'href' => '/reservar_cliente',
-                'name' => 'RESERVAR'
-            ]
-        ];
-
-        $this->menuEmpleado = [
-            [
-                'href' => '/gestion_lista_mesas',
-                'name' => 'GESTION MESAS'
-            ],
-            [
-                'href' => '/gestion_mesa',
-                'name' => 'GESTION MESA'
-            ],
-            [
-                'href' => '/pedidos_entrantes',
-                'name' => 'PEDIDOS ENTRANTES'
-            ],
-            [
-                'href' => '/nuevo_plato',
-                'name' => 'NUEVO PLATO'
-            ],
-        ];
-
-        $this->menuPerfil = [
-            [
-                'href' => '/perfil_usuario',
-                'name' => 'Mi Perfil'
-            ],
-            [
-                'href' => '/iniciar_sesion',
-                'name' => 'Iniciar Sesion'
-            ],
-            [
-                'href' => '/registrar_usuario',
-                'name' => 'Registrar Usuario Sesion'
-            ],
-            [
-                'href' => '/cerrar_sesion',
-                'name' => 'Cerrar Sesion'
-            ]
-        ];
+        $this->menuMaster = new MenuMaster;
 
         $this->uploadController = new UploadController;
     }
