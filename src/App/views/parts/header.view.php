@@ -14,15 +14,9 @@
                     <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
                     <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
                     <ul class="submenu submenuEmpleado">
-                        <li class="opciones_nav">
-                            <a href="/gestion_lista_mesas">GESTION MESAS</a>
-                        </li>
-                        <li class="opciones_nav">
-                            <a href="/gestion_mesa">GESTION MESA</a>
-                        </li>
-                        <li class="opciones_nav">
-                            <a href="/pedidos_entrantes">PEDIDOS ENTRANTES</a>
-                        </li>
+
+                        <?php require __DIR__.'/nav_empleado.view.php' ?>            
+
                     </ul>
                 </li>
             </ul>
@@ -31,10 +25,9 @@
                     <input type="checkbox" name="menuPerfil" id="menuPerfil">
                     <label for="menuPerfil" class="icono_usuario">Perfil Usuario</label>
                     <ul class="submenu submenu_">
-                        <li class="opciones_nav opciones_nav_oculto"><a href="/perfil_usuario">Mi Perfil</a></li>
-                        <li class="opciones_nav opciones_nav_oculto"><a href="/iniciar_sesion">Iniciar Sesion</a></li>
-                        <li class="opciones_nav opciones_nav_oculto"><a href="/registrar_usuario">Registrar Usuario Sesion</a></li>
-                        <li class="opciones_nav opciones_nav_oculto"><a href="/cerrar_sesion">Cerrar Sesion</a></li>
+
+                        <?php require __DIR__.'/nav_perfil.view.php' ?>            
+
                     </ul>
                 </li>
             </ul>

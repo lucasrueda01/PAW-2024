@@ -11,6 +11,8 @@ class PageController
     public string $viewsDir;
     public string $viewsDirCliente;
     public array $menu;
+    public array $menuEmpleado;
+    public array $menuPerfil;
     public UploadController $uploadController;
 
 
@@ -43,10 +45,44 @@ class PageController
             [
                 'href' => '/reservar_cliente',
                 'name' => 'RESERVAR'
+            ]
+        ];
+
+        $this->menuEmpleado = [
+            [
+                'href' => '/gestion_lista_mesas',
+                'name' => 'GESTION MESAS'
+            ],
+            [
+                'href' => '/gestion_mesa',
+                'name' => 'GESTION MESA'
+            ],
+            [
+                'href' => '/pedidos_entrantes',
+                'name' => 'PEDIDOS ENTRANTES'
             ],
             [
                 'href' => '/nuevo_plato',
                 'name' => 'NUEVO PLATO'
+            ],
+        ];
+
+        $this->menuPerfil = [
+            [
+                'href' => '/perfil_usuario',
+                'name' => 'Mi Perfil'
+            ],
+            [
+                'href' => '/iniciar_sesion',
+                'name' => 'Iniciar Sesion'
+            ],
+            [
+                'href' => '/registrar_usuario',
+                'name' => 'Registrar Usuario Sesion'
+            ],
+            [
+                'href' => '/cerrar_sesion',
+                'name' => 'Cerrar Sesion'
             ]
         ];
 
