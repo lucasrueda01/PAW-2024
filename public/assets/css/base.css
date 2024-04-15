@@ -222,17 +222,13 @@ main {
         margin: 1rem 2rem;
     }
 
-    
-
-
-
-
     .opciones_nav a {
         display: block;
         width: 100%;
         color: white;
         margin: 1rem 2rem;
     }
+
 }
 
 .opciones_nav a:hover,
