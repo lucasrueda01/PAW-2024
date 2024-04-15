@@ -51,8 +51,8 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <a href="/nuestro_menu.html" class="boton boton_violeta">Agregar +</a>
-                    <a href="/pedir.html" class="boton boton_violeta">Continuar el pedido</a>
+                    <a href="/nuestro_menu.html" class="boton boton_negro">Agregar +</a>
+                    <a href="/pedir.html" class="boton boton_negro">Continuar el pedido</a>
                 </fieldset>
             </form>
         </section>
