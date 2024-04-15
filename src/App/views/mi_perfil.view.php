@@ -51,8 +51,13 @@
                             </tr>
                         </tfoot>
                     </table>
+<<<<<<< HEAD
                     <a href="/nuestro_menu" class="boton boton_violeta">Agregar +</a>
                     <a href="/pedir" class="boton boton_violeta">Continuar el pedido</a>
+=======
+                    <a href="/nuestro_menu" class="boton boton_violeta">Agregar +</a>
+                    <a href="/pedir" class="boton boton_violeta">Continuar el pedido</a>
+>>>>>>> 8355fa5a50e1037350d4d2920a52ed836dd41a78
                 </fieldset>
             </form>
         </section>
