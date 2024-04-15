@@ -191,12 +191,10 @@ main {
         opacity: 0;
     }
 
-
-
     .submenu {
-        top: 26rem;
-        left: 0;
-        width: 100%;
+        top: 4rem;
+        left: 47.5%;
+        width: 30%;
         text-align: center;
 
     }
@@ -213,6 +211,12 @@ main {
     #menuHamburguesa:checked + label + h1 + nav > ul{
         display: flex;
         opacity: 1;
+    }
+
+    
+
+    #menuPerfil:checked + label + ul {
+        display: block;
     }
 
     .labelPerfilEmpleado {

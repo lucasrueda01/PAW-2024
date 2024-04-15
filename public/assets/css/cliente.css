@@ -737,4 +737,9 @@ input[type="submit"] {
     .formulario {
         margin: 1rem 10%; 
     }
+
+    .sucursal h3 {
+        padding-left: 22%;
+        font-size: 4rem;
+    }
 }
