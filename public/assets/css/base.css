@@ -139,7 +139,7 @@ main {
 
 #checkPerfilEmpleado:checked + label + ul {
     display: block;
-    background-color: #ffffff;
+    background-color: var(--color-fondo-menu-mobile);
     z-index: 1;
 }
 
@@ -173,7 +173,7 @@ main {
         width: 18rem;
         height: 5rem;
         background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
-        margin-left: 5rem;
+        margin-left: 20%;
     }
 
     #menuMobile {
@@ -191,12 +191,10 @@ main {
         opacity: 0;
     }
 
-
-
     .submenu {
-        top: 22.5rem;
-        left: 0;
-        width: 100%;
+        top: 4rem;
+        left: 47.5%;
+        width: 30%;
         text-align: center;
 
     }
@@ -207,12 +205,18 @@ main {
     }
 
     #menuHamburguesa ~ label {
-        margin-left: 13rem;
+        margin-left: 9%;
     }
 
     #menuHamburguesa:checked + label + h1 + nav > ul{
         display: flex;
         opacity: 1;
+    }
+
+    
+
+    #menuPerfil:checked + label + ul {
+        display: block;
     }
 
     .labelPerfilEmpleado {
@@ -222,17 +226,13 @@ main {
         margin: 1rem 2rem;
     }
 
-    
-
-
-
-
     .opciones_nav a {
         display: block;
         width: 100%;
         color: white;
         margin: 1rem 2rem;
     }
+
 }
 
 .opciones_nav a:hover,

@@ -720,3 +720,26 @@ input[type="submit"] {
     padding-left: 5rem;
 }
 
+@media screen and (max-width: 600px) {
+
+    .formulario h3 {
+        font-size: 2rem;
+    }
+
+    .titulo_form_unite {
+        left: 20%;
+    }
+
+    .titulo_portada h2 {
+        font-size: 6rem;
+    }
+
+    .formulario {
+        margin: 1rem 10%; 
+    }
+
+    .sucursal h3 {
+        padding-left: 22%;
+        font-size: 4rem;
+    }
+}
