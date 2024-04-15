@@ -98,6 +98,8 @@ main {
     position: absolute;
     display: none;
     width: 20rem;
+    right: .5rem;
+    top: 3.5rem;
     background-color: rgba(252, 252, 252, 0.5);
     margin-top: 2rem;
     text-align: left;
@@ -144,6 +146,14 @@ main {
 }
 
 
+#menuPerfil:checked + label + ul {
+    display: block;
+    z-index: 999;
+    background-color: var(--color-fondo-menu-mobile);
+    border: .1rem solid white;
+}
+
+
 @media screen and (max-width: 980px) {
 
     .icono_usuario {
@@ -155,7 +165,7 @@ main {
 
     header {
         position: relative;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .nav_menu {
@@ -193,7 +203,7 @@ main {
 
     .submenu {
         top: 4rem;
-        left: 47.5%;
+        left: 70vw;
         width: 30%;
         text-align: center;
 
@@ -215,9 +225,6 @@ main {
 
     
 
-    #menuPerfil:checked + label + ul {
-        display: block;
-    }
 
     .labelPerfilEmpleado {
         display: block;
