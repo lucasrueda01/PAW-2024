@@ -13,7 +13,10 @@
 
 <main>
 
-        <p>Nombre Cuenta</p>
+        <section class="titulo titulo_portada">
+            <h2>PERFIL PERSONAL</h2>
+            <p>Aqui podras ver tus datos personales</p>
+        </section>
         
         <section>
             <h3>Mi carrito</h3>

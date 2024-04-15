@@ -153,6 +153,16 @@ main {
     border: .1rem solid white;
 }
 
+.submenuEmpleado {
+    left: 70vw;
+}
+
+@media screen and (max-width: 1260px) {
+    .submenuEmpleado {
+        left: 65vw;
+    }
+    
+}
 
 @media screen and (max-width: 980px) {
 
