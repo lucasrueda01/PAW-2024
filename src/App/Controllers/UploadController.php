@@ -13,7 +13,7 @@ class UploadController
     const UPLOADDIRECTORY = 'uploads/';
 
 
-    public function varificar_imagen($archivo_imagen, $datos_plato){
+    public function verificar_imagen($archivo_imagen, $datos_plato){
         // Verifica si el archivo se ha subido correctamente
 
         if (isset($archivo_imagen['imagen_plato']) && $archivo_imagen['imagen_plato']['error'] === UPLOAD_ERR_OK) {

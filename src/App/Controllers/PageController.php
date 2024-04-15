@@ -107,13 +107,13 @@ class PageController
     
     public function nuevo_plato(){
         $titulo = 'PAW POWER | NUEVO PLATO';
-        require $this->viewsDirCliente . 'nuevo_plato.view.php';
+        require $this->viewsDir . 'empleado/nuevo_plato.view.php';
     }
     
 
     public function datos_plato(){
 
-        $resultado = $this->uploadController->varificar_imagen($_FILES, $_POST);
+        $resultado = $this->uploadController->verificar_imagen($_FILES, $_POST);
 
         require $this->viewsDirCliente . 'nuevo_plato.view.php';
     }
