@@ -347,8 +347,6 @@ main {
     width: 16rem;
     color: white;
     background-color: black;
-    border-radius: .5rem;
-    padding: 1rem 1rem;
 }
 
 .boton_negro:hover {
@@ -688,7 +686,7 @@ main {
 
 .formulario {
     margin: 1rem 25%;
-    padding: 8rem 1rem 0rem 1rem;
+    padding: 8rem 1rem 1rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -734,6 +732,7 @@ main {
 
 .formulario h3 {
     font-size: 3rem;
+
 }
 
 .formulario::after {
