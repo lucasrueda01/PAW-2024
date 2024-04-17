@@ -2,40 +2,18 @@
 
 namespace Paw\App\Controllers;
 
+use Paw\App\Controllers\MenuMaster;
+
 class ErrorController {
 
     public string $viewsDir;
     public array $menu;
+    public MenuMaster $menuMaster;
 
     public function __construct(){
         $this->viewsDir = __DIR__ . '/../views/errors/';
 
-        $this->menu = [
-            [
-                'href' => '/nuestro_menu',
-                'name' => 'MENU'
-            ],
-            [
-                'href' => '/promociones',
-                'name' => 'PROMOS'
-            ],
-            [
-                'href' => '/sucursales',
-                'name' => 'SUCURSALES'
-            ],
-            [
-                'href' => '/noticias',
-                'name' => 'NOTICIAS'
-            ],
-            [
-                'href' => '/pedir',
-                'name' => 'PEDIR'
-            ],
-            [
-                'href' => '/reservar_cliente',
-                'name' => 'RESERVAR'
-            ]
-        ];
+        $this->menuMaster = new MenuMaster;
         
     }
     

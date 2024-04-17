@@ -13,16 +13,10 @@
                 <li class="opciones_nav">
                     <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
                     <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
-                    <ul class="submenu">
-                        <li class="opciones_nav">
-                            <a href="/gestion_lista_mesas">GESTION MESAS</a>
-                        </li>
-                        <li class="opciones_nav">
-                            <a href="/gestion_mesa">GESTION MESA</a>
-                        </li>
-                        <li class="opciones_nav">
-                            <a href="/pedidos_entrantes">PEDIDOS ENTRANTES</a>
-                        </li>
+                    <ul class="submenu submenuEmpleado">
+
+                        <?php require __DIR__.'/nav_empleado.view.php' ?>            
+
                     </ul>
                 </li>
             </ul>
@@ -30,9 +24,10 @@
                 <li class="opciones_nav">
                     <input type="checkbox" name="menuPerfil" id="menuPerfil">
                     <label for="menuPerfil" class="icono_usuario">Perfil Usuario</label>
-                    <ul class="submenu">
-                        <li class="opciones_nav opciones_nav_oculto"><a href="/inicio_sesion">Cliente</a></li>
-                        <li class="opciones_nav opciones_nav_oculto"><a href="#">Cerrar Sesion</a></li>
+                    <ul class="submenu submenu_">
+
+                        <?php require __DIR__.'/nav_perfil.view.php' ?>            
+
                     </ul>
                 </li>
             </ul>

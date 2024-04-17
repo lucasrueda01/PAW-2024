@@ -153,6 +153,28 @@ main {
     border: .1rem solid white;
 }
 
+.submenuEmpleado {
+    left: 77vw;
+}
+
+@media screen and (max-width: 1663px) {
+    .submenuEmpleado {
+        left: 75vw;
+    }
+    
+}
+
+@media screen and (max-width: 1495px) {
+    .submenuEmpleado {
+        left: 65vw;
+    }   
+}
+
+@media screen and (min-width: 2110px) {
+    .submenu{
+        right: 10rem;
+    }   
+}
 
 @media screen and (max-width: 980px) {
 
@@ -201,12 +223,23 @@ main {
         opacity: 0;
     }
 
-    .submenu {
+    .submenuEmpleado {
+        top: 22.6rem;
+        left: 0;
+        width: 100%;
+    }
+
+    .submenuPerfil {
         top: 4rem;
         left: 70vw;
         width: 30%;
-        text-align: center;
+    }
 
+    .submenu {
+        /* top: 4rem;
+        left: 70vw;
+        width: 30%; */
+        text-align: center;
     }
 
     .submenu li a {
@@ -308,6 +341,7 @@ main {
 .boton_amarillo:hover {
     background-color: var(--color-amarrillohover)
 }
+
 
 .boton_negro {
     width: 16rem;
@@ -694,7 +728,7 @@ main {
 }
 
 .formulario input[type="submit"] {
-    width: 10rem;
+    width: fit-content;
 }
 
 

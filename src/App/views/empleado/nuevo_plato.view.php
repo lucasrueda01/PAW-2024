@@ -3,13 +3,13 @@
 
 <head>
 
-<?php require __DIR__.'/../parts/head.view.php' ?>
+<?php require __DIR__.'\../parts/head.view.php' ?>
 
 </head>
 
 <body>
     
-    <?php require __DIR__.'/../parts/header.view.php' ?>
+    <?php require __DIR__.'\../parts/header.view.php' ?>
 
 <main>
 
@@ -60,7 +60,7 @@
 
     </main>
 
-    <?php require __DIR__.'/../parts/footer.view.php' ?>
+    <?php require __DIR__.'\../parts/footer.view.php' ?>
 
 </body>
 

@@ -3,54 +3,29 @@
 namespace Paw\App\Controllers;
 
 use Paw\App\Controllers\UploadController;
+use Paw\App\Controllers\VerificadorController;
 
+use Paw\App\Controllers\MenuMaster;
 
 class PageController
 {
 
     public string $viewsDir;
     public string $viewsDirCliente;
-    public array $menu;
+    public MenuMaster $menuMaster;
     public UploadController $uploadController;
-
+    public VerificadorController $verificadorController;
 
     public function __construct()
     {
         $this->viewsDir = __DIR__ . '/../views/';
         $this->viewsDirCliente = __DIR__ . '/../views/cliente/';
 
-        $this->menu = [
-            [
-                'href' => '/nuestro_menu',
-                'name' => 'MENU'
-            ],
-            [
-                'href' => '/promociones',
-                'name' => 'PROMOS'
-            ],
-            [
-                'href' => '/sucursales',
-                'name' => 'SUCURSALES'
-            ],
-            [
-                'href' => '/noticias',
-                'name' => 'NOTICIAS'
-            ],
-            [
-                'href' => '/pedir',
-                'name' => 'PEDIR'
-            ],
-            [
-                'href' => '/reservar_cliente',
-                'name' => 'RESERVAR'
-            ],
-            [
-                'href' => '/nuevo_plato',
-                'name' => 'NUEVO PLATO'
-            ]
-        ];
+        $this->menuMaster = new MenuMaster;
 
         $this->uploadController = new UploadController;
+
+        $this->verificadorController = new VerificadorController;
     }
 
     public function index()
@@ -99,6 +74,13 @@ class PageController
         $titulo = 'PAW POWER | RESERVAR CLIENTE';
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }
+
+    public function procesar_reserva_cliente()
+    {
+        $datosReserva = $_POST;
+        $resultado = $this->verificadorController->verificarCampos($datosReserva);
+        require $this->viewsDirCliente . 'reservar_cliente.view.php';
+    }
     public function unete_al_equipo()
     {
         $titulo = 'PAW POWER | UNETE AL EQUIPO';
@@ -107,13 +89,13 @@ class PageController
     
     public function nuevo_plato(){
         $titulo = 'PAW POWER | NUEVO PLATO';
-        require $this->viewsDirCliente . 'nuevo_plato.view.php';
+        require $this->viewsDir . 'empleado/nuevo_plato.view.php';
     }
     
 
     public function datos_plato(){
 
-        $resultado = $this->uploadController->varificar_imagen($_FILES, $_POST);
+        $resultado = $this->uploadController->verificar_imagen($_FILES, $_POST);
 
         require $this->viewsDirCliente . 'nuevo_plato.view.php';
     }
@@ -133,4 +115,22 @@ class PageController
         $titulo = 'PAW POWER | PEDIDOS';
         require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
     }
+
+    public function inicio_sesion() {
+        $titulo = 'PAW POWER | SESION';
+        require $this->viewsDir . 'inicio_sesion.view.php';
+
+    }
+    public function registrar_usuario() {
+        $titulo = 'PAW POWER | REGISTRO';
+        require $this->viewsDir . 'registrar_usuario.view.php';
+    }
+
+    public function perfil() {
+        $titulo = 'PAW POWER | PERFIL';
+        require $this->viewsDir . 'mi_perfil.view.php';
+    }
+
 }
+
+
