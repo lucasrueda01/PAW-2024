@@ -198,6 +198,9 @@ input[type=number]::-webkit-inner-spin-button {
     height: 3rem;
 }
 
+.seccion_formulario textarea {
+    resize: none;
+}
 
 .etiqueta {
     font-family: Century_Gothic;

@@ -17,6 +17,16 @@
             <h2>REGISTRARSE</h2>
         </section>
 
+        <?php if(isset($resultado['exito'])) : ?>
+            <h4 class="msj msj_exito">
+                   <?= $resultado['description']; ?>
+            </h4>
+        <?php else: ?>
+            <h4 class="msj msj_error">
+                   <?= $resultado['description']; ?>
+            </h4>        
+        <?php endif ?>
+
         <form action="/registro" method="post" class="formulario form_amarillo">
 
             <h3>Bienvenido</h3>
@@ -28,7 +38,7 @@
             <input required type="text" name="nombre" id="nombre" class="campo">
 
             <label for="contrasenia" class="etiqueta">Ingrese Password</label>
-            <input required type="text" name="password" id="contrasenia" class="campo">
+            <input required type="password" name="password" id="contrasenia" class="campo">
 
             <label for="password_repetida" class="etiqueta">Confirme el Password</label>
             <input required type="password" name="password_repetida" id="password_repetida" class="campo">

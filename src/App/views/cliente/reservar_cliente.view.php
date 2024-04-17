@@ -20,26 +20,35 @@
 
         <section>
 
+            <?php if(isset($resultado['exito'])) : ?>
+                <h4 class="msj msj_exito">
+                    <?= $resultado['description']; ?>
+                </h4>
+            <?php elseif(isset($resultado['error'])): ?>
+                <h4 class="msj msj_error">
+                    <?= $resultado['description']; ?>
+                </h4>        
+            <?php endif ?>            
 
-            <form action="/reservar_cliente" class="form_reserva">
+            <form action="/reservar_cliente" class="form_reserva" method="post">
                 <fieldset class="container container_formulario container_delivery">
                     <label for="nombre">Ingrese su nombre completo</label>
-                    <input type="text" name="nombre" id="nombre">
+                    <input type="text" name="nombre" id="nombre" required>
                     <label for="dni">Ingrese su DNI</label>
-                    <input type="text" name="dni" id="dni">
+                    <input type="number" name="dni" id="dni" required>
                     <label for="sucursal">Selecciona una sucursal:</label>
-                    <select id="sucursal" name="sucursal">
+                    <select id="sucursal" name="sucursal" required>
                         <option value="sucursal1">Sucursal 1</option>
                         <option value="sucursal2">Sucursal 2</option>
                         <option value="sucursal3">Sucursal 3</option>
                         <option value="sucursal4">Sucursal 4</option>
                     </select>
                     <label for="date">Seleccione fecha:</label>
-                    <input type="date" name="time" id="date">
+                    <input type="date" name="time" id="date" required>
                     <label for="time">Seleccione hora:</label>
-                    <input type="time" name="time" id="time">
+                    <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
-                    <select name="mesas_disponibles" id="mesas_disponibles">
+                    <select name="mesas_disponibles" id="mesas_disponibles" required>
                         <option value="mesa-s1">Mesa Salon 1</option>
                         <option value="mesa-s2">Mesa Salon 2</option>
                         <option value="mesa-pf1">Mesa Pet Friendly 1</option>
@@ -49,12 +58,11 @@
                     <aside class="resumen">
                         <h4 class="titulo_resumen">Resumen de reserva</h4>
                         <ul>
-                            <li>Nombre del usuario</li>
-                            <li>DNI: 12.456.789</li>
-                            <li>Sucursal elegida: Av. de Mayo 450</li>
-                            <li>Fecha: 05/03/2023</li>
-                            <li>Hora: 12:45 hs</li>
-                            <li>Mesa elegida: A45</li>
+                          <?php  foreach ($resultado['resumen'] as $clave => $valor) : ?>
+
+                             <li><?= ucfirst($clave) ?> : <?= $valor ?> </li>
+
+                          <?php endforeach; ?>                            
                         </ul>
                     </aside>
 

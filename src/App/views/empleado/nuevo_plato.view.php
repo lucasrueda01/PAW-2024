@@ -40,7 +40,7 @@
                 <label for="nombre_plato" class="etiqueta">Ingresa el nombre del plato</label>
                 <input required type="text" name="nombre_plato" id="nombre_plato" class="campo">
 
-                <label for="ingredientes" class="etiqueta">Indiquenos sus ingredientes</label>
+                <label for="ingredientes" class="etiqueta">Descripcion del plato</label>
                 <textarea required name="ingredientes" id="ingredientes" cols="10" rows="10" class="campo"></textarea>
 
 
