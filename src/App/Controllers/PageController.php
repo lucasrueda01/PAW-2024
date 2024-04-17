@@ -3,6 +3,7 @@
 namespace Paw\App\Controllers;
 
 use Paw\App\Controllers\UploadController;
+use Paw\App\Controllers\VerificadorController;
 
 use Paw\App\Controllers\MenuMaster;
 
@@ -13,7 +14,7 @@ class PageController
     public string $viewsDirCliente;
     public MenuMaster $menuMaster;
     public UploadController $uploadController;
-
+    public VerificadorController $verificadorController;
 
     public function __construct()
     {
@@ -23,6 +24,8 @@ class PageController
         $this->menuMaster = new MenuMaster;
 
         $this->uploadController = new UploadController;
+
+        $this->verificadorController = new VerificadorController;
     }
 
     public function index()
@@ -69,6 +72,13 @@ class PageController
     public function reservar_cliente()
     {
         $titulo = 'PAW POWER | RESERVAR CLIENTE';
+        require $this->viewsDirCliente . 'reservar_cliente.view.php';
+    }
+
+    public function procesar_reserva_cliente()
+    {
+        $datosReserva = $_POST;
+        $resultado = $this->verificadorController->verificarCampos($datosReserva);
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }
     public function unete_al_equipo()
