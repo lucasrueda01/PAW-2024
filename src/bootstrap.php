@@ -44,6 +44,7 @@ $router->get('/sucursales', 'PageController@sucursales');
 $router->get('/noticias', 'PageController@noticias');
 $router->get('/sobre_nosotros', 'PageController@sobre_nosotros');
 $router->get('/reservar_cliente', 'PageController@reservar_cliente');
+$router->post('/reservar_cliente', 'PageController@post_reservar_cliente');
 $router->get('/unete_al_equipo', 'PageController@unete_al_equipo');
 $router->get('/pedir', 'PageController@pedir');
 $router->get('/nuevo_plato', 'PageController@nuevo_plato');

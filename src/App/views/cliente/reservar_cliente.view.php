@@ -20,6 +20,7 @@
 
         <section>
 
+            
 
             <form action="/reservar_cliente" class="form_reserva" method="post">
                 <fieldset class="container container_formulario container_delivery">

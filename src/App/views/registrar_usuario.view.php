@@ -17,6 +17,16 @@
             <h2>REGISTRARSE</h2>
         </section>
 
+        <?php if(isset($resultado['exito'])) : ?>
+            <h4 class="msj msj_exito">
+                   <?= $resultado['description']; ?>
+            </h4>
+        <?php else: ?>
+            <h4 class="msj msj_error">
+                   <?= $resultado['description']; ?>
+            </h4>        
+        <?php endif ?>
+
         <form action="/registro" method="post" class="formulario form_amarillo">
 
             <h3>Bienvenido</h3>
