@@ -21,14 +21,14 @@
         <section>
 
 
-            <form action="/reservar_cliente" class="form_reserva">
+            <form action="/reservar_cliente" class="form_reserva" method="post">
                 <fieldset class="container container_formulario container_delivery">
                     <label for="nombre">Ingrese su nombre completo</label>
-                    <input type="text" name="nombre" id="nombre">
+                    <input type="text" name="nombre" id="nombre" required>
                     <label for="dni">Ingrese su DNI</label>
-                    <input type="text" name="dni" id="dni">
+                    <input type="number" name="dni" id="dni" required>
                     <label for="sucursal">Selecciona una sucursal:</label>
-                    <select id="sucursal" name="sucursal">
+                    <select id="sucursal" name="sucursal" required>
                         <option value="sucursal1">Sucursal 1</option>
                         <option value="sucursal2">Sucursal 2</option>
                         <option value="sucursal3">Sucursal 3</option>

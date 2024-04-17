@@ -28,7 +28,7 @@
             <input required type="text" name="nombre" id="nombre" class="campo">
 
             <label for="contrasenia" class="etiqueta">Ingrese Password</label>
-            <input required type="text" name="password" id="contrasenia" class="campo">
+            <input required type="password" name="password" id="contrasenia" class="campo">
 
             <label for="password_repetida" class="etiqueta">Confirme el Password</label>
             <input required type="password" name="password_repetida" id="password_repetida" class="campo">
