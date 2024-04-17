@@ -9,7 +9,6 @@
 }
 
 .container {
-    
     font-size: 2rem;
     font-family: 'Century Gothic';
     margin-top: 2rem;
@@ -192,13 +191,17 @@ input[type=number]::-webkit-inner-spin-button {
 
 .campo {
     padding-left: .5rem;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     display: inline;
     width: 75%;
     height: 3rem;
 }
 
+.section_formulario textarea {
+    height: 5rem;
+    resize: none;
+}
 
 .etiqueta {
     font-family: Century_Gothic;
