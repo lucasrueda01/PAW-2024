@@ -604,28 +604,57 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .msj_exito {
-    color: green;
-    border-top: 1px solid green;
-    border-bottom: 1px solid green;    
+    background-color: #7bc274;
+    color: #FFFFFF;
+    width: 95%;   
 }
 
 .msj_error {
-    color: red;
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;    
+    background-color: #b95252;
+    color: #FFFFFF;   
+}
+
+.plato_subido {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .imagen_subida {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 350px;
+    height: 250px;
     align-items: center;
+    margin: 2rem;
 }
 
 .imagen_subida img{
-    width: 30%;
-    height: 50%;
+    display: block;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.imagen_subida h3 {
+    position: relative;
+    font-family: Century_Gothic;
+    font-size: 1.5rem;
+    margin: 1rem;
+    font-weight: 800;
+}
+
+.imagen_subida p {
+    position: relative;
+    font-size: 1.rem;
+    font-family: Century_Gothic;
+    margin-left: 1rem;
+}
+
+.imagen_subida figcaption {
+    text-align: center;
 }
 
 .container_articulos section > h4 {

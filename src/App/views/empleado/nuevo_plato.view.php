@@ -14,23 +14,9 @@
 <main>
 
         <section class="titulo titulo_portada">
-            <h2>CARGA UN NUEVO PLATO</h2>
-            <p>Envianos tu solicitud de nuevo plato</p>
+            <h2>NUEVO PLATO</h2>
+            <p>Agrega un plato al menu</p>
         </section>
-
-        <?php if(isset($resultado['exito'])) : ?>
-            <h4 class="msj msj_exito">
-                   <?= $resultado['description']; ?>
-            </h4>
-            <figure class="imagen_subida">
-                <img src="/<?= $resultado['path_imagen'] ?>" alt="comida">
-                <figcaption>
-                    <h3><?= $resultado['nombre_comida'] ?></h3>
-                    <p><?= $resultado['ingredientes_comida'] ?></p><br>
-                </figcaption>
-            </figure>
-        <?php endif ?>
-
 
         <section class="section_formulario">
             <form action="/datos_plato" method="post" enctype="multipart/form-data" class="formulario form_transparente">
