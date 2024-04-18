@@ -196,6 +196,13 @@ input[type=number]::-webkit-inner-spin-button {
     display: inline;
     width: 75%;
     height: 3rem;
+    font-family: Century_Gothic;
+    text-transform: uppercase;
+}
+
+.campo option {
+    font-family: Century_Gothic;
+    text-transform: uppercase;
 }
 
 .section_formulario textarea {

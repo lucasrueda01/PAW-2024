@@ -56,7 +56,8 @@ class UploadController
                     'description' => "El archivo se ha subido correctamente.",
                     'path_imagen' => $uploadPath,
                     'nombre_comida' => $datos_plato['nombre_plato'],
-                    'ingredientes_comida' => $datos_plato['ingredientes']
+                    'ingredientes_comida' => $datos_plato['ingredientes'],
+                    'tipo_plato' => $datos_plato['tipo_de_plato']
                 ];                
             } else {
                 return [
