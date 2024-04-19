@@ -95,8 +95,8 @@ class PageController
 
     public function datos_plato(){
 
-        $resultado = $this->uploadController->verificar_imagen($_FILES, $_POST);
-        
+        $resultado = $this->uploadController->verificar_imagen($_FILES, $_POST);    
+
         #SI LA SUBIDA ES EXITOSA MUESTRO VISTA DE EXITO SINO MUESTRO EL ERROR
         if (isset($resultado['exito'])) {
           require $this->viewsDir . 'empleado/plato_cargado.view.php';
