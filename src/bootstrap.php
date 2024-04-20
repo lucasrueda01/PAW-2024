@@ -37,22 +37,29 @@ $request = new Request;
 $router = new Router;
 $router->setLogger($log);
 
+// UsuarioController
+$router->get('/iniciar_sesion', 'UsuarioController@inicio_sesion');
+$router->get('/registrar_usuario', 'UsuarioController@registrar_usuario');
+$router->get('/perfil_usuario', 'UsuarioController@perfil');
+// PageController
 $router->get('/', 'PageController@index');
-$router->get('/nuestro_menu', 'PageController@nuestroMenu');
-$router->get('/promociones', 'PageController@promociones');
-$router->get('/sucursales', 'PageController@sucursales');
-$router->get('/noticias', 'PageController@noticias');
-$router->get('/sobre_nosotros', 'PageController@sobre_nosotros');
-$router->get('/reservar_cliente', 'PageController@reservar_cliente');
-$router->post('/reservar_cliente', 'PageController@procesar_reserva_cliente');
-$router->get('/unete_al_equipo', 'PageController@unete_al_equipo');
-$router->get('/pedir', 'PageController@pedir');
-$router->get('/nuevo_plato', 'PageController@nuevo_plato');
-$router->post('/datos_plato', 'PageController@datos_plato');
-$router->get('/gestion_lista_mesas', 'PageController@gestion_lista_mesas');
-$router->get('/gestion_mesa', 'PageController@gestion_mesa');
-$router->get('/pedidos_entrantes', 'PageController@pedidos_entrantes');
-$router->get('/iniciar_sesion', 'PageController@inicio_sesion');
-$router->get('/registrar_usuario', 'PageController@registrar_usuario');
-$router->get('/perfil_usuario', 'PageController@perfil');
+// EmpresaController
+$router->get('/unete_al_equipo', 'EmpresaController@unete_al_equipo');
+$router->get('/sucursales', 'EmpresaController@sucursales');
+$router->get('/noticias', 'EmpresaController@noticias');
+$router->get('/sobre_nosotros', 'EmpresaController@sobre_nosotros');
+// MenuController
+$router->get('/promociones', 'MenuController@promociones');
+$router->get('/nuestro_menu', 'MenuController@nuestroMenu');
+// PedidoController
+$router->get('/pedir', 'PedidoController@pedir'); // PedidoController
+$router->get('/pedidos_entrantes', 'PedidoController@pedidos_entrantes'); // PedidoController
+// PlatoController
+$router->get('/nuevo_plato', 'PlatoController@nuevo_plato'); // PlatoController
+$router->post('/datos_plato', 'PlatoController@datos_plato'); // PlatoController
+// MesaController
+$router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
+$router->post('/reservar_cliente', 'MesaController@procesar_reserva_cliente'); // MesaController
+$router->get('/gestion_lista_mesas', 'MesaController@gestion_lista_mesas'); // MesaController
+$router->get('/gestion_mesa', 'MesaController@gestion_mesa'); // MesaController
 

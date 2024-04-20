@@ -67,6 +67,7 @@ Class Router
                     "Status Code: 200",
                     [
                         "Path" => $path,
+                        "Controller" => $controller,
                         "Method" => $method
                     ]
                 );

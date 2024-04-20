@@ -1,8 +1,8 @@
 <?php
 
-namespace Paw\App\Controllers;
+namespace Paw\App\Utils;
 
-class VerificadorController
+class Verificador
 {
     public function verificarCampos(Array $datosReserva)
     {   
@@ -15,11 +15,11 @@ class VerificadorController
             }
         };
         return $hay_campos_vacios ? [
-            'error' => 'Campos Vacios',
+            'vacios' => false,
             'description' => 'Uno de los campos esta Vacio'
         ] : [
-            'exito' => 'Procesado con Exito',
-            'description' => 'La reserva se Proceso con Exito!',
+            'vacios' => true,
+            'description' => 'Campos Completos',
             'resumen' => $datosReserva
         ];        
     }

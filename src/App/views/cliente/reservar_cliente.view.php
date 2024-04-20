@@ -58,11 +58,15 @@
                     <aside class="resumen">
                         <h4 class="titulo_resumen">Resumen de reserva</h4>
                         <ul>
-                          <?php  foreach ($resultado['resumen'] as $clave => $valor) : ?>
+                          <?php  
+                            if(isset($resultado['resumen'])) :
+                              foreach ($resultado['resumen'] as $clave => $valor) : ?>
 
                              <li><?= ucfirst($clave) ?> : <?= $valor ?> </li>
 
-                          <?php endforeach; ?>                            
+                          <?php endforeach; 
+                             endif;   
+                          ?>                            
                         </ul>
                     </aside>
 

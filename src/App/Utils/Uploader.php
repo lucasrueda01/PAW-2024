@@ -1,8 +1,8 @@
 <?php
 
-namespace Paw\App\Controllers;
+namespace Paw\App\Utils;
 
-class UploadController 
+class Uploader
 {
     public string $path_promociones = '/';
     const ERROR_TIPO_NO_PERMITIDO = 'tipo_no_permitido';

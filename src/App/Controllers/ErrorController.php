@@ -2,19 +2,16 @@
 
 namespace Paw\App\Controllers;
 
-use Paw\App\Controllers\MenuMaster;
+use Paw\Core\Controller;
 
-class ErrorController {
 
-    public string $viewsDir;
-    public array $menu;
-    public MenuMaster $menuMaster;
+class ErrorController extends Controller
+{
 
     public function __construct(){
-        $this->viewsDir = __DIR__ . '/../views/errors/';
-
-        $this->menuMaster = new MenuMaster;
+        parent::__construct();
         
+        $this->viewsDir = __DIR__ . '/../views/errors/';
     }
     
     public function notFound() {
