@@ -5,23 +5,21 @@ namespace Paw\App\Controllers;
 use Paw\App\Controllers\UploadController;
 use Paw\App\Controllers\VerificadorController;
 
-use Paw\App\Controllers\MenuMaster;
+use Paw\Core\Controller;
 
-class PageController
+class PageController extends Controller
 {
-
-    public string $viewsDir;
-    public string $viewsDirCliente;
-    public MenuMaster $menuMaster;
+    // public MenuMaster $menuMaster;
     public UploadController $uploadController;
     public VerificadorController $verificadorController;
 
     public function __construct()
     {
-        $this->viewsDir = __DIR__ . '/../views/';
-        $this->viewsDirCliente = __DIR__ . '/../views/cliente/';
+        parent::__construct();
+        // $this->viewsDir = __DIR__ . '/../views/';
+        // $this->viewsDirCliente = __DIR__ . '/../views/cliente/';
 
-        $this->menuMaster = new MenuMaster;
+        // $this->menuMaster = new MenuMaster;
 
         $this->uploadController = new UploadController;
 
@@ -31,6 +29,7 @@ class PageController
     public function index()
     {
         $titulo = "PAW POWER | HOME";
+        // var_dump($this->viewsDir);
         require $this->viewsDir . 'index.view.php';
     }
 

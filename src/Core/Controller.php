@@ -7,14 +7,21 @@ use Paw\Core\Database\QueryBuilder;
 
 class Controller 
 {
+    public string $viewsDir;
+    public string $viewsDirCliente;
 
     public array $menu;
     public array $menuEmpleado;
     public array $menuPerfil;
+    public ?string $modelName = null;   
+    protected $model;
 
     public function __construct(){
         
         global $connection, $log;        
+
+        $this->viewsDir = __DIR__ . '/../App/views/';
+        $this->viewsDirCliente = __DIR__ . '/../App/views/cliente/';
 
         $this->menu = [
             [
@@ -79,15 +86,19 @@ class Controller
                 'href' => '/cerrar_sesion',
                 'name' => 'Cerrar Sesion'
             ]
-        ];        
+        ];     
+        
+        if(!is_null($this->modelName)){
+            $qb = new QueryBuilder($connection, $log);
+            $model = new $this->modelName;
+            $model->setQueryBuilder($qb);
+            $this->setModel($model);
+        }
     }
 
-
-
-
-
-
-
-
+    public function setModel(Model $model)
+    {
+        $this->model = $model;
+    }
 
 }
