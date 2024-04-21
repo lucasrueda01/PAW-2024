@@ -19,12 +19,13 @@ final class PrimerasTablasMigration extends AbstractMigration
      */
     public function change(): void
     {
-        
         $tablePlato = $this->table('plato');
         $tablePlato->addColumn('nombre_plato', 'string', ['limit' => 60])
                    ->addColumn('descripcion', 'string', ['null' => true])
+                   ->addColumn('tipo_plato', 'string', ['null' => true])
+                   ->addColumn('precio', 'integer', ['null' => true])
+                   ->addColumn('path_img', 'string', ['null' => true])                   
                    ->addIndex('id', ['unique' => true])
                    ->create();        
-
     }
 }
