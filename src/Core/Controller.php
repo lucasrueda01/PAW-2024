@@ -4,8 +4,9 @@ namespace Paw\Core;
 
 use Paw\Core\Model; 
 use Paw\Core\Database\QueryBuilder;
+use Paw\Core\Traits\Loggable;
 
-class Controller 
+class Controller extends Model
 {
     public string $viewsDir;
     public string $viewsDirCliente;
@@ -15,6 +16,7 @@ class Controller
     public array $menuPerfil;
     public ?string $modelName = null;   
     protected $model;
+    use Loggable;
 
     public function __construct(){
         

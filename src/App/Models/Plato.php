@@ -7,17 +7,15 @@ use Paw\Core\Model;
 
 use Exception;
 use Paw\Core\Exceptions\InvalidValueFormatException;
-use Paw\Core\Traits\Loggable;
 
 class Plato extends Model
 {       
-    use Loggable;
     public $table = 'plato';
 
     public $fields = [
         'id' => null,
-        'nombrePlato' => null,
-        'descripcion' => null,
+        'nombre_plato' => null,
+        'ingredientes' => null,
         'tipo_plato' => null,
         'precio' => null,
         'path_img' => null
@@ -33,9 +31,9 @@ class Plato extends Model
         $this->fields['nombre_plato'] = $nombrePlato;
     }
 
-    public function setDescripcion($descripcion) 
+    public function setIngredientes($ingredientes) 
     {
-        $this->fields['descripcion'] = $descripcion;
+        $this->fields['ingredientes'] = $ingredientes;
     }
 
     public function setTipoPlato($tipoPlato)
@@ -61,6 +59,7 @@ class Plato extends Model
             {
                 continue;
             }
+            
             $method = 'set'.str_replace('_', '', ucwords($field, '_'));//ucfirst($field);
             $this->$method($value);
         }
@@ -73,4 +72,14 @@ class Plato extends Model
         $record = current($this->queryBuilder->select($this->table, $params));
         $this->set($record);
     }    
+
+    public function insert()
+    {
+        // $this->logger->info("Inserting", [$this->fields]);
+        global $log;
+
+        // $log->info("queryBuilder [insertPlato]: ", [$this->queryBuilder]);
+
+        return $this->queryBuilder->insert($this->table, $this->fields);
+    }
 }

@@ -39,9 +39,21 @@ class QueryBuilder
         return $sentencia->fetchAll();
     }
 
-    public function insert()
+    public function insert($table, $data)
     {
-
+        $columnas = implode(', ', array_keys($data));
+        $valores = ':' . implode(', :', array_keys($data));
+        $query = "INSERT INTO $table ($columnas) VALUES ($valores)";
+        $sentencia = $this->pdo->prepare($query);
+    
+        // Asignar valores a los parámetros
+        foreach ($data as $clave => $valor) {
+            $sentencia->bindValue(":$clave", $valor);
+        }
+    
+        $resultado = $sentencia->execute();
+    
+        return $resultado;
     }
 
     public function update()

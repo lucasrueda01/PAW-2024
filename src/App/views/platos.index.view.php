@@ -35,7 +35,7 @@
 
                     <tr>
                         <td><a href="/plato?id=<?= $plato->fields['id'] ?>"><?= $plato->fields['nombre_plato'] ?></a></td>                        
-                        <td><?= $plato->fields['descripcion'] ?></td>
+                        <td><?= $plato->fields['ingredientes'] ?></td>
                         <td><?= $plato->fields['tipo_plato'] ?></td>
                         <td><?= $plato->fields['precio'] ?></td>
                         <td><?= $plato->fields['path_img'] ?></td>

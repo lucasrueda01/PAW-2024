@@ -10,7 +10,7 @@ class Uploader
     const ERROR_AL_SUBIR_ARCHIVO = 'error al subir archivo';
     const ERROR_DE_CARGA = 'error de carga';
     const UPLOAD_COMPLETED = 'carga completada correctamente';
-    const UPLOADDIRECTORY = 'uploads/';
+    const UPLOADDIRECTORY = '../uploads/';
 
 
     public function verificar_imagen($archivo_imagen, $datos_plato){
@@ -57,7 +57,7 @@ class Uploader
                     'path_imagen' => $uploadPath,
                     'nombre_comida' => $datos_plato['nombre_plato'],
                     'ingredientes_comida' => $datos_plato['ingredientes'],
-                    'tipo_plato' => $datos_plato['tipo_de_plato']
+                    'tipo_plato' => $datos_plato['tipo_plato']
                 ];                
             } else {
                 return [

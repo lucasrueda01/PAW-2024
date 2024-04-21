@@ -8,6 +8,7 @@ use Paw\App\Utils\Uploader;
 use Paw\App\Models\PlatosCollection;
 
 use Paw\Core\Controller;
+use Paw\App\Models\Plato;
 
 class PlatoController extends Controller
 {
@@ -41,12 +42,12 @@ class PlatoController extends Controller
         require $this->viewsDir . 'plato.show.view.php';
     }   
     
-    public function edit()
+    public function insert()
     {
-
+        
     }
 
-    public function set()
+    public function edit()
     {
 
     }
@@ -63,9 +64,33 @@ class PlatoController extends Controller
 
         #SI LA SUBIDA ES EXITOSA MUESTRO VISTA DE EXITO SINO MUESTRO EL ERROR
         if (isset($resultado['exito'])) {
-          require $this->viewsDir . 'empleado/plato_cargado.view.php';
+            
+            global $request;
+            global $log;
+
+            $plato = [
+                'nombrePlato' => $_POST['nombre_plato'],//$request->get('nombre_plato'),
+                'ingredientes' => $_POST['ingredientes'],//$request->get('descripcion'),
+                'tipo_plato' => $_POST['tipo_plato'],//$request->get('tipo_plato'),
+                'precio' => $_POST['precio'],//$request->get('precio'),
+                'path_img' => $request->get('path_img'),    
+            ];
+    
+            $newPlato = new Plato;
+            $newPlato->set($plato);    
+            $newPlato->setQueryBuilder($this->queryBuilder);
+
+            // $log->info("plato: ",[$newPlato]);
+
+            if ($newPlato->insert()){
+                require $this->viewsDir . 'platos.index.view.php';
+            }else{
+                require $this->viewsDir . 'empleado/nuevo_plato.view.php';
+            }
+
         } else {
             require $this->viewsDir . 'empleado/nuevo_plato.view.php';
+            
         }
     }    
 }
