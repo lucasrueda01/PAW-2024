@@ -10,14 +10,15 @@ use Dotenv\Dotenv;
 use Paw\Core\Router;
 use Paw\Core\Config;
 use Paw\Core\Request;
+use Paw\Core\Database\ConnectionBuilder;
+
+// echo phpinfo();
 
 $dotenv = Dotenv::createUnsafeImmutable(__DIR__.'/../');
 
 $dotenv->load();
 
 $config = new Config;
-
-
 
 $whoops = new \Whoops\Run;
 
@@ -27,6 +28,19 @@ $handler->setLevel($config->get("LOG_LEVEL"));
 $handler->setLevel(Level::Debug);
 
 $log->pushHandler($handler);
+
+$log->info('Datos de Config', [
+    "adapter" => $config->get('DB_ADAPTER'),
+    "hostname" => $config->get('DB_HOSTNAME'),
+    "dbname" => $config->get('DB_DBNAME'),
+    "port" => $config->get('DB_PORT'),
+    "charset" => $config->get('DB_CHARSET'),
+]);
+
+
+$connectionBuilder = new ConnectionBuilder;
+$connectionBuilder->setLogger($log);
+$connection = $connectionBuilder->make($config);
 
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
@@ -56,6 +70,7 @@ $router->get('/pedir', 'PedidoController@pedir'); // PedidoController
 $router->get('/pedidos_entrantes', 'PedidoController@pedidos_entrantes'); // PedidoController
 // PlatoController
 $router->get('/nuevo_plato', 'PlatoController@nuevo_plato'); // PlatoController
+$router->get('/platos', 'PlatoController@index'); // PlatoController
 $router->post('/datos_plato', 'PlatoController@datos_plato'); // PlatoController
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController

@@ -20,6 +20,15 @@ class ConnectionBuilder {
             $port = $config->get('DB_PORT');
             $charset = $config->get('DB_CHARSET');
     
+            // $this->logger->error('Internal Server Error', [
+            //     "adapter" => $adapter,
+            //     "hostname" => $hostname,
+            //     "dbname" => $dbname,
+            //     "port" => $port,
+            //     "charset" => $charset,
+
+            // ]);
+
             return new PDO(
                 "{$adapter}:host={$hostname};dbname={$dbname};port={$port};charset={$charset}",
                 $config->get('DB_USERNAME'),

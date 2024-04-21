@@ -23,8 +23,10 @@ class QueryBuilder
             $where = "id = :id ";
         }
         
-        
         $query = "select * from {$table} where {$where}";    
+
+        // $this->logger->info($query);
+
         $sentencia = $this->pdo->prepare($query);
         
         if(isset($params['id'])){

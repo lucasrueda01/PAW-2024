@@ -67,6 +67,10 @@ class Controller
                 'href' => '/nuevo_plato',
                 'name' => 'NUEVO PLATO'
             ],
+            [
+                'href' => '/platos',
+                'name' => 'PLATOS'
+            ]
         ];
 
         $this->menuPerfil = [

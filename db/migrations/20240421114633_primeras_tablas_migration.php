@@ -26,6 +26,6 @@ final class PrimerasTablasMigration extends AbstractMigration
                    ->addColumn('precio', 'integer', ['null' => true])
                    ->addColumn('path_img', 'string', ['null' => true])                   
                    ->addIndex('id', ['unique' => true])
-                   ->create();        
+                   ->create();  
     }
 }
