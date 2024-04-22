@@ -55,6 +55,7 @@ class Uploader
                     'exito' => self::UPLOAD_COMPLETED,
                     'description' => "El archivo se ha subido correctamente.",
                     'path_imagen' => $uploadPath,
+                    'nombreArchivo' => $newFileName,
                     'nombre_comida' => $datos_plato['nombre_plato'],
                     'ingredientes_comida' => $datos_plato['ingredientes'],
                     'tipo_plato' => $datos_plato['tipo_plato']

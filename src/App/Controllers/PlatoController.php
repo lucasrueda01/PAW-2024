@@ -28,8 +28,11 @@ class PlatoController extends Controller
 
     public function index()
     {
+        global $log;
+
         $titulo = "Platos";
         $platos = $this->model->getAll();
+        $log->info("(index) this->model: ",[$this->model]);
         require $this->viewsDir . 'platos.index.view.php';
     }
 
@@ -39,24 +42,13 @@ class PlatoController extends Controller
         $platoId = $request->get('id');
         $plato = $this->model->get($platoId);
         $titulo = "Plato";        
-        require $this->viewsDir . 'plato.show.view.php';
+        require $this->viewsDir . 'empleado/plato.show.view.php';
     }   
-    
-    public function insert()
-    {
         
-    }
-
-    public function edit()
-    {
-
-    }
-    
     public function nuevo_plato(){
         $titulo = 'PAW POWER | NUEVO PLATO';
         require $this->viewsDir . 'empleado/nuevo_plato.view.php';
     }
-    
 
     public function datos_plato(){
 
@@ -68,29 +60,34 @@ class PlatoController extends Controller
             global $request;
             global $log;
 
-            $plato = [
-                'nombrePlato' => $_POST['nombre_plato'],//$request->get('nombre_plato'),
-                'ingredientes' => $_POST['ingredientes'],//$request->get('descripcion'),
-                'tipo_plato' => $_POST['tipo_plato'],//$request->get('tipo_plato'),
-                'precio' => $_POST['precio'],//$request->get('precio'),
-                'path_img' => $request->get('path_img'),    
+            $newPlato = [
+                'nombrePlato' => $request->get('nombre_plato'),
+                'ingredientes' => $request->get('ingredientes'),
+                'tipo_plato' => $request->get('tipo_plato'),
+                'precio' => $request->get('precio'),
+                'path_img' => $resultado['nombreArchivo'],    
             ];
     
-            $newPlato = new Plato;
-            $newPlato->set($plato);    
-            $newPlato->setQueryBuilder($this->queryBuilder);
-
-            // $log->info("plato: ",[$newPlato]);
-
-            if ($newPlato->insert()){
+            if ($this->model->insert($newPlato)){
+                $platos = $this->model->getAll();
                 require $this->viewsDir . 'platos.index.view.php';
             }else{
                 require $this->viewsDir . 'empleado/nuevo_plato.view.php';
             }
 
         } else {
-            require $this->viewsDir . 'empleado/nuevo_plato.view.php';
-            
+            require $this->viewsDir . 'empleado/nuevo_plato.view.php';   
         }
     }    
+
+    public function insert()
+    {
+        
+    }
+
+    public function edit()
+    {
+
+    }
+
 }

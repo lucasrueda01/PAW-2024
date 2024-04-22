@@ -21,6 +21,12 @@ class Plato extends Model
         'path_img' => null
     ];
 
+
+    public function getAllFields()
+    {
+        return $this->fields;
+    }
+
     public function setId($id)
     {
         $this->fields['id'] = $id;
@@ -31,24 +37,39 @@ class Plato extends Model
         $this->fields['nombre_plato'] = $nombrePlato;
     }
 
-    public function setIngredientes($ingredientes) 
+    public function getNombrePlato() // GETTER
+    {
+        return $this->fields['nombre_plato'];
+    }
+
+    public function setIngredientes($ingredientes) //SETTER
     {
         $this->fields['ingredientes'] = $ingredientes;
     }
 
-    public function setTipoPlato($tipoPlato)
+    public function getIngredientes() //GETTER
+    {
+        return $this->fields['ingredientes'];
+    }
+
+    public function setTipoPlato($tipoPlato) //SETTER
     {
         $this->fields['tipo_plato'] = $tipoPlato;
     }
 
-    public function setPrecio($precio)
+    public function setPrecio($precio) //SETTER
     {
         $this->fields['precio'] = $precio;
     }
 
-    public function setPathImg($pathImg)
+    public function setPathImg($pathImg) //SETTER
     {
         $this->fields['path_img'] = $pathImg;
+    }
+
+    public function getPathImg() //GETTER
+    {
+        return $this->fields['path_img'];
     }
 
     public function set(array $values)
@@ -60,7 +81,7 @@ class Plato extends Model
                 continue;
             }
             
-            $method = 'set'.str_replace('_', '', ucwords($field, '_'));//ucfirst($field);
+            $method = 'set'.str_replace('_', '', ucwords($field, '_'));
             $this->$method($value);
         }
         
@@ -73,13 +94,5 @@ class Plato extends Model
         $this->set($record);
     }    
 
-    public function insert()
-    {
-        // $this->logger->info("Inserting", [$this->fields]);
-        global $log;
 
-        // $log->info("queryBuilder [insertPlato]: ", [$this->queryBuilder]);
-
-        return $this->queryBuilder->insert($this->table, $this->fields);
-    }
 }

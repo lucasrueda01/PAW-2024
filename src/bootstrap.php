@@ -71,6 +71,7 @@ $router->get('/pedidos_entrantes', 'PedidoController@pedidos_entrantes'); // Ped
 // PlatoController
 $router->get('/nuevo_plato', 'PlatoController@nuevo_plato'); // PlatoController
 $router->get('/platos', 'PlatoController@index'); // PlatoController
+$router->get('/plato', 'PlatoController@get'); // PlatoController
 $router->post('/datos_plato', 'PlatoController@datos_plato'); // PlatoController
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController

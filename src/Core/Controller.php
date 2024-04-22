@@ -6,7 +6,7 @@ use Paw\Core\Model;
 use Paw\Core\Database\QueryBuilder;
 use Paw\Core\Traits\Loggable;
 
-class Controller extends Model
+class Controller 
 {
     public string $viewsDir;
     public string $viewsDirCliente;

@@ -33,4 +33,22 @@ class PlatosCollection extends Model
         $plato->load($id);
         return $plato;
     }
+
+    public function insert($datosPlato)
+    {
+        // $this->logger->info("Inserting", [$this->fields]);
+        global $log;
+
+        $newPlato = new Plato;
+        $newPlato->setQueryBuilder($this->queryBuilder);
+        $newPlato->set($datosPlato);
+
+        $log->info("queryBuilder [insertPlato]: ", [$newPlato]);
+
+        $resultado = $this->queryBuilder->insert($this->table, $newPlato->getAllFields());
+
+        $log->info("resultado insert: ", [$resultado]);
+
+        return $resultado;
+    }    
 }
