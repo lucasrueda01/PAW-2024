@@ -5,13 +5,12 @@ namespace Paw\App\Utils;
 class Uploader
 {
     public string $path_promociones = '/';
-    const ERROR_TIPO_NO_PERMITIDO = 'tipo_no_permitido';
-    const ERROR_TAMANIO_NO_PERMITIDO = 'tamanio_no_permitido';
-    const ERROR_AL_SUBIR_ARCHIVO = 'error al subir archivo';
-    const ERROR_DE_CARGA = 'error de carga';
-    const UPLOAD_COMPLETED = 'carga completada correctamente';
+    const ERROR_TIPO_NO_PERMITIDO = false;
+    const ERROR_TAMANIO_NO_PERMITIDO = false;
+    const ERROR_AL_SUBIR_ARCHIVO = false;
+    const ERROR_DE_CARGA = false;
+    const UPLOAD_COMPLETED = true;
     const UPLOADDIRECTORY = '../uploads/';
-
 
     public function verificar_imagen($archivo_imagen, $datos_plato){
         // Verifica si el archivo se ha subido correctamente
@@ -28,7 +27,7 @@ class Uploader
             $allowedTypes = ['image/jpeg', 'image/png'];
             if (!in_array($fileType, $allowedTypes)) {
                 return [
-                    'error' => self::ERROR_TIPO_NO_PERMITIDO,
+                    'exito' => self::ERROR_TIPO_NO_PERMITIDO,
                     'description' => "El archivo debe ser una imagen JPEG o PNG."
                 ];
             }
@@ -37,7 +36,7 @@ class Uploader
             $maxFileSize = 1 * 1024 * 1024; // 1 MB en bytes
             if ($fileSize > $maxFileSize) {
                 return [
-                    'error' => self::ERROR_TAMANIO_NO_PERMITIDO,
+                    'exito' => self::ERROR_TAMANIO_NO_PERMITIDO,
                     'description' => "El archivo no debe exceder 1 MB."
                 ];
             }
@@ -62,13 +61,13 @@ class Uploader
                 ];                
             } else {
                 return [
-                    'error' => self::ERROR_AL_SUBIR_ARCHIVO,
+                    'exito' => self::ERROR_AL_SUBIR_ARCHIVO,
                     'description' => "Hubo un problema al subir el archivo."
                 ];                
             }
         } else {
             return [
-                'error' => self::ERROR_DE_CARGA,
+                'exito' => self::ERROR_DE_CARGA,
                 'description' => "No se ha subido ningún archivo o ocurrió un error."
             ];            
         }        

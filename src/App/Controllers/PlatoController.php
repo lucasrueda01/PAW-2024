@@ -40,7 +40,7 @@ class PlatoController extends Controller
     {   
         global $request;
         $platoId = $request->get('id');
-        $plato = $this->model->get($platoId);
+        list($resultado, $plato) = $this->model->get($platoId);
         $titulo = "Plato";        
         require $this->viewsDir . 'empleado/plato.show.view.php';
     }   
@@ -61,17 +61,25 @@ class PlatoController extends Controller
             global $log;
 
             $newPlato = [
-                'nombrePlato' => $request->get('nombre_plato'),
+                'nombre_plato' => $request->get('nombre_plato'),
                 'ingredientes' => $request->get('ingredientes'),
                 'tipo_plato' => $request->get('tipo_plato'),
                 'precio' => $request->get('precio'),
                 'path_img' => $resultado['nombreArchivo'],    
             ];
-    
-            if ($this->model->insert($newPlato)){
-                $platos = $this->model->getAll();
-                require $this->viewsDir . 'platos.index.view.php';
+            
+            $resultado = $this->verificador->verificarCamposVacios($newPlato, Plato::getFieldsRequires());
+
+            if($resultado['exito']){
+
+                if ($this->model->insert($newPlato)){
+                    $platos = $this->model->getAll();
+                    require $this->viewsDir . 'platos.index.view.php';
+                }else{
+                    require $this->viewsDir . 'empleado/nuevo_plato.view.php';
+                }
             }else{
+
                 require $this->viewsDir . 'empleado/nuevo_plato.view.php';
             }
 

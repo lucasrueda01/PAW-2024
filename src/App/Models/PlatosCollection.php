@@ -30,15 +30,13 @@ class PlatosCollection extends Model
     {
         $plato = new Plato;
         $plato->setQueryBuilder($this->queryBuilder);
-        $plato->load($id);
-        return $plato;
+        $result = $plato->load($id);
+        return [$result, $plato];
     }
 
     public function insert($datosPlato)
     {
-        // $this->logger->info("Inserting", [$this->fields]);
         global $log;
-
         $newPlato = new Plato;
         $newPlato->setQueryBuilder($this->queryBuilder);
         $newPlato->set($datosPlato);

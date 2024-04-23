@@ -8,6 +8,8 @@ use Paw\Core\Model;
 use Exception;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
+use Paw\App\Utils\Uploader;
+
 class Plato extends Model
 {       
     public $table = 'plato';
@@ -21,6 +23,19 @@ class Plato extends Model
         'path_img' => null
     ];
 
+    public static $fields_requires = [
+        'nombre_plato',
+        'ingredientes',
+        'tipo_plato',
+        'precio', 
+        'path_img'      
+    ];
+
+
+    public static function getFieldsRequires()
+    {
+        return self::$fields_requires;
+    }
 
     public function getAllFields()
     {
@@ -72,6 +87,21 @@ class Plato extends Model
         return $this->fields['path_img'];
     }
 
+    public function getImagenPlatoBase64()
+    {
+        try{
+            if (!file_exists(Uploader::UPLOADDIRECTORY.$this->fields['path_img'])) {
+                throw new Exception("La imagen no existe en la ruta especificada:". Uploader::UPLOADDIRECTORY.$this->fields['path_img']);
+            }            
+            $imgPlatoBase64 = base64_encode(file_get_contents(Uploader::UPLOADDIRECTORY.$this->fields['path_img']));
+            return $imgPlatoBase64;
+        } catch (Exception $e) {
+            // Manejo de errores: imprime el mensaje de error
+            echo 'Error al obtener la imagen como base64: ' . $e->getMessage();
+            return null;
+        }
+    }
+
     public function set(array $values)
     {
         foreach($values as $field => $value)
@@ -90,8 +120,19 @@ class Plato extends Model
     public function load($id)
     {
         $params = [ "id" => $id];
-        $record = current($this->queryBuilder->select($this->table, $params));
-        $this->set($record);
+        try{
+            $record = current($this->queryBuilder->select($this->table, $params));
+            if($record){
+                $this->set($record);
+            }else{
+                return [
+                    'error' => true,
+                    'description' => 'No Existe el Id buscado'
+                ];
+            }
+        }catch(Exception $e){
+            throw new Exception("Error no existe Id {$e}");
+        }
     }    
 
 

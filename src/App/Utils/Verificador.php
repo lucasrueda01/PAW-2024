@@ -4,23 +4,36 @@ namespace Paw\App\Utils;
 
 class Verificador
 {
-    public function verificarCampos(Array $datosReserva)
+    /**
+     * entrada: formulario de campos 
+     * salida: - booleano (campos vacios o no)
+     *         - descripcion
+     *         - array con los nombres de los campos vacios 
+     */
+    public function verificarCamposVacios(Array $datos, Array $required)
     {   
-        $hay_campos_vacios = false;
-        foreach ($datosReserva as $valorCampo) {
-            // Verifica si el campo está vacío
-            if (empty($valorCampo)) {
-                // Si el campo está vacío, devuelve falso
-                $hay_campos_vacios = true;
+        foreach (array_keys($datos) as $key) {
+            // me fijo si esta dentro de los requeridos
+            if(in_array($key, $required)){
+                // si esta, me fijo si esta vacio
+                if(empty($datos[$key])){
+                    // en caso de estar vacio 
+                    // lo guardo en array de vacios 
+                    // para que sirva en caso de necesitar informar vacios
+                    $camposVacios[] = $key;  
+                }
             }
         };
-        return $hay_campos_vacios ? [
-            'vacios' => false,
-            'description' => 'Uno de los campos esta Vacio'
+
+        return !empty($camposVacios) ? [
+            'exito' => false,
+            'description' => 'Uno de los campos esta Vacio',
+            'campos_vacios' => $camposVacios
         ] : [
-            'vacios' => true,
+            'exito' => true,
             'description' => 'Campos Completos',
-            'resumen' => $datosReserva
+            'campos_vacios' => []
         ];        
     }
+
 }

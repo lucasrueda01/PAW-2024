@@ -18,11 +18,16 @@
             <p>Plato agregado al menu</p>
         </section>
 
+        <?php if(isset($resultado['error'])) : ?>
+                <h4 class="msj msj_error">
+                <?= $resultado['description']; ?>
+                </h4>
+        <?php endif ?>
 
         <?php if(isset($plato)) : ?>
             <section class="plato_subido">
                 <figure class="imagen_subida">
-                    <img src="/<?= $plato->getPathImg(); ?>" alt="comida">
+                    <img src="data:image/png;base64,<?= $plato->getImagenPlatoBase64(); ?>" alt="<?= $plato->getNombrePlato(); ?>">
                     <figcaption>
                         <h3><?= $plato->getNombrePlato(); ?></h3>
                         <p><?= $plato->getIngredientes(); ?></p><br>

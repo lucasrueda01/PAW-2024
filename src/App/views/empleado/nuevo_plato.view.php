@@ -18,6 +18,12 @@
             <p>Agrega un plato al menu</p>
         </section>
 
+        <?php if(isset($resultado['exito'])) : ?>
+                <h4 class="msj msj_error">
+                <?= $resultado['description']; ?>
+                </h4>
+        <?php endif ?>
+
         <section class="section_formulario">
             <form action="/datos_plato" method="post" enctype="multipart/form-data" class="formulario form_transparente">
 
@@ -44,12 +50,6 @@
 
                 <input type="submit" value="ENVIAR" class="boton boton_enviar_unete">
             </form>
-
-            <?php if(isset($resultado['error'])) : ?>
-                <h4 class="msj msj_error">
-                <?= $resultado['description']; ?>
-                </h4>
-            <?php endif ?>
 
         </section>
 
