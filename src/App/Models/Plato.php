@@ -77,6 +77,11 @@ class Plato extends Model
         $this->fields['tipo_plato'] = $tipoPlato;
     }
 
+    public function getTipoPlato() //GETTER
+    {
+        return $this->fields['tipo_plato'];
+    }
+
     public function setPrecio($precio) //SETTER
     {
         $this->fields['precio'] = $precio;
