@@ -47,6 +47,11 @@ class Plato extends Model
         $this->fields['id'] = $id;
     }
 
+    public function getId()
+    {
+        return $this->fields['id'];
+    }
+
     public function setNombrePlato($nombrePlato) 
     {
         $this->fields['nombre_plato'] = $nombrePlato;

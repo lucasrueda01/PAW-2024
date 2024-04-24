@@ -52,10 +52,14 @@ class PlatoController extends Controller
 
     public function datos_plato(){
 
+        global $log;
+
         $resultado = $this->uploader->verificar_imagen($_FILES, $_POST);    
 
+        $log->info("resultado:", [$resultado]);
+
         #SI LA SUBIDA ES EXITOSA MUESTRO VISTA DE EXITO SINO MUESTRO EL ERROR
-        if (isset($resultado['exito'])) {
+        if (isset($resultado['exito']) && $resultado['exito']) {
             
             global $request;
             global $log;
@@ -74,7 +78,7 @@ class PlatoController extends Controller
 
                 if ($this->model->insert($newPlato)){
                     $platos = $this->model->getAll();
-                    require $this->viewsDir . 'platos.index.view.php';
+                    require $this->viewsDir . 'nuestro_menu.index.view.php';
                 }else{
                     require $this->viewsDir . 'empleado/nuevo_plato.view.php';
                 }

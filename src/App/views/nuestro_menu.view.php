@@ -46,7 +46,7 @@
                             <h4><?= $plato->getNombrePlato(); ?></h4>
                             <p><?= $plato->getIngredientes(); ?></p>
                             <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
-                            <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
+                            <a href="/plato?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
                         </li>
                     <?php endforeach ?>    
                 </ul>
