@@ -32,6 +32,8 @@ class PlatoController extends Controller
 
         $titulo = "Platos";
         $platos = $this->model->getAll();
+        // var_dump($platos);
+        // echo("<pre>");
         $log->info("(index) this->model: ",[$this->model]);
         require $this->viewsDir . 'platos.index.view.php';
     }

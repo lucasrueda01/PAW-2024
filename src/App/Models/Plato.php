@@ -129,7 +129,8 @@ class Plato extends Model
             $method = 'set'.str_replace('_', '', ucwords($field, '_'));
             $this->$method($value);
         }
-        
+        // var_dump($this);
+        // echo("<pre>");
     }
 
     public function load($id)

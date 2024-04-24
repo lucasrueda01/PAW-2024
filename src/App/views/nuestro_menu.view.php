@@ -44,7 +44,7 @@
                     <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Hamburguesa') : ?> 
                             <li class="articulo">
-                                <img src="data:image/png;base64,<?= $plato->getImagenPlatoBase64(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
+                                <img src="uploads/<?= $plato->getPathImg(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
@@ -64,7 +64,7 @@
                     <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Bebida') : ?> 
                             <li class="articulo">
-                                <img src="data:image/png;base64,<?= $plato->getImagenPlatoBase64(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
+                                <img src="uploads/<?= $plato->getPathImg(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
@@ -81,7 +81,7 @@
                 <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Otro Plato') : ?> 
                             <li class="articulo">
-                                <img src="data:image/png;base64,<?= $plato->getImagenPlatoBase64(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
+                                <img src="uploads/<?= $plato->getPathImg(); ?>" alt="<?= $plato->getNombrePlato(); ?>">  
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>

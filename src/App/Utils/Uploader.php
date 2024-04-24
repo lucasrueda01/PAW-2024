@@ -10,7 +10,7 @@ class Uploader
     const ERROR_AL_SUBIR_ARCHIVO = false;
     const ERROR_DE_CARGA = false;
     const UPLOAD_COMPLETED = true;
-    const UPLOADDIRECTORY = '../uploads/';
+    const UPLOADDIRECTORY = 'uploads/';
 
     public function verificar_imagen($archivo_imagen, $datos_plato){
 
