@@ -66,12 +66,8 @@ class Controller
                 'name' => 'PEDIDOS ENTRANTES'
             ],
             [
-                'href' => '/nuevo_plato',
+                'href' => '/plato/new',
                 'name' => 'NUEVO PLATO'
-            ],
-            [
-                'href' => '/platos',
-                'name' => 'PLATOS'
             ]
         ];
 

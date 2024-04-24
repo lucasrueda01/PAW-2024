@@ -25,7 +25,7 @@
         <?php endif ?>
 
         <section class="section_formulario">
-            <form action="/datos_plato" method="post" enctype="multipart/form-data" class="formulario form_transparente">
+            <form action="/plato/insert" method="post" enctype="multipart/form-data" class="formulario form_transparente">
 
                 <h3 class="titulo_form_unite">COMPLETÁ EL FORMULARIO</h3>
 
@@ -37,9 +37,9 @@
                 
                 <label for="tipo_plato" class="etiqueta">Tipo de Plato</label>
                 <select name="tipo_plato" id="tipo_plato" class="campo">
-                    <option value="burger">Hamburguesa</option>
-                    <option value="bebida">Bebida</option>
-                    <option value="otros">Otros Platos</option>
+                    <option value="Hamburguesa">Hamburguesa</option>
+                    <option value="Bebida">Bebida</option>
+                    <option value="Otro Plato">Otros Platos</option>
                 </select>
 
                 <label for="precio" class="etiqueta">Ingrese un Precio</label>
