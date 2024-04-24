@@ -78,7 +78,7 @@ class PlatoController extends Controller
 
                 if ($this->model->insert($newPlato)){
                     $platos = $this->model->getAll();
-                    require $this->viewsDir . 'nuestro_menu.index.view.php';
+                    require $this->viewsDir . 'nuestro_menu.view.php';
                 }else{
                     require $this->viewsDir . 'empleado/nuevo_plato.view.php';
                 }

@@ -13,8 +13,11 @@ class Uploader
     const UPLOADDIRECTORY = '../uploads/';
 
     public function verificar_imagen($archivo_imagen, $datos_plato){
+
+        global $log;
         // Verifica si el archivo se ha subido correctamente
 
+        $log->info("fileSize: " , [$archivo_imagen['imagen_plato'], $archivo_imagen['imagen_plato']['error']]);
         if (isset($archivo_imagen['imagen_plato']) && $archivo_imagen['imagen_plato']['error'] === UPLOAD_ERR_OK) {
             // Obtén información sobre el archivo subido
             $file = $archivo_imagen['imagen_plato'];
@@ -23,6 +26,7 @@ class Uploader
             $fileSize = $file['size'];
             $fileTmpName = $file['tmp_name'];
             
+            $log->info("fileSize: " . $fileSize);
             // Verifica el tipo de archivo
             $allowedTypes = ['image/jpeg', 'image/png'];
             if (!in_array($fileType, $allowedTypes)) {
