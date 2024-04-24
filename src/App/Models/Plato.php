@@ -77,6 +77,11 @@ class Plato extends Model
         $this->fields['precio'] = $precio;
     }
 
+    public function getPrecio() //SETTER
+    {
+        return $this->fields['precio'];
+    }
+
     public function setPathImg($pathImg) //SETTER
     {
         $this->fields['path_img'] = $pathImg;

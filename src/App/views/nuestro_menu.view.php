@@ -40,39 +40,15 @@
             <section id="hamburguesas" class="seccion_hamburguesas">
                 <h3>HAMBURGUESAS</h3>    
                 <ul class="lista_articulos">
-                
-                    <li class="articulo">
-                        <img src="/assets/imgs/menu/Cheeseburger.jpg" alt="hamburguesa"> 
-                        <h4>CHEESEBURGER</h4>
-                        <p>DOBLE MEDALLON DE 100GR. CON QUESO CHEDDAR</p>
-                        <p class="articulo_precio">$8000</p>
-                        <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
-                    </li>
-
-                    <li class="articulo">
-                        <img src="/assets/imgs/menu/Oklahoma.jpg" alt="hamburguesa big power">
-                        <h4>BURGER OKLAHOMA</h4>
-                        <p>DOBLE MEDALLON DE 100GR. SMASHEADAS CON CEBOLLA Y CHEDDAR</p>
-                        <p class="articulo_precio">$8000</p>
-                        <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
-                    </li>
-
-                    <li class="articulo">
-                        <img src="/assets/imgs/menu/BigPower.jpg" alt="hamburguesa">
-                        <h4>BIG-POWER</h4>
-                        <p>DOBLE MEDALLON DE 100GR. LECHUGA, CHEDDAR, CEBOLLA, PEPINOS Y SALSA POWER.</p>
-                        <p class="articulo_precio">$8000</p>
-                        <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
-                    </li>
-
-                    <li class="articulo">
-                        <img src="/assets/imgs/destacados/comida-destacada-1.png" alt="hamburguesa">
-                        <h4>BURGER OKLAHOMA</h4>
-                        <p>DOBLE MEDALLON DE 100GR. SMASHEADAS CON CEBOLLA Y CHEDDAR</p>
-                        <p class="articulo_precio">$8000</p>
-                        <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
-                    </li>
-                
+                    <?php foreach ($platos as $plato) : ?> 
+                        <li class="articulo">
+                            <img src="data:image/png;base64,<?= $plato->getImagenPlatoBase64(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
+                            <h4><?= $plato->getNombrePlato(); ?></h4>
+                            <p><?= $plato->getIngredientes(); ?></p>
+                            <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
+                            <a href="/agregar?comida=id_comida" class="boton boton_amarillo">Agregar</a>
+                        </li>
+                    <?php endforeach ?>    
                 </ul>
 
                 <h4>[TODAS LAS BURGERS ESTAN ACOMPAÑADAS DE PAPAS]</h4>

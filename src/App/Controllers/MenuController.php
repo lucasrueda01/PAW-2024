@@ -5,9 +5,12 @@ namespace Paw\App\Controllers;
 use Paw\App\Utils\Verificador;
 
 use Paw\Core\Controller;
+use Paw\App\Models\PlatosCollection;
 
 class MenuController extends Controller
 {
+
+    public ?string $modelName = PlatosCollection::class;
 
     public Verificador $verificador;
 
@@ -20,7 +23,11 @@ class MenuController extends Controller
 
     public function nuestroMenu()
     {
+        global $log;
+        
         $titulo = "PAW POWER | MENU";
+        $platos = $this->model->getAll();
+        $log->info("(nuestroMenu) this->model: ",[$this->model]);        
         require $this->viewsDir . 'nuestro_menu.view.php';
     }
 
