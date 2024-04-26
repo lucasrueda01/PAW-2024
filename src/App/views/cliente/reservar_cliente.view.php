@@ -48,12 +48,8 @@
                     <label for="time">Seleccione hora:</label>
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
-                    <select name="mesas_disponibles" id="mesas_disponibles" required>
-                        <option value="mesa-s1">Mesa Salon 1</option>
-                        <option value="mesa-s2">Mesa Salon 2</option>
-                        <option value="mesa-pf1">Mesa Pet Friendly 1</option>
-                        <option value="mesa-pf2">Mesa Pet Friendly 1</option>
-                    </select>
+
+                    <object type="image/svg+xml" data="/assets/imgs/svg/PlanoSucursalA.svg"></object>
 
                     <aside class="resumen">
                         <h4 class="titulo_resumen">Resumen de reserva</h4>
