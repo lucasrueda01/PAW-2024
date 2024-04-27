@@ -25,15 +25,26 @@ class Verificador
             }
         };
 
-        return !empty($camposVacios) ? [
-            'exito' => false,
-            'description' => 'Uno de los campos esta Vacio',
-            'campos_vacios' => $camposVacios
-        ] : [
+        $noHayCamposVacios = empty($camposVacios);
+
+        return $noHayCamposVacios ? [
             'exito' => true,
             'description' => 'Campos Completos',
             'campos_vacios' => []
+            ] : [
+            'exito' => false,
+            'description' => 'Uno de los campos esta Vacio',
+            'campos_vacios' => $camposVacios
         ];        
+    }
+
+    function array_has_empty_values($array) {
+        foreach ($array as $value) {
+            if (empty($value)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

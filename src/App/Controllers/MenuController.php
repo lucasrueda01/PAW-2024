@@ -2,12 +2,14 @@
 
 namespace Paw\App\Controllers;
 
+use Exception;
 use Paw\App\Utils\Verificador;
 use Paw\App\Utils\Uploader;
 
 use Paw\Core\Controller;
 use Paw\App\Models\PlatosCollection;
 use Paw\App\Models\Plato;
+use Paw\Core\Model;
 
 class MenuController extends Controller
 {
@@ -19,6 +21,7 @@ class MenuController extends Controller
 
     public function __construct()
     {
+
         parent::__construct();
 
         $this->uploader = new Uploader;
@@ -61,50 +64,57 @@ class MenuController extends Controller
     }   
         
     public function new(){
+        global $request;
+        global $router;
+        global $log;
         $titulo = 'PAW POWER | NUEVO PLATO';
-        require $this->viewsDir . 'empleado/plato.new.view.php';
+
+        if($request->method()=='GET'){
+            require $this->viewsDir . 'empleado/plato.new.view.php';
+        }elseif($request->method()=='POST'){
+            
+            try{
+                $newPlato = new Plato(
+                    [
+                    'nombre_plato' => $request->get('nombre_plato'),
+                    'ingredientes' => $request->get('ingredientes'),
+                    'tipo_plato' => $request->get('tipo_plato'),
+                    'precio' => $request->get('precio'),                
+                    ]                
+                );
+                
+                $uploader = new Uploader;
+                $verificacion_imagen = $uploader->verificar_imagen($request->get('imagen_plato'), $newPlato);
+
+                if(!$verificacion_imagen['exito']){
+                    throw new Exception("Error al subir la imagen del plato: ". $verificacion_imagen['description']);
+                }
+   
+                $newPlato->setQueryBuilder($this->getQb());
+                $newPlato->set($datosPlato);
+
+                if(!$this->model->insert($newPlato)){
+                    throw new Exception("Faltan datos para crear el objeto Plato.");
+                }else{
+                    $platos = $this->model->getAll();
+                    require $this->viewsDir . 'nuestro_menu.view.php';
+                }
+  
+
+            }catch(Exception $e){
+                $verificador_campos = [
+                    'exito' => false,
+                    'description' => "Error al crear el objeto Plato: " . $e->getMessage()
+                ];
+                require $this->viewsDir . 'empleado/plato.new.view.php';   
+            }
+            
+        }       
     }
 
     public function insert(){
 
-        global $log;
 
-        $resultado = $this->uploader->verificar_imagen($_FILES, $_POST);    
-
-        $log->info("resultado:", [$resultado]);
-
-        #SI LA SUBIDA ES EXITOSA MUESTRO VISTA DE EXITO SINO MUESTRO EL ERROR
-        if (isset($resultado['exito']) && $resultado['exito']) {
-            
-            global $request;
-            global $log;
-
-            $newPlato = [
-                'nombre_plato' => $request->get('nombre_plato'),
-                'ingredientes' => $request->get('ingredientes'),
-                'tipo_plato' => $request->get('tipo_plato'),
-                'precio' => $request->get('precio'),
-                'path_img' => $resultado['nombreArchivo'],    
-            ];
-            
-            $resultado = $this->verificador->verificarCamposVacios($newPlato, Plato::getFieldsRequires());
-
-            if($resultado['exito']){
-
-                if ($this->model->insert($newPlato)){
-                    $platos = $this->model->getAll();
-                    require $this->viewsDir . 'nuestro_menu.view.php';
-                }else{
-                    require $this->viewsDir . 'empleado/nuevo_plato.view.php';
-                }
-            }else{
-
-                require $this->viewsDir . 'empleado/nuevo_plato.view.php';
-            }
-
-        } else {
-            require $this->viewsDir . 'empleado/nuevo_plato.view.php';   
-        }
     }    
 
     public function edit()

@@ -42,6 +42,8 @@ $connectionBuilder = new ConnectionBuilder;
 $connectionBuilder->setLogger($log);
 $connection = $connectionBuilder->make($config);
 
+
+
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
 $whoops->register();
@@ -67,7 +69,7 @@ $router->get('/promociones', 'MenuController@promociones'); // MenuController
 $router->get('/nuestro_menu', 'MenuController@nuestroMenu'); // MenuController
 $router->get('/plato', 'MenuController@get'); // MenuController
 $router->get('/plato/new', 'MenuController@new'); // MenuController
-$router->post('/plato/insert', 'MenuController@insert'); // MenuController
+$router->post('/plato/new', 'MenuController@new'); // MenuController
 // PedidoController
 $router->get('/pedir', 'PedidoController@pedir'); // PedidoController
 $router->get('/pedidos_entrantes', 'PedidoController@pedidos_entrantes'); // PedidoController

@@ -9,6 +9,7 @@ use Exception;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
 use Paw\App\Utils\Uploader;
+use Paw\App\Utils\Verificador;
 
 class Plato extends Model
 {       
@@ -30,6 +31,28 @@ class Plato extends Model
         'precio', 
         'path_img'      
     ];
+
+    public function __construct($datosPlato=[])
+    {   
+        if (!is_null($datosPlato) && is_array($datosPlato)) {
+            try {
+                $verificador = new Verificador();
+                if ($verificador->array_has_empty_values(array_values($datosPlato))) {
+                    throw new Exception("Faltan datos para crear el objeto Plato ");
+                }
+                // Asigna los datos al plato
+                foreach ($datosPlato as $key => $value) {
+                    $this->fields[$key] = $value;
+                }
+    
+            } catch (Exception $e) {
+                echo "Error al crear el objeto Plato: " . $e->getMessage();
+            }
+        } else {
+            echo "Error: Los datos del plato no son válidos.";
+        }
+
+    }
 
 
     public static function getFieldsRequires()

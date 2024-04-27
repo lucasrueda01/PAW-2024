@@ -17,6 +17,7 @@ class Controller
     public ?string $modelName = null;   
     protected $model;
     use Loggable;
+    public $qb;
 
     public function __construct(){
         
@@ -90,10 +91,11 @@ class Controller
             ]
         ];     
         
+        $this->qb = new QueryBuilder($connection, $log);
+
         if(!is_null($this->modelName)){
-            $qb = new QueryBuilder($connection, $log);
             $model = new $this->modelName;
-            $model->setQueryBuilder($qb);
+            $model->setQueryBuilder($this->qb);
             $this->setModel($model);
         }
     }
@@ -101,6 +103,10 @@ class Controller
     public function setModel(Model $model)
     {
         $this->model = $model;
+    }
+
+    public function getQb(){
+        return $this->qb;
     }
 
 }

@@ -12,7 +12,7 @@ class Uploader
     const UPLOAD_COMPLETED = true;
     const UPLOADDIRECTORY = 'uploads/';
 
-    public function verificar_imagen($archivo_imagen, $datos_plato){
+    public function verificar_imagen($archivo_imagen, $newPlato){
 
         global $log;
         // Verifica si el archivo se ha subido correctamente
@@ -22,9 +22,9 @@ class Uploader
             // Obtén información sobre el archivo subido
             $file = $archivo_imagen['imagen_plato'];
             $fileName = $file['name'];
-            $fileType = $file['type'];
             $fileSize = $file['size'];
             $fileTmpName = $file['tmp_name'];
+            $fileType = mime_content_type($fileTmpName);
             
             $log->info("fileSize: " . $fileSize);
             // Verifica el tipo de archivo
@@ -49,7 +49,7 @@ class Uploader
             // Establece el directorio donde se guardará el archivo
 
             // Genera un nombre de archivo único para evitar colisiones
-            $newFileName = uniqid() . '_' . basename($fileName);
+            $newFileName = uniqid();
             $uploadPath = self::UPLOADDIRECTORY . $newFileName;
             
             // Mueve el archivo del directorio temporal a su ubicación final
@@ -59,9 +59,9 @@ class Uploader
                     'description' => "El archivo se ha subido correctamente.",
                     'path_imagen' => $uploadPath,
                     'nombreArchivo' => $newFileName,
-                    'nombre_comida' => $datos_plato['nombre_plato'],
-                    'ingredientes_comida' => $datos_plato['ingredientes'],
-                    'tipo_plato' => $datos_plato['tipo_plato']
+                    'nombre_comida' => $newPlato->getNombrePlato(), 
+                    'ingredientes_comida' => $newPlato->getIngredientes(),
+                    'tipo_plato' => $newPlato->getTipoPlato()
                 ];                
             } else {
                 return [
@@ -76,5 +76,7 @@ class Uploader
             ];            
         }        
     }
+
+
 
 }

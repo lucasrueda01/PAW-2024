@@ -34,12 +34,9 @@ class PlatosCollection extends Model
         return [$result, $plato];
     }
 
-    public function insert($datosPlato)
+    public function insert($newPlato)
     {
         global $log;
-        $newPlato = new Plato;
-        $newPlato->setQueryBuilder($this->queryBuilder);
-        $newPlato->set($datosPlato);
 
         $log->info("queryBuilder [insertPlato]: ", [$newPlato]);
 
