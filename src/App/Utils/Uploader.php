@@ -17,9 +17,9 @@ class Uploader
         global $log;
         // Verifica si el archivo se ha subido correctamente
 
-        $log->info("fileSize: " , [$archivo_imagen['imagen_plato'], $archivo_imagen['imagen_plato']['error']]);
         if (isset($archivo_imagen['imagen_plato']) && $archivo_imagen['imagen_plato']['error'] === UPLOAD_ERR_OK) {
             // Obtén información sobre el archivo subido
+            $log->info("fileSize: " , [$archivo_imagen['imagen_plato'], $archivo_imagen['imagen_plato']['error']]);
             $file = $archivo_imagen['imagen_plato'];
             $fileName = $file['name'];
             $fileSize = $file['size'];
