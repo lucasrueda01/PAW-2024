@@ -1,22 +1,9 @@
-# Proyecto Paw
+# PROYECTO PAW 2024
 
-## Instalacion y Ejecucion (local)
+- El proyecto que se propone es la Web de una casa de comidas rápidas que tenga como principal función el de dar a conocer la marca, además de brindar la posibilidad de pedir comida tanto para el take away como para el pedido desde la mesa del local y /o la recepción del pedido por parte de los empleados de atención al público.
 
-* git clone <https://github.com/lucasrueda01/PAW-2024.git>
-* cd composer install
-* cp .env.example .env # Editar el .env con los valores deseados
-* Ejecutar migrations: `phinx migrate -e development`
-* Ejecutar nueva migracion: `phinx create migration_name`
-* Ejecutar `php -S localhost:8080 -t public/`
+## (Site MAP del sitio)[https://www.figma.com/file/inLYqyIMxmiy6WxPlx6cey/wireframe-grupo-paw?type=design&node-id=0-1&mode=design&t=FRZzKBVkGpIr7CmU-0]
 
-LICENSE.md
-CHANGELOG.md
-CONTRIBUTION.md
-AUTORES.md
+## (WireFrame del Sitio)[https://www.figma.com/file/inLYqyIMxmiy6WxPlx6cey/wireframe-grupo-paw?type=design&node-id=1-48&mode=design&t=FRZzKBVkGpIr7CmU-0]
 
-### Modificaciones:
-
-* la carpeta `uploads/` quedo en la carpeta raiz del proyecto `PAW-2024/uploads/`
-Esto significa que las imagenes no pueden ser accedidas desde el front, por lo q 
-se tienen que cargar desde el backend al momento de cargar la vista. 
-
+## (PASOS PARA SU INSTALACION)[Instalacion.md] 
