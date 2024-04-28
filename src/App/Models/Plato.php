@@ -42,6 +42,9 @@ class Plato extends Model
                 }
                 // Asigna los datos al plato
                 foreach ($datosPlato as $key => $value) {
+                    if(!key_exists($key, $this->fields)){
+                        throw new Exception("No existe le key: $key");
+                    }
                     $this->fields[$key] = $value;
                 }
     

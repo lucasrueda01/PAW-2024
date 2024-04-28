@@ -16,7 +16,7 @@ class Request
 
     public function get($key)
     {
-        return $_POST[$key] ?? $_GET[$key] ?? $_FILE[$key] ?? null;
+        return $_POST[$key] ?? $_GET[$key] ?? null;
     }
         
     public function route()

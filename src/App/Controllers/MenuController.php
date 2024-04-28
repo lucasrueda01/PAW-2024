@@ -69,11 +69,13 @@ class MenuController extends Controller
         global $log;
         $titulo = 'PAW POWER | NUEVO PLATO';
 
+
         if($request->method()=='GET'){
             require $this->viewsDir . 'empleado/plato.new.view.php';
         }elseif($request->method()=='POST'){
             
             try{
+               
                 $newPlato = new Plato(
                     [
                     'nombre_plato' => $request->get('nombre_plato'),
@@ -83,16 +85,16 @@ class MenuController extends Controller
                     ]                
                 );
                 
+                $newPlato->setQueryBuilder($this->getQb());
+
                 $uploader = new Uploader;
-                $verificacion_imagen = $uploader->verificar_imagen($request->get('imagen_plato'), $newPlato);
+
+                $verificacion_imagen = $uploader->verificar_imagen($_FILES , $newPlato);
 
                 if(!$verificacion_imagen['exito']){
                     throw new Exception("Error al subir la imagen del plato: ". $verificacion_imagen['description']);
                 }
-   
-                $newPlato->setQueryBuilder($this->getQb());
-                $newPlato->set($datosPlato);
-
+                
                 if(!$this->model->insert($newPlato)){
                     throw new Exception("Faltan datos para crear el objeto Plato.");
                 }else{
@@ -102,6 +104,7 @@ class MenuController extends Controller
   
 
             }catch(Exception $e){
+                
                 $verificador_campos = [
                     'exito' => false,
                     'description' => "Error al crear el objeto Plato: " . $e->getMessage()

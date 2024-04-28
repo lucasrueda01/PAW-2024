@@ -24,9 +24,13 @@ class Uploader
             $fileName = $file['name'];
             $fileSize = $file['size'];
             $fileTmpName = $file['tmp_name'];
-            $fileType = mime_content_type($fileTmpName);
+            
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $fileType = finfo_file($finfo, $fileTmpName);
+            finfo_close($finfo);
             
             $log->info("fileSize: " . $fileSize);
+            $log->info("fileSize: " . $fileType);
             // Verifica el tipo de archivo
             $allowedTypes = ['image/jpeg', 'image/png'];
             if (!in_array($fileType, $allowedTypes)) {
@@ -49,8 +53,10 @@ class Uploader
             // Establece el directorio donde se guardará el archivo
 
             // Genera un nombre de archivo único para evitar colisiones
-            $newFileName = uniqid();
+            $newFileName = uniqid().".".pathinfo($fileName, PATHINFO_EXTENSION);
             $uploadPath = self::UPLOADDIRECTORY . $newFileName;
+
+            $newPlato->setPathImg($newFileName);
             
             // Mueve el archivo del directorio temporal a su ubicación final
             if (move_uploaded_file($fileTmpName, $uploadPath)) {
