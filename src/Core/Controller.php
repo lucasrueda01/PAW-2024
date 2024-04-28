@@ -11,6 +11,8 @@ class Controller
     public string $viewsDir;
     public string $viewsDirCliente;
 
+    public string $viewsDirEmpleado;
+
     public array $menu;
     public array $menuEmpleado;
     public array $menuPerfil;
@@ -25,6 +27,7 @@ class Controller
 
         $this->viewsDir = __DIR__ . '/../App/views/';
         $this->viewsDirCliente = __DIR__ . '/../App/views/cliente/';
+        $this->viewsDirEmpleado = __DIR__ . '/../App/views/empleado/';
 
         $this->menu = [
             [

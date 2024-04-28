@@ -32,10 +32,10 @@ class MenuController extends Controller
     public function nuestroMenu()
     {
         global $log;
-        
+
         $titulo = "PAW POWER | MENU";
         $platos = $this->model->getAll();
-        $log->info("(nuestroMenu) this->model: ",[$this->model]);        
+        $log->info("(nuestroMenu) this->model: ", [$this->model]);
         require $this->viewsDir . 'nuestro_menu.view.php';
     }
 
@@ -43,87 +43,81 @@ class MenuController extends Controller
     {
         $titulo = "PAW POWER | PROMOCIONES";
         require $this->viewsDir . 'promociones.view.php';
-    }    
+    }
 
     public function index()
     {
         global $log;
         $titulo = "Platos";
         $platos = $this->model->getAll();
-        $log->info("(index) this->model: ",[$this->model]);
+        $log->info("(index) this->model: ", [$this->model]);
         require $this->viewsDir . 'platos.index.view.php';
     }
 
     public function get()
-    {   
+    {
         global $request;
         $platoId = $request->get('id');
         list($resultado, $plato) = $this->model->get($platoId);
-        $titulo = "Plato";        
+        $titulo = "Plato";
         require $this->viewsDir . 'empleado/plato.show.view.php';
-    }   
-        
-    public function new(){
+    }
+
+    public function new()
+    {
         global $request;
         global $router;
         global $log;
         $titulo = 'PAW POWER | NUEVO PLATO';
 
 
-        if($request->method()=='GET'){
+        if ($request->method() == 'GET') {
             require $this->viewsDir . 'empleado/plato.new.view.php';
-        }elseif($request->method()=='POST'){
-            
-            try{
-               
+        } elseif ($request->method() == 'POST') {
+
+            try {
+
                 $newPlato = new Plato(
                     [
-                    'nombre_plato' => $request->get('nombre_plato'),
-                    'ingredientes' => $request->get('ingredientes'),
-                    'tipo_plato' => $request->get('tipo_plato'),
-                    'precio' => $request->get('precio'),                
-                    ]                
+                        'nombre_plato' => $request->get('nombre_plato'),
+                        'ingredientes' => $request->get('ingredientes'),
+                        'tipo_plato' => $request->get('tipo_plato'),
+                        'precio' => $request->get('precio'),
+                    ]
                 );
-                
+
                 $newPlato->setQueryBuilder($this->getQb());
 
                 $uploader = new Uploader;
 
-                $verificacion_imagen = $uploader->verificar_imagen($_FILES , $newPlato);
+                $resultado = $uploader->verificar_imagen($_FILES, $newPlato);
 
-                if(!$verificacion_imagen['exito']){
-                    throw new Exception("Error al subir la imagen del plato: ". $verificacion_imagen['description']);
+                if (!$resultado['exito']) {
+                    throw new Exception("Error al subir la imagen del plato: " . $resultado['description']);
                 }
-                
-                if(!$this->model->insert($newPlato)){
+
+                if (!$this->model->insert($newPlato)) {
                     throw new Exception("Faltan datos para crear el objeto Plato.");
-                }else{
+                } else {
                     $platos = $this->model->getAll();
-                    require $this->viewsDir . 'nuestro_menu.view.php';
+                    require $this->viewsDirEmpleado . 'plato_cargado.view.php';
                 }
-  
+            } catch (Exception $e) {
 
-            }catch(Exception $e){
-                
                 $verificador_campos = [
                     'exito' => false,
                     'description' => "Error al crear el objeto Plato: " . $e->getMessage()
                 ];
-                require $this->viewsDir . 'empleado/plato.new.view.php';   
+                require $this->viewsDir . 'empleado/plato.new.view.php';
             }
-            
-        }       
+        }
     }
 
-    public function insert(){
-
-
-    }    
+    public function insert()
+    {
+    }
 
     public function edit()
     {
-
     }
-
-
 }
