@@ -3,15 +3,14 @@
 * Descargar e Instalar MySQL del siguiente [link](https://dev.mysql.com/downloads/file/?id=526407). 
 * Copiar las variables de ambiente del archivo `.env.example` a un nuevo archivo llamado `.env`.
     - `.env`
-* Crear la tabla `mvc-paw-power`.
+* Crear la base de datos `mvc-paw-power`.
 
 ### 2) INSTALACION DE PHINX 
 
-- `curl -s https://getcomposer.org/installer | php`
-- `php composer.phar require robmorgan/phinx`
+- `composer require robmorgan/phinx`
 Luego ejecutar `phinx` desde `vendor/bin/phinx`
 - `vendor/bin/phinx migration `
-* Ejecutar migrations: `phinx migrate -e development`.
+* Ejecutar migrations: `vendor/bin/phinx migrate -e development`.
 
 ### 3) INSTALACION DE PHP: 
 

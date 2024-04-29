@@ -169,3 +169,9 @@
     background-image: url(../imgs/svg/icono-rechazar-hover.svg);
 
 }
+
+.plano_sucursal {
+    width: 30%;
+    height: auto;
+    margin: 2rem 2rem;
+}
