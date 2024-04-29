@@ -16,10 +16,6 @@ class Request
 
     public function get($key)
     {
-        global $log;
-
-        // $log->info("key: ", $key);
-        // $log->info('POST[key]: ', [$_POST[$key]]);
         return $_POST[$key] ?? $_GET[$key] ?? null;
     }
         

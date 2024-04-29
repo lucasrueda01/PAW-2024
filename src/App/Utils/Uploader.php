@@ -12,21 +12,25 @@ class Uploader
     const UPLOAD_COMPLETED = true;
     const UPLOADDIRECTORY = 'uploads/';
 
-    public function verificar_imagen($archivo_imagen, $datos_plato){
+    public function verificar_imagen($archivo_imagen, $newPlato){
 
         global $log;
         // Verifica si el archivo se ha subido correctamente
 
-        $log->info("fileSize: " , [$archivo_imagen['imagen_plato'], $archivo_imagen['imagen_plato']['error']]);
         if (isset($archivo_imagen['imagen_plato']) && $archivo_imagen['imagen_plato']['error'] === UPLOAD_ERR_OK) {
             // Obtén información sobre el archivo subido
+            $log->info("fileSize: " , [$archivo_imagen['imagen_plato'], $archivo_imagen['imagen_plato']['error']]);
             $file = $archivo_imagen['imagen_plato'];
             $fileName = $file['name'];
-            $fileType = $file['type'];
             $fileSize = $file['size'];
             $fileTmpName = $file['tmp_name'];
             
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $fileType = finfo_file($finfo, $fileTmpName);
+            finfo_close($finfo);
+            
             $log->info("fileSize: " . $fileSize);
+            $log->info("fileSize: " . $fileType);
             // Verifica el tipo de archivo
             $allowedTypes = ['image/jpeg', 'image/png'];
             if (!in_array($fileType, $allowedTypes)) {
@@ -49,8 +53,10 @@ class Uploader
             // Establece el directorio donde se guardará el archivo
 
             // Genera un nombre de archivo único para evitar colisiones
-            $newFileName = uniqid() . '_' . basename($fileName);
+            $newFileName = uniqid().".".pathinfo($fileName, PATHINFO_EXTENSION);
             $uploadPath = self::UPLOADDIRECTORY . $newFileName;
+
+            $newPlato->setPathImg($newFileName);
             
             // Mueve el archivo del directorio temporal a su ubicación final
             if (move_uploaded_file($fileTmpName, $uploadPath)) {
@@ -59,9 +65,9 @@ class Uploader
                     'description' => "El archivo se ha subido correctamente.",
                     'path_imagen' => $uploadPath,
                     'nombreArchivo' => $newFileName,
-                    'nombre_comida' => $datos_plato['nombre_plato'],
-                    'ingredientes_comida' => $datos_plato['ingredientes'],
-                    'tipo_plato' => $datos_plato['tipo_plato']
+                    'nombre_comida' => $newPlato->getNombrePlato(), 
+                    'ingredientes_comida' => $newPlato->getIngredientes(),
+                    'tipo_plato' => $newPlato->getTipoPlato()
                 ];                
             } else {
                 return [
@@ -76,5 +82,7 @@ class Uploader
             ];            
         }        
     }
+
+
 
 }

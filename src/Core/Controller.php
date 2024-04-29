@@ -11,12 +11,15 @@ class Controller
     public string $viewsDir;
     public string $viewsDirCliente;
 
+    public string $viewsDirEmpleado;
+
     public array $menu;
     public array $menuEmpleado;
     public array $menuPerfil;
     public ?string $modelName = null;   
     protected $model;
     use Loggable;
+    public $qb;
 
     public function __construct(){
         
@@ -24,6 +27,7 @@ class Controller
 
         $this->viewsDir = __DIR__ . '/../App/views/';
         $this->viewsDirCliente = __DIR__ . '/../App/views/cliente/';
+        $this->viewsDirEmpleado = __DIR__ . '/../App/views/empleado/';
 
         $this->menu = [
             [
@@ -90,10 +94,11 @@ class Controller
             ]
         ];     
         
+        $this->qb = new QueryBuilder($connection, $log);
+
         if(!is_null($this->modelName)){
-            $qb = new QueryBuilder($connection, $log);
             $model = new $this->modelName;
-            $model->setQueryBuilder($qb);
+            $model->setQueryBuilder($this->qb);
             $this->setModel($model);
         }
     }
@@ -101,6 +106,10 @@ class Controller
     public function setModel(Model $model)
     {
         $this->model = $model;
+    }
+
+    public function getQb(){
+        return $this->qb;
     }
 
 }

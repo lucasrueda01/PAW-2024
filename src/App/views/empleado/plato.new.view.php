@@ -18,14 +18,14 @@
             <p>Agrega un plato al menu</p>
         </section>
 
-        <?php if(isset($resultado['exito'])) : ?>
+        <?php if(isset($verificador_campos['exito'])) : ?>
                 <h4 class="msj msj_error">
-                <?= $resultado['description']; ?>
+                <?= $verificador_campos['description']; ?>
                 </h4>
         <?php endif ?>
 
         <section class="section_formulario">
-            <form action="/plato/insert" method="post" enctype="multipart/form-data" class="formulario form_transparente">
+            <form action="/plato/new" method="post" enctype="multipart/form-data" class="formulario form_transparente">
 
                 <h3 class="titulo_form_unite">COMPLETÁ EL FORMULARIO</h3>
 
