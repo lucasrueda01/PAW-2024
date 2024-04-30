@@ -128,6 +128,11 @@ class Plato extends Model
         return $this->fields['path_img'];
     }
 
+    public function getTypeImg()
+    {
+        return pathinfo($this->getPathImg(), PATHINFO_EXTENSION);
+    }
+
     public function getImagenPlatoBase64()
     {
         try{

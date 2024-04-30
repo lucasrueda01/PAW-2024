@@ -44,7 +44,7 @@
                     <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Hamburguesa') : ?> 
                             <li class="articulo">
-                                <img src="../uploads/<?= $plato->getPathImg(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
+                                <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>

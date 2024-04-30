@@ -13,7 +13,7 @@ use Paw\Core\Model;
 
 class MenuController extends Controller
 {
-
+    const IdIMG_URL = 2;
     public ?string $modelName = PlatosCollection::class;
 
     public Verificador $verificador;
@@ -59,8 +59,25 @@ class MenuController extends Controller
         global $request;
         $platoId = $request->get('id');
         list($resultado, $plato) = $this->model->get($platoId);
-        $titulo = "Plato";
-        require $this->viewsDir . 'empleado/plato.show.view.php';
+        
+        $imagenPlato = file_get_contents(Uploader::UPLOADDIRECTORY.$plato->getPathImg());
+
+        header("Content-type: image/".$plato->getTypeImg());
+        echo($imagenPlato);
+    }
+    public function getByAccessPoint()
+    {
+        global $request;
+        $platoId = $request->getSegments(self::IdIMG_URL);
+
+        var_dump($_REQUEST);
+
+        list($resultado, $plato) = $this->model->get($platoId);
+        
+        $imagenPlato = file_get_contents(Uploader::UPLOADDIRECTORY.$plato->getPathImg());
+
+        header("Content-type: image/".$plato->getTypeImg());
+        echo($imagenPlato);
     }
 
     public function new()

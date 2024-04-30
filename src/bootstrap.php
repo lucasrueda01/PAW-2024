@@ -68,6 +68,7 @@ $router->get('/sobre_nosotros', 'EmpresaController@sobre_nosotros');
 $router->get('/promociones', 'MenuController@promociones'); // MenuController
 $router->get('/nuestro_menu', 'MenuController@nuestroMenu'); // MenuController
 $router->get('/plato', 'MenuController@get'); // MenuController
+// $router->get('/plato/id/', 'MenuController@getByAccessPoint'); // MenuController
 $router->get('/plato/new', 'MenuController@new'); // MenuController
 $router->post('/plato/new', 'MenuController@new'); // MenuController
 // PedidoController
