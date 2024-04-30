@@ -40,9 +40,11 @@ class PlatosCollection extends Model
 
         $log->info("queryBuilder [insertPlato]: ", [$newPlato]);
 
-        $resultado = $this->queryBuilder->insert($this->table, $newPlato->getAllFields());
+        list($idPlato, $resultado) = $this->queryBuilder->insert($this->table, $newPlato->getAllFields());
 
-        $log->info("resultado insert: ", [$resultado]);
+        $newPlato->setId($idPlato);
+        
+        $log->info("resultado insert: ", [$resultado, $idPlato]);
 
         return $resultado;
     }    

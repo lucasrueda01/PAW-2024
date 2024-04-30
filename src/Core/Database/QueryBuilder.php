@@ -52,8 +52,10 @@ class QueryBuilder
         }
     
         $resultado = $sentencia->execute();
-    
-        return $resultado;
+        
+        $idGenerado = $this->pdo->lastInsertId();
+
+        return [$idGenerado, $resultado];
     }
 
     public function update()

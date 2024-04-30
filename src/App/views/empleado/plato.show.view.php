@@ -27,7 +27,7 @@
         <?php if(isset($plato)) : ?>
             <section class="plato_subido">
                 <figure class="imagen_subida">
-                    <img src="../uploads/<?= $plato->getPathImg(); ?>" alt="<?= $plato->getNombrePlato(); ?>">
+                    <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
                     <figcaption>
                         <h3><?= $plato->getNombrePlato(); ?></h3>
                         <p><?= $plato->getIngredientes(); ?></p><br>

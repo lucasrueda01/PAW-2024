@@ -48,7 +48,7 @@
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
-                                <a href="/plato?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
+                                <a href="/plato/verDetalle?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    
@@ -64,11 +64,11 @@
                     <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Bebida') : ?> 
                             <li class="articulo">
-                                <img src="../uploads/<?= $plato->getPathImg(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
+                                <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
-                                <a href="/plato?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
+                                <a href="/plato/verDetalle?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    
@@ -81,11 +81,11 @@
                 <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Otro Plato') : ?> 
                             <li class="articulo">
-                                <img src="../uploads/<?= $plato->getPathImg(); ?>" alt="<?= $plato->getNombrePlato(); ?>">  
+                                <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
-                                <a href="/plato?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
+                                <a href="/plato/verDetalle?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    

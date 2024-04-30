@@ -59,25 +59,19 @@ class MenuController extends Controller
         global $request;
         $platoId = $request->get('id');
         list($resultado, $plato) = $this->model->get($platoId);
-        
+
         $imagenPlato = file_get_contents(Uploader::UPLOADDIRECTORY.$plato->getPathImg());
 
         header("Content-type: image/".$plato->getTypeImg());
         echo($imagenPlato);
     }
-    public function getByAccessPoint()
+    public function verDetalle()
     {
         global $request;
-        $platoId = $request->getSegments(self::IdIMG_URL);
-
-        var_dump($_REQUEST);
-
+        $platoId = $request->get('id');
         list($resultado, $plato) = $this->model->get($platoId);
-        
-        $imagenPlato = file_get_contents(Uploader::UPLOADDIRECTORY.$plato->getPathImg());
-
-        header("Content-type: image/".$plato->getTypeImg());
-        echo($imagenPlato);
+        $titulo = "Plato";
+        require $this->viewsDir . 'empleado/plato.show.view.php';
     }
 
     public function new()
