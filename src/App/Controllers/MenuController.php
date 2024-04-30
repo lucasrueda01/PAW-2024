@@ -59,11 +59,26 @@ class MenuController extends Controller
         global $request;
         $platoId = $request->get('id');
         list($resultado, $plato) = $this->model->get($platoId);
+        
+        try {
+            $imagenPlato = @file_get_contents(Uploader::UPLOADDIRECTORY.$plato->getPathImg());
+        
+            if ($imagenPlato === false) {
+                // Si file_get_contents devuelve false, significa que no se pudo leer la imagen
+                throw new Exception("No se pudo leer la imagen del plato: ". Uploader::UPLOADDIRECTORY.$plato->getPathImg());
+            }
+        
+            header("Content-type: image/".$plato->getTypeImg());
+            echo($imagenPlato);
+        } catch (Exception $e) {
+            // Manejo de la excepción
+            global $router;
 
-        $imagenPlato = file_get_contents(Uploader::UPLOADDIRECTORY.$plato->getPathImg());
-
-        header("Content-type: image/".$plato->getTypeImg());
-        echo($imagenPlato);
+            $error = "Error: " . $e->getMessage();
+            
+            require $this->viewsDir . 'errors/not-found.view.php';
+        }
+        
     }
     public function verDetalle()
     {
