@@ -42,5 +42,21 @@ class Local extends Model
             }
         }
     }
-
+    public function loadByName($name)
+    {
+        $params = [ "nombre_local" => $name];
+        try{
+            $record = current($this->queryBuilder->select($this->table, $params));
+            if($record){
+                $this->set($record);
+            }else{
+                return [
+                    'error' => true,
+                    'description' => 'No Existe el Name buscado'
+                ];
+            }
+        }catch(Exception $e){
+            throw new Exception("Error no existe Name {$e}");
+        }
+    }    
 }

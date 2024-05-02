@@ -31,11 +31,13 @@ class LocalController extends Controller
             $datos = json_decode($datosJson, true);
 
             // Verificar si se recibieron los datos esperados
-            if (isset($datos["sucursal"])) {
+            if (isset($datos["local"])) {
 
-                $sucursalSeleccionada = $datos["sucursal"];
+                $localSeleccionado = $datos["local"];
                 // Realizar la consulta a la base de datos para obtener las mesas del local
                 // $mesas = obtenerMesasDelLocal($sucursalSeleccionada);
+
+                    
 
                 // Ejemplo de respuesta: enviar las mesas en formato JSON
                 $mesas = array(
@@ -47,6 +49,7 @@ class LocalController extends Controller
                 // Enviar las mesas como respuesta en formato JSON
                 header("Content-Type: application/json");
                 echo json_encode($mesas);
+
             } else {
                 // Si faltan datos en la solicitud, enviar una respuesta de error
                 http_response_code(400);

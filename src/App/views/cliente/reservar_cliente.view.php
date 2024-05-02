@@ -36,13 +36,13 @@
                     <input type="text" name="nombre" id="nombre" required>
                     <label for="dni">Ingrese su DNI</label>
                     <input type="number" name="dni" id="dni" required>
-                    <label for="sucursal">Selecciona una sucursal:</label>
-                    <select id="sucursal" name="sucursal" required>
+                    <label for="local">Selecciona un local:</label>
+                    <select id="local" name="local" required>
                         <option value="ninguna">Ninguna Seleccionada</option>
-                        <option value="sucursal1">Sucursal 1</option>
-                        <option value="sucursal2">Sucursal 2</option>
-                        <option value="sucursal3">Sucursal 3</option>
-                        <option value="sucursal4">Sucursal 4</option>
+                        <option value="local-avellaneda">Local Avellaneda</option>
+                        <option value="local-2">Local 2</option>
+                        <option value="local-3">Local 3</option>
+                        <option value="local-4">Local 4</option>
                     </select>
                     <label for="date">Seleccione fecha:</label>
                     <input type="date" name="time" id="date" required>
