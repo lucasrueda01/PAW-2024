@@ -72,8 +72,6 @@ class MenuController extends Controller
             echo($imagenPlato);
         } catch (Exception $e) {
             // Manejo de la excepción
-            global $router;
-
             $error = "Error: " . $e->getMessage();
             
             require $this->viewsDir . 'errors/not-found.view.php';
