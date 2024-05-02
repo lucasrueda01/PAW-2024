@@ -3,11 +3,14 @@
 namespace Paw\App\Controllers;
 
 use Paw\App\Utils\Verificador;
+use Paw\App\Models\PlatosCollection;
 
 use Paw\Core\Controller;
 
 class LocalController extends Controller
 {
+
+    public ?string $modelName = LocalCollection::class;
 
     public Verificador $verificador;
 
