@@ -18,36 +18,22 @@ class QueryBuilder
     }
 
     public function select($table, $params = []) {
-        $where = "";
-        $bindings = [];
-    
-        foreach ($params as $key => $value) {
-            if ($where !== "") {
-                $where .= " AND ";
-            }
-            $where .= "$key = :$key";
-            $bindings[":$key"] = $value;
+        $where = "1 = 1";
+        if(isset($params['id'])){
+            $where = "id = :id ";
         }
-    
-        // Construir la consulta
-        $query = "SELECT * FROM $table";
-        if ($where !== "") {
-            $query .= " WHERE $where";
-        }      
-    
-        $this->lastQuery = $query;
+        
+        $query = "select * from {$table} where {$where}";    
 
-        $this->logger->info($this->lastQuery);
+        // $this->logger->info($query);
 
         $sentencia = $this->pdo->prepare($query);
         
-        $this->logger->info($sentencia);
-        
-        // Vincular los parámetros
-        foreach ($bindings as $key => $value) {
-            $sentencia->bindValue($key, $value);
+        if(isset($params['id'])){
+            
+            $sentencia->bindValue(":id", $params['id']);
         }
-    
+
         $sentencia->setFetchMode(PDO::FETCH_ASSOC);
         $sentencia->execute();
         return $sentencia->fetchAll();
