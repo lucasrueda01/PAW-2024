@@ -38,6 +38,7 @@
                     <input type="number" name="dni" id="dni" required>
                     <label for="sucursal">Selecciona una sucursal:</label>
                     <select id="sucursal" name="sucursal" required>
+                        <option value="ninguna">Ninguna Seleccionada</option>
                         <option value="sucursal1">Sucursal 1</option>
                         <option value="sucursal2">Sucursal 2</option>
                         <option value="sucursal3">Sucursal 3</option>
@@ -66,7 +67,7 @@
                         </ul>
                     </aside>
 
-                    <object type="image/svg+xml" data="/assets/imgs/svg/PlanoSucursalA.svg" id="svg-object"></object>
+                    <object type="image/svg+xml" data="/assets/imgs/svg/PlanoSucursalA.svg" id="planoDelLocal"></object>
 
                     <input type="submit" value="Reservar" class="boton boton_verde">
                 </fieldset>
