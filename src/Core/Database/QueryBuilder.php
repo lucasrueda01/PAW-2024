@@ -9,6 +9,7 @@ class QueryBuilder
 {
     public PDO $pdo;
     public Logger $logger;
+    private $lastQuery;
 
     public function __construct(PDO $pdo, Logger $logger = null)
     {   
@@ -16,24 +17,37 @@ class QueryBuilder
         $this->logger = $logger;
     }
 
-    public function select($table, $params = [])
-    {   
-        $where = "1 = 1";
-        if(isset($params['id'])){
-            $where = "id = :id ";
+    public function select($table, $params = []) {
+        $where = "";
+        $bindings = [];
+    
+        foreach ($params as $key => $value) {
+            if ($where !== "") {
+                $where .= " AND ";
+            }
+            $where .= "$key = :$key";
+            $bindings[":$key"] = $value;
         }
-        
-        $query = "select * from {$table} where {$where}";    
+    
+        // Construir la consulta
+        $query = "SELECT * FROM $table";
+        if ($where !== "") {
+            $query .= " WHERE $where";
+        }      
+    
+        $this->lastQuery = $query;
 
-        // $this->logger->info($query);
+        $this->logger->info($this->lastQuery);
 
         $sentencia = $this->pdo->prepare($query);
         
-        if(isset($params['id'])){
-            
-            $sentencia->bindValue(":id", $params['id']);
+        $this->logger->info($sentencia);
+        
+        // Vincular los parámetros
+        foreach ($bindings as $key => $value) {
+            $sentencia->bindValue($key, $value);
         }
-
+    
         $sentencia->setFetchMode(PDO::FETCH_ASSOC);
         $sentencia->execute();
         return $sentencia->fetchAll();
@@ -57,6 +71,12 @@ class QueryBuilder
 
         return [$idGenerado, $resultado];
     }
+
+    public function getLastQuery()
+    {
+        return $this->lastQuery;
+    }
+
 
     public function update()
     {

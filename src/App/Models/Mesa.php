@@ -44,4 +44,58 @@ class Mesa extends Model
         }
     }
 
+    public function setId($id)
+    {
+        $this->fields[$id] = $id;
+    }
+
+    public function getId()
+    {
+        return $this->fields['id'];
+    }
+
+    public function setNombreMesa($nombreMesa)
+    {
+        $this->fields['nombre_mesa'] = $nombreMesa;
+    }
+
+    public function getNombreMesa()
+    {
+        return $this->fields['nombre_mesa'];
+    }
+
+    public function setCapacidad($capacidad)
+    {
+        $this->fields['capacidad'] = $capacidad;
+    }
+
+    public function getCapacidad()
+    {
+        return $this->fields['capacidad'];
+    }
+
+    public function setIdLocal($idLocal)
+    {
+        $this->fields['id_local'] = $idLocal;
+    }
+
+    public function getIdLocal()
+    {
+        return $this->fields['id_local'];
+    }
+
+    public function set(array $values)
+    {
+        foreach($values as $field => $value)
+        {
+            if(!isset($values[$field]))
+            {
+                continue;
+            }
+            
+            $method = 'set'.str_replace('_', '', ucwords($field, '_'));
+            $this->$method($value);
+        }
+    }    
+
 }

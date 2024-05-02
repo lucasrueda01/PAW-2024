@@ -18,7 +18,7 @@ class CombinedSeeder extends AbstractSeed
     {
         // Datos para la tabla 'local'
         $localData = [
-            ['nombre' => 'local-avellaneda', 'ubicacion' => 'california 456']
+            ['nombre_local' => 'local-avellaneda', 'ubicacion' => 'california 456']
         ];
 
         // Insertar datos en la tabla 'local'

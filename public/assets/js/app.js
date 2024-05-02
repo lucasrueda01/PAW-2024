@@ -27,15 +27,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (planoDoc) {
 
-            let local = document.querySelector("#sucursal");
+            let local = document.querySelector("#local");
 
             local.addEventListener("change", function() {
 
-                var sucursalSeleccionada = this.value;
+                var localSeleccionado = this.value;
             
                 // Objeto con los datos a enviar al servidor
                 var datos = {
-                    sucursal: sucursalSeleccionada
+                    local: localSeleccionado
                 };
             
                 // Configurar la solicitud AJAX
@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (xhr.status === 200) {
                         var mesas = JSON.parse(xhr.responseText);
                         
-                        marcarMesas(planoDoc, mesas);
+                        console.log(mesas);
+                        // marcarMesas(planoDoc, mesas);
                     }
                 };
             

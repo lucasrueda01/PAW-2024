@@ -46,4 +46,96 @@ class Reserva extends Model
         }
     }
 
+    // Setter para 'id'
+    public function setId($id) {
+        $this->fields['id'] = $id;
+    }
+
+    // Getter para 'id'
+    public function getId() {
+        return $this->fields['id'];
+    }
+
+    // Setter para 'id_local'
+    public function setIdLocal($id_local) {
+        $this->fields['id_local'] = $id_local;
+    }
+
+    // Getter para 'id_local'
+    public function getIdLocal() {
+        return $this->fields['id_local'];
+    }
+
+    // Setter para 'id_mesa'
+    public function setIdMesa($id_mesa) {
+        $this->fields['id_mesa'] = $id_mesa;
+    }
+
+    // Getter para 'id_mesa'
+    public function getIdMesa() {
+        return $this->fields['id_mesa'];
+    }
+
+    // Setter para 'fecha_hora_inicio'
+    public function setFechaHoraInicio($fecha_hora_inicio) {
+        $this->fields['fecha_hora_inicio'] = $fecha_hora_inicio;
+    }
+
+    // Getter para 'fecha_hora_inicio'
+    public function getFechaHoraInicio() {
+        return $this->fields['fecha_hora_inicio'];
+    }
+
+    // Setter para 'fecha_hora_final'
+    public function setFechaHoraFinal($fecha_hora_final) {
+        $this->fields['fecha_hora_final'] = $fecha_hora_final;
+    }
+
+    // Getter para 'fecha_hora_final'
+    public function getFechaHoraFinal() {
+        return $this->fields['fecha_hora_final'];
+    }
+
+    // Setter para 'ocupada'
+    public function setOcupada($ocupada) {
+        $this->fields['ocupada'] = $ocupada;
+    }
+
+    // Getter para 'ocupada'
+    public function getOcupada() {
+        return $this->fields['ocupada'];
+    }
+
+    public function set(array $values)
+    {
+        foreach($values as $field => $value)
+        {
+            if(!isset($values[$field]))
+            {
+                continue;
+            }
+            
+            $method = 'set'.str_replace('_', '', ucwords($field, '_'));
+            $this->$method($value);
+        }
+    }   
+
+    public function load($idLocal, $idMesa)
+    {
+        $params = [ "id_local" => $idLocal, "id_mesa" => $idMesa];
+        try{
+            $record = current($this->queryBuilder->select($this->table, $params));
+            if($record){
+                $this->set($record);
+            }else{
+                return [
+                    'error' => true,
+                    'description' => 'No Existe el Id buscado'
+                ];
+            }
+        }catch(Exception $e){
+            throw new Exception("Error no existe Id {$e}");
+        }
+    }  
+
 }

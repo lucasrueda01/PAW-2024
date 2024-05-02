@@ -42,9 +42,55 @@ class Local extends Model
             }
         }
     }
-    public function loadByName($name)
+
+    public function setId($id)
     {
-        $params = [ "nombre_local" => $name];
+        $this->fields['id'] = $id;
+    }
+
+    public function getId()
+    {
+        return $this->fields['id'];
+    }
+
+    public function setNombreLocal($nombre)
+    {
+        $this->fields['nombre_local'] = $nombre;
+    }
+
+    public function getNombreLocal()
+    {
+        return $this->fields['nombre_local'];
+    }
+
+    public function setUbicacion($ubicacion)
+    {
+        $this->fields['ubicacion'] = $ubicacion;
+    }
+
+    public function getUbicacion()
+    {
+        return $this->fields['ubicacion'];
+    }
+  
+
+    public function set(array $values)
+    {
+        foreach($values as $field => $value)
+        {
+            if(!isset($values[$field]))
+            {
+                continue;
+            }
+            
+            $method = 'set'.str_replace('_', '', ucwords($field, '_'));
+            $this->$method($value);
+        }
+    }
+
+    public function loadByName()
+    {
+        $params = [ "nombre_local" => $this->getNombreLocal()];
         try{
             $record = current($this->queryBuilder->select($this->table, $params));
             if($record){

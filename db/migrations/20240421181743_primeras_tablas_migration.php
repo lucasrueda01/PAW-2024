@@ -30,7 +30,7 @@ final class PrimerasTablasMigration extends AbstractMigration
 
         // Crear tabla "local"
         $local = $this->table('local');
-        $local->addColumn('nombre', 'string')
+        $local->addColumn('nombre_local', 'string')
             ->addColumn('ubicacion', 'string')
             ->addIndex('id', ['unique' => true])
             ->create();
