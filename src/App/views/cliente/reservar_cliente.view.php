@@ -36,18 +36,20 @@
                     <input type="text" name="nombre" id="nombre" required>
                     <label for="dni">Ingrese su DNI</label>
                     <input type="number" name="dni" id="dni" required>
-                    <label for="sucursal">Selecciona una sucursal:</label>
-                    <select id="sucursal" name="sucursal" required>
-                        <option value="sucursal1">Sucursal 1</option>
-                        <option value="sucursal2">Sucursal 2</option>
-                        <option value="sucursal3">Sucursal 3</option>
-                        <option value="sucursal4">Sucursal 4</option>
+                    <label for="local">Selecciona un local:</label>
+                    <select id="local" name="local" required>
+                        <option value="local1">Local 1</option>
+                        <option value="local2">Local 2</option>
+                        <option value="local3">Local 3</option>
+                        <option value="local4">Local 4</option>
                     </select>
                     <label for="date">Seleccione fecha:</label>
                     <input type="date" name="time" id="date" required>
                     <label for="time">Seleccione hora:</label>
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
+
+                        
 
                     <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
