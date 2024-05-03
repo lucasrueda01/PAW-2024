@@ -9,6 +9,7 @@ class QueryBuilder
 {
     public PDO $pdo;
     public Logger $logger;
+    private $lastQuery;
 
     public function __construct(PDO $pdo, Logger $logger = null)
     {   
@@ -16,8 +17,7 @@ class QueryBuilder
         $this->logger = $logger;
     }
 
-    public function select($table, $params = [])
-    {   
+    public function select($table, $params = []) {
         $where = "1 = 1";
         if(isset($params['id'])){
             $where = "id = :id ";
@@ -57,6 +57,12 @@ class QueryBuilder
 
         return [$idGenerado, $resultado];
     }
+
+    public function getLastQuery()
+    {
+        return $this->lastQuery;
+    }
+
 
     public function update()
     {
