@@ -347,6 +347,7 @@ main {
     width: 16rem;
     color: white;
     background-color: black;
+    padding: 1rem 1rem;
 }
 
 .boton_negro:hover {
