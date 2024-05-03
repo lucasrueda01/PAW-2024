@@ -49,7 +49,7 @@
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
 
-                    <object type="image/svg+xml" data="/assets/imgs/svg/PlanoSucursalA.svg"></object>
+                    <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
                     <aside class="resumen">
                         <h4 class="titulo_resumen">Resumen de reserva</h4>
