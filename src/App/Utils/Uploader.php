@@ -1,34 +1,41 @@
 <?php
 
-namespace Paw\App\Controllers;
+namespace Paw\App\Utils;
 
-class UploadController 
+class Uploader
 {
     public string $path_promociones = '/';
-    const ERROR_TIPO_NO_PERMITIDO = 'tipo_no_permitido';
-    const ERROR_TAMANIO_NO_PERMITIDO = 'tamanio_no_permitido';
-    const ERROR_AL_SUBIR_ARCHIVO = 'error al subir archivo';
-    const ERROR_DE_CARGA = 'error de carga';
-    const UPLOAD_COMPLETED = 'carga completada correctamente';
-    const UPLOADDIRECTORY = 'uploads/';
+    const ERROR_TIPO_NO_PERMITIDO = false;
+    const ERROR_TAMANIO_NO_PERMITIDO = false;
+    const ERROR_AL_SUBIR_ARCHIVO = false;
+    const ERROR_DE_CARGA = false;
+    const UPLOAD_COMPLETED = true;
+    const UPLOADDIRECTORY = '../uploads/';
 
+    public function verificar_imagen($archivo_imagen, $newPlato){
 
-    public function verificar_imagen($archivo_imagen, $datos_plato){
+        global $log;
         // Verifica si el archivo se ha subido correctamente
 
         if (isset($archivo_imagen['imagen_plato']) && $archivo_imagen['imagen_plato']['error'] === UPLOAD_ERR_OK) {
             // Obtén información sobre el archivo subido
+            $log->info("fileSize: " , [$archivo_imagen['imagen_plato'], $archivo_imagen['imagen_plato']['error']]);
             $file = $archivo_imagen['imagen_plato'];
             $fileName = $file['name'];
-            $fileType = $file['type'];
             $fileSize = $file['size'];
             $fileTmpName = $file['tmp_name'];
             
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $fileType = finfo_file($finfo, $fileTmpName);
+            finfo_close($finfo);
+            
+            $log->info("fileSize: " . $fileSize);
+            $log->info("fileSize: " . $fileType);
             // Verifica el tipo de archivo
             $allowedTypes = ['image/jpeg', 'image/png'];
             if (!in_array($fileType, $allowedTypes)) {
                 return [
-                    'error' => self::ERROR_TIPO_NO_PERMITIDO,
+                    'exito' => self::ERROR_TIPO_NO_PERMITIDO,
                     'description' => "El archivo debe ser una imagen JPEG o PNG."
                 ];
             }
@@ -37,7 +44,7 @@ class UploadController
             $maxFileSize = 1 * 1024 * 1024; // 1 MB en bytes
             if ($fileSize > $maxFileSize) {
                 return [
-                    'error' => self::ERROR_TAMANIO_NO_PERMITIDO,
+                    'exito' => self::ERROR_TAMANIO_NO_PERMITIDO,
                     'description' => "El archivo no debe exceder 1 MB."
                 ];
             }
@@ -46,8 +53,10 @@ class UploadController
             // Establece el directorio donde se guardará el archivo
 
             // Genera un nombre de archivo único para evitar colisiones
-            $newFileName = uniqid() . '_' . basename($fileName);
+            $newFileName = uniqid().".".pathinfo($fileName, PATHINFO_EXTENSION);
             $uploadPath = self::UPLOADDIRECTORY . $newFileName;
+
+            $newPlato->setPathImg($newFileName);
             
             // Mueve el archivo del directorio temporal a su ubicación final
             if (move_uploaded_file($fileTmpName, $uploadPath)) {
@@ -55,22 +64,25 @@ class UploadController
                     'exito' => self::UPLOAD_COMPLETED,
                     'description' => "El archivo se ha subido correctamente.",
                     'path_imagen' => $uploadPath,
-                    'nombre_comida' => $datos_plato['nombre_plato'],
-                    'ingredientes_comida' => $datos_plato['ingredientes'],
-                    'tipo_plato' => $datos_plato['tipo_de_plato']
+                    'nombreArchivo' => $newFileName,
+                    'nombre_comida' => $newPlato->getNombrePlato(), 
+                    'ingredientes_comida' => $newPlato->getIngredientes(),
+                    'tipo_plato' => $newPlato->getTipoPlato()
                 ];                
             } else {
                 return [
-                    'error' => self::ERROR_AL_SUBIR_ARCHIVO,
+                    'exito' => self::ERROR_AL_SUBIR_ARCHIVO,
                     'description' => "Hubo un problema al subir el archivo."
                 ];                
             }
         } else {
             return [
-                'error' => self::ERROR_DE_CARGA,
+                'exito' => self::ERROR_DE_CARGA,
                 'description' => "No se ha subido ningún archivo o ocurrió un error."
             ];            
         }        
     }
+
+
 
 }

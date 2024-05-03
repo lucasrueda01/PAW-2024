@@ -17,14 +17,10 @@
             <h2>REGISTRARSE</h2>
         </section>
 
-        <?php if(isset($resultado['exito'])) : ?>
-            <h4 class="msj msj_exito">
-                   <?= $resultado['description']; ?>
-            </h4>
-        <?php else: ?>
+        <?php if(isset($resultado) && $resultado['hay_campos_vacios']) : ?>
             <h4 class="msj msj_error">
                    <?= $resultado['description']; ?>
-            </h4>        
+            </h4>
         <?php endif ?>
 
         <form action="/registro" method="post" class="formulario form_amarillo">

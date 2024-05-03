@@ -1,15 +1,34 @@
-<?php 
+<?php
 
-namespace Paw\App\Controllers;
+namespace Paw\Core;
 
-class MenuMaster {
+use Paw\Core\Model; 
+use Paw\Core\Database\QueryBuilder;
+use Paw\Core\Traits\Loggable;
+
+class Controller 
+{
+    public string $viewsDir;
+    public string $viewsDirCliente;
+
+    public string $viewsDirEmpleado;
 
     public array $menu;
     public array $menuEmpleado;
     public array $menuPerfil;
+    public ?string $modelName = null;   
+    protected $model;
+    use Loggable;
+    public $qb;
 
     public function __construct(){
         
+        global $connection, $log;        
+
+        $this->viewsDir = __DIR__ . '/../App/views/';
+        $this->viewsDirCliente = __DIR__ . '/../App/views/cliente/';
+        $this->viewsDirEmpleado = __DIR__ . '/../App/views/empleado/';
+
         $this->menu = [
             [
                 'href' => '/nuestro_menu',
@@ -51,9 +70,9 @@ class MenuMaster {
                 'name' => 'PEDIDOS ENTRANTES'
             ],
             [
-                'href' => '/nuevo_plato',
+                'href' => '/plato/new',
                 'name' => 'NUEVO PLATO'
-            ],
+            ]
         ];
 
         $this->menuPerfil = [
@@ -73,7 +92,24 @@ class MenuMaster {
                 'href' => '/cerrar_sesion',
                 'name' => 'Cerrar Sesion'
             ]
-        ];        
+        ];     
+        
+        $this->qb = new QueryBuilder($connection, $log);
+
+        if(!is_null($this->modelName)){
+            $model = new $this->modelName;
+            $model->setQueryBuilder($this->qb);
+            $this->setModel($model);
+        }
+    }
+
+    public function setModel(Model $model)
+    {
+        $this->model = $model;
+    }
+
+    public function getQb(){
+        return $this->qb;
     }
 
 }

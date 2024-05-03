@@ -1,5 +1,5 @@
 
-        <?php foreach ($this->menuMaster->menuEmpleado as $item) : ?>                 
+        <?php foreach ($this->menuEmpleado as $item) : ?>                 
             <li class="opciones_nav">
                 <a href="<?= $item['href'] ?>"><?= $item['name']?></a>
             </li>

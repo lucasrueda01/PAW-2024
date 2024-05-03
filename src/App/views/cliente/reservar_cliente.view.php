@@ -36,35 +36,38 @@
                     <input type="text" name="nombre" id="nombre" required>
                     <label for="dni">Ingrese su DNI</label>
                     <input type="number" name="dni" id="dni" required>
-                    <label for="sucursal">Selecciona una sucursal:</label>
-                    <select id="sucursal" name="sucursal" required>
-                        <option value="sucursal1">Sucursal 1</option>
-                        <option value="sucursal2">Sucursal 2</option>
-                        <option value="sucursal3">Sucursal 3</option>
-                        <option value="sucursal4">Sucursal 4</option>
+                    <label for="local">Selecciona un local:</label>
+                    <select id="local" name="local" required>
+                        <option value="ninguna">Ninguna Seleccionada</option>
+                        <option value="local-avellaneda">Local Avellaneda</option>
+                        <option value="local-2">Local 2</option>
+                        <option value="local-3">Local 3</option>
+                        <option value="local-4">Local 4</option>
                     </select>
                     <label for="date">Seleccione fecha:</label>
                     <input type="date" name="time" id="date" required>
                     <label for="time">Seleccione hora:</label>
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
-                    <select name="mesas_disponibles" id="mesas_disponibles" required>
-                        <option value="mesa-s1">Mesa Salon 1</option>
-                        <option value="mesa-s2">Mesa Salon 2</option>
-                        <option value="mesa-pf1">Mesa Pet Friendly 1</option>
-                        <option value="mesa-pf2">Mesa Pet Friendly 1</option>
-                    </select>
+
+                    
 
                     <aside class="resumen">
                         <h4 class="titulo_resumen">Resumen de reserva</h4>
                         <ul>
-                          <?php  foreach ($resultado['resumen'] as $clave => $valor) : ?>
+                          <?php  
+                            if(isset($resultado['resumen'])) :
+                              foreach ($resultado['resumen'] as $clave => $valor) : ?>
 
                              <li><?= ucfirst($clave) ?> : <?= $valor ?> </li>
 
-                          <?php endforeach; ?>                            
+                          <?php endforeach; 
+                             endif;   
+                          ?>                            
                         </ul>
                     </aside>
+
+                    <object type="image/svg+xml" data="/assets/imgs/svg/PlanoSucursalA.svg" id="planoDelLocal"></object>
 
                     <input type="submit" value="Reservar" class="boton boton_verde">
                 </fieldset>

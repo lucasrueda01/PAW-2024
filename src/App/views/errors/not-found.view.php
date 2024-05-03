@@ -20,6 +20,12 @@
         
 </main>
 
+    <?php if(isset($error)) : ?>
+        <h4 class="msj msj_error">
+        <?= $error; ?>
+        </h4>
+    <?php endif ?>
+    
     <?php require __DIR__.'/../parts/footer.view.php' ?>
     
 </body>

@@ -67,6 +67,7 @@ Class Router
                     "Status Code: 200",
                     [
                         "Path" => $path,
+                        "Controller" => $controller,
                         "Method" => $method
                     ]
                 );
@@ -77,7 +78,7 @@ Class Router
                     ->debug(
                         "Status Code: 404 - Route Not Found",
                         [
-                            "ERROR" => $e
+                            "ERROR" => [$path, $http_method]
                         ]
                     );
                 } catch (Exception $e) {

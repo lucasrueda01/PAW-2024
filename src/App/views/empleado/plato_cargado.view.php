@@ -25,10 +25,10 @@
                     <?= $resultado['description']; ?>
                 </h4>
                 <figure class="imagen_subida">
-                    <img src="/<?= $resultado['path_imagen'] ?>" alt="comida">
+                <img src="/plato?id=<?= $newPlato->getId(); ?>" alt="<?= $newPlato->getNombrePlato(); ?>"> 
                     <figcaption>
-                        <h3><?= $resultado['nombre_comida'] ?></h3>
-                        <p><?= $resultado['ingredientes_comida'] ?></p><br>
+                        <h3><?= $newPlato->getNombrePlato(); ?></h3>
+                        <p><?= $newPlato->getIngredientes(); ?></p><br>
                     </figcaption>
                 </figure>
                 <a class="boton boton_negro" href="/nuevo_plato">CARGAR OTRO PLATO</a>
