@@ -34,7 +34,7 @@
     border-bottom: 1rem solid var(--color-amarillo);
 }
 
-.mesa {
+.mesa_ {
     margin: 1rem 1rem;
     border-radius: 3rem;
     width: 10rem;
@@ -42,7 +42,7 @@
     display: block;
 }
 
-.mesa a {
+.mesa_ a {
     width: 72%;
     height: 71%;
     display: inline-block;

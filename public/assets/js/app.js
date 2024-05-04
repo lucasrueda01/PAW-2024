@@ -1,12 +1,14 @@
-function marcarMesas(planoDoc, mesas) {
+function marcarMesas(mesas) {
     // Iterar sobre las mesas recibidas
 
     mesas.forEach(function (mesa) {
         // Obtener el nombre de la mesa
-        var nombreMesa = mesa.nombre;
+        var nombreMesa = mesa;
+
+        console.log(nombreMesa);
 
         // Buscar el elemento de la mesa con el nombre correspondiente y marcarlo con verde
-        var mesaElemento = planoDoc.querySelector(`#${nombreMesa} .mesa`);
+        var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
 
         console.log(mesaElemento);
 
@@ -16,8 +18,11 @@ function marcarMesas(planoDoc, mesas) {
     });
 }
 
-function manejarRespuestaAjax(response){
-    console.log(response);
+function manejarRespuestaAjax(data){
+    
+    var mesasDesocupadas = data.desocupadas;
+    console.log(mesasDesocupadas);
+    marcarMesas(mesasDesocupadas);
 }
 
 function enviarAjax(params){
@@ -51,7 +56,8 @@ function buscarMesas() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    document.querySelector("#mesas_disponibles").innerHTML = xhr.responseText;
+                    var response = JSON.parse(xhr.responseText);
+                    manejarRespuestaAjax(response);
                 } else {
                     console.error("Error al realizar la solicitud AJAX");
                 }

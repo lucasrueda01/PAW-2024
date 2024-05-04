@@ -28,42 +28,24 @@ class LocalController extends Controller
     public function getMesas()
     {
         global $request;
+         
 
-        if($request->method() == 'POST'){
-            $datosJson = file_get_contents("php://input");
-            // Decodificar los datos JSON en un array asociativo
-            $datos = json_decode($datosJson, true);
+        if($request->method() == 'GET'){
            
             // Verificar si se recibieron los datos esperados
-            if (isset($datos["local"])) {
+            if (null !== $request->get("local") && null !== $request->get('date') && null !== $request->get('time')){ 
 
-                $localSeleccionado = $datos["local"];
+                $localSeleccionado = $request->get("local");
+                $fecha = $request->get('date');
+                $hora = $request->get('time');
 
-                $local = new Local(
-                    ['nombre_local' => $localSeleccionado]
-                );
+                $locales = new LocalesCollection();
 
-                $local->setQueryBuilder($this->getQb());
-                
+                list($ocupadas, $desocupadas) = $locales->obtenerMesas($localSeleccionado, $fecha, $hora);
 
-                $local->loadByName();
-
-                $mesasDelLocal = new MesasCollection($local->getId());
-
-                $mesas = $mesasDelLocal->getAll();
-
-                // $reservas = new ReservasCollection($local->getId(), $mesas);
-
-                // list($ocupadas, $desocupadas) = $reservas->getAll();
-
-                // // Ejemplo de respuesta: enviar las mesas en formato JSON
-                // $reservasDelLocal = array(
-                //     "ocupadas" => $ocupadas,
-                //     "desocupadas" => $desocupadas
-                // );
                 $reservasDelLocal = array(
-                    "ocupadas" => $local->getNombreLocal(),
-                    "desocupadas" => $mesas
+                    "ocupadas" => $ocupadas,
+                    "desocupadas" => $desocupadas
                 );
 
                 // Enviar las mesas como respuesta en formato JSON
