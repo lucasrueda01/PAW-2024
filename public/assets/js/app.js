@@ -5,12 +5,12 @@ function marcarMesas(mesas) {
         // Obtener el nombre de la mesa
         var nombreMesa = mesa;
 
-        console.log(nombreMesa);
+        // console.log(nombreMesa);
 
         // Buscar el elemento de la mesa con el nombre correspondiente y marcarlo con verde
         var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
 
-        console.log(mesaElemento);
+        // console.log(mesaElemento);
 
         if (mesaElemento) {
             mesaElemento.style.fill = "green";
