@@ -2,6 +2,8 @@
   "locales": [
     {
       "nombre": "Local A",
+      "horaApertura": "09:00",
+      "horaCierre": "21:00",
       "mesas": [
         {"nombre_mesa": "mesa-162", "ocupada": true, "fecha_reserva": "2024-05-01", "hora_reserva": "12:00"},
         {"nombre_mesa": "mesa-161", "ocupada": false},
@@ -29,6 +31,8 @@
     },
     {
       "nombre": "Local B",
+      "horaApertura": "09:00",
+      "horaCierre": "21:00",
       "mesas": [
         {"nombre_mesa": "mesa-162", "ocupada": true, "fecha_reserva": "2024-05-01", "hora_reserva": "12:00"},
         {"nombre_mesa": "mesa-161", "ocupada": false},

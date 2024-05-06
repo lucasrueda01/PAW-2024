@@ -9,6 +9,40 @@ class ServicioRestaurante {
         this.reservas = []; // Array para almacenar todas las reservas
     }
 
+    getArrayLocales() {
+        return this.locales;    // Array para almacenar Locales
+    }
+
+    cargarMesasDesdeLocal(locales)
+    {
+                // Iterar sobre cada local y sus mesas
+                locales.forEach(local => {
+                    const nombreLocal = local.nombre;
+                    console.log(`${local.nombre}, ${local.horaApertura}, ${local.horaCierre}`)
+                    this.agregarLocal(local.nombre, local.horaApertura, local.horaCierre);
+                    console.log("verificacion despues de insercion: "+this.locales.has(local.nombre));
+
+                    const mesas = local.mesas;
+    
+                    // Iterar sobre cada mesa del local
+                    mesas.forEach(mesa => {
+                        const nombreMesa = mesa.nombre_mesa;
+                        const ocupada = mesa.ocupada;
+                        const fechaReserva = mesa.fecha_reserva;
+                        const horaReserva = mesa.hora_reserva;
+    
+                        // Si la mesa está ocupada, agregarla como reserva
+                        if (ocupada) {
+                            const horaInicioReserva = new Date(`${fechaReserva}T${horaReserva}`);
+                            const horaFinReserva = new Date(horaInicioReserva.getTime() + (1.5 * 60 * 60 * 1000)); // 1.5 horas en milisegundos
+                            this.reservas.push({ nombreMesa, horaInicioReserva, horaFinReserva });
+                        }
+                        this.locales.get(nombreLocal).mesas.push(mesa);
+                    });
+                });
+                console.log("verificacion 2 despues de insercion: "+this.locales.has("Local A"));        
+    }
+
     cargarMesasDesdeJSON() {
         try {
             fetch('/local/mesas', {
@@ -26,7 +60,10 @@ class ServicioRestaurante {
                 // Iterar sobre cada local y sus mesas
                 data.locales.forEach(local => {
                     const nombreLocal = local.nombre;
-                    this.agregarLocal(nombreLocal)
+                    console.log(`${local.nombre}, ${local.horaApertura}, ${local.horaCierre}`)
+                    this.agregarLocal(local.nombre, local.horaApertura, local.horaCierre);
+                    console.log("verificacion despues de insercion: "+this.locales.has(local.nombre));
+
                     const mesas = local.mesas;
     
                     // Iterar sobre cada mesa del local
@@ -42,9 +79,10 @@ class ServicioRestaurante {
                             const horaFinReserva = new Date(horaInicioReserva.getTime() + (1.5 * 60 * 60 * 1000)); // 1.5 horas en milisegundos
                             this.reservas.push({ nombreMesa, horaInicioReserva, horaFinReserva });
                         }
+                        this.locales.get(nombreLocal).mesas.push(mesa);
                     });
                 });
-    
+                console.log("verificacion 2 despues de insercion: "+this.locales.has("Local A"));
                 // console.log('Reservas cargadas exitosamente desde el archivo JSON:', this.reservas);
             })
             .catch(error => {
@@ -56,7 +94,7 @@ class ServicioRestaurante {
     }
     // Método para agregar un local con su horario de apertura y cierre
     agregarLocal(nombreLocal, horaApertura, horaCierre) {
-        this.locales.set(nombreLocal, { horaApertura, horaCierre });
+        this.locales.set(nombreLocal, { horaApertura, horaCierre, mesas: [] });
     }
 
     // Método para agregar un cliente a una mesa
@@ -102,9 +140,13 @@ class ServicioRestaurante {
 
     // Método para obtener el estado de todas las mesas dado un local, fecha y hora
     obtenerEstadoMesas(nombreLocal, fecha, hora) {
-        // Verificar si la local está registrado
+
+        console.log(this.getArrayLocales());
+
+        console.log(this.locales.has(nombreLocal));
+        // Verificar si la local está registrado        
         if (!this.locales.has(nombreLocal)) {
-            console.log(`El local ${nombreLocal} no está registrado.`);
+            console.log(`El local ${nombreLocal} no est1á registrado.`);
             return;
         }
 

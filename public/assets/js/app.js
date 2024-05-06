@@ -107,23 +107,31 @@ class appPAW {
 	constructor() {
         
         document.addEventListener("DOMContentLoaded", () => {
+        PAW.cargarScript("Datos", "/assets/js/components/datos.js");
 		PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {	
 
+            const datos = new Datos();
 
             const servicioRestaurante = new ServicioRestaurante();
 
-            const mesas = servicioRestaurante.cargarMesasDesdeJSON();
+            const mesasLocal = servicioRestaurante.cargarMesasDesdeLocal(datos.getLocales());
+            // const mesas = servicioRestaurante.cargarMesasDesdeJSON();
             // console.log(mesas);            
-
+            // console.log(servicioRestaurante.getArrayLocales()); 
             // Llamamos al método para obtener el estado de las mesas
+            // console.log(servicioRestaurante.locales);
+            // console.log("verificacion despues de cargarMesasDesdeJSON: "+servicioRestaurante.locales.has("Local A"));
             const nombreLocal = "Local A";
-            const fecha = "2024-05-05";
+            const fecha = "2024-05-01";
             const hora = "12:00";
 
-            // console.log(`Estado de las mesas en el local ${nombreLocal} el ${fecha} a las ${hora}:`);
+            console.log(`Estado de las mesas en el local ${nombreLocal} el ${fecha} a las ${hora}:`);
             const estadoMesas = servicioRestaurante.obtenerEstadoMesas(nombreLocal, fecha, hora);
-
+            
             console.log(estadoMesas);
+            // servicioRestaurante.agregarLocal("Local A", "09:00", "21:00");
+            // const estadoMesas2 = servicioRestaurante.obtenerEstadoMesas(nombreLocal, fecha, hora);
+            // console.log(estadoMesas2);
             // estadoMesas.forEach((estado, nombreMesa) => {
             //     console.log(`Mesa ${nombreMesa}: ${estado}`);
             // });
