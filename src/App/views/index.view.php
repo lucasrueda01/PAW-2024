@@ -32,16 +32,25 @@
             <ul class="carrousel">
                 <li class="item carrousel-item">
                     <img src="/assets/imgs/menu/Oklahoma.jpg" alt="hamburguesa destacada">
-                    <p>Oklahoma</p>
+                    <p>Oklahoma 1</p>
                 </li>
                 <li class="item carrousel-item">
-                    <img src="/assets/imgs/menu/BigPower.jpg" alt="hamburguesa destacada">
-                    <p>Big Power 3</p>
+                    <img src="/assets/imgs/menu/Oklahoma.jpg" alt="hamburguesa destacada">
+                    <p>Oklahoma 2</p>
                 </li>
                 <li class="item carrousel-item">
-                    <img src="/assets/imgs/menu/BigPower.jpg" alt="hamburguesa destacada">
-                    <p>Big Power 4</p>
+                    <img src="/assets/imgs/menu/Oklahoma.jpg" alt="hamburguesa destacada">
+                    <p>Oklahoma 3</p>
                 </li>
+                <li class="item carrousel-item">
+                    <img src="/assets/imgs/menu/Oklahoma.jpg" alt="hamburguesa destacada">
+                    <p>Oklahoma 4</p>
+                </li>
+                <li class="item carrousel-item">
+                    <img src="/assets/imgs/menu/Oklahoma.jpg" alt="hamburguesa destacada">
+                    <p>Oklahoma 5</p>
+                </li>
+              
             </ul>
         </section>
 
