@@ -45,19 +45,42 @@ class ServicioRestaurante {
 
     buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue) 
     {
-        // const nombreLocal = "Local A";
-        // const fecha = "2024-05-01";
-        // const hora = "12:00";
+        const nombreLocal = "Local A";
+        const fecha = "2024-05-01";
+        const hora = "12:00";
 
         if (localValue !== null && dateValue !== null && timeValue !== null) {
-            console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}:`);
+        // if (nombreLocal !== null && fecha !== null && hora !== null) {
+            console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}`);
             const estadoMesas = this.obtenerEstadoMesas(localValue, dateValue, timeValue);
-            console.log(estadoMesas);
+            // const estadoMesas = this.obtenerEstadoMesas(nombreLocal, fecha, hora);
+            this.marcarMesas(estadoMesas);
         }else{
             console.log(`localValue: ${localValue}, dateValue: ${dateValue}, timeValue: ${timeValue}`)
         }
 
     }
+
+    marcarMesas(estadoMesas) {
+        // Iterar sobre el mapa estadoMesas
+        estadoMesas.forEach(function (estado, nombreMesa) {
+            // Obtener el elemento de la mesa con el nombre correspondiente
+            console.log(`#${nombreMesa} .mesa // estado: ${estado}`);
+            var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
+            
+            // Verificar si la mesa está ocupada o disponible y aplicar el color correspondiente
+            if (mesaElemento) {
+                if (estado === 'Ocupada') {
+                    console.log(mesaElemento);
+                    // Marcar la mesa como roja si está ocupada
+                    mesaElemento.style.fill = "red";
+                } else if (estado === 'Disponible') {
+                    // Marcar la mesa como azul si está disponible
+                    mesaElemento.style.fill = "blue";
+                }
+            }
+        });
+    } 
 
     cargarMesasDesdeLocal(locales)
     {
@@ -239,25 +262,6 @@ class ServicioRestaurante {
         return estadoMesas;
     }
 
-    marcarMesas(mesas) {
-        // Iterar sobre las mesas recibidas
-    
-        mesas.forEach(function (mesa) {
-            // Obtener el nombre de la mesa
-            var nombreMesa = mesa;
-    
-            // console.log(nombreMesa);
-    
-            // Buscar el elemento de la mesa con el nombre correspondiente y marcarlo con verde
-            var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
-    
-            // console.log(mesaElemento);
-    
-            if (mesaElemento) {
-                mesaElemento.style.fill = "green";
-            }
-        });
-    }
 
     // Método para verificar si una mesa está disponible en un momento dado
     mesaEstaDisponible(nombreMesa, fecha, hora) {
@@ -269,7 +273,7 @@ class ServicioRestaurante {
         for (const reserva of this.reservas) {
             if (reserva.nombreMesa === nombreMesa) {
                 // Verificar si la reserva se solapa con el rango de tiempo
-                // console.log(`horaInicioReserva: ${horaInicioReserva} < reserva.horaFin ${reserva.horaFin} //
+                console.log(`horaInicioReserva: ${horaInicioReserva} < reserva.horaFin ${reserva.horaFin} //
                 // horaFinReserva: ${horaFinReserva} > reserva.horaInicio ${reserva.horaInicio}`)
                 if (horaInicioReserva < reserva.horaFin && horaFinReserva > reserva.horaInicio) {
                     return false; // La mesa está ocupada en el momento solicitado
