@@ -7,6 +7,7 @@ class ServicioRestaurante {
         this.clientesMesas = new Map(); // Mapa para almacenar los clientes asignados a cada mesa
         this.locales = new Map(); // Mapa para almacenar la información de los locales
         this.reservas = []; // Array para almacenar todas las reservas
+        this.mesaElegida = "";
     }
 
     getArrayLocales() {
@@ -86,6 +87,7 @@ class ServicioRestaurante {
 
     agregarEventoClic(groupMesaElemento, mesaElemento)
     {
+        // this.mesaElegida = inputHiddenMesaSeleccionada.value;
         groupMesaElemento.addEventListener("click", () => {
             console.log(groupMesaElemento)
             let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
