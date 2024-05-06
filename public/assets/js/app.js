@@ -1,23 +1,3 @@
-function marcarMesas(mesas) {
-    // Iterar sobre las mesas recibidas
-
-    mesas.forEach(function (mesa) {
-        // Obtener el nombre de la mesa
-        var nombreMesa = mesa;
-
-        // console.log(nombreMesa);
-
-        // Buscar el elemento de la mesa con el nombre correspondiente y marcarlo con verde
-        var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
-
-        // console.log(mesaElemento);
-
-        if (mesaElemento) {
-            mesaElemento.style.fill = "green";
-        }
-    });
-}
-
 // function manejarRespuestaAjax(data){
     
 //     var mesasDesocupadas = data.desocupadas;
@@ -115,26 +95,8 @@ class appPAW {
             const servicioRestaurante = new ServicioRestaurante();
 
             const mesasLocal = servicioRestaurante.cargarMesasDesdeLocal(datos.getLocales());
-            // const mesas = servicioRestaurante.cargarMesasDesdeJSON();
-            // console.log(mesas);            
-            // console.log(servicioRestaurante.getArrayLocales()); 
-            // Llamamos al método para obtener el estado de las mesas
-            // console.log(servicioRestaurante.locales);
-            // console.log("verificacion despues de cargarMesasDesdeJSON: "+servicioRestaurante.locales.has("Local A"));
-            const nombreLocal = "Local A";
-            const fecha = "2024-05-01";
-            const hora = "12:00";
 
-            console.log(`Estado de las mesas en el local ${nombreLocal} el ${fecha} a las ${hora}:`);
-            const estadoMesas = servicioRestaurante.obtenerEstadoMesas(nombreLocal, fecha, hora);
-            
-            console.log(estadoMesas);
-            // servicioRestaurante.agregarLocal("Local A", "09:00", "21:00");
-            // const estadoMesas2 = servicioRestaurante.obtenerEstadoMesas(nombreLocal, fecha, hora);
-            // console.log(estadoMesas2);
-            // estadoMesas.forEach((estado, nombreMesa) => {
-            //     console.log(`Mesa ${nombreMesa}: ${estado}`);
-            // });
+            servicioRestaurante.cargarFormularioYComprobar()
 
             });
 		}

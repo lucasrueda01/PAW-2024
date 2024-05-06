@@ -13,14 +13,60 @@ class ServicioRestaurante {
         return this.locales;    // Array para almacenar Locales
     }
 
+
+
+    cargarFormularioYComprobar() {
+
+        let localValue = null;
+        let dateValue = null;
+        let timeValue = null;
+    
+        let local = document.querySelector("#local");
+        let date = document.querySelector("#date");
+        let time = document.querySelector("#time");
+
+        local.addEventListener("change", () => {
+            localValue = local.value;
+            this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
+        });
+
+        date.addEventListener("change", () => {
+            dateValue = date.value;
+            this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
+        });
+
+        time.addEventListener("change", () => {
+            timeValue = time.value;
+            this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
+        });
+
+    }
+
+
+    buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue) 
+    {
+        // const nombreLocal = "Local A";
+        // const fecha = "2024-05-01";
+        // const hora = "12:00";
+
+        if (localValue !== null && dateValue !== null && timeValue !== null) {
+            console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}:`);
+            const estadoMesas = this.obtenerEstadoMesas(localValue, dateValue, timeValue);
+            console.log(estadoMesas);
+        }else{
+            console.log(`localValue: ${localValue}, dateValue: ${dateValue}, timeValue: ${timeValue}`)
+        }
+
+    }
+
     cargarMesasDesdeLocal(locales)
     {
                 // Iterar sobre cada local y sus mesas
                 locales.forEach(local => {
                     const nombreLocal = local.nombre;
-                    console.log(`${local.nombre}, ${local.horaApertura}, ${local.horaCierre}`)
+                    // console.log(`${local.nombre}, ${local.horaApertura}, ${local.horaCierre}`)
                     this.agregarLocal(local.nombre, local.horaApertura, local.horaCierre);
-                    console.log("verificacion despues de insercion: "+this.locales.has(local.nombre));
+                    // console.log("verificacion despues de insercion: "+this.locales.has(local.nombre));
 
                     const mesas = local.mesas;
     
@@ -35,12 +81,13 @@ class ServicioRestaurante {
                         if (ocupada) {
                             const horaInicioReserva = new Date(`${fechaReserva}T${horaReserva}`);
                             const horaFinReserva = new Date(horaInicioReserva.getTime() + (1.5 * 60 * 60 * 1000)); // 1.5 horas en milisegundos
-                            this.reservas.push({ nombreMesa, horaInicioReserva, horaFinReserva });
+                            // this.reservas.push({ nombreMesa, horaInicioReserva, horaFinReserva });
+                            this.reservas.push({ nombreMesa, horaInicio: horaInicioReserva, horaFin: horaFinReserva });
                         }
                         this.locales.get(nombreLocal).mesas.push(mesa);
                     });
                 });
-                console.log("verificacion 2 despues de insercion: "+this.locales.has("Local A"));        
+                // console.log("verificacion 2 despues de insercion: "+this.locales.has("Local A"));        
     }
 
     cargarMesasDesdeJSON() {
@@ -137,7 +184,6 @@ class ServicioRestaurante {
 
     }
 
-
     // Método para obtener el estado de todas las mesas dado un local, fecha y hora
     obtenerEstadoMesas(nombreLocal, fecha, hora) {
 
@@ -148,18 +194,24 @@ class ServicioRestaurante {
         if (!this.locales.has(nombreLocal)) {
             console.log(`El local ${nombreLocal} no est1á registrado.`);
             return;
+        }else{
+            console.log(`El local ${nombreLocal} ESTA registrado.`);
         }
 
         // Validar si la fecha es válida
         if (!this.esFechaValida(fecha)) {
             console.log(`La fecha ${fecha} no es válida.`);
             return;
+        }else{
+            console.log(`La fecha ${fecha} ES válida.`);
         }
 
         // Validar si la hora es válida
         if (!this.esHoraValida(hora)) {
             console.log(`La hora ${hora} no es válida.`);
             return;
+        }else{
+            console.log(`La hora ${hora} ES válida.`);
         }
 
         const mesasLocal = this.locales.get(nombreLocal).mesas;
@@ -187,6 +239,25 @@ class ServicioRestaurante {
         return estadoMesas;
     }
 
+    marcarMesas(mesas) {
+        // Iterar sobre las mesas recibidas
+    
+        mesas.forEach(function (mesa) {
+            // Obtener el nombre de la mesa
+            var nombreMesa = mesa;
+    
+            // console.log(nombreMesa);
+    
+            // Buscar el elemento de la mesa con el nombre correspondiente y marcarlo con verde
+            var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
+    
+            // console.log(mesaElemento);
+    
+            if (mesaElemento) {
+                mesaElemento.style.fill = "green";
+            }
+        });
+    }
 
     // Método para verificar si una mesa está disponible en un momento dado
     mesaEstaDisponible(nombreMesa, fecha, hora) {
@@ -198,6 +269,8 @@ class ServicioRestaurante {
         for (const reserva of this.reservas) {
             if (reserva.nombreMesa === nombreMesa) {
                 // Verificar si la reserva se solapa con el rango de tiempo
+                // console.log(`horaInicioReserva: ${horaInicioReserva} < reserva.horaFin ${reserva.horaFin} //
+                // horaFinReserva: ${horaFinReserva} > reserva.horaInicio ${reserva.horaInicio}`)
                 if (horaInicioReserva < reserva.horaFin && horaFinReserva > reserva.horaInicio) {
                     return false; // La mesa está ocupada en el momento solicitado
                 }
