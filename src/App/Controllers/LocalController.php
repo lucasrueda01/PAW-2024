@@ -33,30 +33,13 @@ class LocalController extends Controller
         if($request->method() == 'GET'){
            
             // Verificar si se recibieron los datos esperados
-            if (null !== $request->get("local") && null !== $request->get('date') && null !== $request->get('time')){ 
 
-                $localSeleccionado = $request->get("local");
-                $fecha = $request->get('date');
-                $hora = $request->get('time');
+            $locales = new LocalesCollection();
 
-                $locales = new LocalesCollection();
+            // Enviar las mesas como respuesta en formato JSON
+            header("Content-Type: application/json");
+            echo json_encode($locales->obtenerMesas());
 
-                list($ocupadas, $desocupadas) = $locales->obtenerMesas($localSeleccionado, $fecha, $hora);
-
-                $reservasDelLocal = array(
-                    "ocupadas" => $ocupadas,
-                    "desocupadas" => $desocupadas
-                );
-
-                // Enviar las mesas como respuesta en formato JSON
-                header("Content-Type: application/json");
-                echo json_encode($reservasDelLocal);
-
-            } else {
-                // Si faltan datos en la solicitud, enviar una respuesta de error
-                http_response_code(400);
-                echo json_encode(array("mensaje" => "Faltan datos en la solicitud"));
-            }
         } else {
             // Si la solicitud no es de tipo POST, enviar una respuesta de error
             http_response_code(405);

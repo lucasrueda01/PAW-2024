@@ -1,3 +1,4 @@
+
 class ServicioRestaurante {
     constructor() {
         this.asientosBarraDisponibles = 10; // Número de asientos disponibles en la barra
@@ -8,6 +9,51 @@ class ServicioRestaurante {
         this.reservas = []; // Array para almacenar todas las reservas
     }
 
+    cargarMesasDesdeJSON() {
+        try {
+            fetch('/local/mesas', {
+                method: 'GET'
+            }) 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener las mesas');
+                }
+                return response.json(); // Esta línea ya convierte la respuesta en un objeto JSON
+            })
+            .then(data => {
+                // console.log(data);
+    
+                // Iterar sobre cada local y sus mesas
+                data.locales.forEach(local => {
+                    const nombreLocal = local.nombre;
+                    this.agregarLocal(nombreLocal)
+                    const mesas = local.mesas;
+    
+                    // Iterar sobre cada mesa del local
+                    mesas.forEach(mesa => {
+                        const nombreMesa = mesa.nombre_mesa;
+                        const ocupada = mesa.ocupada;
+                        const fechaReserva = mesa.fecha_reserva;
+                        const horaReserva = mesa.hora_reserva;
+    
+                        // Si la mesa está ocupada, agregarla como reserva
+                        if (ocupada) {
+                            const horaInicioReserva = new Date(`${fechaReserva}T${horaReserva}`);
+                            const horaFinReserva = new Date(horaInicioReserva.getTime() + (1.5 * 60 * 60 * 1000)); // 1.5 horas en milisegundos
+                            this.reservas.push({ nombreMesa, horaInicioReserva, horaFinReserva });
+                        }
+                    });
+                });
+    
+                // console.log('Reservas cargadas exitosamente desde el archivo JSON:', this.reservas);
+            })
+            .catch(error => {
+                console.error('Error al obtener las mesas:', error);
+            });             
+        } catch (error) {
+            console.error('Error al cargar las mesas desde el archivo JSON:', error);
+        }
+    }
     // Método para agregar un local con su horario de apertura y cierre
     agregarLocal(nombreLocal, horaApertura, horaCierre) {
         this.locales.set(nombreLocal, { horaApertura, horaCierre });
@@ -78,10 +124,22 @@ class ServicioRestaurante {
         const estadoMesas = new Map();
 
         // Verificar el estado de cada mesa
-        for (const mesa of mesasLocal) {
-            const nombreMesa = mesa.nombre_mesa;
-            const disponible = this.mesaEstaDisponible(nombreMesa, fecha, hora);
-            estadoMesas.set(nombreMesa, disponible ? 'Disponible' : 'Ocupada');
+        if (Array.isArray(mesasLocal)) {
+            // Si mesasLocal es un array
+            for (const mesa of mesasLocal) {
+                const nombreMesa = mesa.nombre_mesa;
+                const disponible = this.mesaEstaDisponible(nombreMesa, fecha, hora);
+                estadoMesas.set(nombreMesa, disponible ? 'Disponible' : 'Ocupada');
+            }
+        } else if (mesasLocal instanceof Map) {
+            // Si mesasLocal es un objeto Map
+            for (const [nombreMesa, mesa] of mesasLocal) {
+                const disponible = this.mesaEstaDisponible(nombreMesa, fecha, hora);
+                estadoMesas.set(nombreMesa, disponible ? 'Disponible' : 'Ocupada');
+            }
+        } else {
+            console.log(`Error: mesasLocal no es un array ni un objeto Map.`);
+            return;
         }
 
         return estadoMesas;
@@ -89,19 +147,23 @@ class ServicioRestaurante {
 
 
     // Método para verificar si una mesa está disponible en un momento dado
-    mesaEstaDisponible(nombreMesa, horaInicioReserva, horaFinReserva) {
+    mesaEstaDisponible(nombreMesa, fecha, hora) {
+        // Calcular la hora y fecha de finalización de la reserva
+        const horaInicioReserva = new Date(`${fecha}T${hora}`);
+        const horaFinReserva = new Date(horaInicioReserva.getTime() + (1.5 * 60 * 60 * 1000)); // 1.5 horas en milisegundos
+
         // Verificar si hay alguna reserva para la mesa en el momento dado
         for (const reserva of this.reservas) {
             if (reserva.nombreMesa === nombreMesa) {
-                // Verificar si la reserva se solapa con el rango de tiempo de la nueva reserva
-                if ((horaInicioReserva < reserva.horaFin && horaFinReserva > reserva.horaInicio)) {
+                // Verificar si la reserva se solapa con el rango de tiempo
+                if (horaInicioReserva < reserva.horaFin && horaFinReserva > reserva.horaInicio) {
                     return false; // La mesa está ocupada en el momento solicitado
                 }
             }
         }
         return true; // La mesa está disponible en el momento solicitado
-    }    
-
+    }
+    
     // Método para validar si la hora está dentro del horario de apertura y cierre del local
     estaEnHorario(hora, horaApertura, horaCierre) {
         return hora >= horaApertura && hora <= horaCierre;

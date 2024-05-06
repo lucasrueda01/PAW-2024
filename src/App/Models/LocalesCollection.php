@@ -37,49 +37,24 @@ class LocalesCollection extends Model
         return [$result, $local];
     }
 
-   public function obtenerMesas($nombreLocal, $fechaInicio, $horaInicio) 
+   public function obtenerMesas() 
    {
-        require_once 'reservas-json.php';
+        // Leer el contenido del archivo mesa.json
+        $json = file_get_contents(__DIR__ . '/mesas.json');
 
-        $local = array_filter($localData, function($local) use ($nombreLocal) {
-            return $local['nombre_local'] == $nombreLocal;
-        });
-
-        if (empty($local)) {
-            echo "Local no encontrado.";
-            return;
+        if ($json === false) {
+            echo "Error al leer el archivo: " . error_get_last()['message'];
+            $this->logger->info("Error al leer: ",[error_get_last()['message']]);
+        }
+        if ($json === false) {
+            // Manejar el error si no se puede leer el archivo
+            return [[], []];
         }
 
-        $localId = reset($local)['id']; // Obtener el ID del primer resultado
+        // Decodificar el JSON en un array asociativo
+        $datos = json_decode($json, true);      
 
-        // Calcular fecha y hora de inicio como un solo string
-        $fechaHoraInicio = date('Y-m-d H:i:s', strtotime("$fechaInicio $horaInicio"));
-    
-        // Filtrar las reservas para el local específico
-        $reservasLocal = array_filter($reservaData, function($reserva) use ($localId) {
-            return $reserva['id_local'] == $localId;
-        });
-    
-        // Inicializar arrays para mesas ocupadas y desocupadas
-        $mesasOcupadas = [];
-        $mesasDesocupadas = [];
-    
-        // Buscar mesas ocupadas para el local en el momento dado
-        foreach ($reservasLocal as $reserva) {
-            if ($reserva['fecha_hora_inicio'] <= $fechaHoraInicio && $reserva['fecha_hora_final'] > $fechaHoraInicio) {
-                $mesasOcupadas[] = $this->obtenerNombreMesa($mesaData, $reserva['id_mesa']);
-            }
-        }
-    
-        // Obtener mesas desocupadas
-        foreach ($mesaData as $mesa) {
-            if (!in_array($mesa['id'], $mesasOcupadas)) {
-                $mesasDesocupadas[] = $this->obtenerNombreMesa($mesaData, $mesa['id']);
-            }
-        }
-        
-        return [$mesasOcupadas, $mesasDesocupadas];
-
+        return $datos;
    }
 
 

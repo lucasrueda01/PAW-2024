@@ -1,22 +1,22 @@
-// function marcarMesas(mesas) {
-//     // Iterar sobre las mesas recibidas
+function marcarMesas(mesas) {
+    // Iterar sobre las mesas recibidas
 
-//     mesas.forEach(function (mesa) {
-//         // Obtener el nombre de la mesa
-//         var nombreMesa = mesa;
+    mesas.forEach(function (mesa) {
+        // Obtener el nombre de la mesa
+        var nombreMesa = mesa;
 
-//         // console.log(nombreMesa);
+        // console.log(nombreMesa);
 
-//         // Buscar el elemento de la mesa con el nombre correspondiente y marcarlo con verde
-//         var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
+        // Buscar el elemento de la mesa con el nombre correspondiente y marcarlo con verde
+        var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
 
-//         // console.log(mesaElemento);
+        // console.log(mesaElemento);
 
-//         if (mesaElemento) {
-//             mesaElemento.style.fill = "green";
-//         }
-//     });
-// }
+        if (mesaElemento) {
+            mesaElemento.style.fill = "green";
+        }
+    });
+}
 
 // function manejarRespuestaAjax(data){
     
@@ -109,19 +109,25 @@ class appPAW {
         document.addEventListener("DOMContentLoaded", () => {
 		PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {	
 
-            const servicioRestaurante = new ServicioRestaurante();
-            // Agregar horario de apertura y cierre para el Local A
-            servicioRestaurante.agregarLocal("Local A", "09:00", "21:00"); 
 
-            // Agregar cliente a la mesa del Local A
-            servicioRestaurante.agregarClienteMesa("Juan", "mesa-221", "Local A", "2024-05-05", "12:30"); 
-            // servicioRestaurante.agregarClienteMesa("Juan", 1, "Local A", "2024-05-05", "13:00"); 
-            // servicioRestaurante.agregarClienteMesa("Juan", 1, "Local A", "2024-05-05", "13:30"); 
-            servicioRestaurante.agregarClienteMesa("Juan", "mesa-221", "Local A", "2024-05-05", "12:30"); 
-            servicioRestaurante.agregarClienteMesa("Juan", "mesa-221", "Local A", "2024-05-05", "13:00"); 
-            servicioRestaurante.agregarClienteMesa("Juan", "mesa-221", "Local A", "2024-05-05", "14:00");  
-            servicioRestaurante.agregarClienteMesa("Juan", "mesa-221", "Local A", "2024-05-05", "15:30");  
-	
+            const servicioRestaurante = new ServicioRestaurante();
+
+            const mesas = servicioRestaurante.cargarMesasDesdeJSON();
+            // console.log(mesas);            
+
+            // Llamamos al método para obtener el estado de las mesas
+            const nombreLocal = "Local A";
+            const fecha = "2024-05-05";
+            const hora = "12:00";
+
+            // console.log(`Estado de las mesas en el local ${nombreLocal} el ${fecha} a las ${hora}:`);
+            const estadoMesas = servicioRestaurante.obtenerEstadoMesas(nombreLocal, fecha, hora);
+
+            console.log(estadoMesas);
+            // estadoMesas.forEach((estado, nombreMesa) => {
+            //     console.log(`Mesa ${nombreMesa}: ${estado}`);
+            // });
+
             });
 		}
         );
