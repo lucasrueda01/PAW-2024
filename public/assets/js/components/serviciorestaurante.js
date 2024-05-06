@@ -45,9 +45,9 @@ class ServicioRestaurante {
 
     buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue) 
     {
-        const nombreLocal = "Local A";
-        const fecha = "2024-05-01";
-        const hora = "12:00";
+        // const nombreLocal = "Local A";
+        // const fecha = "2024-05-01";
+        // const hora = "12:00";
 
         if (localValue !== null && dateValue !== null && timeValue !== null) {
         // if (nombreLocal !== null && fecha !== null && hora !== null) {
@@ -63,9 +63,10 @@ class ServicioRestaurante {
 
     marcarMesas(estadoMesas) {
         // Iterar sobre el mapa estadoMesas
-        estadoMesas.forEach(function (estado, nombreMesa) {
+        estadoMesas.forEach((estado, nombreMesa) => {
             // Obtener el elemento de la mesa con el nombre correspondiente
             console.log(`#${nombreMesa} .mesa // estado: ${estado}`);
+            var groupMesaElemento = document.querySelector(`#${nombreMesa}`);
             var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
             
             // Verificar si la mesa está ocupada o disponible y aplicar el color correspondiente
@@ -77,10 +78,22 @@ class ServicioRestaurante {
                 } else if (estado === 'Disponible') {
                     // Marcar la mesa como azul si está disponible
                     mesaElemento.style.fill = "blue";
+                    this.agregarEventoClic(groupMesaElemento, mesaElemento);
                 }
             }
         });
     } 
+
+    agregarEventoClic(groupMesaElemento, mesaElemento)
+    {
+        groupMesaElemento.addEventListener("click", () => {
+            console.log(groupMesaElemento)
+            let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
+            inputHiddenMesaSeleccionada.value = groupMesaElemento.id;
+            mesaElemento.style.fill = "red";
+            console.log(`inputHiddenMesaSeleccionada.value: ${inputHiddenMesaSeleccionada.value}`)
+        })
+    }
 
     cargarMesasDesdeLocal(locales)
     {
@@ -261,7 +274,6 @@ class ServicioRestaurante {
 
         return estadoMesas;
     }
-
 
     // Método para verificar si una mesa está disponible en un momento dado
     mesaEstaDisponible(nombreMesa, fecha, hora) {

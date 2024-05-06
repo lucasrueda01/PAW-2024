@@ -238,7 +238,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .container_formulario label,
-.container_formulario input,
+.container_formulario input:not([hidden]),
 .container_formulario legend,
 .container_formulario select {
     display: inline-block;

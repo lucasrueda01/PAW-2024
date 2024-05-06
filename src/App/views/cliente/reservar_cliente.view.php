@@ -48,7 +48,7 @@
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
 
-                        
+                    <input type="text" name="nromesa-elegida" id="nromesa-elegida" hidden>   
 
                     <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
