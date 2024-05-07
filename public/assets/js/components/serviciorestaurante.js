@@ -60,21 +60,113 @@ class ServicioRestaurante {
      */
     buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue) 
     {
-        
-        if (localValue !== null && dateValue !== null && timeValue !== null) {
+
+        if(this.controlarLocalFechaYHora(localValue, dateValue, timeValue))
+        {
             /* debo formatear la fecha porque viene con guiones 
             * y lo paso a / ejeplo: 2024-05-06 => 2024/05/06
             */
             dateValue = this.formatearFecha(dateValue);
         
             // console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}`);
-            // const estadoMesas = this.obtenerMesasReservadasYDisponibles(localValue, dateValue, timeValue);
             const estadoMesas = this.buscarMesas(localValue, dateValue, timeValue);
             // console.log(estadoMesas);
             this.marcarMesas(estadoMesas.mesasReservadas, "Ocupada");
             this.marcarMesas(estadoMesas.mesasDisponibles, "Disponible");
         }else{
             console.log(`localValue: ${localValue}, dateValue: ${dateValue}, timeValue: ${timeValue}`)
+        }
+    }
+
+    controlarLocalFechaYHora(localValue, dateValue, timeValue)
+    {   
+        if (localValue !== null && dateValue !== null && timeValue !== null) 
+        {
+            if(this.locales[localValue]){
+              if(this.comprobarFecha(dateValue)){
+                 console.log("superado control de fecha")
+                 if(this.comprobarHora(localValue, timeValue)){
+                    console.log("superado control de horario")
+                    console.log("todos los controles superados..");
+                    return true;
+                 }else{
+                    this.marcarMesas(this.locales[localValue].mesa, "Reset");
+                    console.log("fallo al comprobar hora");
+                    return false;    
+                }
+               }else{
+                    this.marcarMesas(this.locales[localValue].mesa, "Reset");
+                    console.log("fallo al comprobar fecha");
+                    return false;
+               }
+            }else{
+                console.log("no existe local");
+                return false;
+            }
+        }else{
+            console.log("uno de los input nulo");
+            return false;
+        }
+    }
+
+    /**
+     * 
+     * @param {date} fecha 
+     * @returns {boolean}
+     */
+    comprobarFecha(fechaInput) {
+        // Obtener la fecha actual
+        let fechaActual = new Date();
+        // Sumar 7 días a la fecha actual
+        let fechaLimite = new Date(fechaActual.getTime() + 7 * 24 * 60 * 60 * 1000);
+        // Convertir la fecha a un formato comparable (sin incluir la hora)
+        fechaActual.setHours(0, 0, 0, 0);
+        fechaLimite.setHours(0, 0, 0, 0);
+
+        console.log(`fechaInput-antes: ${fechaInput}`);
+        let partesFecha = fechaInput.split('-');
+        fechaInput = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2]);
+
+        console.log(`fechaActual: ${fechaActual}`);
+        console.log(`fechaInput-despues: ${fechaInput}`);
+        console.log(`fechaLimite: ${fechaLimite}`);
+
+        // Verificar si la fecha está dentro del rango de 7 días a partir de hoy
+        return fechaInput >= fechaActual && fechaInput <= fechaLimite;        
+    }
+
+    /**
+     * 
+     * @param {string} local 
+     * @param {time} hora 
+     * @returns {boolean}
+     */
+    comprobarHora(local, hora)
+    {   
+        console.log(`local: ${local}`);
+        console.log(`hora: ${hora}`);
+        console.log(`this.locales[local].horaApertura: ${this.locales[local].horaApertura}`);
+        let horaApertura = new Date('1970-01-01T' + this.locales[local].horaApertura);
+        let horaCierre = new Date('1970-01-01T' + this.locales[local].horaCierre);
+        let horaConsulta = new Date('1970-01-01T' + hora);
+
+        console.log(`horaApertura: ${horaApertura}`);
+        console.log(`horaCierre: ${horaCierre}`);
+        console.log(`horaConsulta: ${horaConsulta}`);
+
+        // Verificar si la hora está dentro del rango de apertura y cierre del local
+        if (horaConsulta >= horaApertura && horaConsulta <= horaCierre) {
+            // Verificar el formato de la hora proporcionada
+            if (/^(?:2[0-3]|[01][0-9]):[0-5][0-9]$/.test(hora)) {
+                console.log("La hora está dentro del rango de apertura y cierre del local y tiene un formato válido");
+                return true;  
+            } else {
+                console.log("La hora no tiene un formato válido");
+                return false;  
+            }
+        } else {
+            console.log("La hora está fuera del rango de apertura y cierre del local");
+            return false; 
         }
     }
 
@@ -91,32 +183,6 @@ class ServicioRestaurante {
             cadenaFecha = cadenaFecha.replace(/-/g, '/');
         }
         return cadenaFecha;
-    }
-
-    /**
-     * Función para obtener mesas reservadas y disponibles en un local, fecha y hora específicos
-     * @param {string} local 
-     * @param {date} fecha 
-     * @param {time} hora 
-     * @returns {array, array} mesas reservadas y disponibles
-     */
-    obtenerMesasReservadasYDisponibles(local, fecha, hora) {
-
-        if (this.locales[local] && this.locales[local][fecha] && this.locales[local][fecha][hora]) {
-            let mesasLocal = this.locales[local].mesa; // Obtener las mesas del local
-            let mesasReservadas = this.locales[local][fecha][hora] || []; // Obtener las mesas reservadas para la hora, fecha y local proporcionados
-            let mesasDisponibles = mesasLocal.filter(mesa => !mesasReservadas.includes(mesa)); // Obtener las mesas disponibles restando las mesas reservadas
-
-            return {
-                mesasReservadas: mesasReservadas,
-                mesasDisponibles: mesasDisponibles
-            };
-        } else {
-            return {
-                mesasReservadas: [],
-                mesasDisponibles: this.locales[local].mesa
-            };
-        }
     }
 
     /**
@@ -143,6 +209,8 @@ class ServicioRestaurante {
                     // Marcar la mesa como azul si está disponible
                     mesaElemento.style.fill = "blue";
                     this.agregarEventoClic(groupMesaElemento, mesaElemento);
+                }else if (estado === 'Reset'){
+                    mesaElemento.style.fill = "#fff";
                 }
             }
         });
