@@ -1,13 +1,30 @@
 
-
+/**
+ * clase que se encarga de manejar el llenado del formulario
+ * para reservar una mesa. 
+ */
 class ServicioRestaurante {
     constructor() {
-
-        this.locales = Datos.locales2; // Mapa para almacenar la información de los locales
-        
+        /**
+         * Mapa para almacenar la información de los locales
+         */
+        this.locales = Datos.locales; 
+        /**
+         * inicializo para el caso q el cliente se arrepiente 
+         * de la mesa elegida y cliquea otra. En cuyo caso,
+         * guardo el Id de la anterior para volverlo a marcar con azul
+         *  */ 
         this.mesaElegida = "";
     }
 
+    /**
+     * agrego un evento click a cada input
+     * local, fecha y hora
+     * cuando cambian controlo q 
+     * hayan cambiado todas, en caso
+     * verdadero ejecuto la busqueda de mesas 
+     * por local, fecha y hora
+     */
     cargarFormularioYComprobar() {
 
         let localValue = null;
@@ -35,7 +52,12 @@ class ServicioRestaurante {
 
     }
 
-
+    /**
+     * 
+     * @param {string} localValue 
+     * @param {date} dateValue 
+     * @param {time} timeValue 
+     */
     buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue) 
     {
         
@@ -46,16 +68,62 @@ class ServicioRestaurante {
             dateValue = this.formatearFecha(dateValue);
         
             // console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}`);
-            const estadoMesas = this.obtenerMesasReservadasYDisponibles(localValue, dateValue, timeValue);
+            // const estadoMesas = this.obtenerMesasReservadasYDisponibles(localValue, dateValue, timeValue);
+            const estadoMesas = this.buscarMesas(localValue, dateValue, timeValue);
             // console.log(estadoMesas);
             this.marcarMesas(estadoMesas.mesasReservadas, "Ocupada");
             this.marcarMesas(estadoMesas.mesasDisponibles, "Disponible");
         }else{
             console.log(`localValue: ${localValue}, dateValue: ${dateValue}, timeValue: ${timeValue}`)
         }
-
     }
 
+    /**
+     * 
+     * @param {date} cadenaFecha 
+     * @returns {date} la fecha formateada
+     */
+    formatearFecha(cadenaFecha)
+    {
+        // Verifica si la cadena de fecha contiene un guion "-"
+        if (cadenaFecha.includes('-')) {
+            // Reemplaza los guiones "-" por barras "/"
+            cadenaFecha = cadenaFecha.replace(/-/g, '/');
+        }
+        return cadenaFecha;
+    }
+
+    /**
+     * Función para obtener mesas reservadas y disponibles en un local, fecha y hora específicos
+     * @param {string} local 
+     * @param {date} fecha 
+     * @param {time} hora 
+     * @returns {array, array} mesas reservadas y disponibles
+     */
+    obtenerMesasReservadasYDisponibles(local, fecha, hora) {
+
+        if (this.locales[local] && this.locales[local][fecha] && this.locales[local][fecha][hora]) {
+            let mesasLocal = this.locales[local].mesa; // Obtener las mesas del local
+            let mesasReservadas = this.locales[local][fecha][hora] || []; // Obtener las mesas reservadas para la hora, fecha y local proporcionados
+            let mesasDisponibles = mesasLocal.filter(mesa => !mesasReservadas.includes(mesa)); // Obtener las mesas disponibles restando las mesas reservadas
+
+            return {
+                mesasReservadas: mesasReservadas,
+                mesasDisponibles: mesasDisponibles
+            };
+        } else {
+            return {
+                mesasReservadas: [],
+                mesasDisponibles: this.locales[local].mesa
+            };
+        }
+    }
+
+    /**
+     * 
+     * @param {array} listadoMesas 
+     * @param {string} estado 
+     */
     marcarMesas(listadoMesas, estado) {
         // Iterar sobre el mapa estadoMesas
         // console.log(listadoMesas);
@@ -80,6 +148,15 @@ class ServicioRestaurante {
         });
     } 
 
+    /**
+     * por cada mesa, la funcion recibe el div G 
+     * y el Id del elemento q representa el grafico dentro del 
+     * plano svg
+     * @param {HTML Element} groupMesaElemento, 
+     * agrega un evento clic a cada mesa disponible
+     * @param {string} mesaElemento 
+     * se usa para colorear de rojo las ocupadas
+     */
     agregarEventoClic(groupMesaElemento, mesaElemento)
     {            
         groupMesaElemento.addEventListener("click", () => {
@@ -95,35 +172,54 @@ class ServicioRestaurante {
         
     }
 
-    formatearFecha(cadenaFecha)
-    {
-        // Verifica si la cadena de fecha contiene un guion "-"
-        if (cadenaFecha.includes('-')) {
-            // Reemplaza los guiones "-" por barras "/"
-            cadenaFecha = cadenaFecha.replace(/-/g, '/');
-        }
-        return cadenaFecha;
-    }
-
-    // Función para obtener mesas reservadas y disponibles en un local, fecha y hora específicos
-    obtenerMesasReservadasYDisponibles(local, fecha, hora) {
-
-        if (this.locales[local] && this.locales[local][fecha] && this.locales[local][fecha][hora]) {
-            let mesasLocal = this.locales[local].mesa; // Obtener las mesas del local
-            let mesasReservadas = this.locales[local][fecha][hora] || []; // Obtener las mesas reservadas para la hora, fecha y local proporcionados
-            let mesasDisponibles = mesasLocal.filter(mesa => !mesasReservadas.includes(mesa)); // Obtener las mesas disponibles restando las mesas reservadas
-
-            return {
-                mesasReservadas: mesasReservadas,
-                mesasDisponibles: mesasDisponibles
-            };
+    /**
+     * 
+     * @param {string} local 
+     * @param {date} fecha 
+     * @param {time} hora 
+     * @returns {array, array} mesas disponibles y ocupadas 
+     * de acuerdo al local, fecha y hora elegidos
+     */
+    buscarMesas(local, fecha, hora) {
+        if (this.locales[local]) {
+            let mesasDisponibles = [];
+            let mesasOcupadas = [];
+    
+            if (this.locales[local][fecha]) {
+                let mesasDelLocal = this.locales[local].mesa;
+                for (let mesa of mesasDelLocal) {
+                    if (this.locales[local][fecha][mesa]) {
+                        let reservasMesa = this.locales[local][fecha][mesa];
+                        let disponible = true;
+                        for (let reserva of reservasMesa) {
+                            let inicioReserva = new Date('1970-01-01T' + reserva.horaInicio);
+                            let finReserva = new Date('1970-01-01T' + reserva.horaFin);
+                            let horaConsulta = new Date('1970-01-01T' + hora);
+    
+                            if (horaConsulta >= inicioReserva && horaConsulta < finReserva) {
+                                disponible = false;
+                                mesasOcupadas.push(mesa);
+                                break;
+                            }
+                        }
+    
+                        if (disponible) {
+                            mesasDisponibles.push(mesa);
+                        }
+                    } else {
+                        mesasDisponibles.push(mesa);
+                    }
+                }
+            } else {
+                mesasDisponibles = this.locales[local].mesa;
+            }
+    
+            return { mesasDisponibles: mesasDisponibles, mesasReservadas: mesasOcupadas };
         } else {
-            return {
-                mesasReservadas: [],
-                mesasDisponibles: this.locales[local].mesa
-            };
+            return { mesasDisponibles: [], mesasReservadas: [] };
         }
-    }
+    }    
+
 
 
 }
