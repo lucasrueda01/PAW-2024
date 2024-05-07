@@ -502,8 +502,13 @@ main {
     display: block;
     object-fit: cover;
     object-position: center center;
-    
+}
 
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
 }
 
 .puntos {
