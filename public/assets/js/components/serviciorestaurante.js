@@ -7,7 +7,7 @@ class ServicioRestaurante {
         this.mesasDisponibles = 5; // Número de mesas disponibles
         this.clientesMesas = new Map(); // Mapa para almacenar los clientes asignados a cada mesa
 
-        console.log(Datos)
+        // console.log(Datos)
 
         this.locales = Datos.locales2; // Mapa para almacenar la información de los locales
         this.reservas = []; // Array para almacenar todas las reservas
@@ -51,26 +51,31 @@ class ServicioRestaurante {
         // const nombreLocal = "Local A";
         // const fecha = "2024-05-01";
         // const hora = "12:00";
+        dateValue = this.formatearFecha(dateValue);
 
         if (localValue !== null && dateValue !== null && timeValue !== null) {
         // if (nombreLocal !== null && fecha !== null && hora !== null) {
             console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}`);
-            const estadoMesas = this.obtenerEstadoMesas(localValue, dateValue, timeValue);
+            const estadoMesas = this.obtenerMesasReservadasYDisponibles(localValue, dateValue, timeValue);
             // const estadoMesas = this.obtenerEstadoMesas(nombreLocal, fecha, hora);
-            this.marcarMesas(estadoMesas);
+            console.log(estadoMesas);
+            this.marcarMesas(estadoMesas.mesasReservadas, "Ocupada");
+            this.marcarMesas(estadoMesas.mesasDisponibles, "Disponible");
         }else{
             console.log(`localValue: ${localValue}, dateValue: ${dateValue}, timeValue: ${timeValue}`)
         }
 
     }
 
-    marcarMesas(estadoMesas) {
+    marcarMesas(listadoMesas, estado) {
         // Iterar sobre el mapa estadoMesas
-        estadoMesas.forEach((estado, nombreMesa) => {
+        console.log(listadoMesas);
+
+        listadoMesas.forEach(nombreMesa => {
             // Obtener el elemento de la mesa con el nombre correspondiente
             console.log(`#${nombreMesa} .mesa // estado: ${estado}`);
-            var groupMesaElemento = document.querySelector(`#${nombreMesa}`);
-            var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`);
+            var groupMesaElemento = document.querySelector(`#${nombreMesa}`); // selecciono el group q identifica a la mesa
+            var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`); // selecciono el circulo q identifica la mesa
             
             // Verificar si la mesa está ocupada o disponible y aplicar el color correspondiente
             if (mesaElemento) {
@@ -86,6 +91,14 @@ class ServicioRestaurante {
             }
         });
     } 
+
+
+    formatearFecha(cadenaFecha)
+    {
+        // Reemplaza los guiones "-" por barras "/"
+        let fechaFormateada = cadenaFecha.replace(/-/g, '/');
+        return fechaFormateada;
+    }
 
     agregarEventoClic(groupMesaElemento, mesaElemento)
     {            
@@ -108,7 +121,10 @@ class ServicioRestaurante {
     // Función para obtener mesas reservadas y disponibles en un local, fecha y hora específicos
     obtenerMesasReservadasYDisponibles(local, fecha, hora) {
 
-        // console.log(this.locales)
+        console.log(`local: ${local}, fecha: ${fecha}, hora: ${hora}`)
+        console.log(this.locales[local][fecha]);
+        console.log(this.locales[local][fecha][hora]);
+        console.log(`this.locales[local][fecha][hora]: ${this.locales[local][fecha][hora]}`);
         if (this.locales[local] && this.locales[local][fecha] && this.locales[local][fecha][hora]) {
             let mesasLocal = this.locales[local].mesa; // Obtener las mesas del local
             let mesasReservadas = this.locales[local][fecha][hora] || []; // Obtener las mesas reservadas para la hora, fecha y local proporcionados
@@ -119,7 +135,10 @@ class ServicioRestaurante {
                 mesasDisponibles: mesasDisponibles
             };
         } else {
-            return "No hay información disponible para el local, fecha y hora proporcionados.";
+            return {
+                mesasReservadas: [],
+                mesasDisponibles: this.locales[local].mesa
+            };
         }
     }
 
