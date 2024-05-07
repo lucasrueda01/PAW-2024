@@ -77,8 +77,8 @@ $router->get('/local/mesas', 'LocalController@getMesas'); // LocalController
 $router->get('/pedir', 'PedidoController@pedir'); // PedidoController
 $router->get('/pedidos_entrantes', 'PedidoController@pedidos_entrantes'); // PedidoController
 // MesaController
-$router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
-$router->post('/reservar_cliente', 'MesaController@procesar_reserva_cliente'); // MesaController
+$router->get('/reservar_cliente', 'MesaController@new'); // MesaController
+$router->post('/reservar_cliente', 'MesaController@new'); // MesaController
 $router->get('/gestion_lista_mesas', 'MesaController@gestion_lista_mesas'); // MesaController
 $router->get('/gestion_mesa', 'MesaController@gestion_mesa'); // MesaController
 

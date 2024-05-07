@@ -86,15 +86,21 @@ class ServicioRestaurante {
     } 
 
     agregarEventoClic(groupMesaElemento, mesaElemento)
-    {
-        // this.mesaElegida = inputHiddenMesaSeleccionada.value;
+    {            
         groupMesaElemento.addEventListener("click", () => {
-            console.log(groupMesaElemento)
+            if (this.mesaElegida !== "") {
+                // console.log(`this.mesaElegida, ya tiene valor previo: ${this.mesaElegida}`);
+                let anteriorMesaSeleccionada = document.querySelector(`#${this.mesaElegida} .mesa`);
+                anteriorMesaSeleccionada.style.fill = "blue"; // VUELVO A COLOREARLA COMO DISPONIBLE
+            }
+            mesaElemento.style.fill = "red";
+            console.log(mesaElemento);
             let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
             inputHiddenMesaSeleccionada.value = groupMesaElemento.id;
-            mesaElemento.style.fill = "red";
+            this.mesaElegida = groupMesaElemento.id;
             console.log(`inputHiddenMesaSeleccionada.value: ${inputHiddenMesaSeleccionada.value}`)
         })
+        
     }
 
     cargarMesasDesdeLocal(locales)

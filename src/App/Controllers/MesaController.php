@@ -28,10 +28,20 @@ class MesaController extends Controller
         $titulo = 'PAW POWER | GESTION MESA';
         require $this->viewsDir . 'empleado/gestion_mesa.view.php';
     }
-    public function reservar_cliente()
+    public function new()
     {
-        $titulo = 'PAW POWER | RESERVAR CLIENTE';
-        require $this->viewsDirCliente . 'reservar_cliente.view.php';
+        global $request;
+
+        if($request->method() == 'GET'){
+            $titulo = 'PAW POWER | RESERVAR CLIENTE';
+            require $this->viewsDirCliente . 'reservar_cliente.view.php';
+        }elseif($request->method() == 'POST'){
+            var_dump($_POST);
+            echo("<pre>");
+        }else{
+            echo("Metodo no permitido");
+        }
+
     }
 
     public function procesar_reserva_cliente()
