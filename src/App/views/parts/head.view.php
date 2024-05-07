@@ -6,5 +6,7 @@
 <link rel="stylesheet" href="/assets/js/script.js">
 <link rel="shortcut icon" href="/assets/imgs/svg/Imagotipo_PAWPOWER.svg" type="image/svg+xml">
 <script src="/assets/js/app.js"></script>
+<script src="/assets/js/carrousel.js"></script>
+<script src="/assets/js/paw.js"></script>
 <title><?= $titulo ?? "Proyecto PAW" ?></title>
 
