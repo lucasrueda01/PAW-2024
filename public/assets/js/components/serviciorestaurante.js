@@ -1,11 +1,15 @@
 
+
 class ServicioRestaurante {
     constructor() {
         this.asientosBarraDisponibles = 10; // Número de asientos disponibles en la barra
         this.clientesBarra = []; // Array para almacenar los clientes que están en la barra
         this.mesasDisponibles = 5; // Número de mesas disponibles
         this.clientesMesas = new Map(); // Mapa para almacenar los clientes asignados a cada mesa
-        this.locales = new Map(); // Mapa para almacenar la información de los locales
+
+        console.log(Datos)
+
+        this.locales = Datos.locales2; // Mapa para almacenar la información de los locales
         this.reservas = []; // Array para almacenar todas las reservas
         this.mesaElegida = "";
     }
@@ -13,8 +17,6 @@ class ServicioRestaurante {
     getArrayLocales() {
         return this.locales;    // Array para almacenar Locales
     }
-
-
 
     cargarFormularioYComprobar() {
 
@@ -103,6 +105,24 @@ class ServicioRestaurante {
         
     }
 
+    // Función para obtener mesas reservadas y disponibles en un local, fecha y hora específicos
+    obtenerMesasReservadasYDisponibles(local, fecha, hora) {
+
+        // console.log(this.locales)
+        if (this.locales[local] && this.locales[local][fecha] && this.locales[local][fecha][hora]) {
+            let mesasLocal = this.locales[local].mesa; // Obtener las mesas del local
+            let mesasReservadas = this.locales[local][fecha][hora] || []; // Obtener las mesas reservadas para la hora, fecha y local proporcionados
+            let mesasDisponibles = mesasLocal.filter(mesa => !mesasReservadas.includes(mesa)); // Obtener las mesas disponibles restando las mesas reservadas
+
+            return {
+                mesasReservadas: mesasReservadas,
+                mesasDisponibles: mesasDisponibles
+            };
+        } else {
+            return "No hay información disponible para el local, fecha y hora proporcionados.";
+        }
+    }
+
     cargarMesasDesdeLocal(locales)
     {
                 // Iterar sobre cada local y sus mesas
@@ -183,6 +203,7 @@ class ServicioRestaurante {
             console.error('Error al cargar las mesas desde el archivo JSON:', error);
         }
     }
+
     // Método para agregar un local con su horario de apertura y cierre
     agregarLocal(nombreLocal, horaApertura, horaCierre) {
         this.locales.set(nombreLocal, { horaApertura, horaCierre, mesas: [] });
