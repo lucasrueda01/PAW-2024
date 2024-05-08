@@ -49,7 +49,7 @@
                 <input type="file" id="imagen_plato" name="imagen_plato" accept=".jpeg, .png" class="campo"> -->
                 <div class="container-dad">
                     <div class="input-dad">
-                        <p>Suelta la imagen del plato aqui</p>
+                       <p>Suelta la imagen del plato aqui</p>
                     </div>
                     <div class="output-dad"></div>
                 </div>

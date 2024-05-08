@@ -800,6 +800,7 @@ main {
 
 .container-dad {
     text-align: center;
+    width: 70%;
 }
 
 .input-dad {
@@ -810,6 +811,7 @@ main {
     height: 5rem;
     cursor: pointer;
     display: flex;
+    justify-content: center;
 }
 
 .input-dad p {
