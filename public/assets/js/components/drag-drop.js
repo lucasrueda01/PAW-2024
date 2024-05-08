@@ -3,36 +3,39 @@ class Drag_Drop {
         this.dropArea = document.querySelector(dropAreaSelector);
         this.output = document.querySelector(outputSelector);
 
-        this.initialize();
+        this.inicializar();
     }
 
-    initialize() {
-        this.dropArea.addEventListener("dragover", (e) => this.handleDragOver(e));
-        this.dropArea.addEventListener("drop", (e) => this.handleDrop(e));
+    inicializar() {
+        this.dropArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            e.stopPropagation();});
+
+        this.dropArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            const imagen = e.dataTransfer.files[0];
+            if (!imagen || !imagen.type.match("image")) 
+                return;
+            this.mostrar(imagen);
+            this.eliminarDropArea()
+        });
     }
 
-    handleDragOver(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-
-    handleDrop(e) {
-        e.preventDefault();
-        const file = e.dataTransfer.files[0];
-        if (!file || !file.type.match("image")) return;
-
-        this.displayImage(file);
-    }
-
-    displayImage(file) {
+    mostrar(imagen) {
         const reader = new FileReader();
         reader.onload = (e) => {
-            const imageHTML = `<div class="image-dad">
+            const imagenHTML = `<div class="image-dad">
                                     <img src="${e.target.result}" alt="image">
                                </div>`;
-            this.output.innerHTML = imageHTML;
+            this.output.innerHTML = imagenHTML;
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(imagen);
+    }
+
+    eliminarDropArea() {
+        if (this.dropArea) {
+            this.dropArea.parentNode.removeChild(this.dropArea);
+        }
     }
 }
 

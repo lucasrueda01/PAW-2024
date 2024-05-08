@@ -1,33 +1,32 @@
 class appPAW {
-	constructor() {
-        
+    constructor() {
+
         document.addEventListener("DOMContentLoaded", () => {
-        /**
-         * cargo la clase Datos, contiene los datos de prueba
-         * para la carga del formulario
-         *  */    
-        PAW.cargarScript("Datos", "/assets/js/components/datos.js");
-        PAW.cargarScript("Carrousel", "/assets/js/components/carrousel.js");
-        PAW.cargarScript("DragDrop", "/assets/js/components/drag-drop.js");
-        
-		PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {	
-            let imagenes = ["/assets/imgs/menu/Muzarelitas.jpg", "/assets/imgs/menu/Oklahoma.jpg","/assets/imgs/menu/Coca.jpg" , "/assets/imgs/menu/Fanta.jpg", "/assets/imgs/menu/BigPower.jpg"]
-            let carrousel = new Carrousel(".destacados",imagenes)
-            let dragAndDrop = new Drag_Drop(".input-dad", ".output-dad");
-            const servicioRestaurante = new ServicioRestaurante();
-
             /**
-             * carga los input local, fecha y hora con el evento click
-             * y controla cuando se hayan cliqueado todos
-             */
-            servicioRestaurante.cargarFormularioYComprobar()
+             * cargo la clase Datos, contiene los datos de prueba
+             * para la carga del formulario
+             *  */
+            PAW.cargarScript("Datos", "/assets/js/components/datos.js");
 
+            PAW.cargarScript("Carrousel", "/assets/js/components/carrousel.js", () => {
+                let imagenes = ["/assets/imgs/menu/Muzarelitas.jpg", "/assets/imgs/menu/Oklahoma.jpg", "/assets/imgs/menu/Coca.jpg", "/assets/imgs/menu/Fanta.jpg", "/assets/imgs/menu/BigPower.jpg"]
+                let carrousel = new Carrousel(".destacados", imagenes)
             });
-		}
-        
-        );
 
-        
+            PAW.cargarScript("Drag_Drop", "/assets/js/components/drag-drop.js", () => {
+                let dragAndDrop = new Drag_Drop(".input-dad", ".output-dad"); //Tienen que estar dentro de un div containter-dad
+            });
+
+            PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {
+                const servicioRestaurante = new ServicioRestaurante();
+                /**
+                 * carga los input local, fecha y hora con el evento click
+                 * y controla cuando se hayan cliqueado todos
+                 */
+                servicioRestaurante.cargarFormularioYComprobar()
+            });
+        }
+        );
     }
 }
 
