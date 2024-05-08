@@ -18,6 +18,7 @@ class appPAW {
             });
 
             PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {
+
                 const servicioRestaurante = new ServicioRestaurante();
                 /**
                  * carga los input local, fecha y hora con el evento click

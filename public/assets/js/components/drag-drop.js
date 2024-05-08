@@ -9,7 +9,9 @@ class Drag_Drop {
     inicializar() {
         this.dropArea.addEventListener("dragover", (e) => {
             e.preventDefault();
-            e.stopPropagation();});
+            e.stopPropagation();
+            
+        });
 
         this.dropArea.addEventListener("drop", (e) => {
             e.preventDefault();
@@ -19,6 +21,21 @@ class Drag_Drop {
             this.mostrar(imagen);
             this.eliminarDropArea()
         });
+
+        this.dropArea.addEventListener("dragenter", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("El archivo está sobre la zona de drop");
+            this.dropArea.classList.add("drag-over");
+        });
+
+        this.dropArea.addEventListener("dragleave", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("El archivo ha salido de la zona de drop");
+            this.dropArea.classList.remove("drag-over"); // Remover clase al salir del área
+        });
+
     }
 
     mostrar(imagen) {

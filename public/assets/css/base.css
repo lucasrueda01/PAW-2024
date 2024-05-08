@@ -807,11 +807,23 @@ main {
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+    height: 5rem;
     cursor: pointer;
+    display: flex;
+}
+
+.input-dad p {
+    text-align: center;
+    align-self: center;
+}
+
+.drag-over {
+    background-color: #313131;
+    color: white;
 }
 
 .output-dad {
-    max-width: 200px;
+    max-width: 200px;   
     margin: auto;
 }
 
