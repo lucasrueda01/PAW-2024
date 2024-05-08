@@ -798,3 +798,24 @@ main {
     background-size: cover;
 }
 
+.container-dad {
+    text-align: center;
+}
+
+.input-dad {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.output-dad {
+    max-width: 100px;
+    margin: auto;
+}
+
+.image-dad img {
+    max-width: 100%;
+}
+

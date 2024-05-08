@@ -8,13 +8,12 @@ class appPAW {
          *  */    
         PAW.cargarScript("Datos", "/assets/js/components/datos.js");
         PAW.cargarScript("Carrousel", "/assets/js/components/carrousel.js");
+        PAW.cargarScript("DragDrop", "/assets/js/components/drag-drop.js");
         
 		PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {	
-
-
             let imagenes = ["/assets/imgs/menu/Muzarelitas.jpg", "/assets/imgs/menu/Oklahoma.jpg","/assets/imgs/menu/Coca.jpg" , "/assets/imgs/menu/Fanta.jpg", "/assets/imgs/menu/BigPower.jpg"]
             let carrousel = new Carrousel(".destacados",imagenes)
-
+            let dragAndDrop = new Drag_Drop(".input-dad", ".output-dad");
             const servicioRestaurante = new ServicioRestaurante();
 
             /**
@@ -25,7 +24,10 @@ class appPAW {
 
             });
 		}
+        
         );
+
+        
     }
 }
 
