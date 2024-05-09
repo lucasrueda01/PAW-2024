@@ -7,4 +7,3 @@
 <script src="/assets/js/app.js"></script>
 <link rel="shortcut icon" href="/assets/imgs/svg/Imagotipo_PAWPOWER.svg" type="image/svg+xml">
 <title><?= $titulo ?? "Proyecto PAW" ?></title>
-
