@@ -50,8 +50,6 @@
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
 
-                    <?php require __DIR__ . '\../parts/plano.view.php' ?>
-
                     <aside class="resumen">
                         <h4 class="titulo_resumen">Resumen de reserva</h4>
                         <ul>
