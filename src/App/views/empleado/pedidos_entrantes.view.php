@@ -21,8 +21,8 @@
             <table class="tabla_gestion_mesa">
                 <thead>
                     <tr>
+                        <th>Nro Pedido</th>
                         <th>Fecha/Hora</th>
-                        <th>Productos</th>
                         <th>Tipo</th>
                         <th>Direccion</th>
                         <th>Monto Total</th>

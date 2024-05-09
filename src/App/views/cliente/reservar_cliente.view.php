@@ -67,7 +67,7 @@
                         </ul>
                     </aside>
 
-                    <object type="image/svg+xml" data="/assets/imgs/svg/PlanoSucursalA.svg" id="planoDelLocal"></object>
+                    <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
                     <input type="submit" value="Reservar" class="boton boton_verde">
                 </fieldset>
