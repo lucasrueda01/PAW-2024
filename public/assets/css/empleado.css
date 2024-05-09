@@ -135,6 +135,8 @@
 .tabla_gestion_mesa td {
     border: .1rem solid black;
     text-align: center;
+    vertical-align: middle;
+    font-size: 2rem;
 }
 
 .tabla_gestion_mesa tfoot td {
@@ -153,6 +155,17 @@
     width: 4rem;
     height: 4rem;
     background-image: url(../imgs/svg/icono-aceptar.svg);
+}
+.icon_detalle {
+    width: 4rem;
+    height: 4rem;
+    background-image: url(../imgs/svg/icono-ver-detalle.svg);
+}
+
+.icon_detalle:hover {
+    width: 4rem;
+    height: 4rem;
+    background-image: url(../imgs/svg/icono-ver-detalle-hover.svg);
 }
 
 .icon_aceptar:hover {

@@ -32,19 +32,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Delivery/TakeAway</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Pendiente/ en Preparacion/ rechazado/ terminado</td>
-                        <td>
-                            <a href="/aceptar_pedido?pedido=id_pedido" class="icon icon_aceptar">Aceptar</a>
-                            <a href="/rechazar_pedido?pedido=id_pedido" class="icon icon_rechazar">Rechazar</a>
-                        </td>
-                    </tr>
+                        <?php foreach ($pedidos as $pedido): ?>
+                        <tr>
+                            <td><?= $pedido['Nro Pedido']; ?></td>
+                            <td><?= $pedido['Fecha/Hora']; ?></td>
+                            <td><?= $pedido['Tipo']; ?></td>
+                            <td><?= $pedido['Direccion']; ?></td>
+                            <td><?= $pedido['Monto Total']; ?></td>
+                            <td><?= $pedido['Metodo de Pago']; ?></td>
+                            <td><?= $pedido['Estado']; ?></td>
+                            <td>
+                            <td>
+                                <a href="/pedidos/estado?id=<?= $pedido['Nro Pedido'] ?>" class="icon icon_detalle">Aceptar</a>
+                                <a href="/aceptar_pedido?pedido=id_pedido" class="icon icon_aceptar">Aceptar</a>
+                                <a href="/rechazar_pedido?pedido=id_pedido" class="icon icon_rechazar">Rechazar</a>
+                            </td>                                
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>                    
+
                 </tbody>
             </table>
         </section>

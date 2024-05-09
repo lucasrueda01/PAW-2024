@@ -26,8 +26,15 @@ class appPAW {
                  */
                 servicioRestaurante.cargarFormularioYComprobar()
             });
-        }
-        );
+
+            PAW.cargarScript("gestorPedidos", "/assets/js/components/gestorPedidos.js", () => {
+                let gestorPedidos = new GestorPedidos();
+                
+                // Llamar a la función obtenerEstadoPedido() cada 5 segundos
+                setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 5000);
+            });
+
+        });
     }
 }
 
