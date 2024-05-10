@@ -188,3 +188,7 @@
     height: auto;
     margin: 2rem 2rem;
 }
+
+#nromesa-elegida {
+    display: none;
+}

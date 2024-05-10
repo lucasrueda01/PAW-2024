@@ -125,8 +125,15 @@ class ServicioRestaurante {
 
         console.log(`fechaInput-antes: ${fechaInput}`);
         let partesFecha = fechaInput.split('-');
-        fechaInput = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2]);
+        console.log(partesFecha);
+        fechaInput = new Date(Date.UTC(partesFecha[0], partesFecha[1] - 1, partesFecha[2]));
 
+        fechaInput = new Date(
+            fechaInput.getUTCFullYear(),
+            fechaInput.getUTCMonth(),
+            fechaInput.getUTCDate()
+        );
+        
         console.log(`fechaActual: ${fechaActual}`);
         console.log(`fechaInput-despues: ${fechaInput}`);
         console.log(`fechaLimite: ${fechaLimite}`);
@@ -236,6 +243,7 @@ class ServicioRestaurante {
             let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
             inputHiddenMesaSeleccionada.value = groupMesaElemento.id;
             this.mesaElegida = groupMesaElemento.id;
+            console.log(`${this.mesaElegida}`);
         })
         
     }
