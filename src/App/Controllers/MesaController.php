@@ -37,7 +37,7 @@ class MesaController extends Controller
     public function procesar_reserva_cliente()
     {
         $datosReserva = $_POST;
-        // $resultado = $this->verificador->verificarCampos($datosReserva);
+        
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }    
 }

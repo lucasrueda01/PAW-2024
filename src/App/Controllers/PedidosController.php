@@ -45,7 +45,7 @@ class PedidosController extends Controller
 
         $pedido = $this->model->getById($id);
         
-        require $this->viewsDir . 'cliente/estado_pedido.view.php';
+        require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
 
     public function getEstado()
