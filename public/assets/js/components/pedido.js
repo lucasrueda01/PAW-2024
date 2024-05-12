@@ -2,11 +2,20 @@ class Pedido {
 
     static accionesPorEstado = {
         "sin-confirmar" : ["confirmar", "rechazar"],
-        "confirmado" : [],
+        "confirmado" : ["despachar", "pasar-a-retirar"],
         "rechazado" : [],
         "en-preparacion" : ["finalizar", "cancelar"],
-        "finalizado" : ["despachar", "pasar a retirar"]
-    };
+        "finalizado" : ["despachar", "pasar-a-retirar"]
+    }
+
+    static urlsAccion = {
+        "confirmar" : "confirmado",
+        "rechazar" : "rechazado",
+        "finalizar" : "finalizado",
+        "cancelar" : "cancelado",
+        "despachar" : "despachado",
+        "pasar-a-retirar" : "pasar-a-retirar"
+    }
 
 
     async getEstado(id) {

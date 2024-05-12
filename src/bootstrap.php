@@ -78,6 +78,9 @@ $router->get('/pedir', 'PedidosController@pedir'); // PedidoController
 $router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // PedidoController
 $router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
+
+$router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
+
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
 $router->post('/reservar_cliente', 'MesaController@procesar_reserva_cliente'); // MesaController

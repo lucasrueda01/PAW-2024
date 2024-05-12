@@ -11,10 +11,21 @@ class PedidosCollection extends Model
     public $indice = [];
     static public $accionesPorEstado = [
         "sin-confirmar" => ["confirmar", "rechazar"],
-        "confirmado" => [],
+        "confirmado" => ["despachar", "pasar-a-retirar"],
         "rechazado" => [],
+        "despachado" => [],
+        "pasar-a-retirar" => [],
         "en-preparacion" => ["finalizar", "cancelar"],
-        "finalizado" => ["despachar", "pasar a retirar"]
+        "finalizado" => ["despachar", "pasar-a-retirar"]
+    ];
+
+    static public $urlsAccion  = [
+        "confirmar" => "confirmado",
+        "rechazar" => "rechazado",
+        "finalizar" => "finalizado",
+        "cancelar" => "cancelado",
+        "despachar" => "despachado",        
+        "pasar-a-retirar" => "pasar-a-retirar"
     ];
 
     public function __construct()
@@ -58,6 +69,37 @@ class PedidosCollection extends Model
 
     }
 
+    public function modificarEstado($id, $estado)
+    {
+    // Leer el contenido del archivo JSON y convertirlo en un array PHP
+    $json_data = file_get_contents(__DIR__ . '\listaPedidos.json');
+    $pedidos = json_decode($json_data, true);
+
+    // Buscar el pedido con el ID proporcionado
+    $pedidoEncontrado = false;
+    foreach ($pedidos as &$pedido) {
+        if ($pedido['Nro Pedido'] == $id) {
+            // Modificar el estado del pedido
+            $pedido['Estado'] = $estado;
+            $pedidoEncontrado = true;
+            break; // Salir del bucle una vez que se haya encontrado el pedido
+        }
+    }
+
+    // Verificar si se encontró el pedido
+    if ($pedidoEncontrado) {
+        // Convertir el array modificado a JSON
+        $json_data = json_encode($pedidos, JSON_PRETTY_PRINT);
+
+        // Guardar el JSON modificado en el archivo
+        file_put_contents(__DIR__ . '\listaPedidos.json', $json_data);
+
+        return ["exito" => "El estado del pedido con ID $id ha sido modificado a '$estado'."];
+    } else {
+        return ["error" => "No se encontró un pedido con el ID $id."];
+    }
+
+    }
  
 }
 

@@ -14,7 +14,7 @@ class GestorPedidos {
         animador.animar(estadoHTML, 5000 , 'animado'); 
     }
 
-    actualizarAccionesSegunEstadoPedido(estado)
+    actualizarAccionesSegunEstadoPedido(estado, id)
     {
         /**
          * recibo un estado y le pido a la clase pedido 
@@ -46,6 +46,8 @@ class GestorPedidos {
             // Agregar clases al nuevo enlace
             nuevoEnlace.classList.add('boton', 'boton_negro');        
             
+            nuevoEnlace.href = `/pedidos/estado/modificar?id=${id}&estado=${Pedido.urlsAccion[accion]}`
+
             nuevoEnlace.textContent = accion
     
             // Agregar el enlace a la sección "detalles_pedido"
@@ -72,7 +74,7 @@ class GestorPedidos {
             const estado = await pedido.getEstado(soloIdPedido)
             if (estado != estado_anterior && estado){
                 this.actualizarEstado({estado: estado, pedido: soloIdPedido})
-                this.actualizarAccionesSegunEstadoPedido(estado)
+                this.actualizarAccionesSegunEstadoPedido(estado, soloIdPedido)
             }
         }catch(error){
             console.error('Error al obtener el estado del pedido:', error)

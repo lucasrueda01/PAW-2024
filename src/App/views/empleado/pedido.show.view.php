@@ -30,7 +30,7 @@
                 <p class="detalle" id="estado"><?= $pedido['Estado']; ?></p>
 
                 <?php foreach($listaAcciones[$pedido['Estado']] as $accion ): ?>
-                    <a class="boton boton_negro" href=""><?= $accion ?></a>
+                    <a class="boton boton_negro" href="/pedidos/estado/modificar?id=<?= $pedido['Nro Pedido']; ?>&estado=<?= $urlsAccion[$accion]?>"><?= $accion ?></a>
                 <?php endforeach; ?>    
 
         </section>

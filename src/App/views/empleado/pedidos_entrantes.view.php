@@ -18,6 +18,11 @@
 
 
         <section class="container_gestion_mesa">
+            <?php if (isset($error['description'])) : ?>
+                <h4 class="msj msj_error">
+                    <?= $error['description']; ?>
+                </h4>
+            <?php endif ?>
             <table class="tabla_gestion_mesa">
                 <thead>
                     <tr>

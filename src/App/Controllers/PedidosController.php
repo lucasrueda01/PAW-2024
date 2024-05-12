@@ -46,7 +46,8 @@ class PedidosController extends Controller
         $pedido = $this->model->getById($id);
 
         $listaAcciones = PedidosCollection::$accionesPorEstado; //
-        
+        $urlsAccion = PedidosCollection::$urlsAccion;
+
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
 
@@ -61,5 +62,24 @@ class PedidosController extends Controller
         // Convertir el array a formato JSON
         $json_pedido = json_encode($pedido);    
         echo $json_pedido;
+    }
+
+    public function modificarEstado()
+    {
+        global $request;
+
+        // Verificar si se recibieron los parámetros esperados
+        if ($request->get('id') != null && $request->get('estado') != null) {
+            $id = $request->get('id');
+            $estado = $request->get('estado');
+            $pedido = $this->model->modificarEstado($id, $estado);
+
+            isset($pedido['error']) ? $error['description'] = $pedido['error'] : null;
+        } else {
+            // Si no se recibieron los parámetros esperados, mostrar un mensaje de error
+            $error['description'] = "Error: Debes proporcionar los parámetros 'id' y 'estado' en la URL.";
+        }
+        $pedidos = $this->model->getAll();
+        require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
     }
 }
