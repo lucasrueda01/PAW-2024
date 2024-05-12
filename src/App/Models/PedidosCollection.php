@@ -9,6 +9,13 @@ use Paw\Core\Model;
 class PedidosCollection extends Model
 {
     public $indice = [];
+    static public $accionesPorEstado = [
+        "sin-confirmar" => ["confirmar", "rechazar"],
+        "confirmado" => [],
+        "rechazado" => [],
+        "en-preparacion" => ["finalizar", "cancelar"],
+        "finalizado" => ["despachar", "pasar a retirar"]
+    ];
 
     public function __construct()
     {

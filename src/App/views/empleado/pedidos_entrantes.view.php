@@ -42,10 +42,7 @@
                             <td><?= $pedido['Metodo de Pago']; ?></td>
                             <td id="estado"><?= $pedido['Estado']; ?></td>
                             <td>
-                            <td>
                                 <a href="/pedidos/estado?id=<?= $pedido['Nro Pedido'] ?>" class="icon icon_detalle">Aceptar</a>
-                                <a href="/aceptar_pedido?pedido=id_pedido" class="icon icon_aceptar">Aceptar</a>
-                                <a href="/rechazar_pedido?pedido=id_pedido" class="icon icon_rechazar">Rechazar</a>
                             </td>                                
                             </td>
                         </tr>

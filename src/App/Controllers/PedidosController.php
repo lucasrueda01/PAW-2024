@@ -44,6 +44,8 @@ class PedidosController extends Controller
         $id = $request->get('id');
 
         $pedido = $this->model->getById($id);
+
+        $listaAcciones = PedidosCollection::$accionesPorEstado; //
         
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }

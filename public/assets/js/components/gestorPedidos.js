@@ -14,6 +14,46 @@ class GestorPedidos {
         animador.animar(estadoHTML, 5000 , 'animado'); 
     }
 
+    actualizarAccionesSegunEstadoPedido(estado)
+    {
+        /**
+         * recibo un estado y le pido a la clase pedido 
+         * cuales son las opciones siguientes,
+         * esta me devuelve la lista de acciones 
+         * y agrego los botones correspondientes
+         * como hijos de elemento section cuya clase es `detalles_pedido` 
+         */
+
+        console.log(Pedido.accionesPorEstado[estado])
+        // const listaAcciones = pedido.obtenerAcciones(estado)
+
+        const detallesPedido = document.querySelector('.detalles_pedido');
+
+        // Obtener todos los enlaces <a> dentro de la sección
+        const enlaces = detallesPedido.querySelectorAll('a');
+
+        // Eliminar cada enlace
+        enlaces.forEach(enlace => {
+            enlace.remove();
+        });        
+
+        Pedido.accionesPorEstado[estado].forEach((accion) => {
+            console.log(`accion: ${accion}`);
+
+            // Crear un nuevo elemento <a>
+            const nuevoEnlace = document.createElement('a');
+    
+            // Agregar clases al nuevo enlace
+            nuevoEnlace.classList.add('boton', 'boton_negro');        
+            
+            nuevoEnlace.textContent = accion
+    
+            // Agregar el enlace a la sección "detalles_pedido"
+            detallesPedido.appendChild(nuevoEnlace);
+        });
+
+    }
+
     async getEstadoPedido()
     {
         /**
@@ -21,18 +61,21 @@ class GestorPedidos {
          * y recibo el estado del pedido
          */     
 
-        const idCompleto = document.querySelector(`[id^="pedido-nro-"]`);
+        const idCompleto = document.querySelector(`[id^="pedido-nro-"]`)
+        const estado_anterior = document.querySelector(`[id^="estado"]`)
 
-        const soloIdPedido = idCompleto.id.split('-')[2];
-
+        const soloIdPedido = idCompleto.id.split('-')[2]
 
         const pedido = new Pedido()
 
         try{
-            const estado = await pedido.getEstado(soloIdPedido);
-            this.actualizarEstado({estado: estado, pedido: soloIdPedido});
+            const estado = await pedido.getEstado(soloIdPedido)
+            if (estado != estado_anterior && estado){
+                this.actualizarEstado({estado: estado, pedido: soloIdPedido})
+                this.actualizarAccionesSegunEstadoPedido(estado)
+            }
         }catch(error){
-            console.error('Error al obtener el estado del pedido:', error);
+            console.error('Error al obtener el estado del pedido:', error)
         }      
 
     }

@@ -1,5 +1,14 @@
 class Pedido {
 
+    static accionesPorEstado = {
+        "sin-confirmar" : ["confirmar", "rechazar"],
+        "confirmado" : [],
+        "rechazado" : [],
+        "en-preparacion" : ["finalizar", "cancelar"],
+        "finalizado" : ["despachar", "pasar a retirar"]
+    };
+
+
     async getEstado(id) {
         try {
             // Realizar la solicitud usando fetch
@@ -25,4 +34,13 @@ class Pedido {
             throw error; // Puedes lanzar el error nuevamente o manejarlo de alguna otra forma según tus necesidades.
         }
     }
+
+    obtenerAcciones(estado) {
+        // Verificar si el estado dado existe en el objeto
+        if (this.accionesPorEstado.hasOwnProperty(estado)) {
+            return this.accionesPorEstado[estado];
+        } else {
+            return []; // Si el estado no está definido, devolver un arreglo vacío
+        }
+    }   
 }

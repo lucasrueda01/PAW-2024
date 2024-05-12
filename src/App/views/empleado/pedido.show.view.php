@@ -28,13 +28,11 @@
                 <p class="detalle"><?= $pedido['Monto Total']; ?></p>
                 <p class="detalle"><?= $pedido['Metodo de Pago']; ?></p>
                 <p class="detalle" id="estado"><?= $pedido['Estado']; ?></p>
-                
-                <a class="boton boton_negro">ACEPTAR</a>
-                <a class="boton boton_negro">FINALIZAR</a>
-                <a class="boton boton_negro">RECHAZAR</a>
-                <a class="boton boton_negro">LISTO PARA RETIRAR</a>
-                <a class="boton boton_negro">EN VIAJE</a>
-            
+
+                <?php foreach($listaAcciones[$pedido['Estado']] as $accion ): ?>
+                    <a class="boton boton_negro" href=""><?= $accion ?></a>
+                <?php endforeach; ?>    
+
         </section>
   
         <?php endif ?>  

@@ -6,7 +6,7 @@
         "Direccion": "Calle 123, Ciudad",
         "Monto Total": 25.99,
         "Metodo de Pago": "Tarjeta de crédito",
-        "Estado": "En Preparacion",
+        "Estado": "sin-confirmar",
         "Acciones": "Ver detalles"
     },
     {
@@ -16,7 +16,7 @@
         "Direccion": "",
         "Monto Total": 15.50,
         "Metodo de Pago": "Efectivo",
-        "Estado": "Rechazado",
+        "Estado": "sin-confirmar",
         "Acciones": "Ver detalles"
     },
     {
@@ -26,7 +26,7 @@
         "Direccion": "",
         "Monto Total": 42.75,
         "Metodo de Pago": "Tarjeta de débito",
-        "Estado": "Rechazado",
+        "Estado": "rechazado",
         "Acciones": "Ver detalles"
     },
     {
@@ -36,7 +36,7 @@
         "Direccion": "Avenida Principal, Ciudad",
         "Monto Total": 30.25,
         "Metodo de Pago": "PayPal",
-        "Estado": "Terminado",
+        "Estado": "rechazado",
         "Acciones": "Ver detalles"
     },
     {
@@ -46,7 +46,7 @@
         "Direccion": "",
         "Monto Total": 20.00,
         "Metodo de Pago": "Efectivo",
-        "Estado": "Pendiente",
+        "Estado": "en-preparacion",
         "Acciones": "Ver detalles"
     }
 ]
