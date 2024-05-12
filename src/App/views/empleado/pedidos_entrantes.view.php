@@ -34,13 +34,13 @@
                 <tbody>
                         <?php foreach ($pedidos as $pedido): ?>
                         <tr>
-                            <td><?= $pedido['Nro Pedido']; ?></td>
+                            <td id="pedido-id"><?= $pedido['Nro Pedido']; ?></td>
                             <td><?= $pedido['Fecha/Hora']; ?></td>
                             <td><?= $pedido['Tipo']; ?></td>
                             <td><?= $pedido['Direccion']; ?></td>
                             <td><?= $pedido['Monto Total']; ?></td>
                             <td><?= $pedido['Metodo de Pago']; ?></td>
-                            <td><?= $pedido['Estado']; ?></td>
+                            <td id="estado"><?= $pedido['Estado']; ?></td>
                             <td>
                             <td>
                                 <a href="/pedidos/estado?id=<?= $pedido['Nro Pedido'] ?>" class="icon icon_detalle">Aceptar</a>

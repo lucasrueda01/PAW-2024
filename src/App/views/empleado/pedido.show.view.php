@@ -11,7 +11,7 @@
     
     <?php require __DIR__.'\../parts/header.view.php' ?>
 
-<main>
+<main class="container_detalle">
 
         <section class="titulo titulo_portada">
             <h2>DETALLE PEDIDO</h2>
@@ -21,19 +21,19 @@
 
         <section class="detalles_pedido">
             
-                <h3 class="nro_pedido">#0000<?= $pedido['Nro Pedido']; ?></h3>
+                <h3 class="nro_pedido" id="pedido-nro-<?= $pedido['Nro Pedido']; ?>">#0000<?= $pedido['Nro Pedido']; ?></h3>
                 <p class="detalle"><?= $pedido['Fecha/Hora']; ?></p>
                 <p class="detalle"><?= $pedido['Tipo']; ?></p>
                 <p class="detalle"><?= $pedido['Direccion']; ?></p>
                 <p class="detalle"><?= $pedido['Monto Total']; ?></p>
                 <p class="detalle"><?= $pedido['Metodo de Pago']; ?></p>
-                <p class="detalle"><?= $pedido['Estado']; ?></p>
+                <p class="detalle" id="estado"><?= $pedido['Estado']; ?></p>
                 
-                <a class="btn_accion">ACEPTAR</a>
-                <a class="btn_accion">FINALIZAR</a>
-                <a class="btn_accion">RECHAZAR</a>
-                <a class="btn_accion">LISTO PARA RETIRAR</a>
-                <a class="btn_accion">EN VIAJE</a>
+                <a class="boton boton_negro">ACEPTAR</a>
+                <a class="boton boton_negro">FINALIZAR</a>
+                <a class="boton boton_negro">RECHAZAR</a>
+                <a class="boton boton_negro">LISTO PARA RETIRAR</a>
+                <a class="boton boton_negro">EN VIAJE</a>
             
         </section>
   

@@ -22,14 +22,14 @@ class appPAW {
                 {
                     PAW.cargarScript("Drag_Drop", "/assets/js/components/drag-drop.js", () => {
                         let dragAndDrop = new Drag_Drop(".input-dad", ".output-dad"); //Tienen que estar dentro de un div containter-dad
-                    });                    
+                    })                   
                 }
 
             if (['/reservar_cliente'].includes(window.location.pathname))
                 {
                     PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {
         
-                        const servicioRestaurante = new ServicioRestaurante();
+                        const servicioRestaurante = new ServicioRestaurante()
                         /**
                          * carga los input local, fecha y hora con el evento click
                          * y controla cuando se hayan cliqueado todos
@@ -40,14 +40,19 @@ class appPAW {
 
             if (['/pedidos/estado'].includes(window.location.pathname))
                 {
+                    PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
+                    PAW.cargarScript("Animador", "/assets/js/components/animador.js");
                     PAW.cargarScript("gestorPedidos", "/assets/js/components/gestorPedidos.js", () => {
-                        let gestorPedidos = new GestorPedidos();
+                        let gestorPedidos = new GestorPedidos()
                         
                         // Llamar a la función obtenerEstadoPedido() cada 5 segundos
-                        setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 5000);
+                        setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 5000)
                     });
                 }
-
+            if(['pedidos_entrantes'].includes(window.location.pathname))
+                {
+                    PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
+                }
         });
     }
 }

@@ -74,7 +74,7 @@ $router->post('/plato/new', 'MenuController@new'); // MenuController
 // LocalController
 $router->post('/local/mesas', 'LocalController@getMesas'); // LocalController
 // PedidoController
-$router->get('/pedir', 'PedidoController@pedir'); // PedidoController
+$router->get('/pedir', 'PedidosController@pedir'); // PedidoController
 $router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // PedidoController
 $router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
