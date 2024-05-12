@@ -72,7 +72,7 @@ class PedidosController extends Controller
         if ($request->get('id') != null && $request->get('estado') != null) {
             $id = $request->get('id');
             $estado = $request->get('estado');
-            $pedido = $this->model->modificarEstado($id, $estado);
+            $pedido = $this->model->modificarEstado($id, $estado, );
 
             isset($pedido['error']) ? $error['description'] = $pedido['error'] : null;
         } else {

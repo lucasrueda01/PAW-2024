@@ -19,6 +19,7 @@ class PedidosCollection extends Model
         "finalizado" => ["despachar", "pasar-a-retirar"]
     ];
 
+
     static public $urlsAccion  = [
         "confirmar" => "confirmado",
         "rechazar" => "rechazado",
@@ -88,6 +89,10 @@ class PedidosCollection extends Model
 
     // Verificar si se encontró el pedido
     if ($pedidoEncontrado) {
+
+        if(!isset(self::$accionesPorEstado[$estado])){
+            return ["error" => "El estado para el pedido no esta permitido"];
+        }
         // Convertir el array modificado a JSON
         $json_data = json_encode($pedidos, JSON_PRETTY_PRINT);
 
