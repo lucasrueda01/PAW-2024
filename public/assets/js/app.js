@@ -45,8 +45,8 @@ class appPAW {
                     PAW.cargarScript("gestorPedidos", "/assets/js/components/gestorPedidos.js", () => {
                         let gestorPedidos = new GestorPedidos()
                         
-                        // Llamar a la función obtenerEstadoPedido() cada 5 segundos
-                        setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 5000)
+                        // Llamar a la función obtenerEstadoPedido() cada 10 segundos
+                        setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000)
                     });
                 }
             if(['pedidos_entrantes'].includes(window.location.pathname))
