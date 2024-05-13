@@ -45,11 +45,11 @@
                 <label for="precio" class="etiqueta">Ingrese un Precio</label>
                 <input required type="number" name="precio" id="precio" class="campo">
 
-                <!-- <label for="imagen_plato" class="etiqueta">Cargue una imagen de ilustracion</label>
-                <input type="file" id="imagen_plato" name="imagen_plato" accept=".jpeg, .png" class="campo"> -->
+                <label for="imagen_plato"> </label>
+                <input type="file" id="imagen_plato" name="imagen_plato" accept=".jpeg, .png" hidden>
                 <div class="container-dad">
                     <div class="input-dad">
-                       <p>Suelta la imagen del plato aqui</p>
+                        <p>Cargue una imagen de ilustracion aqui</p>
                     </div>
                     <div class="output-dad"></div>
                 </div>

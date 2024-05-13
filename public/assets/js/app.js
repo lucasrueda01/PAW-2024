@@ -21,7 +21,7 @@ class appPAW {
             if (['/plato/new'].includes(window.location.pathname))
                 {
                     PAW.cargarScript("Drag_Drop", "/assets/js/components/drag-drop.js", () => {
-                        let dragAndDrop = new Drag_Drop(".input-dad", ".output-dad"); //Tienen que estar dentro de un div containter-dad
+                        let dragAndDrop = new Drag_Drop()
                     })                   
                 }
 
