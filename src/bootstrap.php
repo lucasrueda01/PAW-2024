@@ -74,8 +74,13 @@ $router->post('/plato/new', 'MenuController@new'); // MenuController
 // LocalController
 $router->get('/local/mesas', 'LocalController@getMesas'); // LocalController
 // PedidoController
-$router->get('/pedir', 'PedidoController@pedir'); // PedidoController
-$router->get('/pedidos_entrantes', 'PedidoController@pedidos_entrantes'); // PedidoController
+$router->get('/pedir', 'PedidosController@pedir'); // PedidoController
+$router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // PedidoController
+$router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
+$router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
+
+$router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
+
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@new'); // MesaController
 $router->post('/reservar_cliente', 'MesaController@new'); // MesaController

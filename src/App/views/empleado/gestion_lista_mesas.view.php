@@ -28,61 +28,61 @@
         <section class="sectores"> <!-- SECCION A -->
 
             <ul class="sector">
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A1</a>
                 </li>
 
-                <li class="mesa mesa_ocupada"> <!--MESA 2 -->
+                <li class="mesa_ mesa_ocupada"> <!--MESA 2 -->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A2</a>
                 </li>
 
-                <li class="mesa mesa_ocupada"> <!--MESA 3 -->
+                <li class="mesa_ mesa_ocupada"> <!--MESA 3 -->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A3</a>
                 </li>
 
-                <li class="mesa mesa_libre"> <!--MESA 4 -->
+                <li class="mesa_ mesa_libre"> <!--MESA 4 -->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">A4</a>
                 </li>
             </ul>
 
             <ul class="sector">
-                <li class="mesa mesa_libre"> <!--MESA 1-->
+                <li class="mesa_ mesa_libre"> <!--MESA 1-->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">B1</a>
                 </li>
 
-                <li class="mesa mesa_ocupada"> <!--MESA 2 -->
+                <li class="mesa_ mesa_ocupada"> <!--MESA 2 -->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">B2</a>
                 </li>
 
-                <li class="mesa mesa_libre"> <!--MESA 3 -->
+                <li class="mesa_ mesa_libre"> <!--MESA 3 -->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">B3</a>
                 </li>
 
-                <li class="mesa mesa_ocupada"> <!--MESA 4 -->
+                <li class="mesa_ mesa_ocupada"> <!--MESA 4 -->
                     <a href="/ver_detalle_mesa?mesa=id_mesa">BA1</a>
                 </li>
             </ul>

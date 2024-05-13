@@ -1,7 +1,9 @@
 class Drag_Drop {
-    constructor(dropAreaSelector, outputSelector) {
-        this.dropArea = document.querySelector(dropAreaSelector);
-        this.output = document.querySelector(outputSelector);
+    constructor() {
+        this.dropArea = document.querySelector(".input-dad");
+        this.output = document.querySelector(".output-dad");
+        this.inputFile = document.querySelector("#imagen_plato")
+        this.dropAreaText = this.dropArea.querySelector('p')
 
         this.inicializar();
     }
@@ -10,7 +12,6 @@ class Drag_Drop {
         this.dropArea.addEventListener("dragover", (e) => {
             e.preventDefault();
             e.stopPropagation();
-            
         });
 
         this.dropArea.addEventListener("drop", (e) => {
@@ -20,6 +21,7 @@ class Drag_Drop {
                 return;
             this.mostrar(imagen);
             this.eliminarDropArea()
+            this.inputFile.files = e.dataTransfer.files //Agrego la imagen al input para usar en el form
         });
 
         this.dropArea.addEventListener("dragenter", (e) => {

@@ -1,0 +1,52 @@
+[
+    {
+        "Nro Pedido": 1,
+        "Fecha\/Hora": "2024-05-09T10:00:00",
+        "Tipo": "Delivery",
+        "Direccion": "Calle 123, Ciudad",
+        "Monto Total": 25.99,
+        "Metodo de Pago": "Tarjeta de cr\u00e9dito",
+        "Estado": "confirmado",
+        "Acciones": "Ver detalles"
+    },
+    {
+        "Nro Pedido": 2,
+        "Fecha\/Hora": "2024-05-09T12:30:00",
+        "Tipo": "TakeAway",
+        "Direccion": "",
+        "Monto Total": 15.5,
+        "Metodo de Pago": "Efectivo",
+        "Estado": "pasar-a-retirar",
+        "Acciones": "Ver detalles"
+    },
+    {
+        "Nro Pedido": 3,
+        "Fecha\/Hora": "2024-05-09T13:45:00",
+        "Tipo": "En el Local",
+        "Direccion": "",
+        "Monto Total": 42.75,
+        "Metodo de Pago": "Tarjeta de d\u00e9bito",
+        "Estado": "despachado",
+        "Acciones": "Ver detalles"
+    },
+    {
+        "Nro Pedido": 4,
+        "Fecha\/Hora": "2024-05-09T17:20:00",
+        "Tipo": "Delivery",
+        "Direccion": "Avenida Principal, Ciudad",
+        "Monto Total": 30.25,
+        "Metodo de Pago": "PayPal",
+        "Estado": "sin-confirmar",
+        "Acciones": "Ver detalles"
+    },
+    {
+        "Nro Pedido": 5,
+        "Fecha\/Hora": "2024-05-09T19:00:00",
+        "Tipo": "TakeAway",
+        "Direccion": "",
+        "Monto Total": 20,
+        "Metodo de Pago": "Efectivo",
+        "Estado": "sin-confirmar",
+        "Acciones": "Ver detalles"
+    }
+]

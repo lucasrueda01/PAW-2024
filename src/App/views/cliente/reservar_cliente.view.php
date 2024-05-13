@@ -39,10 +39,8 @@
                     <label for="local">Selecciona un local:</label>
                     <select id="local" name="local" required>
                         <option value="ninguna">Ninguna Seleccionada</option>
-                        <option value="local-avellaneda">Local Avellaneda</option>
-                        <option value="local-2">Local 2</option>
-                        <option value="local-3">Local 3</option>
-                        <option value="local-4">Local 4</option>
+                        <option value="Local A">Local A</option>
+                        <option value="Local B">Local B</option>
                     </select>
                     <label for="date">Seleccione fecha:</label>
                     <input type="date" name="time" id="date" required>
@@ -67,6 +65,8 @@
 
                     <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
+                    <input type="text" id="nromesa-elegida" hidden>
+                    
                     <input type="submit" value="Reservar" class="boton boton_verde">
                 </fieldset>
 

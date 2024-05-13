@@ -18,6 +18,11 @@
 
 
         <section class="container_gestion_mesa">
+            <?php if (isset($error['description'])) : ?>
+                <h4 class="msj msj_error">
+                    <?= $error['description']; ?>
+                </h4>
+            <?php endif ?>
             <table class="tabla_gestion_mesa">
                 <thead>
                     <tr>
@@ -32,19 +37,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Delivery/TakeAway</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Pendiente/ en Preparacion/ rechazado/ terminado</td>
-                        <td>
-                            <a href="/aceptar_pedido?pedido=id_pedido" class="icon icon_aceptar">Aceptar</a>
-                            <a href="/rechazar_pedido?pedido=id_pedido" class="icon icon_rechazar">Rechazar</a>
-                        </td>
-                    </tr>
+                        <?php foreach ($pedidos as $pedido): ?>
+                        <tr>
+                            <td id="pedido-id"><?= $pedido['Nro Pedido']; ?></td>
+                            <td><?= $pedido['Fecha/Hora']; ?></td>
+                            <td><?= $pedido['Tipo']; ?></td>
+                            <td><?= $pedido['Direccion']; ?></td>
+                            <td><?= $pedido['Monto Total']; ?></td>
+                            <td><?= $pedido['Metodo de Pago']; ?></td>
+                            <td id="estado"><?= $pedido['Estado']; ?></td>
+                            <td>
+                                <a href="/pedidos/estado?id=<?= $pedido['Nro Pedido'] ?>" class="icon icon_detalle">Aceptar</a>
+                            </td>                                
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>                    
+
                 </tbody>
             </table>
         </section>
