@@ -81,15 +81,15 @@ class appPAW {
                  
                         const cart = new Cart();
 
-                        const removeButtons = document.querySelectorAll('.remove-from-cart');
+                        // const removeButtons = document.querySelectorAll('.remove-from-cart');
 
-                        console.log()
-                        removeButtons.forEach(button => {
-                            button.addEventListener('click', function() {
-                                const platoId = this.value;
-                                cart.removeFromCart(platoId);
-                            });
-                        });
+                        // console.log()
+                        // removeButtons.forEach(button => {
+                        //     button.addEventListener('click', function() {
+                        //         const platoId = this.value;
+                        //         cart.removeFromCart(platoId);
+                        //     });
+                        // });
                 
                         // Obtener las cookies
                         const platosCookie = cart.getCookie('platos');

@@ -42,14 +42,14 @@ class MenuController extends Controller
     public function getPlatosInCart()
     {
         global $request, $log;
-    
-        $log->info("array_get-getPlatosInCart(): ",[$_GET['lista_encoded']]);
+            
+        $lista_platos = [];
         // Verificar si la variable lista_encoded está presente en la solicitud GET
         if (isset($_GET['lista_encoded'])) {
         //     // Decodificar el JSON
             $lista_platos_ids = json_decode($_GET['lista_encoded']);
             
-            $log->error("error: ",[$lista_platos_ids]);
+            $log->info("lista_platos_ids: ",[$lista_platos_ids]);
             // Iterar sobre cada ID de plato en la lista
             foreach ($lista_platos_ids as $platoId) {
                 // Obtener los datos del plato
@@ -61,45 +61,13 @@ class MenuController extends Controller
                     $lista_platos[] = $plato->fields;
                 }
             }
-            $response_json = json_encode($lista_platos);
-            $log->info("response_json: ",[$response_json]);
-            // Enviar la respuesta
-            header('Content-Type: application/json');
-            echo $response_json;
-
-        //     return json_encode($lista_platos_ids);
-        // } else {
-        //     // Si lista_encoded no está presente, registrar un mensaje de error
-        //     $logger->error('No se proporcionó la lista_encoded en la solicitud GET');
-        //     return json_encode('No se proporcionó la lista_encoded en la solicitud GET');
-            // También podrías enviar una respuesta de error al cliente aquí
         }
+        $response_json = json_encode($lista_platos);
+        $log->info("response_json: ",[$response_json]);
+        // Enviar la respuesta
+        header('Content-Type: application/json');
+        echo $response_json;
     }
-
-        // // Decodificar el JSON
-        // $lista_platos_ids = json_decode($lista_encoded);
-    
-        // $lista_platos = [];
-    
-        // // Iterar sobre cada ID de plato en la lista
-        // foreach ($lista_platos_ids as $platoId) {
-        //     // Obtener los datos del plato
-        //     list($resultado, $plato) = $this->model->get($platoId);
-    
-        //     // Verificar si hubo un error al obtener los datos del plato
-        //     if (!isset($resultado['error'])) {
-        //         // Agregar los datos del plato a la lista
-        //         $lista_platos[] = $plato;
-        //     }
-        // }
-    
-        // // Codificar la lista de platos como JSON
-        // $response_json = json_encode($lista_platos);
-    
-        // // Enviar la respuesta
-        // header('Content-Type: application/json');
-        // echo $response_json;
-    // }
 
     public function promociones()
     {

@@ -29,7 +29,7 @@ class Cart {
         // Limpiar el cuerpo de la tabla
         const tbody = table.querySelector('tbody');
         tbody.innerHTML = '';
-
+    
         // Recorrer los datos devueltos y agregar filas a la tabla
         data.forEach(plato => {
             const row = document.createElement('tr');
@@ -38,19 +38,21 @@ class Cart {
                 <td>${plato.ingredientes}</td>
                 <td>${plato.precio}</td>
                 <td>
-                    <button type="button" class="remove-from-cart" value="${plato.id}">-</button>
+                    <a href="#" class="remove-from-cart boton boton_negro_carrito" data-id="${plato.id}">-</a>
                 </td>
             `;
-        
+    
             // Obtener el botón de la fila
             const boton = row.querySelector('.remove-from-cart');
-        
+    
             // Agregar evento clic al botón
-            boton.addEventListener('click', () => {
-                const platoId = this.value;
+            boton.addEventListener('click', (event) => {
+                event.preventDefault();
+                const platoId = event.target.getAttribute('data-id');
+                console.log(platoId);
                 this.removeFromCart(platoId);
             });
-        
+    
             // Agregar fila a la tabla
             tbody.appendChild(row);
         });

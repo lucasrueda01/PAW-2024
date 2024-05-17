@@ -349,6 +349,13 @@ main {
     background-color: black;
 }
 
+.boton_negro_carrito {
+    width: 2rem;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+}
+
 .boton_negro:hover {
     background-color: var(--color-negroahover);
 }

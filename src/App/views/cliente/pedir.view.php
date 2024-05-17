@@ -40,7 +40,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4">Total: $ 500</td>
+                                <td colspan="4">Total: $ </td>
                             </tr>
                         </tfoot>
                     </table>
