@@ -43,7 +43,7 @@
                         <option value="Local B">Local B</option>
                     </select>
                     <label for="date">Seleccione fecha:</label>
-                    <input type="date" name="time" id="date" required>
+                    <input type="date" name="date" id="date" required>
                     <label for="time">Seleccione hora:</label>
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
@@ -65,7 +65,7 @@
 
                     <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
-                    <input type="text" id="nromesa-elegida" hidden>
+                    <input type="text" id="nromesa-elegida" name="nromesa-elegida">
                     
                     <input type="submit" value="Reservar" class="boton boton_verde">
                 </fieldset>

@@ -4,6 +4,7 @@
  * para reservar una mesa. 
  */
 class ServicioRestaurante {
+   
     constructor() {
         /**
          * Mapa para almacenar la información de los locales
@@ -16,6 +17,27 @@ class ServicioRestaurante {
          *  */ 
         this.mesaElegida = "";
     }
+
+    /**
+     * metodo para cargar la informacion de las mesas
+     */
+    cargarLocales(){
+
+        fetch("/locales/get")
+            .then(response =>{
+                if(!Response.ok) {
+                    throw new Error('Error en la Respuesta ' + response.status)
+                }
+                return response.json()
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                console.error('Hubo un error en la solicitud' + error)
+            })
+    }
+
 
     /**
      * agrego un evento click a cada input
@@ -111,6 +133,21 @@ class ServicioRestaurante {
 
     /**
      * 
+     * @param {date} cadenaFecha 
+     * @returns {date} la fecha formateada
+     */
+    formatearFecha(cadenaFecha)
+    {
+        // Verifica si la cadena de fecha contiene un guion "-"
+        if (cadenaFecha.includes('-')) {
+            // Reemplaza los guiones "-" por barras "/"
+            cadenaFecha = cadenaFecha.replace(/-/g, '/');
+        }
+        return cadenaFecha;
+    }
+
+    /**
+     * 
      * @param {date} fecha 
      * @returns {boolean}
      */
@@ -175,21 +212,6 @@ class ServicioRestaurante {
             console.log("La hora está fuera del rango de apertura y cierre del local");
             return false; 
         }
-    }
-
-    /**
-     * 
-     * @param {date} cadenaFecha 
-     * @returns {date} la fecha formateada
-     */
-    formatearFecha(cadenaFecha)
-    {
-        // Verifica si la cadena de fecha contiene un guion "-"
-        if (cadenaFecha.includes('-')) {
-            // Reemplaza los guiones "-" por barras "/"
-            cadenaFecha = cadenaFecha.replace(/-/g, '/');
-        }
-        return cadenaFecha;
     }
 
     /**

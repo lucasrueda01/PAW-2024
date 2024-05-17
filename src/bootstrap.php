@@ -83,7 +83,8 @@ $router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); 
 
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
-$router->post('/reservar_cliente', 'MesaController@procesar_reserva_cliente'); // MesaController
+$router->post('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
+$router->get('/locales/get', 'MesaController@getLocales'); // MesaController
 $router->get('/gestion_lista_mesas', 'MesaController@gestion_lista_mesas'); // MesaController
 $router->get('/gestion_mesa', 'MesaController@gestion_mesa'); // MesaController
 
