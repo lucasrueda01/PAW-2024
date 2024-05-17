@@ -68,7 +68,8 @@ Class Router
                     [
                         "Path" => $path,
                         "Controller" => $controller,
-                        "Method" => $method
+                        "Method" => $method,
+                        "array-get" => $_GET
                     ]
                 );
                 

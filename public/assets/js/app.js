@@ -50,10 +50,64 @@ class appPAW {
                     });
                 }
             if(['pedidos_entrantes'].includes(window.location.pathname))
+            {
+                PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
+            }
+
+            
+
+           if(['/nuestro_menu'].includes(window.location.pathname))    
+            {
+                PAW.cargarScript("Cart", "/assets/js/components/cart.js", () =>{
+
+                    const cart = new Cart();
+    
+                    document.querySelectorAll('.agregar-carrito').forEach(link => {
+                        link.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            const plateId = this.getAttribute('data-id');
+                            cart.addToCart(plateId);
+                            window.location.href = '/pedir';
+                        });
+
+                    });
+
+                });
+            }
+
+            if(['/pedir'].includes(window.location.pathname))    
                 {
-                    PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
+                    PAW.cargarScript("Cart", "/assets/js/components/cart.js", () => {
+                        const cart = new Cart();
+                
+                        // Obtener las cookies
+                        const platosCookie = cart.getCookie('platos');
+                        console.log(platosCookie);
+                
+                        // Verificar si la cookie existe
+                        if (platosCookie) {
+                            // Convertir la cookie a un array de IDs de platos
+                            const platosIds = JSON.parse(platosCookie);
+                            
+                            // Realizar una solicitud fetch para obtener los detalles de los platos
+                            fetch('/plato-all-in-cart?lista_encoded=' + encodeURIComponent(platosCookie))
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Manejar los datos devueltos
+                                    console.log(data);
+                                    const table = document.querySelector('table');
+                                    cart.updateCarrito(data, table);
+                                    
+                                    // Aquí puedes hacer lo que necesites con los datos de los platos
+                                })
+                                .catch(error => {
+                                    console.error('Error en la solicitud de platos-en-carrito: ' + error);
+                                });
+                        }
+                    });
                 }
-        });
+        
+            })
     }
 }
 

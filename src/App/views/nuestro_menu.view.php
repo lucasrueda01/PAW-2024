@@ -48,7 +48,7 @@
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
-                                <a href="/plato/verDetalle?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
+                                <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    
@@ -68,7 +68,7 @@
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
-                                <a href="/plato/verDetalle?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
+                                <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    
@@ -86,7 +86,7 @@
                                 
                                 <p><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
-                                <a href="/plato/verDetalle?id=<?= $plato->getId(); ?>" class="boton boton_amarillo">Agregar</a>
+                                <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    

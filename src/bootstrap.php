@@ -68,9 +68,12 @@ $router->get('/sobre_nosotros', 'EmpresaController@sobre_nosotros');
 $router->get('/promociones', 'MenuController@promociones'); // MenuController
 $router->get('/nuestro_menu', 'MenuController@nuestroMenu'); // MenuController
 $router->get('/plato', 'MenuController@get'); // MenuController
+$router->get('/plato-all-in-cart', 'MenuController@getPlatosInCart'); // MenuController
 $router->get('/plato/verDetalle', 'MenuController@verDetalle'); // MenuController
 $router->get('/plato/new', 'MenuController@new'); // MenuController
 $router->post('/plato/new', 'MenuController@new'); // MenuController
+$router->post('/plato/add-to-cart', 'MenuController@addToCart'); // MenuController
+
 // LocalController
 $router->post('/local/mesas', 'LocalController@getMesas'); // LocalController
 // PedidoController

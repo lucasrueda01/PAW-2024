@@ -36,22 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Hamburgesa con queso</td>
-                                <td>hamburguesa simple, con queso y cheddar</td>
-                                <td>$ 500,00</td>
-                                <td class="regulador">
-                                    <button>+</button>
-                                    <input type="number" name="cantidad" id="cantidad" value="1">
-                                    <button>-</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+
                         </tbody>
                         <tfoot>
                             <tr>
