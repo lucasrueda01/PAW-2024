@@ -38,9 +38,20 @@ class Cart {
                 <td>${plato.ingredientes}</td>
                 <td>${plato.precio}</td>
                 <td>
-                    <button onclick="removeFromCart(${plato.id})">-</button>
+                    <button type="button" class="remove-from-cart" value="${plato.id}">-</button>
                 </td>
             `;
+        
+            // Obtener el botón de la fila
+            const boton = row.querySelector('.remove-from-cart');
+        
+            // Agregar evento clic al botón
+            boton.addEventListener('click', () => {
+                const platoId = this.value;
+                this.removeFromCart(platoId);
+            });
+        
+            // Agregar fila a la tabla
             tbody.appendChild(row);
         });
 
@@ -51,6 +62,46 @@ class Cart {
     }
 
 
+    removeFromCart(platoId) {
+        // Obtener la lista de platos de la cookie
+        const platosCookie = this.getCookie('platos');
+    
+        // Verificar si la cookie existe y tiene datos
+        if (platosCookie) {
+            // Convertir la cookie a un array de IDs de platos
+            let platosIds = JSON.parse(platosCookie);
+    
+            // Encontrar el índice del plato en la lista de IDs
+            const index = platosIds.indexOf(platoId);
+    
+            // Verificar si el plato existe en la lista
+            if (index !== -1) {
+                // Eliminar el plato de la lista
+                platosIds.splice(index, 1);
+    
+                // Actualizar la cookie con la nueva lista de platos
+                this.setCookie('platos', JSON.stringify(platosIds), 7);
+    
+                // Actualizar el carrito después de eliminar el plato
+                this.updateCart();
+            }
+        }
+    }
 
+    updateCart() {
+        // Realizar una solicitud fetch para obtener los detalles de los platos
+        fetch('/plato-all-in-cart?lista_encoded=' + encodeURIComponent(this.getCookie('platos')))
+            .then(response => response.json())
+            .then(data => {
+                // Obtener la tabla del carrito
+                const table = document.querySelector('table');
+    
+                // Llamar al método updateCarrito para actualizar la tabla
+                this.updateCarrito(data, table);
+            })
+            .catch(error => {
+                console.error('Error en la solicitud de platos-en-carrito: ' + error);
+            });
+    }
 
 }

@@ -132,7 +132,7 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <input type="submit" value="Pagar" class="boton boton_negro">
+                <!--<input type="submit" value="Pagar" class="boton boton_negro">-->
                 <input type="submit" value="Pedir" class="boton boton_negro"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO
                                                         ELIGE LA OPCION PEDIR EN EL LUGAR
                                                     -->

@@ -78,7 +78,18 @@ class appPAW {
             if(['/pedir'].includes(window.location.pathname))    
                 {
                     PAW.cargarScript("Cart", "/assets/js/components/cart.js", () => {
+                 
                         const cart = new Cart();
+
+                        const removeButtons = document.querySelectorAll('.remove-from-cart');
+
+                        console.log()
+                        removeButtons.forEach(button => {
+                            button.addEventListener('click', function() {
+                                const platoId = this.value;
+                                cart.removeFromCart(platoId);
+                            });
+                        });
                 
                         // Obtener las cookies
                         const platosCookie = cart.getCookie('platos');
