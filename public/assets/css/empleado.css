@@ -189,8 +189,8 @@
     margin: 2rem 2rem;
 }
 
-#nromesa-elegida {
-    display: none;
+.input_oculto, #nromesa-elegida {
+    display: none !important;
 }
 
 

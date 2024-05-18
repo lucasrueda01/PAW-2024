@@ -38,7 +38,7 @@ class appPAW {
                     });
                 }
 
-            if (['/pedidos/estado'].includes(window.location.pathname))
+            if (['/pedidos/estado', '/pedido/new'].includes(window.location.pathname))
                 {
                     PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
                     PAW.cargarScript("Animador", "/assets/js/components/animador.js");

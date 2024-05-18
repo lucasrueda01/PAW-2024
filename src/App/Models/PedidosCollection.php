@@ -105,7 +105,63 @@ class PedidosCollection extends Model
     }
 
     }
- 
+
+    public function new($pedido)
+    {
+        try {
+            // Leer el contenido del archivo JSON y convertirlo en un array PHP
+            $json_data = file_get_contents(__DIR__ . '/listaPedidos.json');
+            if ($json_data === false) {
+                throw new \Exception("Error al leer el archivo JSON.");
+            }
+
+            $pedidos = json_decode($json_data, true);
+            if ($pedidos === null) {
+                throw new \Exception("Error al decodificar el archivo JSON.");
+            }
+
+            // Generar un nuevo número de pedido único
+            $nuevoNroPedido = count($pedidos) + 1;
+            while (isset($this->indice[$nuevoNroPedido])) {
+                $nuevoNroPedido++;
+            }
+
+            // Añadir el nuevo número de pedido al pedido
+            $pedido['Nro Pedido'] = $nuevoNroPedido;
+
+            // Establecer el estado inicial del pedido
+            $pedido['Estado'] = 'sin-confirmar';
+
+            // Validar que los campos necesarios no estén vacíos
+            if (empty($pedido['Fecha/Hora']) || empty($pedido['Tipo']) || empty($pedido['Metodo de Pago'])) {
+                throw new \Exception("Faltan datos obligatorios para el pedido.");
+            }
+
+            // Añadir el nuevo pedido al array de pedidos
+            $pedidos[] = $pedido;
+            $this->indice[$nuevoNroPedido] = $pedido;
+
+            // Convertir el array modificado a JSON
+            $json_data = json_encode($pedidos, JSON_PRETTY_PRINT);
+            if ($json_data === false) {
+                throw new \Exception("Error al codificar los datos a JSON.");
+            }
+
+            // Guardar el JSON modificado en el archivo
+            if (file_put_contents(__DIR__ . '/listaPedidos.json', $json_data) === false) {
+                throw new \Exception("Error al guardar el archivo JSON.");
+            }
+
+            return [
+                "exito" => "El nuevo pedido ha sido creado con éxito con el ID $nuevoNroPedido.",
+                "id" => $nuevoNroPedido
+            ];
+        } catch (\Exception $e) {
+            return [
+                "error" => $e->getMessage()
+            ];
+        }
+    }
 }
 
 

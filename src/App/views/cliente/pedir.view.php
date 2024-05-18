@@ -22,7 +22,7 @@
 
         <section>
 
-            <form action="/pagar" method="post" class="formulario_pedido">
+            <form action="/pedido/new" method="post" class="formulario_pedido">
 
                 <fieldset class="container container_carrito"> <!--Fieldset Carrito-->
                     <h3 class="titulo_fieldset">Mi Carrito</h3>
@@ -58,14 +58,15 @@
 
                 <fieldset class="container container_formulario container_delivery">
 
-                    <label for="nombre_delivery">Ingrese su nombre</label>
-                    <input type="text" name="nombre_delivery" id="nombre_delivery">
+                    <label for="nombre">Ingrese su nombre</label>
+                    <input type="text" name="nombre" id="nombre">
+                    <input type="text" name="tipo" id="tipo" value="Delivery" class="input_oculto">
                     <label for="direccion">Ingrese su direccion</label>
                     <input type="text" name="direccion" id="direccion">
                     <label for="observaciones">Observaciones</label>
                     <input type="text" name="observaciones" id="observaciones">
-                    <label for="forma_delivery">Selecciona una forma de pago:</label>
-                    <select id="forma_delivery" name="forma_delivery">
+                    <label for="forma-de-pago">Selecciona una forma de pago:</label>
+                    <select id="forma-de-pago" name="forma-de-pago">
                         <option value="mercado_pago">Mercado Pago</option>
                         <option value="efectivo">Pago en efectivo</option>
                     </select>

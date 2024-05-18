@@ -3,50 +3,140 @@
         "Nro Pedido": 1,
         "Fecha\/Hora": "2024-05-09T10:00:00",
         "Tipo": "Delivery",
-        "Direccion": "Calle 123, Ciudad",
-        "Monto Total": 25.99,
+        "Nombre": "Delivery",
         "Metodo de Pago": "Tarjeta de cr\u00e9dito",
         "Estado": "confirmado",
-        "Acciones": "Ver detalles"
+        "Direccion": "Calle 123, Ciudad",
+        "Observaciones": "Ver detalles",
+        "Monto Total": 25.99,
+        "articulos": [
+            {
+                "id_plato": 1,
+                "cantida": 2
+            },
+            {
+                "id_plato": 2,
+                "cantida": 1
+            },
+            {
+                "id_plato": 3,
+                "cantida": 1
+            }
+        ]
     },
     {
-        "Nro Pedido": 2,
-        "Fecha\/Hora": "2024-05-09T12:30:00",
-        "Tipo": "TakeAway",
-        "Direccion": "",
-        "Monto Total": 15.5,
-        "Metodo de Pago": "Efectivo",
-        "Estado": "pasar-a-retirar",
-        "Acciones": "Ver detalles"
-    },
-    {
-        "Nro Pedido": 3,
-        "Fecha\/Hora": "2024-05-09T13:45:00",
-        "Tipo": "En el Local",
-        "Direccion": "",
-        "Monto Total": 42.75,
-        "Metodo de Pago": "Tarjeta de d\u00e9bito",
-        "Estado": "despachado",
-        "Acciones": "Ver detalles"
-    },
-    {
-        "Nro Pedido": 4,
-        "Fecha\/Hora": "2024-05-09T17:20:00",
+        "Fecha\/Hora": "2024-05-18T22:01:56",
         "Tipo": "Delivery",
-        "Direccion": "Avenida Principal, Ciudad",
-        "Monto Total": 30.25,
-        "Metodo de Pago": "PayPal",
-        "Estado": "sin-confirmar",
-        "Acciones": "Ver detalles"
+        "Nombre": "",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "",
+        "Observaciones": "",
+        "Monto Total": null,
+        "articulos": [
+            {
+                "id_plato": 1,
+                "cantida": 2
+            },
+            {
+                "id_plato": 2,
+                "cantida": 1
+            },
+            {
+                "id_plato": 3,
+                "cantida": 1
+            }
+        ],
+        "Nro Pedido": 2,
+        "Estado": "rechazado"
     },
     {
-        "Nro Pedido": 5,
-        "Fecha\/Hora": "2024-05-09T19:00:00",
-        "Tipo": "TakeAway",
+        "Fecha\/Hora": "2024-05-18T22:02:32",
+        "Tipo": "Delivery",
+        "Nombre": "",
+        "Metodo de Pago": "mercado_pago",
         "Direccion": "",
-        "Monto Total": 20,
-        "Metodo de Pago": "Efectivo",
-        "Estado": "sin-confirmar",
-        "Acciones": "Ver detalles"
+        "Observaciones": "",
+        "Monto Total": null,
+        "articulos": [
+            {
+                "id_plato": 1,
+                "cantida": 2
+            },
+            {
+                "id_plato": 2,
+                "cantida": 1
+            },
+            {
+                "id_plato": 3,
+                "cantida": 1
+            }
+        ],
+        "Nro Pedido": 3,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-18T22:35:10",
+        "Tipo": "Delivery",
+        "Nombre": "natello juan manuel",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": null,
+        "articulos": [],
+        "Nro Pedido": 4,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-18T22:55:34",
+        "Tipo": "Delivery",
+        "Nombre": "natello juan manuel",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": null,
+        "articulos": [],
+        "Nro Pedido": 5,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-18T22:56:52",
+        "Tipo": "Delivery",
+        "Nombre": "natello juan manuel",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": null,
+        "articulos": [],
+        "Nro Pedido": 6,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-18T22:57:24",
+        "Tipo": "Delivery",
+        "Nombre": "natello juan manuel",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": null,
+        "articulos": [],
+        "Nro Pedido": 7,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-18T23:01:31",
+        "Tipo": "Delivery",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "Av San Juan 369",
+        "Observaciones": "es un tipo casa",
+        "Monto Total": null,
+        "articulos": [
+            "2",
+            "1",
+            "4",
+            "3"
+        ],
+        "Nro Pedido": 8,
+        "Estado": "sin-confirmar"
     }
 ]

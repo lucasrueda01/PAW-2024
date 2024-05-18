@@ -82,4 +82,42 @@ class PedidosController extends Controller
         $pedidos = $this->model->getAll();
         require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
     }
+
+    public function new()
+    {
+        global $request;
+
+        // Obtener la fecha y hora actual
+        $fechaHora = date('Y-m-d\TH:i:s');
+
+        // Obtener los artículos de la superglobal $_COOKIE
+        $articulos = [];
+        if (isset($_COOKIE['platos'])) {
+            $articulos = json_decode($_COOKIE['platos'], true);
+        }
+
+        // Crear el nuevo pedido
+        $nuevoPedido = [
+            "Fecha/Hora" => $fechaHora,
+            "Tipo" => $request->get("tipo"),
+            "Nombre" => $request->get("nombre"),
+            "Metodo de Pago" => $request->get("forma-de-pago"),
+            "Direccion" => $request->get("direccion"),
+            "Observaciones" => $request->get("observaciones"),
+            "Monto Total" => $request->get("monto-total"),
+            "articulos" => $articulos
+        ];
+
+        // Agregar el nuevo pedido a la colección
+        $resultado = $this->model->new($nuevoPedido);
+
+        // Redirigir o mostrar el resultado
+        if (isset($resultado['exito'])) {
+            $pedido = $this->model->getById($resultado['id']);
+            $listaAcciones = PedidosCollection::$accionesPorEstado; //
+            $urlsAccion = PedidosCollection::$urlsAccion;
+        } 
+        require $this->viewsDir . 'empleado/pedido.show.view.php';
+        
+    }
 }

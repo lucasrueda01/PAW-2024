@@ -19,22 +19,35 @@
         </section>
         <?php if (isset($pedido['Nro Pedido'])) :?>
 
-        <section class="detalles_pedido">
-            
-                <h3 class="nro_pedido" id="pedido-nro-<?= $pedido['Nro Pedido']; ?>">#0000<?= $pedido['Nro Pedido']; ?></h3>
-                <p class="detalle"><?= $pedido['Fecha/Hora']; ?></p>
-                <p class="detalle"><?= $pedido['Tipo']; ?></p>
-                <p class="detalle"><?= $pedido['Direccion']; ?></p>
-                <p class="detalle"><?= $pedido['Monto Total']; ?></p>
-                <p class="detalle"><?= $pedido['Metodo de Pago']; ?></p>
-                <p class="detalle" id="estado"><?= $pedido['Estado']; ?></p>
+            <div class="detalles_pedido">
+                <h2 class="nro_pedido" id="pedido-nro-<?= $pedido['Nro Pedido']; ?>">#0000<?= $pedido['Nro Pedido']; ?></h2>
+                <p class="detalle"><strong>Fecha/Hora:</strong> <?php echo $pedido['Fecha/Hora']; ?></p>
+                <p class="detalle"><strong>Tipo:</strong> <?php echo $pedido['Tipo']; ?></p>
+                <p class="detalle"><strong>Nombre:</strong> <?php echo empty($pedido['Nombre']) ? '(No especificado)' : $pedido['Nombre']; ?></p>
+                <p class="detalle"><strong>Método de Pago:</strong> <?php echo $pedido['Metodo de Pago']; ?></p>
+                <p class="detalle"><strong>Dirección:</strong> <?php echo empty($pedido['Direccion']) ? '(No especificado)' : $pedido['Direccion']; ?></p>
+                <p class="detalle"><strong>Observaciones:</strong> <?php echo empty($pedido['Observaciones']) ? '(No especificado)' : $pedido['Observaciones']; ?></p>
+                <p class="detalle"><strong>Monto Total:</strong> <?php echo is_null($pedido['Monto Total']) ? '(No especificado)' : $pedido['Monto Total']; ?></p>
+                <p class="detalle" id="estado"><strong>Estado:</strong> <?php echo $pedido['Estado']; ?></p>
 
                 <?php foreach($listaAcciones[$pedido['Estado']] as $accion ): ?>
                     <a class="boton boton_negro" href="/pedidos/estado/modificar?id=<?= $pedido['Nro Pedido']; ?>&estado=<?= $urlsAccion[$accion]?>"><?= $accion ?></a>
                 <?php endforeach; ?>    
 
-        </section>
-  
+                <h3 class="nro_pedido">Artículos:</h3>
+                <ul>
+                    <?php foreach ($pedido['articulos'] as $articulo) : ?>
+                        <li class="detalle">Artículo ID: <?php echo $articulo['id_plato']; ?>, Cantidad: <?php echo $articulo['cantida']; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        
+        <?php else : ?>  
+
+            <h4 class="msj msj_error">
+                <?= $resultado['error']; ?>
+            </h4>
+
         <?php endif ?>  
         
     </main>
