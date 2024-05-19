@@ -66,6 +66,7 @@ class GestorPedidos {
         const idCompleto = document.querySelector(`[id^="pedido-nro-"]`)
         const estado_anterior = document.querySelector(`[id^="estado"]`)
 
+        console.log(idCompleto)
         const soloIdPedido = idCompleto.id.split('-')[2]
 
         const pedido = new Pedido()

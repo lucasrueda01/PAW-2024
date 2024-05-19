@@ -39,7 +39,7 @@
                 <tbody>
                         <?php foreach ($pedidos as $pedido): ?>
                         <tr>
-                            <td id="pedido-id"><?= $pedido['Nro Pedido']; ?></td>
+                            <td id="pedido-nro-<?= $pedido['Nro Pedido']; ?>"><?= $pedido['Nro Pedido']; ?></td>
                             <td><?= $pedido['Fecha/Hora']; ?></td>
                             <td><?= $pedido['Tipo']; ?></td>
                             <td><?= $pedido['Direccion']; ?></td>
