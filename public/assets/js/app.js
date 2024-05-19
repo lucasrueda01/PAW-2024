@@ -66,7 +66,8 @@ class appPAW {
                         link.addEventListener('click', function(event) {
                             event.preventDefault();
                             const plateId = this.getAttribute('data-id');
-                            cart.addToCart(plateId);
+                            cart.addToCart(plateId, 1);
+                            cart.updateCart();
                             window.location.href = '/pedir';
                         });
 
@@ -80,16 +81,6 @@ class appPAW {
                     PAW.cargarScript("Cart", "/assets/js/components/cart.js", () => {
                  
                         const cart = new Cart();
-
-                        // const removeButtons = document.querySelectorAll('.remove-from-cart');
-
-                        // console.log()
-                        // removeButtons.forEach(button => {
-                        //     button.addEventListener('click', function() {
-                        //         const platoId = this.value;
-                        //         cart.removeFromCart(platoId);
-                        //     });
-                        // });
                 
                         // Obtener las cookies
                         const platosCookie = cart.getCookie('platos');

@@ -51,7 +51,9 @@ class MenuController extends Controller
             
             $log->info("lista_platos_ids: ",[$lista_platos_ids]);
             // Iterar sobre cada ID de plato en la lista
-            foreach ($lista_platos_ids as $platoId) {
+            foreach ($lista_platos_ids as $platoData) {
+                $platoId = $platoData->id; // Obtener el ID del plato
+                $cantidad = $platoData->cantidad; // Obtener la cantidad del plato                
                 // Obtener los datos del plato
                 list($resultado, $plato) = $this->model->get($platoId);
         

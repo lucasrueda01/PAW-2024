@@ -21,7 +21,7 @@ class Pedido {
     async getEstado(id) {
         try {
             // Realizar la solicitud usando fetch
-            const response = await fetch(`get-estado?id=${id}`);
+            const response = await fetch(`/pedidos/get-estado?id=${id}`);
             
             // Verificar si la solicitud fue exitosa
             if (!response.ok) {

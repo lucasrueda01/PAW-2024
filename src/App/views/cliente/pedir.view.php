@@ -2,15 +2,12 @@
 <html lang="es">
 
 <head>
-
-    <?php require __DIR__ . '\../parts/head.view.php' ?>
-
+    <?php require __DIR__ . '/../parts/head.view.php'; ?>
 </head>
 
 <body>
 
-    <?php require __DIR__ . '\../parts/header.view.php' ?>
-
+    <?php require __DIR__ . '/../parts/header.view.php'; ?>
 
     <main>
 
@@ -21,9 +18,7 @@
         </section>
 
         <section>
-
             <form action="/pedido/new" method="post" class="formulario_pedido">
-
                 <fieldset class="container container_carrito"> <!--Fieldset Carrito-->
                     <h3 class="titulo_fieldset">Mi Carrito</h3>
                     <table>
@@ -32,15 +27,16 @@
                                 <th>Nombre</th>
                                 <th>Descripcion</th>
                                 <th>Precio</th>
+                                <th>Cantidad</th>
                                 <th>Accion</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            <!-- Las filas del carrito se actualizarán dinámicamente -->
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4">Total: $ </td>
+                                <td colspan="5">Total: $</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -50,14 +46,13 @@
                 <nav class="selector_fieldset">
                     <h3 class="titulo_fieldset_delivery">
                         <input type="checkbox" name="menuDelivery" id="menuDelivery">
-                        <label for="menuDelivery" class="menuFieldSets"="menuMobile">Delivery</label>
+                        <label for="menuDelivery" class="menuFieldSets">Delivery</label>
                     </h3>
                     <h3 class="titulo_fieldset_take_away">Take Away</h3>
                     <h3 class="titulo_fieldset_en_el_lugar">En el Lugar</h3>
                 </nav>
 
                 <fieldset class="container container_formulario container_delivery">
-
                     <label for="nombre">Ingrese su nombre</label>
                     <input type="text" name="nombre" id="nombre">
                     <input type="text" name="tipo" id="tipo" value="Delivery" class="input_oculto">
@@ -82,7 +77,6 @@
                 </fieldset>
 
                 <fieldset class="container container_formulario container_take_away"> <!-- .container_take_away { display: none }-->
-
                     <label for="nombre_take_away">Ingrese su nombre</label>
                     <input type="text" name="nombre_take_away" id="nombre_take_away">
                     <label for="numero_sucursal_take_away">Selecciona la sucursal:</label>
@@ -108,7 +102,6 @@
                 </fieldset>
 
                 <fieldset class="container container_formulario container_en_el_lugar">
-
                     <label for="nombre_en_el_lugar">Ingrese su nombre</label>
                     <input type="text" name="nombre_en_el_lugar" id="nombre_en_el_lugar">
                     <label for="numero_sucursal_en_el_lugar">Selecciona la sucursal:</label>
@@ -133,19 +126,9 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <!--<input type="submit" value="Pagar" class="boton boton_negro">-->
-                <input type="submit" value="Pedir" class="boton boton_negro"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO
-                                                        ELIGE LA OPCION PEDIR EN EL LUGAR
-                                                    -->
+                <input type="submit" value="Pedir" class="boton boton_negro"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO ELIGE LA OPCION PEDIR EN EL LUGAR -->
             </form>
-
         </section>
-
-
     </main>
 
-    <?php require __DIR__ . '\../parts/footer.view.php' ?>
-
-</body>
-
-</html>
+    <?php require __DIR__ . '/../parts/footer.view.php'; ?>

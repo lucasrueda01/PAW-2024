@@ -48,6 +48,10 @@ class PedidosController extends Controller
         $listaAcciones = PedidosCollection::$accionesPorEstado; //
         $urlsAccion = PedidosCollection::$urlsAccion;
 
+        if(isset($pedido['error'])){
+            $resultado['error'] = $pedido['error'];
+        }
+
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
 
@@ -110,7 +114,7 @@ class PedidosController extends Controller
 
         // Agregar el nuevo pedido a la colección
         $resultado = $this->model->new($nuevoPedido);
-
+        
         // Redirigir o mostrar el resultado
         if (isset($resultado['exito'])) {
             $pedido = $this->model->getById($resultado['id']);

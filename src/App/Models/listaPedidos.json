@@ -1,129 +1,82 @@
 [
     {
-        "Nro Pedido": 1,
-        "Fecha\/Hora": "2024-05-09T10:00:00",
+        "Fecha\/Hora": "2024-05-19T00:05:41",
         "Tipo": "Delivery",
-        "Nombre": "Delivery",
-        "Metodo de Pago": "Tarjeta de cr\u00e9dito",
-        "Estado": "confirmado",
-        "Direccion": "Calle 123, Ciudad",
-        "Observaciones": "Ver detalles",
-        "Monto Total": 25.99,
-        "articulos": [
-            {
-                "id_plato": 1,
-                "cantida": 2
-            },
-            {
-                "id_plato": 2,
-                "cantida": 1
-            },
-            {
-                "id_plato": 3,
-                "cantida": 1
-            }
-        ]
-    },
-    {
-        "Fecha\/Hora": "2024-05-18T22:01:56",
-        "Tipo": "Delivery",
-        "Nombre": "",
+        "Nombre": "natello juan manuel",
         "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "",
+        "Direccion": "Av San Juan 369",
+        "Observaciones": "es un tipo casa",
         "Monto Total": null,
         "articulos": [
             {
-                "id_plato": 1,
-                "cantida": 2
-            },
+                "id": "1",
+                "cantidad": 2
+            }
+        ],
+        "Nro Pedido": 1,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-19T00:08:53",
+        "Tipo": "Delivery",
+        "Nombre": "natello juan manuel",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "Av San Juan 369",
+        "Observaciones": "es un tipo casa",
+        "Monto Total": null,
+        "articulos": [
             {
-                "id_plato": 2,
-                "cantida": 1
-            },
-            {
-                "id_plato": 3,
-                "cantida": 1
+                "id": "1",
+                "cantidad": 2
             }
         ],
         "Nro Pedido": 2,
-        "Estado": "rechazado"
+        "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-18T22:02:32",
+        "Fecha\/Hora": "2024-05-19T00:09:39",
         "Tipo": "Delivery",
-        "Nombre": "",
+        "Nombre": "natello juan manuel",
         "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "",
+        "Direccion": "Av San Juan 369",
+        "Observaciones": "es un tipo casa",
         "Monto Total": null,
         "articulos": [
             {
-                "id_plato": 1,
-                "cantida": 2
-            },
-            {
-                "id_plato": 2,
-                "cantida": 1
-            },
-            {
-                "id_plato": 3,
-                "cantida": 1
+                "id": "1",
+                "cantidad": 2
             }
         ],
         "Nro Pedido": 3,
         "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-18T22:35:10",
+        "Fecha\/Hora": "2024-05-19T00:27:05",
         "Tipo": "Delivery",
         "Nombre": "natello juan manuel",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
+        "Metodo de Pago": "efectivo",
+        "Direccion": "Av San Juan 369",
         "Observaciones": "es un tipo depto tipo casa",
         "Monto Total": null,
-        "articulos": [],
+        "articulos": [
+            {
+                "id": "1",
+                "cantidad": 2
+            },
+            {
+                "id": "3",
+                "cantidad": 1
+            },
+            {
+                "id": "4",
+                "cantidad": 1
+            }
+        ],
         "Nro Pedido": 4,
         "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-18T22:55:34",
-        "Tipo": "Delivery",
-        "Nombre": "natello juan manuel",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": null,
-        "articulos": [],
-        "Nro Pedido": 5,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-18T22:56:52",
-        "Tipo": "Delivery",
-        "Nombre": "natello juan manuel",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": null,
-        "articulos": [],
-        "Nro Pedido": 6,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-18T22:57:24",
-        "Tipo": "Delivery",
-        "Nombre": "natello juan manuel",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": null,
-        "articulos": [],
-        "Nro Pedido": 7,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-18T23:01:31",
+        "Fecha\/Hora": "2024-05-19T00:33:34",
         "Tipo": "Delivery",
         "Nombre": "juan",
         "Metodo de Pago": "mercado_pago",
@@ -131,12 +84,53 @@
         "Observaciones": "es un tipo casa",
         "Monto Total": null,
         "articulos": [
-            "2",
-            "1",
-            "4",
-            "3"
+            {
+                "id": "1",
+                "cantidad": 3
+            },
+            {
+                "id": "3",
+                "cantidad": 1
+            },
+            {
+                "id": "4",
+                "cantidad": 1
+            },
+            {
+                "id": "2",
+                "cantidad": 1
+            }
         ],
-        "Nro Pedido": 8,
+        "Nro Pedido": 5,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-19T00:37:36",
+        "Tipo": "Delivery",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "Av San Juan 369",
+        "Observaciones": "es un tipo casa",
+        "Monto Total": null,
+        "articulos": [
+            {
+                "id": "1",
+                "cantidad": 3
+            },
+            {
+                "id": "3",
+                "cantidad": 1
+            },
+            {
+                "id": "4",
+                "cantidad": 1
+            },
+            {
+                "id": "2",
+                "cantidad": 1
+            }
+        ],
+        "Nro Pedido": 6,
         "Estado": "sin-confirmar"
     }
 ]

@@ -63,7 +63,9 @@ class PedidosCollection extends Model
     {
         // Verificar si la decodificación fue exitosa
         if (!isset($this->indice[$id])) {
-            echo "Error al decodificar el archivo JSON.";
+            return [
+                "error" => "NRO DE PEDIDO NO ENCONTRADO."
+            ];            
         } else {
             return $this->indice[$id];
         }
