@@ -26,11 +26,11 @@ class GestorPedidos {
                 if (isMobile && 'vibrate' in navigator) {
                     // Hacer vibrar el dispositivo
                     navigator.vibrate(200); // La duración de la vibración en milisegundos
-                } else {
-                    // Emitir una señal sonora
-                    const audio = new Audio('/assets/audios/play-comida-lista.mp3');
-                    audio.play().catch(error => console.error('Error al reproducir el sonido:', error));
-                }
+                } 
+                // Emitir una señal sonora
+                const audio = new Audio('/assets/audios/play-comida-lista.mp3');
+                audio.play().catch(error => console.error('Error al reproducir el sonido:', error));
+                
             } 
         }
     }

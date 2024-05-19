@@ -32,27 +32,26 @@ class Cart {
     }
 
     updateCarrito(data, table) {
-
         // Limpiar el cuerpo de la tabla
         const tbody = table.querySelector('tbody');
         tbody.innerHTML = '';
-
+    
         // Recorrer los datos devueltos y agregar filas a la tabla
         data.forEach(plato => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>$ ${plato.nombre_plato}</td>
-                <td>$ ${plato.ingredientes}</td>
-                <td>$ ${plato.precio}</td>
-                <td>$ ${plato.cantidad}</td>
-                <td>
+                <td data-label="Nombre">${plato.nombre_plato}</td>
+                <td data-label="Descripción">${plato.ingredientes}</td>
+                <td data-label="Precio">$${plato.precio}</td>
+                <td data-label="Cantidad">${plato.cantidad}</td>
+                <td data-label="Acción">
                     <a href="#" class="remove-from-cart boton boton_negro_carrito" data-id="${plato.id}">-</a>
                 </td>
             `;
-
+    
             // Obtener el botón de la fila
             const boton = row.querySelector('.remove-from-cart');
-
+    
             // Agregar evento clic al botón
             boton.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -60,17 +59,18 @@ class Cart {
                 console.log(platoId);
                 this.removeFromCart(platoId);
             });
-
+    
             // Agregar fila a la tabla
             tbody.appendChild(row);
         });
-
+    
         // Calcular y mostrar el total
         const total = data.reduce((acc, plato) => acc + plato.precio * plato.cantidad, 0);
         console.log(total);
         const tfoot = table.querySelector('tfoot tr td');
-        tfoot.textContent = `Total: $ ${total}`;
+        tfoot.textContent = `Total: $${total}`;
     }
+    
 
     removeFromCart(platoId) {
         // Obtener la lista de platos de la cookie

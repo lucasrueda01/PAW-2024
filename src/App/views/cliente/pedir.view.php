@@ -21,25 +21,25 @@
             <form action="/pedido/new" method="post" class="formulario_pedido">
                 <fieldset class="container container_carrito"> <!--Fieldset Carrito-->
                     <h3 class="titulo_fieldset">Mi Carrito</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Descripcion</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Accion</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Las filas del carrito se actualizarán dinámicamente -->
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="5">Total: $</td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <table class="stacked-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Las filas del carrito se actualizarán dinámicamente -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">Total: $30.00</td>
+            </tr>
+        </tfoot>
+    </table>
                     <a href="/nuestro_menu" class="boton boton_negro">Agregar</a>
                 </fieldset>
 

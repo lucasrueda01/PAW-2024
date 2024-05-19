@@ -4,7 +4,7 @@
         "area_carrito"
         "nav_fieldsets"
         "area_pedido";
-    justify-content: center;
+    /* justify-content: center; */
 
 }
 
@@ -23,7 +23,7 @@
 
 .container table {
     border-collapse: collapse;
-    width: 60vw;
+    /* width: 60vw; */
 }
 
 .container table,
@@ -83,7 +83,7 @@ input[type=number]::-webkit-inner-spin-button {
     position: relative;
     margin-top: 5rem;
     margin-bottom: 2rem;
-    width: 70%;
+    /* width: 70%; */
 }
 
 .titulo_fieldset_delivery input {
@@ -97,7 +97,7 @@ input[type=number]::-webkit-inner-spin-button {
     flex-direction: column;
     position: relative;
     padding-bottom: 2rem;
-    width: 97.8%;
+    width: 95vw;
     margin-top: 5rem;
     padding-top: 1.5rem;
     border: 1px solid var(--color-grishover);  
@@ -140,6 +140,7 @@ input[type=number]::-webkit-inner-spin-button {
     flex-direction: row;
     justify-content: flex-start;
     padding-left: 1rem;
+    width: 95vw;
 }
 
 .selector_fieldset {
@@ -782,5 +783,59 @@ input[type="submit"] {
     .sucursal h3 {
         padding-left: 22%;
         font-size: 4rem;
+    }
+}
+
+
+/* Estilos específicos para la tabla con clase stacked-table */
+.stacked-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stacked-table th, .stacked-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.stacked-table thead {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para apilar las filas en pantallas pequeñas */
+@media (max-width: 768px) {
+    .stacked-table thead {
+        display: none;
+    }
+    .stacked-table tbody tr {
+        display: block;
+        margin-bottom: 0.625rem;
+    }
+    .stacked-table tbody tr td {
+        display: block;
+        text-align: right;
+        border-top: 1px solid #dee2e6;
+        position: relative;
+        padding-left: 50%;
+    }
+    .stacked-table tbody tr td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+    .stacked-table tfoot tr {
+        display: block;
+    }
+    .stacked-table tfoot td {
+        display: block;
+        text-align: right;
+    }
+    td[data-label="Nombre"] {
+        background-color: #f0f0f0;
     }
 }
