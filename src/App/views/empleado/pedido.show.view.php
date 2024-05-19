@@ -20,7 +20,7 @@
         <?php if (isset($pedido['Nro Pedido'])) :?>
 
             <div class="detalles_pedido">
-                <h2 class="nro_pedido" id="pedido-nro-<?= $pedido['Nro Pedido']; ?>">#0000<?= $pedido['Nro Pedido']; ?></h2>
+                <h2 class="nro_pedido" id="pedido-nro-<?= $pedido['Nro Pedido']; ?>">Pedido Nro:  #0000<?= $pedido['Nro Pedido']; ?></h2>
                 <p class="detalle"><strong>Fecha/Hora:</strong> <?= $pedido['Fecha/Hora']; ?></p>
                 <p class="detalle"><strong>Tipo:</strong> <?= $pedido['Tipo']; ?></p>
                 <p class="detalle"><strong>Nombre:</strong> <?= empty($pedido['Nombre']) ? '(No especificado)' : $pedido['Nombre']; ?></p>

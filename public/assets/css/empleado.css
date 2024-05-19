@@ -213,15 +213,20 @@
 
 /* Estilos para el número de pedido */
 .nro_pedido {
-    font-size: 5rem;
+    font-size: 3rem;
     color: #333;
     margin-bottom: 10px;
+    background-color: red;
 }
 
 /* Estilos para los detalles del pedido */
 .detalle {
     margin-bottom: 5px;
-    font-size: 2.5rem;
+    font-size: 2rem;
+}
+
+.estado {
+    background-color: var(--color-amarillo);
 }
 
 @keyframes brillo {
