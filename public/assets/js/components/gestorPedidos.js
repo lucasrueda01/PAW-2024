@@ -1,20 +1,38 @@
 
 class GestorPedidos {
 
-    actualizarEstado(pedidoElement, nuevoEstado) {
-        const estadoHTML = pedidoElement.querySelector('.estado');
-        const estadoAnterior = estadoHTML.innerHTML;
-
+    actualizarEstado(nuevoEstado) {
+        const estadoElement = document.querySelector('#estado');
+        const estadoAnterior = estadoElement.getAttribute('data-estado');
+        
+        console.log(estadoAnterior);
+    
         if (estadoAnterior !== nuevoEstado) {
-            estadoHTML.innerHTML = nuevoEstado;
-
+            estadoElement.setAttribute('data-estado', nuevoEstado);
+            estadoElement.innerHTML = `<strong>Estado:</strong> ${nuevoEstado}`;
             const animador = new Animador();
             /**
-             * establece una animacion de 5seg para indicar que se pidio informacion al servidor
+             * establece una animacion de 5seg para indicar que se pidió información al servidor
              */
-            animador.animar(estadoHTML, 5000, 'animado'); 
+            animador.animar(estadoElement, 5000, 'animado');
+    
+            // Verificar si el nuevo estado es 'pasar-a-retirar'
+            if (nuevoEstado === 'pasar-a-retirar') {
+                // Verificar si el dispositivo es un celular
+                const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+                if (isMobile && 'vibrate' in navigator) {
+                    // Hacer vibrar el dispositivo
+                    navigator.vibrate(200); // La duración de la vibración en milisegundos
+                } else {
+                    // Emitir una señal sonora
+                    const audio = new Audio('/assets/audios/play-comida-lista.mp3');
+                    audio.play().catch(error => console.error('Error al reproducir el sonido:', error));
+                }
+            } 
         }
     }
+    
+    
 
     actualizarAccionesSegunEstadoPedido(estado, id)
     {
@@ -58,32 +76,33 @@ class GestorPedidos {
 
     }
 
-    async getEstadoPedido()
-    {
+    async getEstadoPedido() {
         /**
-         * 1) ajax donde envio el id
+         * 1) ajax donde envío el id
          * y recibo el estado del pedido
          */     
-
-        const idCompleto = document.querySelector(`[id^="pedido-nro-"]`)
-        const estado_anterior = document.querySelector(`[id^="estado"]`)
-
-        const soloIdPedido = idCompleto.id.split('-')[2]
+    
+        const idCompleto = document.querySelector(`[id^="pedido-nro-"]`);
+        const estadoElement = document.querySelector('#estado');
+        const estado_anterior = estadoElement.getAttribute('data-estado');
+    
+        const soloIdPedido = idCompleto.id.split('-')[2];
         
-        console.log(idCompleto)
-        const pedido = new Pedido()
-
-        try{
-            const estado = await pedido.getEstado(soloIdPedido)
-            if (estado != estado_anterior && estado){
-                this.actualizarEstado({estado: estado, pedido: soloIdPedido})
-                this.actualizarAccionesSegunEstadoPedido(estado, soloIdPedido)
+        console.log(`estado_anterior: ${estado_anterior}`);
+        console.log(`soloIdPedido: ${soloIdPedido}`);
+        const pedido = new Pedido();
+    
+        try {
+            const estado = await pedido.getEstado(soloIdPedido);
+            if (estado != estado_anterior && estado) {
+                this.actualizarEstado(estado);
+                this.actualizarAccionesSegunEstadoPedido(estado, soloIdPedido);
             }
-        }catch(error){
-            console.error('Error al obtener el estado del pedido:', error)
+        } catch (error) {
+            console.error('Error al obtener el estado del pedido:', error);
         }      
-
     }
+    
 
     async getEstadosPedidos() {
         /**

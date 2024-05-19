@@ -20,6 +20,7 @@ class Pedido {
 
     async getEstado(id) {
         try {
+            console.log(`/pedidos/get-estado?id=${id}`);
             // Realizar la solicitud usando fetch
             const response = await fetch(`/pedidos/get-estado?id=${id}`);
             
