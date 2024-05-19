@@ -14,7 +14,7 @@
             }
         ],
         "Nro Pedido": 1,
-        "Estado": "pasar-a-retirar"
+        "Estado": "despachado"
     },
     {
         "Fecha\/Hora": "2024-05-19T00:08:53",
@@ -48,7 +48,7 @@
             }
         ],
         "Nro Pedido": 3,
-        "Estado": "pasar-a-retirar"
+        "Estado": "despachado"
     },
     {
         "Fecha\/Hora": "2024-05-19T00:33:34",
@@ -77,7 +77,7 @@
             }
         ],
         "Nro Pedido": 5,
-        "Estado": "pasar-a-retirar"
+        "Estado": "despachado"
     },
     {
         "Fecha\/Hora": "2024-05-19T00:37:36",
@@ -106,7 +106,7 @@
             }
         ],
         "Nro Pedido": 6,
-        "Estado": "sin-confirmar"
+        "Estado": "despachado"
     },
     {
         "Fecha\/Hora": "2024-05-19T09:27:30",

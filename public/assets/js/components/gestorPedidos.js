@@ -16,8 +16,11 @@ class GestorPedidos {
              */
             animador.animar(estadoElement, 5000, 'animado');
     
+            console.log(`nuevoEstado: ${nuevoEstado}`);
+            const estados = Object.keys(Pedido.accionesPorEstado);
+            console.log(estados)
             // Verificar si el nuevo estado es 'pasar-a-retirar'
-            if (nuevoEstado === 'pasar-a-retirar') {
+            if (estados.includes(nuevoEstado)) {
                 // Verificar si el dispositivo es un celular
                 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
                 if (isMobile && 'vibrate' in navigator) {
