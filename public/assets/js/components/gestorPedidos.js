@@ -1,17 +1,19 @@
 
 class GestorPedidos {
 
-    actualizarEstado(pedido)
-    {
-        
-        const estadoHTML = document.querySelector(`#estado`);
-        estadoHTML.innerHTML = pedido.estado;
+    actualizarEstado(pedidoElement, nuevoEstado) {
+        const estadoHTML = pedidoElement.querySelector('.estado');
+        const estadoAnterior = estadoHTML.innerHTML;
 
-        const animador = new Animador();
-        /**
-         * establece una animacion de 5seg para indicar que se pidio informacion al servidor
-         */
-        animador.animar(estadoHTML, 5000 , 'animado'); 
+        if (estadoAnterior !== nuevoEstado) {
+            estadoHTML.innerHTML = nuevoEstado;
+
+            const animador = new Animador();
+            /**
+             * establece una animacion de 5seg para indicar que se pidio informacion al servidor
+             */
+            animador.animar(estadoHTML, 5000, 'animado'); 
+        }
     }
 
     actualizarAccionesSegunEstadoPedido(estado, id)
@@ -66,9 +68,9 @@ class GestorPedidos {
         const idCompleto = document.querySelector(`[id^="pedido-nro-"]`)
         const estado_anterior = document.querySelector(`[id^="estado"]`)
 
-        console.log(idCompleto)
         const soloIdPedido = idCompleto.id.split('-')[2]
-
+        
+        console.log(idCompleto)
         const pedido = new Pedido()
 
         try{
@@ -81,5 +83,30 @@ class GestorPedidos {
             console.error('Error al obtener el estado del pedido:', error)
         }      
 
+    }
+
+    async getEstadosPedidos() {
+        /**
+         * Verifica el estado de todos los pedidos y actualiza la interfaz si ha cambiado.
+         */
+        const pedidoElements = document.querySelectorAll(`[id^="pedido-nro-"]`);
+
+        for (const pedidoElement of pedidoElements) {
+            const idCompleto = pedidoElement.id;
+            const soloIdPedido = idCompleto.split('-')[2];
+            const estado_anterior = pedidoElement.querySelector('.estado').innerHTML;
+
+            const pedido = new Pedido();
+
+            try {
+                const estado = await pedido.getEstado(soloIdPedido);
+                if (estado && estado !== estado_anterior) {
+                    this.actualizarEstado(pedidoElement, estado);
+                    this.actualizarAccionesSegunEstadoPedido(estado, soloIdPedido, pedidoElement);
+                }
+            } catch (error) {
+                console.error('Error al obtener el estado del pedido:', error);
+            }
+        }
     }
 }

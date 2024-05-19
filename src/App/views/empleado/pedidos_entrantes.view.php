@@ -45,10 +45,10 @@
                             <td><?= $pedido['Direccion']; ?></td>
                             <td><?= $pedido['Monto Total']; ?></td>
                             <td><?= $pedido['Metodo de Pago']; ?></td>
-                            <td id="estado"><?= $pedido['Estado']; ?></td>
+                            <td class="estado"><?= $pedido['Estado']; ?></td>
                             <td>
+                                <!-- Acciones se agregarán aquí dinámicamente -->
                                 <a href="/pedidos/estado?id=<?= $pedido['Nro Pedido'] ?>" class="icon icon_detalle">Aceptar</a>
-                            </td>                                
                             </td>
                         </tr>
                     <?php endforeach; ?>                    

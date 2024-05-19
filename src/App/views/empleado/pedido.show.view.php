@@ -28,7 +28,7 @@
                 <p class="detalle"><strong>Dirección:</strong> <?= empty($pedido['Direccion']) ? '(No especificado)' : $pedido['Direccion']; ?></p>
                 <p class="detalle"><strong>Observaciones:</strong> <?= empty($pedido['Observaciones']) ? '(No especificado)' : $pedido['Observaciones']; ?></p>
                 <p class="detalle"><strong>Monto Total:</strong> <?= is_null($pedido['Monto Total']) ? '(No especificado)' : $pedido['Monto Total']; ?></p>
-                <p class="detalle" id="estado"><strong>Estado:</strong> <?= $pedido['Estado']; ?></p>
+                <p class="detalle" class="estado"><strong>Estado:</strong> <?= $pedido['Estado']; ?></p>
 
                 <?php foreach($listaAcciones[$pedido['Estado']] as $accion ): ?>
                     <a class="boton boton_negro" href="/pedidos/estado/modificar?id=<?= $pedido['Nro Pedido']; ?>&estado=<?= $urlsAccion[$accion]?>"><?= $accion ?></a>
