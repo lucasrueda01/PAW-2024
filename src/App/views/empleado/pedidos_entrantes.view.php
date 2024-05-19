@@ -37,22 +37,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <?php foreach ($pedidos as $pedido): ?>
-                        <tr>
-                            <td id="pedido-nro-<?= $pedido['Nro Pedido']; ?>"><?= $pedido['Nro Pedido']; ?></td>
-                            <td><?= $pedido['Fecha/Hora']; ?></td>
-                            <td><?= $pedido['Tipo']; ?></td>
-                            <td><?= $pedido['Direccion']; ?></td>
-                            <td><?= $pedido['Monto Total']; ?></td>
-                            <td><?= $pedido['Metodo de Pago']; ?></td>
-                            <td class="estado"><?= $pedido['Estado']; ?></td>
-                            <td>
-                                <!-- Acciones se agregarán aquí dinámicamente -->
-                                <a href="/pedidos/estado?id=<?= $pedido['Nro Pedido'] ?>" class="icon icon_detalle">Aceptar</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>                    
-
+                    <?php foreach ($pedidos as $pedido): ?>
+                    <tr>
+                        <td data-label="Nro Pedido" id="pedido-nro-<?= $pedido['Nro Pedido']; ?>">#0000<?= $pedido['Nro Pedido']; ?></td>
+                        <td data-label="Fecha/Hora"><?= $pedido['Fecha/Hora']; ?></td>
+                        <td data-label="Tipo"><?= $pedido['Tipo']; ?></td>
+                        <td data-label="Direccion"><?= $pedido['Direccion']; ?></td>
+                        <td data-label="Monto Total"><?= $pedido['Monto Total']; ?></td>
+                        <td data-label="Metodo de Pago"><?= $pedido['Metodo de Pago']; ?></td>
+                        <td data-label="Estado" class="estado"><?= $pedido['Estado']; ?></td>
+                        <td data-label="Acciones">
+                            <a href="/pedidos/estado?id=<?= $pedido['Nro Pedido'] ?>" class="icon icon_detalle">Aceptar</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </section>

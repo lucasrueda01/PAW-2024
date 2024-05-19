@@ -839,3 +839,59 @@ input[type="submit"] {
         background-color: #f0f0f0;
     }
 }
+
+
+/* Estilos existentes para la tabla */
+.tabla_gestion_mesa {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla_gestion_mesa th, .tabla_gestion_mesa td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tabla_gestion_mesa thead {
+    background-color: #f2f2f2;
+}
+
+/* Estilos responsive para la stacktable */
+@media (max-width: 600px) {
+    .tabla_gestion_mesa, .tabla_gestion_mesa thead, .tabla_gestion_mesa tbody, .tabla_gestion_mesa th, .tabla_gestion_mesa td, .tabla_gestion_mesa tr {
+        display: block;
+    }
+
+    .tabla_gestion_mesa thead tr {
+        display: none;
+    }
+
+    .tabla_gestion_mesa tr {
+        margin-bottom: 10px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .tabla_gestion_mesa td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .tabla_gestion_mesa td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        white-space: nowrap;
+        font-weight: bold;
+    }
+
+    /* Aplicar fondo gris a los <td> con data-label="Nro Pedido" */
+    .tabla_gestion_mesa td[data-label="Nro Pedido"] {
+        background-color: #f0f0f0;
+    }
+}
