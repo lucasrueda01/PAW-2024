@@ -9,8 +9,17 @@ class SEOController extends Controller
 {
         private $urls;
     
-        public function __construct($urls) {
-            $this->urls = $urls;
+        public function __construct() {
+            // Llamar al constructor del padre para inicializar las propiedades
+            parent::__construct();
+    
+            // Fusionar los arreglos desde la clase padre
+            $combinedMenus = array_merge($this->menu, $this->menuEmpleado, $this->menuPerfil);
+    
+            // Extraer las URLs de los arreglos fusionados
+            $this->urls = array_map(function($menu) {
+                return $menu['href'];
+            }, $combinedMenus);
         }
     
         public function generateSitemap() {
@@ -45,4 +54,14 @@ class SEOController extends Controller
     
             return json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
         }
+
+        public function generateRobot() {
+            header("Content-Type: text/plain");
+            echo "User-agent: *\n";
+            echo "Disallow: /admin\n";
+            echo "Disallow: /login\n";
+            echo "Disallow: /register\n";
+            echo "Allow: /\n";
+            echo "Sitemap: https://www.example.com/sitemap.xml\n";
+        }        
 }
