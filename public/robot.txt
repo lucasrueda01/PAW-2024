@@ -1,0 +1,12 @@
+# Bloquea a todos los rastreadores de todo el sitio
+User-agent: *
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cgi-bin/
+
+# Permitir el acceso a las imágenes
+User-agent: *
+Allow: /images/
+
+# Proporciona la ubicación del archivo sitemap
+Sitemap: http://localhost:8080/sitemap.xml
