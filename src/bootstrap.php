@@ -92,3 +92,5 @@ $router->get('/locales/get', 'MesaController@getLocales'); // MesaController
 $router->get('/gestion_lista_mesas', 'MesaController@gestion_lista_mesas'); // MesaController
 $router->get('/gestion_mesa', 'MesaController@gestion_mesa'); // MesaController
 
+$router->get('/sitemap.xml', 'SEOController@sitemap');
+$router->get('/json-ld', 'SEOController@jsonLd');
