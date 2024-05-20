@@ -190,7 +190,7 @@
             }
         ],
         "Nro Pedido": 10,
-        "Estado": "sin-confirmar"
+        "Estado": "pasar-a-retirar"
     },
     {
         "Fecha\/Hora": "2024-05-19T11:17:35",

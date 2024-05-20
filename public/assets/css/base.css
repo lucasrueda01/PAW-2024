@@ -202,10 +202,10 @@ main {
 
     .logo_grande_mobile {
         display: block;
-        width: 18rem;
-        height: 5rem;
+        width: 14rem;
+        height: 3.8rem;
         background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
-        margin-left: 20%;
+        margin-left: 25%;
     }
 
     #menuMobile {
@@ -349,8 +349,12 @@ main {
     background-color: black;
 }
 
+.btn-pedido {
+    margin-left: 13rem;
+}
+
 .boton_negro_carrito {
-    width: 2rem;
+    width: 5rem;
     color: white;
     background-color: black;
     border-radius: 15px;

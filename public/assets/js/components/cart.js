@@ -31,6 +31,26 @@ class Cart {
         this.setCookie(this.cookieName, JSON.stringify(plates), 7);
     }
 
+    getCantidadPlato(platoId) {
+        // Obtener la lista de platos de la cookie
+        const platosCookie = this.getCookie(this.cookieName);
+    
+        // Verificar si la cookie existe y tiene datos
+        if (platosCookie) {
+            // Convertir la cookie a un array de objetos
+            const plates = JSON.parse(platosCookie);
+    
+            // Encontrar el plato en la lista de platos
+            
+            const plate = plates.find(plate => parseInt(plate.id) === parseInt(platoId));
+    
+            // Retornar la cantidad del plato o 0 si no se encuentra
+            return plate ? plate.cantidad : 0;
+        }
+    
+        return 0;
+    }
+
     updateCarrito(data, table) {
         // Limpiar el cuerpo de la tabla
         const tbody = table.querySelector('tbody');
@@ -38,14 +58,18 @@ class Cart {
     
         // Recorrer los datos devueltos y agregar filas a la tabla
         data.forEach(plato => {
+        // Obtener la cantidad del plato de la cookie
+            console.log(`plato.id : ${plato.id}`)
+            const cantidadPlato = this.getCantidadPlato(plato.id);            
+
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td data-label="Nombre">${plato.nombre_plato}</td>
                 <td data-label="Descripción">${plato.ingredientes}</td>
                 <td data-label="Precio">$${plato.precio}</td>
-                <td data-label="Cantidad">${plato.cantidad}</td>
+                <td data-label="Cantidad">${cantidadPlato}</td>
                 <td data-label="Acción">
-                    <a href="#" class="remove-from-cart boton boton_negro_carrito" data-id="${plato.id}">-</a>
+                    <a href="#" class="remove-from-cart boton boton_negro_carrito" data-id="${plato.id}">Eliminar</a>
                 </td>
             `;
     
@@ -65,7 +89,7 @@ class Cart {
         });
     
         // Calcular y mostrar el total
-        const total = data.reduce((acc, plato) => acc + plato.precio * plato.cantidad, 0);
+        const total = data.reduce((acc, plato) => acc + plato.precio * parseInt(this.getCantidadPlato(plato.id)), 0);
         console.log(total);
         const tfoot = table.querySelector('tfoot tr td');
         tfoot.textContent = `Total: $${total}`;
@@ -99,13 +123,17 @@ class Cart {
     }
 
     updateCart() {
+        // const plato = JSON.parse(this.getCookie(this.cookieName))
+        // console.log(`plato`)
+        // console.log(`${plato[0].cantidad}`)
         // Realizar una solicitud fetch para obtener los detalles de los platos
         fetch('/plato-all-in-cart?lista_encoded=' + encodeURIComponent(this.getCookie(this.cookieName)))
             .then(response => response.json())
             .then(data => {
                 // Obtener la tabla del carrito
                 const table = document.querySelector('table');
-                console.log(data)
+                // console.log('data[0].id')
+                // console.log(data[0].id)
                 // Llamar al método updateCarrito para actualizar la tabla
                 this.updateCarrito(data, table);
             })

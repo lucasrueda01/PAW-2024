@@ -114,6 +114,7 @@ input[type=number]::-webkit-inner-spin-button {
     top: -42px;
     left: .2rem;
     padding: 1rem;
+    margin-left: 13rem;
 }
 
 .titulo_fieldset_take_away {
@@ -145,6 +146,8 @@ input[type=number]::-webkit-inner-spin-button {
 
 .selector_fieldset {
     grid-area: nav_fieldsets;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .selector_fieldset h3 {
@@ -155,10 +158,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 .container_carrito table {
     margin: 1rem 1rem;
+    width: 80%;
 }
 
 .container_delivery {
-    margin-top: 0;
+    margin: 0 auto;
+    width: 80%;
 }
 
 
@@ -805,6 +810,14 @@ input[type="submit"] {
 
 /* Estilos para apilar las filas en pantallas pequeñas */
 @media (max-width: 768px) {
+
+    .titulo_fieldset {
+        margin-left: 3rem;
+    }    
+
+    .btn-pedido {
+        margin-left: 3.6rem;
+    }
     .stacked-table thead {
         display: none;
     }

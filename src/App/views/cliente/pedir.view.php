@@ -40,7 +40,7 @@
             </tr>
         </tfoot>
     </table>
-                    <a href="/nuestro_menu" class="boton boton_negro">Agregar</a>
+                    <a href="/nuestro_menu" class="boton boton_negro btn-pedido">Agregar</a>
                 </fieldset>
 
                 <nav class="selector_fieldset">
@@ -126,7 +126,7 @@
                         </ul>
                     </aside>
                 </fieldset>
-                <input type="submit" value="Pedir" class="boton boton_negro"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO ELIGE LA OPCION PEDIR EN EL LUGAR -->
+                <input type="submit" value="Pedir" class="boton boton_negro  btn-pedido"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO ELIGE LA OPCION PEDIR EN EL LUGAR -->
             </form>
         </section>
     </main>

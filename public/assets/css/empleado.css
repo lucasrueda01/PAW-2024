@@ -198,8 +198,7 @@
 
 /* Estilos para la sección de detalles del pedido */
 .detalles_pedido {
-    
-    width: 80vw;
+    width: fit-content;
     border: 1px solid #ccc;
     padding: 20px;
     margin: 10rem auto;
