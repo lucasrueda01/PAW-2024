@@ -6,7 +6,10 @@ use Monolog\Logger;
 use Monolog\Level;
 use Monolog\Handler\StreamHandler;
 use Dotenv\Dotenv;
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
 
+use Paw\Core\App;
 use Paw\Core\Router;
 use Paw\Core\Config;
 use Paw\Core\Request;
@@ -52,6 +55,15 @@ $request = new Request;
 
 $router = new Router;
 $router->setLogger($log);
+
+/**
+ * Load template engine
+ */
+$loader = new FilesystemLoader(__DIR__ . $config->get('TEMPLATE_DIR'));
+$twig = new Environment($loader, array(
+    'cache' => __DIR__ . $config->get('TEMPLATE_CACHE_DIR'),
+    'debug' => true,
+));
 
 // UsuarioController
 $router->get('/iniciar_sesion', 'UsuarioController@inicio_sesion');
