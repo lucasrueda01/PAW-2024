@@ -37,7 +37,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="5">Total: $30.00</td>
+                                <td colspan="5">Total: $00.00</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -67,7 +67,7 @@
 
                     <label for="observaciones">Observaciones</label>
                     <input type="text" name="observaciones" id="observaciones">
-                    
+
                     <label for="forma-de-pago">Selecciona una forma de pago:</label>
                     <select id="forma-de-pago" name="forma-de-pago">
                         <option value="mercado_pago">Mercado Pago</option>

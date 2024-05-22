@@ -1,571 +1,64 @@
 [
     {
-        "Fecha\/Hora": "2024-05-22T19:28:19",
-        "Tipo": "en-el-local",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
+        "Fecha\/Hora": "2024-05-22T21:07:20",
+        "Tipo": "delivery",
+        "Nombre": "JUAN",
+        "Metodo de Pago": "efectivo",
+        "Direccion": "mafalda 884",
+        "Observaciones": "LA CASA ES UN DEPTO TIPO CASA",
+        "Monto Total": 6740,
         "articulos": [
             {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
+                "nombre": "CHEESEBURGUER",
+                "precio": 1500,
+                "cantidad": 1,
+                "subtotal": 1500
             },
             {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
+                "nombre": "SPRITE",
+                "precio": 2000,
                 "cantidad": 2,
-                "subtotal": 10000
+                "subtotal": 4000
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1240,
+                "cantidad": 1,
+                "subtotal": 1240
             }
         ],
         "Nro Pedido": 1,
         "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-22T19:43:44",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 2,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:47:34",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 3,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:48:34",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 4,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:48:48",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 5,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:49:54",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 6,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:49:57",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 7,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:50:17",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 8,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:50:56",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 9,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:51:10",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 10,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:56:11",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 11,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:56:21",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 12,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:56:33",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 13,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:57:20",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 14,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:58:09",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 15,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T19:58:15",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 16,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T20:03:53",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 17,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T20:04:02",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 18,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T20:04:53",
-        "Tipo": "en-el-local",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 19,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T20:07:04",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 20,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T20:16:17",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 21,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T20:38:17",
-        "Tipo": "delivery",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 12480,
-        "articulos": [
-            {
-                "nombre": "casa",
-                "precio": 1240,
-                "cantidad": 2,
-                "subtotal": 2480
-            },
-            {
-                "nombre": "papas con cheddar",
-                "precio": 5000,
-                "cantidad": 2,
-                "subtotal": 10000
-            }
-        ],
-        "Nro Pedido": 22,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T20:51:43",
+        "Fecha\/Hora": "2024-05-22T21:07:57",
         "Tipo": "delivery",
         "Nombre": "JUAN",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "MAFALDA 884",
-        "Observaciones": "SASA",
-        "Monto Total": 1240,
+        "Metodo de Pago": "efectivo",
+        "Direccion": "mafalda 884",
+        "Observaciones": "LA CASA ES UN DEPTO TIPO CASA",
+        "Monto Total": 6740,
         "articulos": [
             {
-                "nombre": "casa",
+                "nombre": "CHEESEBURGUER",
+                "precio": 1500,
+                "cantidad": 1,
+                "subtotal": 1500
+            },
+            {
+                "nombre": "SPRITE",
+                "precio": 2000,
+                "cantidad": 2,
+                "subtotal": 4000
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
                 "precio": 1240,
                 "cantidad": 1,
                 "subtotal": 1240
             }
         ],
-        "Nro Pedido": 23,
+        "Nro Pedido": 2,
         "Estado": "sin-confirmar"
     }
 ]
