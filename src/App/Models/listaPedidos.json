@@ -254,5 +254,30 @@
         ],
         "Nro Pedido": 13,
         "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-22T15:37:39",
+        "Tipo": "Delivery",
+        "Nombre": "",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "",
+        "Observaciones": "",
+        "Monto Total": null,
+        "articulos": [
+            {
+                "id": "1",
+                "cantidad": 1
+            },
+            {
+                "id": "2",
+                "cantidad": 1
+            },
+            {
+                "id": "3",
+                "cantidad": 1
+            }
+        ],
+        "Nro Pedido": 14,
+        "Estado": "confirmado"
     }
 ]

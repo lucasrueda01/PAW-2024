@@ -351,6 +351,7 @@ main {
 
 .btn-pedido {
     margin-left: 13rem;
+    grid-area: btn-submit;
 }
 
 .boton_negro_carrito {
