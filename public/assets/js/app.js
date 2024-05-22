@@ -89,6 +89,7 @@ class appPAW {
                             // Convertir la cookie a un array de IDs de platos
                             const platosIds = JSON.parse(platosCookie);
                             
+                            
                             // Realizar una solicitud fetch para obtener los detalles de los platos
                             fetch('/plato-all-in-cart?lista_encoded=' + encodeURIComponent(platosCookie))
                                 .then(response => response.json())

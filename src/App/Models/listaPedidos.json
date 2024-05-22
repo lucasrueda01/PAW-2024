@@ -28,7 +28,7 @@
             }
         ],
         "Nro Pedido": 1,
-        "Estado": "sin-confirmar"
+        "Estado": "confirmado"
     },
     {
         "Fecha\/Hora": "2024-05-22T21:07:57",
@@ -60,5 +60,30 @@
         ],
         "Nro Pedido": 2,
         "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-22T22:17:24",
+        "Tipo": "en-el-local",
+        "Nombre": "JUAN",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "",
+        "Observaciones": "con papas el cafe con leche",
+        "Monto Total": 3500,
+        "articulos": [
+            {
+                "nombre": "SPRITE",
+                "precio": 2000,
+                "cantidad": 1,
+                "subtotal": 2000
+            },
+            {
+                "nombre": "CHEESEBURGUER",
+                "precio": 1500,
+                "cantidad": 1,
+                "subtotal": 1500
+            }
+        ],
+        "Nro Pedido": 3,
+        "Estado": "pasar-a-retirar"
     }
 ]

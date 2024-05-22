@@ -44,6 +44,9 @@ class MenuController extends Controller
         global $request, $log;
             
         $lista_platos = [];
+        /**
+         * FALTA TRY CATCH 22052024
+         */
         // Verificar si la variable lista_encoded está presente en la solicitud GET
         if (isset($_GET['lista_encoded'])) {
         //     // Decodificar el JSON
