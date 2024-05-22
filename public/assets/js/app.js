@@ -105,6 +105,25 @@ class appPAW {
                                 });
                         }
                     });
+
+                    // Seleccionar el select y el campo de dirección
+                    const formaPagoSelect = document.querySelector("#forma_pago_take_away");
+                    const direccionInput = document.querySelector("#direccion");
+                    const direccionLabel = document.querySelector("#direccion_label");
+
+                    // Agregar un event listener al select para detectar cambios en su valor
+                    formaPagoSelect.addEventListener("change", function() {
+                        // Verificar el valor seleccionado
+                        if (this.value === "en-el-local") {
+                            // Ocultar el campo de dirección y su etiqueta
+                            direccionInput.style.display = "none";
+                            direccionLabel.style.display = "none";
+                        } else {
+                            // Mostrar el campo de dirección y su etiqueta
+                            direccionInput.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
+                            direccionLabel.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
+                        }
+                    });                    
                 }
         
             })

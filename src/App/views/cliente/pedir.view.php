@@ -62,7 +62,7 @@
                         <option value="Local B">Local B</option>
                     </select>
 
-                    <label for="direccion">Ingrese su direccion</label>
+                    <label for="direccion" id="direccion_label">Ingrese su direccion</label>
                     <input type="text" name="direccion" id="direccion">
                     <label for="observaciones">Observaciones</label>
                     <input type="text" name="observaciones" id="observaciones">
