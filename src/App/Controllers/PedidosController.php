@@ -5,6 +5,7 @@ namespace Paw\App\Controllers;
 use Paw\App\Utils\Verificador;
 
 use Paw\Core\Controller;
+use Paw\App\Models\Plato;
 
 use Paw\App\Models\PedidosCollection;
 
@@ -39,19 +40,27 @@ class PedidosController extends Controller
 
     public function get()
     {
-        global $request;
+        global $request, $log;
 
         $id = $request->get('id');
 
-        $pedido = $this->model->getById($id);
+        $log->info("id: ", [$id]);
+
+        $pedido = $this->model->getById(intval($id));
+
+
 
         $listaAcciones = PedidosCollection::$accionesPorEstado; //
         $urlsAccion = PedidosCollection::$urlsAccion;
+
+        $log->info("metodo getById: ", [$pedido]);
 
         if(isset($pedido['error'])){
             $resultado['error'] = $pedido['error'];
         }
 
+        // var_dump($pedido);
+        // echo("<pre>");
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
 
@@ -89,38 +98,70 @@ class PedidosController extends Controller
 
     public function new()
     {
-        global $request;
+        global $request, $log;
 
         // Obtener la fecha y hora actual
         $fechaHora = date('Y-m-d\TH:i:s');
 
         // Obtener los artículos de la superglobal $_COOKIE
         $articulos = [];
+
         if (isset($_COOKIE['platos'])) {
-            $articulos = json_decode($_COOKIE['platos'], true);
+            $datos = json_decode($_COOKIE['platos'], true);
+            
+            $total = 0;
+
+            foreach ($datos as $item) {
+
+                $id = intval($item['id']);
+                $cantidad = intval($item['cantidad']);
+
+                $log->info("id, cantidad :", [$id, $cantidad]);
+
+                $platoPedido = new Plato;
+                $platoPedido->setQueryBuilder($this->qb);
+                $platoPedido->load($id);
+
+                $subtotal = $platoPedido->getPrecio() * $cantidad;
+
+                $articulos[] = [
+                    "nombre" => $platoPedido->getNombrePlato(),
+                    "precio"  => floatval($platoPedido->getPrecio()),
+                    "cantidad" => $cantidad,
+                    "subtotal" => $subtotal,
+                ];
+                $total = $total + $subtotal;
+            }
         }
 
         // Crear el nuevo pedido
         $nuevoPedido = [
             "Fecha/Hora" => $fechaHora,
             "Tipo" => $request->get("tipo"),
-            "Nombre" => $request->get("nombre"),
+            "Nombre" => htmlspecialchars($request->get("nombre")),
             "Metodo de Pago" => $request->get("forma-de-pago"),
-            "Direccion" => $request->get("direccion"),
-            "Observaciones" => $request->get("observaciones"),
-            "Monto Total" => $request->get("monto-total"),
-            "articulos" => $articulos
+            "Direccion" => htmlspecialchars($request->get("direccion")),
+            "Observaciones" => htmlspecialchars($request->get("observaciones")),
+            "Monto Total" => $total,
+            "articulos" => $articulos,
         ];
+
+        
+        $log->info("articulos, total ,nuevoPedido :", [$articulos, $total ,$nuevoPedido]);
 
         // Agregar el nuevo pedido a la colección
         $resultado = $this->model->new($nuevoPedido);
         
-        // Redirigir o mostrar el resultado
+        
         if (isset($resultado['exito'])) {
             $pedido = $this->model->getById($resultado['id']);
+
+            $log->info("resultado['id']: ", [$resultado['id']]);
+
             $listaAcciones = PedidosCollection::$accionesPorEstado; //
             $urlsAccion = PedidosCollection::$urlsAccion;
         } 
+        
         require $this->viewsDir . 'empleado/pedido.show.view.php';
         
     }

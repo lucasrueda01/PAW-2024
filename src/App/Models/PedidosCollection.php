@@ -59,17 +59,20 @@ class PedidosCollection extends Model
         }
     }
 
-    public function getbyId($id)
+    public function getById($id)
     {
-        // Verificar si la decodificación fue exitosa
-        if (!isset($this->indice[$id])) {
-            return [
-                "error" => "NRO DE PEDIDO NO ENCONTRADO."
-            ];            
-        } else {
+        global $log;
+        
+        try {
+            // Verificar si la decodificación fue exitosa
             return $this->indice[$id];
+        } catch (Exception $e) {
+            // Manejar la excepción si el ID no existe en el índice
+            $log->info("error: ", [$e]);
+            return [
+                "error" => `NRO DE PEDIDO NO ENCONTRADO. ${e}`
+            ];
         }
-
     }
 
     public function modificarEstado($id, $estado)
@@ -105,6 +108,11 @@ class PedidosCollection extends Model
     } else {
         return ["error" => "No se encontró un pedido con el ID $id."];
     }
+
+    }
+
+    public function calcularMonto($articulos)
+    {   
 
     }
 

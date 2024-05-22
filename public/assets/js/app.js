@@ -107,7 +107,7 @@ class appPAW {
                     });
 
                     // Seleccionar el select y el campo de dirección
-                    const formaPagoSelect = document.querySelector("#forma_pago_take_away");
+                    const formaPagoSelect = document.querySelector("#tipo");
                     const direccionInput = document.querySelector("#direccion");
                     const direccionLabel = document.querySelector("#direccion_label");
 
@@ -118,6 +118,7 @@ class appPAW {
                             // Ocultar el campo de dirección y su etiqueta
                             direccionInput.style.display = "none";
                             direccionLabel.style.display = "none";
+                            direccionInput.removeAttribute("required");
                         } else {
                             // Mostrar el campo de dirección y su etiqueta
                             direccionInput.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
