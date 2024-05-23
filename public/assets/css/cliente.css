@@ -547,6 +547,12 @@ input[type=number]::-webkit-inner-spin-button {
     z-index: 1000;
 }
 
+.selector_tipo_articulo ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .selector_tipo_articulo li {
     display: inline-block;
     padding: 1rem;
@@ -554,6 +560,10 @@ input[type=number]::-webkit-inner-spin-button {
 
 .selector_tipo_articulo ul li:first-child {
     border-right: 1px solid rgb(202, 131, 0);
+}
+
+.selector_tipo_articulo ul li:nth-child(3){
+    border-left: 1px solid rgb(202, 131, 0);
 }
 
 .selector_tipo_articulo ul li:last-child {
