@@ -542,7 +542,9 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--color-amarillo);
     display: flex;
     justify-content: center;
-
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .selector_tipo_articulo li {
@@ -569,6 +571,24 @@ input[type=number]::-webkit-inner-spin-button {
     text-transform: uppercase;
     font-weight: 800;
 
+}
+
+.carrito {
+    position: relative;
+}
+
+.carrito::after {
+    content: '';
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../imgs/svg/icono-carrito-negro.svg');
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    right: -4rem;
+    top: -1.1rem;
+    border: none;
 }
 
 .articulo h3, .articulo p {

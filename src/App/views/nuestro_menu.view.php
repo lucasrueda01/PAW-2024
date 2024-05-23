@@ -34,7 +34,11 @@
                     <li class="">
                         <a href="#otros_platos">Otros Platos</a>
                     </li>
+                    <li>
+                        <p class="carrito">Cantidad de Articulos: 00 </p>
+                    </li>
                 </ul>
+
             </nav>
 
             <section id="hamburguesas" class="seccion_hamburguesas">
