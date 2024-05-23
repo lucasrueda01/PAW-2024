@@ -1,37 +1,32 @@
 
 class GestorPedidos {
 
-    actualizarEstado(nuevoEstado) {
+    actualizarEstado(nuevoEstado, permisoNotificacion = false) {
         const estadoElement = document.querySelector('#estado');
         const estadoAnterior = estadoElement.getAttribute('data-estado');
         
-        console.log(estadoAnterior);
-    
         if (estadoAnterior !== nuevoEstado) {
             estadoElement.setAttribute('data-estado', nuevoEstado);
             estadoElement.innerHTML = `<strong>Estado:</strong> ${nuevoEstado}`;
             const animador = new Animador();
-            /**
-             * establece una animacion de 5seg para indicar que se pidió información al servidor
-             */
             animador.animar(estadoElement, 5000, 'animado');
-    
-            console.log(`nuevoEstado: ${nuevoEstado}`);
-            const estados = Object.keys(Pedido.accionesPorEstado);
-            console.log(estados)
-            // Verificar si el nuevo estado es 'pasar-a-retirar'
-            if (estados.includes(nuevoEstado)) {
-                // Verificar si el dispositivo es un celular
-                const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-                if (isMobile && 'vibrate' in navigator) {
-                    // Hacer vibrar el dispositivo
-                    navigator.vibrate(200); // La duración de la vibración en milisegundos
+            
+            // Verificar si el nuevo estado es 'pasar-a-retirar' 
+            
+                const estados = Object.keys(Pedido.accionesPorEstado);
+                if (estados.includes(nuevoEstado) && permisoNotificacion) {
+                    // Verificar si el dispositivo es un celular y si admite la vibración
+                    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+                    if (isMobile && 'vibrate' in navigator) {
+                        // Hacer vibrar el dispositivo
+                        navigator.vibrate(200); // La duración de la vibración en milisegundos
+                    } 
+                    
+                    // Emitir una señal sonora
+                    const audio = new Audio('/assets/audios/play-comida-lista.mp3');
+                    audio.play().catch(error => console.error('Error al reproducir el sonido:', error));
                 } 
-                // Emitir una señal sonora
-                const audio = new Audio('/assets/audios/play-comida-lista.mp3');
-                audio.play().catch(error => console.error('Error al reproducir el sonido:', error));
-                
-            } 
+            
         }
     }
     
@@ -78,6 +73,8 @@ class GestorPedidos {
         });
 
     }
+
+    
 
     async getEstadoPedido() {
         /**

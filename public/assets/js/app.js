@@ -43,16 +43,36 @@ class appPAW {
                     PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
                     PAW.cargarScript("Animador", "/assets/js/components/animador.js");
                     PAW.cargarScript("gestorPedidos", "/assets/js/components/gestorPedidos.js", () => {
-                        let gestorPedidos = new GestorPedidos()
-                        
-                        // Llamar a la función obtenerEstadoPedido() cada 10 segundos
-                        setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000)
+
+                                let gestorPedidos = new GestorPedidos()
+                                
+                                // Llamar a la función obtenerEstadoPedido() cada 10 segundos
+                                setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000)
+
                     });
                 }
-            // if(['pedidos_entrantes'].includes(window.location.pathname))
-            // {
-            //     PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
-            // }
+
+            if(['/nuestro_menu'].includes(window.location.pathname))    
+            {
+                PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
+                PAW.cargarScript("Animador", "/assets/js/components/animador.js");
+                PAW.cargarScript("gestorPedidos", "/assets/js/components/gestorPedidos.js", () => {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            permisoNotificacion = true; // Almacenar el estado del permiso
+                            let gestorPedidos = new GestorPedidos()
+                            
+                            // Llamar a la función obtenerEstadoPedido() cada 10 segundos
+                            setInterval(gestorPedidos.bind(gestorPedidos), 10000)
+
+                        } else {
+                            console.log('Permiso de notificación denegado');
+                        }                        
+                    });
+
+
+                });                                 
+            }
 
            if(['/nuestro_menu'].includes(window.location.pathname))    
             {

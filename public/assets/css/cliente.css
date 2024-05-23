@@ -155,7 +155,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .container_carrito table {
     margin: 1rem 1rem;
-    width: 80%;
+    width: 80vw;
 }
 
 .container_delivery {

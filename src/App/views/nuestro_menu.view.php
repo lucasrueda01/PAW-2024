@@ -51,7 +51,7 @@
                                 <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
-                                <p class="articulo_precio" data-id="<?= $plato->getPrecio(); ?>">$<?= $plato->getPrecio(); ?></p>
+                                <p class="articulo_precio" data-id="<?= $plato->getPrecio(); ?>">$<?= number_format($plato->getPrecio(), 2, ',', '.'); ?></p>
                                 <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
                             </li>
                         <?php endif ?>    
@@ -71,7 +71,7 @@
                                 <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 <p><?= $plato->getIngredientes(); ?></p>
-                                <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
+                                <p class="articulo_precio" data-id="<?= $plato->getPrecio(); ?>">$<?= number_format($plato->getPrecio(), 2, ',', '.'); ?></p>
                                 <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
                             </li>
                         <?php endif ?>    
@@ -89,7 +89,7 @@
                                 <h4><?= $plato->getNombrePlato(); ?></h4>
                                 
                                 <p><?= $plato->getIngredientes(); ?></p>
-                                <p class="articulo_precio">$<?= $plato->getPrecio(); ?></p>
+                                <p class="articulo_precio" data-id="<?= $plato->getPrecio(); ?>">$<?= number_format($plato->getPrecio(), 2, ',', '.'); ?></p>
                                 <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
                             </li>
                         <?php endif ?>    

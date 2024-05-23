@@ -43,7 +43,7 @@
                         <td data-label="Fecha/Hora"><?= $pedido['Fecha/Hora']; ?></td>
                         <td data-label="Tipo"><?= $pedido['Tipo']; ?></td>
                         <td data-label="Direccion"><?= $pedido['Direccion']; ?></td>
-                        <td data-label="Monto Total"><?= $pedido['Monto Total']; ?></td>
+                        <td data-label="Monto Total">$ <?= number_format($pedido['Monto Total'], 2, ',', '.'); ?></td>
                         <td data-label="Metodo de Pago"><?= $pedido['Metodo de Pago']; ?></td>
                         <td data-label="Estado" class="estado"><?= $pedido['Estado']; ?></td>
                         <td data-label="Acciones">
