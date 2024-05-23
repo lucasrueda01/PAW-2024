@@ -1,6 +1,7 @@
 class Cart {
     constructor(cookieName = 'platos') {
         this.cookieName = cookieName;
+
     }
 
     setCookie(name, value, days) {
@@ -16,6 +17,46 @@ class Cart {
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) return parts.pop().split(';').shift();
         return null;
+    }
+
+    updateQuantities() {
+        // Read the 'platos' cookie
+        let platosCookie = this.getCookie('platos');
+        if (platosCookie) {
+            let cantidades = JSON.parse(platosCookie);
+    
+            // Convertir a un objeto para acceso rápido
+            let cantidadesMap = {};
+            cantidades.forEach(item => {
+                cantidadesMap[item.id] = item.cantidad;
+            });
+
+            // console.log(cantidadesMap)
+    
+            // Obtener todos los elementos de la clase 'articulo'
+            document.querySelectorAll('.articulo').forEach(articulo => {
+                let id = articulo.querySelector('.agregar-carrito').getAttribute('data-id');
+                // console.log(id)
+                // Remover cantidad previa si existe
+                let previousQuantityElem = articulo.querySelector('.articulo_cantidad');
+                if (previousQuantityElem) {
+                    previousQuantityElem.remove();
+                }
+                if (cantidadesMap[parseInt(id)]) {
+                    // Crear y agregar el nuevo elemento de cantidad
+                    let cantidadElem = document.createElement('p');
+                    cantidadElem.className = 'articulo_cantidad';
+                    // cantidadElem.textContent = 'Cantidad: ' + cantidadesMap[id];
+                    articulo.appendChild(cantidadElem);
+                    
+                    // Crear y agregar el contenido al pseudo-elemento
+                    let button = articulo.querySelector('.agregar-carrito');
+                    button.setAttribute('data-cantidad', cantidadesMap[id]);
+                }else{
+                    console.log(`id no encontrado: ${id}`);
+                }
+            });
+        }
     }
 
     addToCart(plateId, cantidad = 1) {
@@ -41,6 +82,7 @@ class Cart {
         }
     
         this.setCookie(this.cookieName, JSON.stringify(plates), 7);
+        this.updateQuantities();
     }
 
     getCantidadPlato(platoId) {

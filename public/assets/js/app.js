@@ -61,15 +61,14 @@ class appPAW {
                     const cart = new Cart();
 
                     cart.mostrarCarritoActual();
+                    cart.updateQuantities();
 
                     document.querySelectorAll('.agregar-carrito').forEach(link => {
                         link.addEventListener('click', function(event) {
                             event.preventDefault();
                             const plateId = this.getAttribute('data-id');
                             cart.addToCart(plateId, 1);
-                            // cart.updateCart();
                             cart.mostrarCarritoActual();
-                            // window.location.href = '/pedir';
                         });
 
                     });

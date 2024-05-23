@@ -931,3 +931,14 @@ input[type="submit"] {
         background-color: #f0f0f0;
     }
 }
+
+.agregar-carrito::after {
+    content: attr(data-cantidad) ;
+    display: inline-block;
+    margin-left: 5px; /* Ajusta según sea necesario */
+    background-color: black;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
