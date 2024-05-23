@@ -35,7 +35,7 @@
                         <a href="#otros_platos">Otros Platos</a>
                     </li>
                     <li>
-                        <p class="carrito">Cantidad de Articulos: 00 </p>
+                        <p><a href="/pedir" class="carrito">Cantidad de Articulos: 00 </a></p>
                     </li>
                 </ul>
 

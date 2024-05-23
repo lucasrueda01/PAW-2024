@@ -51,6 +51,8 @@ class Cart {
         return 0;
     }
 
+    
+
     updateCarrito(data, table) {
         // Limpiar el cuerpo de la tabla
         const tbody = table.querySelector('tbody');
@@ -120,6 +122,19 @@ class Cart {
                 this.updateCart();
             }
         }
+    }
+
+    mostrarCarritoActual()
+    {
+        // Obtener la cookie y parsear los datos
+        const cookieData = JSON.parse(this.getCookie(this.cookieName));
+
+        // Calcular la cantidad total de artículos en el carrito
+        const totalArticulos = cookieData.reduce((total, plato) => total + plato.cantidad, 0);
+
+        // Actualizar el contenido del elemento con clase "carrito"
+        const carritoElement = document.querySelector('.carrito');
+        carritoElement.textContent = `Cantidad de Articulos: ${totalArticulos}`;        
     }
 
     updateCart() {
