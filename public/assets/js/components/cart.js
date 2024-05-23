@@ -19,15 +19,27 @@ class Cart {
     }
 
     addToCart(plateId, cantidad = 1) {
-        let plates = JSON.parse(this.getCookie(this.cookieName) || '[]');
+        let plates;
+    
+        try {
+            plates = JSON.parse(this.getCookie(this.cookieName) || '[]');
+            // Asegurarse de que plates es un array después del parseo
+            if (!Array.isArray(plates)) {
+                plates = [];
+            }
+        } catch (e) {
+            console.error('Error parsing cookie data:', e);
+            plates = [];
+        }
+    
         const plateIndex = plates.findIndex(plate => plate.id === plateId);
-
+    
         if (plateIndex === -1) {
             plates.push({ id: plateId, cantidad: cantidad });
         } else {
             plates[plateIndex].cantidad += cantidad;
         }
-
+    
         this.setCookie(this.cookieName, JSON.stringify(plates), 7);
     }
 
@@ -124,17 +136,35 @@ class Cart {
         }
     }
 
-    mostrarCarritoActual()
-    {
-        // Obtener la cookie y parsear los datos
-        const cookieData = JSON.parse(this.getCookie(this.cookieName));
-
+    mostrarCarritoActual() {
+        // Obtener la cookie
+        const cookieData = this.getCookie(this.cookieName);
+        let plates;
+    
+        // Verificar si la cookie existe y es válida
+        if (cookieData) {
+            try {
+                plates = JSON.parse(cookieData);
+                // Asegurarse de que plates es un array después del parseo
+                if (!Array.isArray(plates)) {
+                    plates = [];
+                }
+            } catch (e) {
+                console.error('Error parsing cookie data:', e);
+                plates = [];
+            }
+        } else {
+            plates = [];
+        }
+    
         // Calcular la cantidad total de artículos en el carrito
-        const totalArticulos = cookieData.reduce((total, plato) => total + plato.cantidad, 0);
-
+        const totalArticulos = plates.reduce((total, plato) => total + plato.cantidad, 0);
+    
         // Actualizar el contenido del elemento con clase "carrito"
         const carritoElement = document.querySelector('.carrito');
-        carritoElement.textContent = `Cantidad de Articulos: ${totalArticulos}`;        
+        if (carritoElement) {
+            carritoElement.textContent = `Cantidad de Articulos: 0${totalArticulos}`;
+        }
     }
 
     updateCart() {
