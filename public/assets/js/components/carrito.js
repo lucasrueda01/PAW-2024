@@ -94,9 +94,12 @@ class Carrito{
             plato.cantidad -= 1;
             this.cant_articulos -= 1;
             this.total_pedido -= plato.precio;
+            // Actualizar la tabla
+            this.actualizarTabla();
+            return true
+        }else{
+            return false
         }
-        // Actualizar la tabla
-        this.actualizarTabla();
     }
 
     actualizarTabla() {

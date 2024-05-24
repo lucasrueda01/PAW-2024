@@ -119,16 +119,20 @@ class appPAW {
                     document.querySelectorAll('.btn_decrement').forEach(btn_decrement => {
                         btn_decrement.addEventListener('click', function() {
                             const platoId = this.dataset.id;
-                            carrito.decrementarCantidadPlato(platoId);
-                            console.log(carrito);
-                    
-                            // Actualizar la cantidad en el input correspondiente
-                            const inputCantidad = this.parentElement.querySelector('.input_cantidad');
-                            console.log(`parseInt(inputCantidad.value): ${parseInt(inputCantidad.value)}`)
-                            inputCantidad.value = parseInt(inputCantidad.value) - 1;
-                    
-                            const cantidadArticulos = document.querySelector('.carrito');
-                            cantidadArticulos.textContent = `Cantidad de Articulos: 0${carrito.cant_articulos}`;
+                            
+                            if(carrito.decrementarCantidadPlato(platoId)){
+                                console.log(carrito);
+                        
+                                // Actualizar la cantidad en el input correspondiente
+                                const inputCantidad = this.parentElement.querySelector('.input_cantidad');
+                                console.log(`parseInt(inputCantidad.value): ${parseInt(inputCantidad.value)}`)
+                                inputCantidad.value = parseInt(inputCantidad.value) - 1;
+                        
+                                const cantidadArticulos = document.querySelector('.carrito');
+                                cantidadArticulos.textContent = `Cantidad de Articulos: 0${carrito.cant_articulos}`;
+                            }else{
+                                console.log(`ya no se puede seguir decrementando`)
+                            }
                         });
                     });     
                     
