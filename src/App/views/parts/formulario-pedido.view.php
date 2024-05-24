@@ -11,7 +11,7 @@
                                 <th>Descripción</th>
                                 <th>Precio</th>
                                 <th>Cantidad</th>
-                                <th>Acción</th>
+                                <th>Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>

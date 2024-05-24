@@ -4,6 +4,31 @@ class Carrito{
         this.cant_articulos = 0
         this.total_pedido = 0
         this.platos = []
+        this.tableBody = document.querySelector('.stacked-table tbody');
+        this.totalCompra = document.querySelector('.total-compra');
+    }
+
+    actualizarTabla() {
+        // Limpiar el cuerpo de la tabla
+        this.tableBody.innerHTML = '';
+
+        // Iterar sobre cada plato en el carrito y agregarlo a la tabla
+        this.platos.forEach(plato => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${plato.nombre}</td>
+                <td>${plato.descripcion}</td>
+                <td>$${plato.precio.toFixed(2)}</td>
+                <td>${plato.cantidad}</td>
+                <td>
+                    <!-- Botón de eliminar o cualquier otra acción -->
+                </td>
+            `;
+            this.tableBody.appendChild(tr);
+        });
+
+        // Actualizar el total de la compra
+        this.totalCompra.textContent = `Total: $${this.total_pedido.toFixed(2)}`;
     }
 
     cargarPlatos(){
@@ -21,6 +46,9 @@ class Carrito{
             const newPlato = new Plato(nombre, descripcion, precio, cantidad, id);
             console.log(newPlato)
             this.platos.push(newPlato);
+            // Actualizar la tabla
+            this.actualizarTabla();
+            
         })
     }
 
@@ -45,6 +73,8 @@ class Carrito{
             this.cant_articulos += 1;
             this.total_pedido += plato.precio;
         }
+        // Actualizar la tabla
+        this.actualizarTabla();
     }    
 
     decrementarCantidadPlato(platoId) {
@@ -65,25 +95,39 @@ class Carrito{
             this.cant_articulos -= 1;
             this.total_pedido -= plato.precio;
         }
+        // Actualizar la tabla
+        this.actualizarTabla();
     }
 
-    actualizarCartel(cantidad)
-    {
-        /**
-         * obtener htmlObject cartel `cantidad-articulos`
-         * actualizar con la cantidad q envian por parametro
-         */
-        const enlaceCarrito = document.querySelector('.carrito');
-        const totalCompra = document.querySelector('.total-compra');
+    actualizarTabla() {
+        // Limpiar el cuerpo de la tabla
+        this.tableBody.innerHTML = '';
 
-        console.log(`this.cant_articulos: ${this.cant_articulos}`)
-        console.log(`cantidad: ${cantidad}`)
+        // Iterar sobre cada plato en el carrito y agregarlo a la tabla
+        this.platos.forEach((plato, index) => {
+            if(plato.cantidad > 0){
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${plato.nombre}</td>
+                    <td>${plato.descripcion}</td>
+                    <td>$${plato.precio.toFixed(2)}</td>
+                    <td>${plato.cantidad}</td>
+                    <td>$${(plato.precio * plato.cantidad).toFixed(2)}</td>
+                `;
+                this.tableBody.appendChild(tr);
+            }
+        });
 
-        // Actualiza el contenido del enlace con la cantidad de artículos del carrito
-        console.log(`Antes de actualizar el enlace ${enlaceCarrito.textContent}`);
-        enlaceCarrito.textContent = `Cantidad de Artículos: ${cantidad}`;
-        totalCompra.textContent = `Total: $${this.total_pedido}`
-        console.log(`Después de actualizar el enlace ${enlaceCarrito.textContent}`);    
+        // Actualizar el total de la compra
+        this.totalCompra.textContent = `Total: $${this.total_pedido.toFixed(2)}`;
+
+        // Agregar eventos a los botones de eliminar
+        document.querySelectorAll('.btn_eliminar').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const index = parseInt(btn.dataset.index);
+                this.eliminarPlato(index);
+            });
+        });
     }
     
 

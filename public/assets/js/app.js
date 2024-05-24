@@ -102,7 +102,7 @@ class appPAW {
                             const inputCantidad = this.parentElement.querySelector('.input_cantidad');
                             inputCantidad.value = parseInt(inputCantidad.value) + 1;
                             
-                            carrito.actualizarCartel(inputCantidad.value)
+                            // carrito.actualizarCartel(inputCantidad.value)
                            
                         });
                     });
@@ -123,7 +123,7 @@ class appPAW {
                             console.log(`parseInt(inputCantidad.value): ${parseInt(inputCantidad.value)}`)
                             inputCantidad.value = parseInt(inputCantidad.value) - 1;
                     
-                            carrito.actualizarCartel(inputCantidad.value);
+                            // carrito.actualizarCartel(inputCantidad.value);
                         });
                     });                  
                 })
