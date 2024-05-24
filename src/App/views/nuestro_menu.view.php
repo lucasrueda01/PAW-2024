@@ -21,7 +21,7 @@
             <p>Nuestras hamburguesas te esperan cerca tuyo</p>
         </section>       
 
-        <section class="container_articulos"> <!-- SECCION HAMBURGUESAS -->
+        <section class="container_articulos" id="container_articulos"> <!-- SECCION HAMBURGUESAS -->
 
             <nav class="selector_tipo_articulo">
                 <ul>
@@ -35,7 +35,7 @@
                         <a href="#otros_platos">Otros Platos</a>
                     </li>
                     <li>
-                        <p><a href="/pedir" class="carrito">Cantidad de Articulos: 00 </a></p>
+                        <p><a href="#carrito" class="carrito">Cantidad de Articulos: 00 </a></p>
                     </li>
                 </ul>
 
@@ -47,12 +47,14 @@
                 
                     <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Hamburguesa') : ?> 
-                            <li class="articulo">
+                            <li class="articulo" data-id="<?= $plato->getId(); ?>">
                                 <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
-                                <h4><?= $plato->getNombrePlato(); ?></h4>
-                                <p><?= $plato->getIngredientes(); ?></p>
+                                <h4 data-id="<?= $plato->getNombrePlato(); ?>"><?= $plato->getNombrePlato(); ?></h4>
+                                <p data-id="<?= $plato->getIngredientes(); ?>"><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio" data-id="<?= $plato->getPrecio(); ?>">$<?= number_format($plato->getPrecio(), 2, ',', '.'); ?></p>
-                                <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
+                                <button class="btn_decrement" data-id="<?= $plato->getId(); ?>">-</button>
+                                <input type="number" value="0" class="input_cantidad">
+                                <button class="btn_increment" data-id="<?= $plato->getId(); ?>">+</button>
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    
@@ -67,12 +69,14 @@
                 <ul class="lista_articulos">
                     <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Bebida') : ?> 
-                            <li class="articulo">
+                            <li class="articulo" data-id="<?= $plato->getId(); ?>">
                                 <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
-                                <h4><?= $plato->getNombrePlato(); ?></h4>
-                                <p><?= $plato->getIngredientes(); ?></p>
+                                <h4 data-id="<?= $plato->getNombrePlato(); ?>"><?= $plato->getNombrePlato(); ?></h4>
+                                <p data-id="<?= $plato->getIngredientes(); ?>"><?= $plato->getIngredientes(); ?></p>
                                 <p class="articulo_precio" data-id="<?= $plato->getPrecio(); ?>">$<?= number_format($plato->getPrecio(), 2, ',', '.'); ?></p>
-                                <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
+                                <button class="btn_decrement" data-id="<?= $plato->getId(); ?>">-</button>
+                                <input type="number" value="0" class="input_cantidad">
+                                <button class="btn_increment" data-id="<?= $plato->getId(); ?>">+</button>
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    
@@ -84,20 +88,27 @@
                 <ul class="lista_articulos">
                 <?php foreach ($platos as $plato) : ?> 
                         <?php if ($plato->getTipoPlato()== 'Otro Plato') : ?> 
-                            <li class="articulo">
+                            <li class="articulo" data-id="<?= $plato->getId(); ?>">
                                 <img src="/plato?id=<?= $plato->getId(); ?>" alt="<?= $plato->getNombrePlato(); ?>"> 
-                                <h4><?= $plato->getNombrePlato(); ?></h4>
-                                
-                                <p><?= $plato->getIngredientes(); ?></p>
-                                <p class="articulo_precio" data-id="<?= $plato->getPrecio(); ?>">$<?= number_format($plato->getPrecio(), 2, ',', '.'); ?></p>
-                                <a href="#" class="agregar-carrito boton boton_amarillo" data-id="<?= $plato->getId(); ?>">Agregar</a>
+                                <h4 data-id="<?= $plato->getNombrePlato(); ?>"><?= $plato->getNombrePlato(); ?></h4>
+                                <p data-id="<?= $plato->getIngredientes(); ?>"><?= $plato->getIngredientes(); ?></p>
+                                <p class="articulo_precio" data-id="<?= $plato->getPrecio(); ?>">$<?= number_format($plato->getPrecio(), 2, ',', '.'); ?></p>                               
+                                <button class="btn_decrement" data-id="<?= $plato->getId(); ?>">-</button>
+                                <input type="number" value="0" class="input_cantidad">
+                                <button class="btn_increment" data-id="<?= $plato->getId(); ?>">+</button>
+                            
                             </li>
                         <?php endif ?>    
                     <?php endforeach ?>    
                 </ul>
             </section>
 
+            <?php require __DIR__ . '/parts/formulario-pedido.view.php'; ?>
+
         </section>
+
+
+                        
 
     </main>
 

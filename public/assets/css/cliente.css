@@ -107,9 +107,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .titulo_fieldset {
-    position: absolute;
-    top: -42px;
-    left: .2rem;
+    /* position: absolute; */
+    /* top: -42px; */
+    /* left: .2rem; */
     padding: 1rem;
     margin-left: 13rem;
 }
@@ -597,7 +597,7 @@ input[type=number]::-webkit-inner-spin-button {
     position: absolute;
     z-index: 1;
     right: -4rem;
-    top: -1.1rem;
+    top: -.7rem;
     border: none;
 }
 
@@ -635,6 +635,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 4rem;
     margin: 2rem;
     padding: 1rem;
+    background-color: var(--color-amarillo);
     border-bottom: 1px solid var(--color-amarillo);
 }
 
@@ -760,7 +761,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .articulo_precio {
     font-size: 1.5rem;
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 
 .boton_gris a {
@@ -951,4 +952,28 @@ input[type="submit"] {
     padding: 2px 5px;
     border-radius: 5px;
     font-size: 12px;
+}
+
+.btn_decrement, .btn_increment {
+    background-color: var(--color-amarillo);
+    border: 0px;
+    width: 30px;
+    height: auto;
+    text-align: center;
+}
+
+.btn_decrement {
+    margin-left: 1rem;
+}
+
+.input_cantidad {
+    display: inline-block;
+    width: 2rem;
+    margin: 0;
+    text-align: center;
+    border: 0;
+}
+
+.control_cantidad {
+    margin-left: 1rem;
 }

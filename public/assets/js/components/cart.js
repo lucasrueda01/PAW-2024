@@ -34,13 +34,13 @@ class Cart {
             // console.log(cantidadesMap)
     
             // Obtener todos los elementos de la clase 'articulo'
-            document.querySelectorAll('.articulo').forEach(articulo => {
-                let id = articulo.querySelector('.agregar-carrito').getAttribute('data-id');
+            document.querySelectorAll('.btn_increment').forEach(btn => {
+                let id = btn.getAttribute('data-id');
                 // console.log(id)
                 // Remover cantidad previa si existe
-                let previousQuantityElem = articulo.querySelector('.articulo_cantidad');
-                if (previousQuantityElem) {
-                    previousQuantityElem.remove();
+                let previouscantidadElem = articulo.querySelector('.articulo_cantidad');
+                if (previouscantidadElem) {
+                    previouscantidadElem.remove();
                 }
                 if (cantidadesMap[parseInt(id)]) {
                     // Crear y agregar el nuevo elemento de cantidad
@@ -50,7 +50,7 @@ class Cart {
                     articulo.appendChild(cantidadElem);
                     
                     // Crear y agregar el contenido al pseudo-elemento
-                    let button = articulo.querySelector('.agregar-carrito');
+                    let button = articulo.querySelector('.btn_increment');
                     button.setAttribute('data-cantidad', cantidadesMap[id]);
                 }else{
                     console.log(`id no encontrado: ${id}`);
@@ -80,7 +80,7 @@ class Cart {
         } else {
             plates[plateIndex].cantidad += cantidad;
         }
-    
+
         this.setCookie(this.cookieName, JSON.stringify(plates), 7);
         this.updateQuantities();
     }
@@ -106,7 +106,6 @@ class Cart {
     }
 
     
-
     updateCarrito(data, table) {
         // Limpiar el cuerpo de la tabla
         const tbody = table.querySelector('tbody');
@@ -138,6 +137,7 @@ class Cart {
                 const platoId = event.target.getAttribute('data-id');
                 console.log(platoId);
                 this.removeFromCart(platoId);
+                this.mostrarCarritoActual();
             });
     
             // Agregar fila a la tabla
@@ -155,24 +155,32 @@ class Cart {
     removeFromCart(platoId) {
         // Obtener la lista de platos de la cookie
         const platosCookie = this.getCookie(this.cookieName);
-
+    
         // Verificar si la cookie existe y tiene datos
         if (platosCookie) {
             // Convertir la cookie a un array de objetos
             let plates = JSON.parse(platosCookie);
-
+    
             // Encontrar el índice del plato en la lista de IDs
             const plateIndex = plates.findIndex(plate => plate.id == platoId);
-
+    
             // Verificar si el plato existe en la lista
             if (plateIndex !== -1) {
-                // Eliminar el plato de la lista
-                plates.splice(plateIndex, 1);
-
+                // Verificar si la cantidad es mayor a 1
+                if (plates[plateIndex].cantidad > 1) {
+                    // Disminuir la cantidad en 1
+                    console.log(`cantidad mayor a 1: ${plates[plateIndex].cantidad}`)
+                    plates[plateIndex].cantidad -= 1;
+                } else {
+                    // Si la cantidad es 1, eliminar el plato de la lista
+                    console.log(`cantidad igual a 1: ${plates[plateIndex].cantidad}`)
+                    plates.splice(plateIndex, 1);
+                }
+    
                 // Actualizar la cookie con la nueva lista de platos
                 this.setCookie(this.cookieName, JSON.stringify(plates), 7);
-
-                // Actualizar el carrito después de eliminar el plato
+    
+                // Actualizar el carrito después de disminuir la cantidad o eliminar el plato
                 this.updateCart();
             }
         }

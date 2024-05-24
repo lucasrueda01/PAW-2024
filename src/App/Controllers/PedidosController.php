@@ -35,7 +35,7 @@ class PedidosController extends Controller
     public function pedir()
     {
         $titulo = 'PAW POWER | PEDIR';
-        require $this->viewsDirCliente . 'pedir.view.php';
+        require $this->viewsDir . 'pedir.view.php';
     }
 
     public function get()

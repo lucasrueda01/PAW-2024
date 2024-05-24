@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <?php require __DIR__ . '/../parts/head.view.php'; ?>
-</head>
-
-<body>
-
-    <?php require __DIR__ . '/../parts/header.view.php'; ?>
-
-    <main>
-
-        <!--CONTENIDO DE LA VIEW PEDIDOS-->
-        <section class="titulo titulo_portada">
-            <h2>PEDIDOS</h2>
-            <p>Nuestras hamburguesas te esperan cerca tuyo</p>
-        </section>
-
-        <section>
+<section id="carrito">
+    
             <form action="/pedido/new" method="post" class="formulario_pedido">
                 
                 <fieldset class="container container_carrito"> <!--Fieldset Carrito-->
@@ -41,7 +23,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <a href="/nuestro_menu" class="boton boton_negro btn-pedido">Agregar</a>
+                    <a href="#container_articulos" class="boton boton_negro btn-pedido">Agregar</a>
                 </fieldset>
 
 
@@ -78,7 +60,4 @@
 
                 <input type="submit" value="Pedir" class="boton boton_negro  btn-pedido"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO ELIGE LA OPCION PEDIR EN EL LUGAR -->
             </form>
-        </section>
-    </main>
-
-    <?php require __DIR__ . '/../parts/footer.view.php'; ?>
+</section>
