@@ -47,6 +47,26 @@ class Carrito{
         }
     }    
 
+    decrementarCantidadPlato(platoId) {
+        let plato = null;
+        
+        for (let i = 0; i < this.platos.length; i++) {
+            const id = JSON.stringify(this.platos[i].id);
+                        
+            if (id === platoId) {
+                plato = this.platos[i];
+                console.log(`encontre plato: ${plato}`);
+                break;
+            }
+        }
+        
+        if (plato && plato.cantidad > 0) { // Me Aseguro de que la cantidad sea mayor que 0 antes de decrementar
+            plato.cantidad -= 1;
+            this.cant_articulos -= 1;
+            this.total_pedido -= plato.precio;
+        }
+    }
+
     actualizarCartel(cantidad)
     {
         /**
@@ -54,9 +74,16 @@ class Carrito{
          * actualizar con la cantidad q envian por parametro
          */
         const enlaceCarrito = document.querySelector('.carrito');
+        const totalCompra = document.querySelector('.total-compra');
+
+        console.log(`this.cant_articulos: ${this.cant_articulos}`)
+        console.log(`cantidad: ${cantidad}`)
 
         // Actualiza el contenido del enlace con la cantidad de artículos del carrito
-        enlaceCarrito.textContent = `Cantidad de Articulos: 0${this.cant_articulos}`;         
+        console.log(`Antes de actualizar el enlace ${enlaceCarrito.textContent}`);
+        enlaceCarrito.textContent = `Cantidad de Artículos: ${cantidad}`;
+        totalCompra.textContent = `Total: $${this.total_pedido}`
+        console.log(`Después de actualizar el enlace ${enlaceCarrito.textContent}`);    
     }
     
 

@@ -87,6 +87,7 @@ class appPAW {
                      */
                     carrito.cargarPlatos()
                     console.log(carrito)
+                    console.log(`cargando carrito POR PRIMERA VEZ`)
                     /**
                      * recorrer todos los botones btn-increment, por cada
                      * uno agregar evento de incrementarCarrito
@@ -101,7 +102,7 @@ class appPAW {
                             const inputCantidad = this.parentElement.querySelector('.input_cantidad');
                             inputCantidad.value = parseInt(inputCantidad.value) + 1;
                             
-                            carrito.actualizarCartel()
+                            carrito.actualizarCartel(inputCantidad.value)
                            
                         });
                     });
@@ -111,9 +112,20 @@ class appPAW {
                      * uno agregar evento de decrementarCarrito
                      * y a ese plato decrementar cantidad tambien
                      */                    
-                    // Document.querySelectorAll('btn_decrement').forEach(btn => {
-                        
-                    // })                    
+                    document.querySelectorAll('.btn_decrement').forEach(btn_decrement => {
+                        btn_decrement.addEventListener('click', function() {
+                            const platoId = this.dataset.id;
+                            carrito.decrementarCantidadPlato(platoId);
+                            console.log(carrito);
+                    
+                            // Actualizar la cantidad en el input correspondiente
+                            const inputCantidad = this.parentElement.querySelector('.input_cantidad');
+                            console.log(`parseInt(inputCantidad.value): ${parseInt(inputCantidad.value)}`)
+                            inputCantidad.value = parseInt(inputCantidad.value) - 1;
+                    
+                            carrito.actualizarCartel(inputCantidad.value);
+                        });
+                    });                  
                 })
             }
 

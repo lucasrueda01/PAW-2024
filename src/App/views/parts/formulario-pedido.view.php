@@ -19,7 +19,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="5">Total: $00.00</td>
+                                <td colspan="5" class="total-compra">Total: $00.00</td>
                             </tr>
                         </tfoot>
                     </table>
