@@ -25,17 +25,17 @@
 
             <nav class="selector_tipo_articulo">
                 <ul>
-                    <li class="">
+                    <li>
                         <a href="#hamburguesas">Hamburguesas</a>
                     </li>   
-                    <li class="">
+                    <li>
                         <a href="#bebidas">Bebidas</a>
                     </li>
-                    <li class="">
+                    <li>
                         <a href="#otros_platos">Otros Platos</a>
                     </li>
                     <li>
-                        <p><a href="#carrito" class="carrito">Cantidad de Articulos: 00 </a></p>
+                        <a href="#carrito" class="carrito">Cantidad de Articulos: 00 </a>
                     </li>
                 </ul>
 

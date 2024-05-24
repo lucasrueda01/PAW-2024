@@ -101,8 +101,12 @@ class appPAW {
                             // // Actualizar la cantidad en el input correspondiente
                             const inputCantidad = this.parentElement.querySelector('.input_cantidad');
                             inputCantidad.value = parseInt(inputCantidad.value) + 1;
-                            
-                            // carrito.actualizarCartel(inputCantidad.value)
+
+                            console.log(`carrito despues de actualizar cantidad: DECREMENT`)
+                            console.log(carrito)
+
+                            const cantidadArticulos = document.querySelector('.carrito');
+                            cantidadArticulos.textContent = `Cantidad de Articulos: 0${carrito.cant_articulos}`;
                            
                         });
                     });
@@ -123,14 +127,15 @@ class appPAW {
                             console.log(`parseInt(inputCantidad.value): ${parseInt(inputCantidad.value)}`)
                             inputCantidad.value = parseInt(inputCantidad.value) - 1;
                     
-                            // carrito.actualizarCartel(inputCantidad.value);
+                            const cantidadArticulos = document.querySelector('.carrito');
+                            cantidadArticulos.textContent = `Cantidad de Articulos: 0${carrito.cant_articulos}`;
                         });
                     });     
                     
                     /**
                      * interacciones con el formulario
                      */
-                    
+
                     // Seleccionar el select y el campo de dirección
                     const formaPagoSelect = document.querySelector("#tipo");
                     const direccionInput = document.querySelector("#direccion");
