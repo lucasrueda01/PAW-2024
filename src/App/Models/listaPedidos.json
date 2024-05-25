@@ -1,283 +1,213 @@
 [
     {
-        "Fecha\/Hora": "2024-05-19T00:05:41",
-        "Tipo": "Delivery",
-        "Nombre": "natello juan manuel",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Av San Juan 369",
-        "Observaciones": "es un tipo casa",
-        "Monto Total": null,
+        "Fecha\/Hora": "2024-05-22T21:07:20",
+        "Tipo": "delivery",
+        "Nombre": "JUAN",
+        "Metodo de Pago": "efectivo",
+        "Direccion": "mafalda 884",
+        "Observaciones": "LA CASA ES UN DEPTO TIPO CASA",
+        "Monto Total": 6740,
         "articulos": [
             {
-                "id": "1",
-                "cantidad": 2
+                "nombre": "CHEESEBURGUER",
+                "precio": 1500,
+                "cantidad": 1,
+                "subtotal": 1500
+            },
+            {
+                "nombre": "SPRITE",
+                "precio": 2000,
+                "cantidad": 2,
+                "subtotal": 4000
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1240,
+                "cantidad": 1,
+                "subtotal": 1240
             }
         ],
         "Nro Pedido": 1,
-        "Estado": "despachado"
+        "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-19T00:08:53",
-        "Tipo": "Delivery",
-        "Nombre": "natello juan manuel",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Av San Juan 369",
-        "Observaciones": "es un tipo casa",
-        "Monto Total": null,
+        "Fecha\/Hora": "2024-05-22T21:07:57",
+        "Tipo": "delivery",
+        "Nombre": "JUAN",
+        "Metodo de Pago": "efectivo",
+        "Direccion": "mafalda 884",
+        "Observaciones": "LA CASA ES UN DEPTO TIPO CASA",
+        "Monto Total": 6740,
         "articulos": [
             {
-                "id": "1",
-                "cantidad": 2
+                "nombre": "CHEESEBURGUER",
+                "precio": 1500,
+                "cantidad": 1,
+                "subtotal": 1500
+            },
+            {
+                "nombre": "SPRITE",
+                "precio": 2000,
+                "cantidad": 2,
+                "subtotal": 4000
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1240,
+                "cantidad": 1,
+                "subtotal": 1240
             }
         ],
         "Nro Pedido": 2,
-        "Estado": "pasar-a-retirar"
+        "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-19T00:09:39",
-        "Tipo": "Delivery",
-        "Nombre": "natello juan manuel",
+        "Fecha\/Hora": "2024-05-22T22:17:24",
+        "Tipo": "en-el-local",
+        "Nombre": "JUAN",
         "Metodo de Pago": "mercado_pago",
-        "Direccion": "Av San Juan 369",
-        "Observaciones": "es un tipo casa",
-        "Monto Total": null,
+        "Direccion": "",
+        "Observaciones": "con papas el cafe con leche",
+        "Monto Total": 3500,
         "articulos": [
             {
-                "id": "1",
-                "cantidad": 2
+                "nombre": "SPRITE",
+                "precio": 2000,
+                "cantidad": 1,
+                "subtotal": 2000
+            },
+            {
+                "nombre": "CHEESEBURGUER",
+                "precio": 1500,
+                "cantidad": 1,
+                "subtotal": 1500
             }
         ],
         "Nro Pedido": 3,
-        "Estado": "despachado"
+        "Estado": "pasar-a-retirar"
     },
     {
-        "Fecha\/Hora": "2024-05-19T00:33:34",
-        "Tipo": "Delivery",
-        "Nombre": "juan",
+        "Fecha\/Hora": "2024-05-23T13:42:35",
+        "Tipo": "en-el-local",
+        "Nombre": "JUAN",
         "Metodo de Pago": "mercado_pago",
-        "Direccion": "Av San Juan 369",
-        "Observaciones": "es un tipo casa",
-        "Monto Total": null,
+        "Direccion": "",
+        "Observaciones": "con papas el cafe con leche",
+        "Monto Total": 7250,
         "articulos": [
             {
-                "id": "1",
-                "cantidad": 3
+                "nombre": "coca-cola",
+                "precio": 2000,
+                "cantidad": 1,
+                "subtotal": 2000
             },
             {
-                "id": "3",
-                "cantidad": 1
+                "nombre": "CHEESEBURGUER",
+                "precio": 1650,
+                "cantidad": 1,
+                "subtotal": 1650
             },
             {
-                "id": "4",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 2,
+                "subtotal": 3600
             }
         ],
-        "Nro Pedido": 5,
-        "Estado": "despachado"
+        "Nro Pedido": 4,
+        "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-19T00:37:36",
-        "Tipo": "Delivery",
+        "Fecha\/Hora": "2024-05-23T13:52:05",
+        "Tipo": "en-el-local",
         "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Av San Juan 369",
-        "Observaciones": "es un tipo casa",
-        "Monto Total": null,
-        "articulos": [
-            {
-                "id": "1",
-                "cantidad": 3
-            },
-            {
-                "id": "3",
-                "cantidad": 1
-            },
-            {
-                "id": "4",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
-            }
-        ],
-        "Nro Pedido": 6,
-        "Estado": "despachado"
-    },
-    {
-        "Fecha\/Hora": "2024-05-19T09:27:30",
-        "Tipo": "Delivery",
-        "Nombre": "natello juan manuel",
         "Metodo de Pago": "mercado_pago",
         "Direccion": "Av San Juan 369",
         "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": null,
+        "Monto Total": 5450,
         "articulos": [
             {
-                "id": "1",
-                "cantidad": 1
+                "nombre": "CHEESEBURGUER",
+                "precio": 1650,
+                "cantidad": 1,
+                "subtotal": 1650
             },
             {
-                "id": "2",
-                "cantidad": 1
+                "nombre": "coca-cola",
+                "precio": 2000,
+                "cantidad": 1,
+                "subtotal": 2000
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 1,
+                "subtotal": 1800
+            }
+        ],
+        "Nro Pedido": 5,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-23T13:55:11",
+        "Tipo": "delivery",
+        "Nombre": "natello juan manuel",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": 5450,
+        "articulos": [
+            {
+                "nombre": "CHEESEBURGUER",
+                "precio": 1650,
+                "cantidad": 1,
+                "subtotal": 1650
+            },
+            {
+                "nombre": "coca-cola",
+                "precio": 2000,
+                "cantidad": 1,
+                "subtotal": 2000
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 1,
+                "subtotal": 1800
+            }
+        ],
+        "Nro Pedido": 6,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-23T13:57:13",
+        "Tipo": "delivery",
+        "Nombre": "natello juan manuel",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": 5450,
+        "articulos": [
+            {
+                "nombre": "CHEESEBURGUER",
+                "precio": 1650,
+                "cantidad": 1,
+                "subtotal": 1650
+            },
+            {
+                "nombre": "coca-cola",
+                "precio": 2000,
+                "cantidad": 1,
+                "subtotal": 2000
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 1,
+                "subtotal": 1800
             }
         ],
         "Nro Pedido": 7,
-        "Estado": "pasar-a-retirar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-19T11:12:14",
-        "Tipo": "Delivery",
-        "Nombre": "PATRICIA ",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Hh",
-        "Observaciones": "Uuu",
-        "Monto Total": null,
-        "articulos": [
-            {
-                "id": "1",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
-            }
-        ],
-        "Nro Pedido": 8,
-        "Estado": "pasar-a-retirar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-19T11:16:38",
-        "Tipo": "Delivery",
-        "Nombre": "PATRICIA ",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Hh",
-        "Observaciones": "Uuu",
-        "Monto Total": null,
-        "articulos": [
-            {
-                "id": "1",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
-            }
-        ],
-        "Nro Pedido": 9,
-        "Estado": "pasar-a-retirar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-19T11:16:57",
-        "Tipo": "Delivery",
-        "Nombre": "PATRICIA ",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Hh",
-        "Observaciones": "Uuu",
-        "Monto Total": null,
-        "articulos": [
-            {
-                "id": "1",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
-            }
-        ],
-        "Nro Pedido": 10,
-        "Estado": "pasar-a-retirar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-19T11:17:35",
-        "Tipo": "Delivery",
-        "Nombre": "PATRICIA ",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Hh",
-        "Observaciones": "Uuu",
-        "Monto Total": null,
-        "articulos": [
-            {
-                "id": "1",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
-            }
-        ],
-        "Nro Pedido": 11,
         "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-19T11:17:50",
-        "Tipo": "Delivery",
-        "Nombre": "",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "",
-        "Monto Total": null,
-        "articulos": [
-            {
-                "id": "1",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
-            }
-        ],
-        "Nro Pedido": 12,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-19T11:18:00",
-        "Tipo": "Delivery",
-        "Nombre": "",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "",
-        "Monto Total": null,
-        "articulos": [
-            {
-                "id": "1",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
-            }
-        ],
-        "Nro Pedido": 13,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-22T15:37:39",
-        "Tipo": "Delivery",
-        "Nombre": "",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "",
-        "Monto Total": null,
-        "articulos": [
-            {
-                "id": "1",
-                "cantidad": 1
-            },
-            {
-                "id": "2",
-                "cantidad": 1
-            },
-            {
-                "id": "3",
-                "cantidad": 1
-            }
-        ],
-        "Nro Pedido": 14,
-        "Estado": "confirmado"
     }
 ]

@@ -167,6 +167,7 @@ class Plato extends Model
         $params = [ "id" => $id];
         try{
             $record = current($this->queryBuilder->select($this->table, $params));
+            
             if($record){
                 $this->set($record);
             }else{

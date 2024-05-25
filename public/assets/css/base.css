@@ -493,7 +493,8 @@ main {
 
 .destacados {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    height: auto;
     max-width: 100em;
     overflow: hidden;
     margin: 0 auto;

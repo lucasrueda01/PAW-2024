@@ -4,6 +4,7 @@
 namespace Paw\App\Models;
 
 use Paw\Core\Model;
+use Exception;
 
 
 class PedidosCollection extends Model
@@ -59,17 +60,24 @@ class PedidosCollection extends Model
         }
     }
 
-    public function getbyId($id)
+    public function getById($id)
     {
-        // Verificar si la decodificación fue exitosa
-        if (!isset($this->indice[$id])) {
-            return [
-                "error" => "NRO DE PEDIDO NO ENCONTRADO."
-            ];            
-        } else {
+        global $log;
+        
+        try {
+            // Verificar si el índice existe
+            if (!isset($this->indice[$id])) {
+                throw new Exception("NRO DE PEDIDO NO ENCONTRADO");
+            }
+    
             return $this->indice[$id];
+        } catch (Exception $e) {
+            // Manejar la excepción si el ID no existe en el índice
+            $log->info("error: ", [$e->getMessage()]);
+            return [
+                "error" => "NRO DE PEDIDO NO ENCONTRADO. " . $e->getMessage()
+            ];
         }
-
     }
 
     public function modificarEstado($id, $estado)
@@ -105,6 +113,11 @@ class PedidosCollection extends Model
     } else {
         return ["error" => "No se encontró un pedido con el ID $id."];
     }
+
+    }
+
+    public function calcularMonto($articulos)
+    {   
 
     }
 

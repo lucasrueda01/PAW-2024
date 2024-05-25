@@ -1,105 +1,136 @@
-function marcarMesas(planoDoc, mesas) {
-    // Iterar sobre las mesas recibidas
+class appPAW {
+    constructor() {
 
-    mesas.forEach(function (mesa) {
-        // Obtener el nombre de la mesa
-        var nombreMesa = mesa.nombre;
+        document.addEventListener("DOMContentLoaded", () => {
 
-        // Buscar el elemento de la mesa con el nombre correspondiente y marcarlo con verde
-        var mesaElemento = planoDoc.querySelector(`#${nombreMesa} .mesa`);
+            /**
+             * cargo la clase Datos, contiene los datos de prueba
+             * para la carga del formulario
+             *  */
+            if (['/reservar_cliente'].includes(window.location.pathname))        
+                PAW.cargarScript("Datos", "/assets/js/components/datos.js");
 
-        console.log(mesaElemento);
-
-        if (mesaElemento) {
-            mesaElemento.style.fill = "green";
-        }
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    let planoDelLocal = document.querySelector("#planoDelLocal");
-
-    planoDelLocal.addEventListener("load", function () {
-        var planoDoc = planoDelLocal.contentDocument;
-
-        if (planoDoc) {
-            let local = document.querySelector("#local");
-
-            local.addEventListener("change", function () {
-                var localSeleccionado = this.value;
-
-                // Objeto con los datos a enviar al servidor
-                var datos = {
-                    local: localSeleccionado,
-                };
-
-                // Configurar la solicitud AJAX
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "local/mesas", true);
-                xhr.setRequestHeader("Content-Type", "application/json");
-
-                // Manejar la respuesta del servidor
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        var mesas = JSON.parse(xhr.responseText);
-
-                        console.log(mesas);
-                        // marcarMesas(planoDoc, mesas);
-                    }
-                };
-
-                // Convertir el objeto de datos a JSON y enviar la solicitud
-                xhr.send(JSON.stringify(datos));
-            });
-
-            var circulos = planoDoc.querySelectorAll(`[id^="mesa-"], [id^="barra-"]`);
-
-            let mesas = planoDoc.querySelectorAll(".mesa");
-
-            mesas.forEach(function (mesa) {
-                mesa.addEventListener("click", function () {
-                    console.log(mesa);
-                });
-            });
-
-            if (circulos) {
-                circulos.forEach(function (circulo) {
-                    circulo.addEventListener("click", function () {
-                        console.log(circulo);
+            if (['/'].includes(window.location.pathname))
+                {
+                    PAW.cargarScript("Carrousel", "/assets/js/components/carrousel.js", () => {
+                        let imagenes = ["/assets/imgs/menu/Muzarelitas.jpg", "/assets/imgs/menu/Oklahoma.jpg", "/assets/imgs/menu/Coca.jpg", "/assets/imgs/menu/Fanta.jpg", "/assets/imgs/menu/BigPower.jpg"]
+                        let carrousel = new Carrousel(".destacados", imagenes)
                     });
+                }
+
+            if (['/plato/new'].includes(window.location.pathname))
+                {
+                    PAW.cargarScript("Drag_Drop", "/assets/js/components/drag-drop.js", () => {
+                        let dragAndDrop = new Drag_Drop()
+                    })                   
+                }
+
+            if (['/reservar_cliente'].includes(window.location.pathname))
+                {
+                    PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {
+        
+                        const servicioRestaurante = new ServicioRestaurante()
+                        /**
+                         * carga los input local, fecha y hora con el evento click
+                         * y controla cuando se hayan cliqueado todos
+                         */
+                        servicioRestaurante.cargarFormularioYComprobar()
+                    });
+                }
+
+            if (['/pedidos_entrantes','/pedidos/estado', '/pedido/new'].includes(window.location.pathname))
+                {
+                    PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
+                    PAW.cargarScript("Animador", "/assets/js/components/animador.js");
+                    PAW.cargarScript("gestorPedidos", "/assets/js/components/gestorPedidos.js", () => {
+                        let gestorPedidos = new GestorPedidos()
+                        
+                        // Llamar a la función obtenerEstadoPedido() cada 10 segundos
+                        setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000)
+                    });
+                }
+            // if(['pedidos_entrantes'].includes(window.location.pathname))
+            // {
+            //     PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
+            // }
+
+           if(['/nuestro_menu'].includes(window.location.pathname))    
+            {
+                PAW.cargarScript("Cart", "/assets/js/components/cart.js", () =>{
+
+                    const cart = new Cart();
+    
+                    document.querySelectorAll('.agregar-carrito').forEach(link => {
+                        link.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            const plateId = this.getAttribute('data-id');
+                            cart.addToCart(plateId, 1);
+                            cart.updateCart();
+                            window.location.href = '/pedir';
+                        });
+
+                    });
+
                 });
             }
-        }
-    });
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-    const carousel = document.querySelector('.carrousel');
-    const intervalTime = 5000; // Tiempo en milisegundos entre cada slide
+            if(['/pedir'].includes(window.location.pathname))    
+                {
+                    PAW.cargarScript("Cart", "/assets/js/components/cart.js", () => {
+                 
+                        const cart = new Cart();
+                
+                        // Obtener las cookies
+                        const platosCookie = cart.getCookie('platos');
+                        console.log(platosCookie);
+                
+                        // Verificar si la cookie existe
+                        if (platosCookie) {
+                            // Convertir la cookie a un array de IDs de platos
+                            const platosIds = JSON.parse(platosCookie);
+                            
+                            // Realizar una solicitud fetch para obtener los detalles de los platos
+                            fetch('/plato-all-in-cart?lista_encoded=' + encodeURIComponent(platosCookie))
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Manejar los datos devueltos
+                                    console.log(data);
+                                    const table = document.querySelector('table');
+                                    cart.updateCarrito(data, table);
+                                    
+                                    // Aquí puedes hacer lo que necesites con los datos de los platos
+                                })
+                                .catch(error => {
+                                    console.error('Error en la solicitud de platos-en-carrito: ' + error);
+                                });
+                        }
+                    });
 
-    let scrollPosition = 0;
+                    // Seleccionar el select y el campo de dirección
+                    const formaPagoSelect = document.querySelector("#forma_pago_take_away");
+                    const direccionInput = document.querySelector("#direccion");
+                    const direccionLabel = document.querySelector("#direccion_label");
 
-    // Función para avanzar al siguiente slide
-    function nextSlide() {
-        scrollPosition += carousel.clientWidth;
-        if (scrollPosition >= carousel.scrollWidth) {
-            scrollPosition = 0;
-        }
-        updateCarousel();
+                    // Agregar un event listener al select para detectar cambios en su valor
+                    formaPagoSelect.addEventListener("change", function() {
+                        // Verificar el valor seleccionado
+                        if (this.value === "en-el-local") {
+                            // Ocultar el campo de dirección y su etiqueta
+                            direccionInput.style.display = "none";
+                            direccionLabel.style.display = "none";
+                        } else {
+                            // Mostrar el campo de dirección y su etiqueta
+                            direccionInput.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
+                            direccionLabel.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
+                        }
+                    });                    
+                }
+        
+            })
     }
+}
 
-    // Función para actualizar el desplazamiento del carrusel
-    function updateCarousel() {
-        carousel.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
-    }
-
-    // Establecer el temporizador para avanzar automáticamente al siguiente slide
-    setInterval(nextSlide, intervalTime);
-});
-
+let app = new appPAW();
 
 
 

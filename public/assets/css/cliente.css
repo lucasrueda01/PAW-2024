@@ -107,9 +107,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .titulo_fieldset {
-    position: absolute;
-    top: -42px;
-    left: .2rem;
+    /* position: absolute; */
+    /* top: -42px; */
+    /* left: .2rem; */
     padding: 1rem;
     margin-left: 13rem;
 }
@@ -155,7 +155,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .container_carrito table {
     margin: 1rem 1rem;
-    width: 80%;
+    width: 80vw;
 }
 
 .container_delivery {
@@ -542,7 +542,15 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--color-amarillo);
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
+.selector_tipo_articulo ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .selector_tipo_articulo li {
@@ -552,6 +560,10 @@ input[type=number]::-webkit-inner-spin-button {
 
 .selector_tipo_articulo ul li:first-child {
     border-right: 1px solid rgb(202, 131, 0);
+}
+
+.selector_tipo_articulo ul li:nth-child(3){
+    border-left: 1px solid rgb(202, 131, 0);
 }
 
 .selector_tipo_articulo ul li:last-child {
@@ -569,6 +581,24 @@ input[type=number]::-webkit-inner-spin-button {
     text-transform: uppercase;
     font-weight: 800;
 
+}
+
+.carrito {
+    position: relative;
+}
+
+.carrito::after {
+    content: '';
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../imgs/svg/icono-carrito-negro.svg');
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    right: -4rem;
+    top: -.7rem;
+    border: none;
 }
 
 .articulo h3, .articulo p {
@@ -605,6 +635,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 4rem;
     margin: 2rem;
     padding: 1rem;
+    background-color: var(--color-amarillo);
     border-bottom: 1px solid var(--color-amarillo);
 }
 
@@ -730,7 +761,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .articulo_precio {
     font-size: 1.5rem;
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 
 .boton_gris a {
@@ -910,4 +941,39 @@ input[type="submit"] {
     .tabla_gestion_mesa td[data-label="Nro Pedido"] {
         background-color: #f0f0f0;
     }
+}
+
+.agregar-carrito::after {
+    content: attr(data-cantidad) ;
+    display: inline-block;
+    margin-left: 5px; /* Ajusta según sea necesario */
+    background-color: black;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.btn_decrement, .btn_increment {
+    background-color: var(--color-amarillo);
+    border: 0px;
+    width: 30px;
+    height: auto;
+    text-align: center;
+}
+
+.btn_decrement {
+    margin-left: 1rem;
+}
+
+.input_cantidad {
+    display: inline-block;
+    width: 2rem;
+    margin: 0;
+    text-align: center;
+    border: 0;
+}
+
+.control_cantidad {
+    margin-left: 1rem;
 }
