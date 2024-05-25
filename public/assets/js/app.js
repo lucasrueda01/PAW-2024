@@ -76,6 +76,7 @@ class appPAW {
 
             if(['/nuestro_menu'].includes(window.location.pathname)) 
             {
+                PAW.cargarScript("UtilsMaths", "/assets/js/components/UtilsMaths.js")
                 PAW.cargarScript("Plato", "/assets/js/components/plato.js")
                 PAW.cargarScript("carrito", "/assets/js/components/carrito.js", () =>{
                     /**
@@ -86,8 +87,6 @@ class appPAW {
                      * cargarPlatos en memoria, con cantidad vacia
                      */
                     carrito.cargarPlatos()
-                    console.log(carrito)
-                    console.log(`cargando carrito POR PRIMERA VEZ`)
                     /**
                      * recorrer todos los botones btn-increment, por cada
                      * uno agregar evento de incrementarCarrito
@@ -102,11 +101,9 @@ class appPAW {
                             const inputCantidad = this.parentElement.querySelector('.input_cantidad');
                             inputCantidad.value = parseInt(inputCantidad.value) + 1;
 
-                            console.log(`carrito despues de actualizar cantidad: DECREMENT`)
-                            console.log(carrito)
 
                             const cantidadArticulos = document.querySelector('.carrito');
-                            cantidadArticulos.textContent = `Cantidad de Articulos: 0${carrito.cant_articulos}`;
+                            cantidadArticulos.textContent = `Cantidad de Articulos: ${String(carrito.cant_articulos).padStart(2, '0')}`;
                            
                         });
                     });
@@ -129,7 +126,7 @@ class appPAW {
                                 inputCantidad.value = parseInt(inputCantidad.value) - 1;
                         
                                 const cantidadArticulos = document.querySelector('.carrito');
-                                cantidadArticulos.textContent = `Cantidad de Articulos: 0${carrito.cant_articulos}`;
+                                cantidadArticulos.textContent = `Cantidad de Articulos: ${String(carrito.cant_articulos).padStart(2, '0')}`;
                             }else{
                                 console.log(`ya no se puede seguir decrementando`)
                             }
