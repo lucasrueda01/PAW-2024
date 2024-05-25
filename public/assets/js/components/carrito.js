@@ -114,7 +114,11 @@ class Carrito{
                     <td>${plato.nombre}</td>
                     <td>${plato.descripcion}</td>
                     <td>${UtilsMaths.formatCurrency(plato.precio)}</td>
-                    <td>${plato.cantidad}</td>
+                    <td>
+                        <button class="btn_decrement_form" data-id="<?= $plato->getId(); ?>">-</button>
+                        <input type="number" value="${plato.cantidad}" class="input_cantidad_form">
+                        <button class="btn_increment_form" data-id="<?= $plato->getId(); ?>">+</button>                        
+                    </td>
                     <td>${UtilsMaths.formatCurrency(plato.precio * plato.cantidad)}</td>
                 `;
                 this.tableBody.appendChild(tr);

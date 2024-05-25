@@ -977,3 +977,17 @@ input[type="submit"] {
 .control_cantidad {
     margin-left: 1rem;
 }
+
+.btn_increment_form, .btn_decrement_form {
+    margin: 0 !important;
+    border: 0 !important;
+    width: 3rem !important;
+    font-size: 1.2rem !important;
+    height: auto;
+}
+
+.input_cantidad_form {
+    width: fit-content !important;
+    max-width: 1.5rem;
+    border: 0px;
+}
