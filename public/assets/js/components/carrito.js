@@ -113,16 +113,20 @@ class Carrito{
                 tr.innerHTML = `
                     <td>${plato.nombre}</td>
                     <td>${plato.descripcion}</td>
-                    <td>$${plato.precio.toFixed(2)}</td>
-                    <td>${plato.cantidad}</td>
-                    <td>$${(plato.precio * plato.cantidad).toFixed(2)}</td>
+                    <td>${UtilsMaths.formatCurrency(plato.precio)}</td>
+                    <td>
+                        <button class="btn_decrement_form" data-id="<?= $plato->getId(); ?>">-</button>
+                        <input type="number" value="${plato.cantidad}" class="input_cantidad_form">
+                        <button class="btn_increment_form" data-id="<?= $plato->getId(); ?>">+</button>                        
+                    </td>
+                    <td>${UtilsMaths.formatCurrency(plato.precio * plato.cantidad)}</td>
                 `;
                 this.tableBody.appendChild(tr);
             }
         });
 
         // Actualizar el total de la compra
-        this.totalCompra.textContent = `Total: $${this.total_pedido.toFixed(2)}`;
+        this.totalCompra.textContent = `Total: ${UtilsMaths.formatCurrency(this.total_pedido)}`;
 
         // Agregar eventos a los botones de eliminar
         document.querySelectorAll('.btn_eliminar').forEach(btn => {
