@@ -26,24 +26,14 @@
         </section>
 
 
+        <!-- carrousel  -->
         <section class="destacados">
-            <!--SECCION DESTACADOS-->
             <h2 class="subtitulo">Los destacados de Power</h2>
-            <ul class="carrousel">
-                <li class="item carrousel-item">
-                    <img src="/assets/imgs/menu/Oklahoma.jpg" alt="hamburguesa destacada">
-                    <p>Oklahoma</p>
-                </li>
-                <li class="item carrousel-item">
-                    <img src="/assets/imgs/menu/BigPower.jpg" alt="hamburguesa destacada">
-                    <p>Big Power 3</p>
-                </li>
-                <li class="item carrousel-item">
-                    <img src="/assets/imgs/menu/BigPower.jpg" alt="hamburguesa destacada">
-                    <p>Big Power 4</p>
-                </li>
-            </ul>
+            
         </section>
+
+        
+
 
         <section class="sucursales"> <!--NUESTRAS SUCURSALES-->
             <h2 class="subtitulo">Nuestras Sucursales</h2>

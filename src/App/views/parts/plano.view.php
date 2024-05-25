@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?php
+echo '<?xml version="1.0" encoding="UTF-8"?>'; 
+?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg id="plano" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" 
-viewBox="0 0 3000.11 2829.45" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 3000.11 2829.45" xmlns:xlink="http://www.w3.org/1999/xlink">
+
  <defs>
   <style type="text/css">
-   <![CDATA[
+   <![CDATA[    
     .texto {font-weight:bold;font-size:100px; font-family: Arial, Helvetica, sans-serif;}
     .escalera {stroke:#333;stroke-width:2.07;stroke-miterlimit:22.9256; fill: #fff;}
     .puerta {stroke:#333;stroke-width:2.07;stroke-miterlimit:22.9256; fill: #fff;}

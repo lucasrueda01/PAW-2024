@@ -68,17 +68,30 @@ $router->get('/sobre_nosotros', 'EmpresaController@sobre_nosotros');
 $router->get('/promociones', 'MenuController@promociones'); // MenuController
 $router->get('/nuestro_menu', 'MenuController@nuestroMenu'); // MenuController
 $router->get('/plato', 'MenuController@get'); // MenuController
+$router->get('/plato-all-in-cart', 'MenuController@getPlatosInCart'); // MenuController
 $router->get('/plato/verDetalle', 'MenuController@verDetalle'); // MenuController
 $router->get('/plato/new', 'MenuController@new'); // MenuController
 $router->post('/plato/new', 'MenuController@new'); // MenuController
+$router->post('/plato/add-to-cart', 'MenuController@addToCart'); // MenuController
+
 // LocalController
 $router->post('/local/mesas', 'LocalController@getMesas'); // LocalController
 // PedidoController
-$router->get('/pedir', 'PedidoController@pedir'); // PedidoController
-$router->get('/pedidos_entrantes', 'PedidoController@pedidos_entrantes'); // PedidoController
+$router->get('/pedir', 'PedidosController@pedir'); // PedidoController
+$router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // PedidoController
+$router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
+$router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
+$router->post('/pedido/new', 'PedidosController@new'); // PedidoController
+
+$router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
+
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
-$router->post('/reservar_cliente', 'MesaController@procesar_reserva_cliente'); // MesaController
+$router->post('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
+$router->get('/locales/get', 'MesaController@getLocales'); // MesaController
 $router->get('/gestion_lista_mesas', 'MesaController@gestion_lista_mesas'); // MesaController
 $router->get('/gestion_mesa', 'MesaController@gestion_mesa'); // MesaController
 
+$router->get('/sitemap', 'SEOController@generateSitemap');
+$router->get('/robot', 'SEOController@generateRobot');
+$router->get('/json-ld', 'SEOController@generateJsonLd');

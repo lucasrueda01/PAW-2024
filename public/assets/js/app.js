@@ -74,11 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    cr = new Carrousel();
-    cr.inicarCarrousel();
-})
-
-document.addEventListener("DOMContentLoaded", function() {
     const carousel = document.querySelector('.carrousel');
     const intervalTime = 5000; // Tiempo en milisegundos entre cada slide
 
@@ -104,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Establecer el temporizador para avanzar automáticamente al siguiente slide
     setInterval(nextSlide, intervalTime);
 });
-
 
 
 

@@ -31,7 +31,7 @@
                         <p><?= $newPlato->getIngredientes(); ?></p><br>
                     </figcaption>
                 </figure>
-                <a class="boton boton_negro" href="/nuevo_plato">CARGAR OTRO PLATO</a>
+                <a class="boton boton_negro" href="/plato/new">CARGAR OTRO PLATO</a>
             </section>
         <?php endif ?>
   

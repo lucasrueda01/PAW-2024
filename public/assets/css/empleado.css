@@ -34,7 +34,7 @@
     border-bottom: 1rem solid var(--color-amarillo);
 }
 
-.mesa {
+.mesa_ {
     margin: 1rem 1rem;
     border-radius: 3rem;
     width: 10rem;
@@ -42,7 +42,7 @@
     display: block;
 }
 
-.mesa a {
+.mesa_ a {
     width: 72%;
     height: 71%;
     display: inline-block;
@@ -135,6 +135,8 @@
 .tabla_gestion_mesa td {
     border: .1rem solid black;
     text-align: center;
+    vertical-align: middle;
+    font-size: 2rem;
 }
 
 .tabla_gestion_mesa tfoot td {
@@ -153,6 +155,17 @@
     width: 4rem;
     height: 4rem;
     background-image: url(../imgs/svg/icono-aceptar.svg);
+}
+.icon_detalle {
+    width: 4rem;
+    height: 4rem;
+    background-image: url(../imgs/svg/icono-ver-detalle.svg);
+}
+
+.icon_detalle:hover {
+    width: 4rem;
+    height: 4rem;
+    background-image: url(../imgs/svg/icono-ver-detalle-hover.svg);
 }
 
 .icon_aceptar:hover {
@@ -174,4 +187,69 @@
     width: 30%;
     height: auto;
     margin: 2rem 2rem;
+}
+
+.input_oculto, #nromesa-elegida {
+    display: none !important;
+}
+
+
+
+
+/* Estilos para la sección de detalles del pedido */
+.detalles_pedido {
+    width: fit-content;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10rem auto;
+    margin-bottom: 10rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+/* Estilos para el número de pedido */
+.nro_pedido {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 10px;
+    background-color: red;
+}
+
+/* Estilos para los detalles del pedido */
+.detalle {
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.estado {
+    background-color: var(--color-amarillo);
+}
+
+@keyframes brillo {
+    0% { color: red; }
+    50% { color: blue; }
+    100% { color: red; }
+  }
+
+.animado {
+    animation: brillo 5s infinite;
+}
+
+
+/* Estilos para los botones de acción */
+.btn_accion {
+    /* display: inline-block; */
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.btn_accion:hover {
+    background-color: #0056b3;
 }
