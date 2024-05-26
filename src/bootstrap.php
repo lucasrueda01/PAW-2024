@@ -56,6 +56,7 @@ $router->setLogger($log);
 // UsuarioController
 $router->get('/iniciar_sesion', 'UsuarioController@inicio_sesion');
 $router->post('/iniciar_sesion', 'UsuarioController@inicio_sesion');
+$router->get('/cerrar_sesion', 'UsuarioController@cerrar_sesion');
 $router->get('/registrar_usuario', 'UsuarioController@registrar_usuario');
 $router->post('/registrar_usuario', 'UsuarioController@registrar_usuario');
 $router->get('/perfil_usuario', 'UsuarioController@perfil');

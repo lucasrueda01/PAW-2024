@@ -71,6 +71,7 @@ class Controller
             ]
         ];
 
+
         $this->menuPerfil = [
             [
                 'href' => '/perfil_usuario',

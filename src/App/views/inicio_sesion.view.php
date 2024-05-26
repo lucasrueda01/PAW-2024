@@ -18,6 +18,18 @@
             <p>Para acceder a nuestros servicios</p>
         </section>
 
+        <?php if(isset($resultado['error'])) : ?>
+            <h4 class="msj msj_error">
+                   <?= $resultado['error']; ?>
+            </h4>
+        <?php endif ?>
+
+        <?php if(isset($resultado['exito'])) : ?>
+            <h4 class="msj msj_exito">
+                   <?= $resultado['exito']; ?>
+            </h4>
+        <?php endif ?>
+
         <section class="section_formulario">
             <form action="/iniciar_sesion" class="formulario form_amarillo" method="post">
 

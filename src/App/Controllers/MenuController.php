@@ -10,6 +10,7 @@ use Paw\Core\Controller;
 use Paw\App\Models\PlatosCollection;
 use Paw\App\Models\Plato;
 use Paw\Core\Model;
+use Paw\App\Controllers\UsuarioController;
 
 class MenuController extends Controller
 {
@@ -27,6 +28,8 @@ class MenuController extends Controller
         $this->uploader = new Uploader;
 
         $this->verificador = new Verificador;
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);        
     }
 
     public function nuestroMenu()

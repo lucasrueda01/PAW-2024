@@ -17,8 +17,7 @@ class Usuario extends Model
      public function findByUsernameAndPassword($username, $password)
      {
          $result = $this->queryBuilder->select('users', ['username' => $username]);
-         
-         var_dump($username);
+        
          // Verificar si se encontró un usuario con ese nombre de usuario
          if ($result && count($result) > 0) {
              // Comparar la contraseña hasheada almacenada en la base de datos con la proporcionada

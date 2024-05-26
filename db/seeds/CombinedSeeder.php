@@ -16,40 +16,39 @@ class CombinedSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        // Define the data to be inserted
         $data = [
             [
-                'username' => 'john_doe',
-                'email' => 'john@example.com',
+                'username' => 'cliente1',
                 'password' => password_hash('password1', PASSWORD_DEFAULT),
+                'tipo' => 'cliente',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'username' => 'jane_doe',
-                'email' => 'jane@example.com',
+                'username' => 'cliente2',
                 'password' => password_hash('password2', PASSWORD_DEFAULT),
+                'tipo' => 'cliente',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'username' => 'alice',
-                'email' => 'alice@example.com',
+                'username' => 'empleado1',
                 'password' => password_hash('password3', PASSWORD_DEFAULT),
+                'tipo' => 'empleado',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'username' => 'bob',
-                'email' => 'bob@example.com',
+                'username' => 'empleado2',
                 'password' => password_hash('password4', PASSWORD_DEFAULT),
+                'tipo' => 'empleado',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
         ];
 
-        // Insert the data into the users table
         $users = $this->table('users');
-        $users->insert($data)->saveData();
+        $users->insert($data)
+              ->saveData();
     }
 }

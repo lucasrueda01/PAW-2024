@@ -3,7 +3,7 @@
 namespace Paw\App\Controllers;
 
 use Paw\App\Utils\Verificador;
-
+use Paw\App\Controllers\UsuarioController;
 use Paw\Core\Controller;
 
 class MesaController extends Controller
@@ -72,6 +72,8 @@ class MesaController extends Controller
         parent::__construct();
 
         $this->verificador = new Verificador;
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);
     }
 
     public function gestion_lista_mesas()

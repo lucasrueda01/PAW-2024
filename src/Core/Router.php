@@ -60,7 +60,21 @@ Class Router
     public function direct(Request $request)
     {
         try {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();  // Inicia la sesión si no está iniciada
+            }
+
             list($path, $http_method) = $request->route();
+
+            // Verificar si hay una sesión iniciada
+            $sesionIniciada = !is_null($request->get('usuario'));
+            
+            // Si hay una sesión iniciada y se intenta acceder a /iniciar_sesion o /registrar_usuario, redirigir a /
+            if ($sesionIniciada && ($path === '/iniciar_sesion' || $path === '/registrar_usuario')) {
+                $path = '/';
+                $http_method = 'GET';
+            }            
+
             list($controller, $method) = $this->getController($path, $http_method);
             $this->logger
                 ->info(

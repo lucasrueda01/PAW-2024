@@ -6,6 +6,7 @@ use Paw\App\Utils\Verificador;
 use Paw\App\Utils\Uploader;
 
 use Paw\Core\Controller;
+use Paw\App\Controllers\UsuarioController;
 
 class PageController extends Controller
 {
@@ -20,6 +21,9 @@ class PageController extends Controller
         $this->uploader = new Uploader;
 
         $this->verificador = new Verificador;
+
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);
     }
 
     public function index()
