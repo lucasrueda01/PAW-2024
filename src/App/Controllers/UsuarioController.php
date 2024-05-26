@@ -32,6 +32,10 @@ class UsuarioController extends Controller
             if ($_SESSION['tipo'] === 'cliente') {
                 $menuEmpleado = [];
             }
+        }else{
+            $menuPerfil = array_filter($menuPerfil, function ($item) {
+                return !in_array($item['href'], ['/perfil_usuario', '/cerrar_sesion']);
+            });            
         }
         return [$menuPerfil, $menuEmpleado];
     }
