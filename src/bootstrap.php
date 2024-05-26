@@ -55,7 +55,9 @@ $router->setLogger($log);
 
 // UsuarioController
 $router->get('/iniciar_sesion', 'UsuarioController@inicio_sesion');
+$router->post('/iniciar_sesion', 'UsuarioController@inicio_sesion');
 $router->get('/registrar_usuario', 'UsuarioController@registrar_usuario');
+$router->post('/registrar_usuario', 'UsuarioController@registrar_usuario');
 $router->get('/perfil_usuario', 'UsuarioController@perfil');
 // PageController
 $router->get('/', 'PageController@index');
@@ -77,7 +79,6 @@ $router->post('/plato/add-to-cart', 'MenuController@addToCart'); // MenuControll
 // LocalController
 $router->post('/local/mesas', 'LocalController@getMesas'); // LocalController
 // PedidoController
-$router->get('/pedir', 'PedidosController@pedir'); // PedidoController
 $router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // PedidoController
 $router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController

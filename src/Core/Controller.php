@@ -47,10 +47,6 @@ class Controller
                 'name' => 'NOTICIAS'
             ],
             [
-                'href' => '/pedir',
-                'name' => 'PEDIR'
-            ],
-            [
                 'href' => '/reservar_cliente',
                 'name' => 'RESERVAR'
             ]

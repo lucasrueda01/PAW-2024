@@ -214,6 +214,10 @@ input[type=number]::-webkit-inner-spin-button {
     text-transform: uppercase;
 }
 
+.section_formulario {
+    margin-bottom: 1rem;
+}
+
 .section_formulario textarea {
     height: 5rem;
     resize: none;
@@ -905,7 +909,7 @@ input[type="submit"] {
 }
 
 /* Estilos responsive para la stacktable */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .tabla_gestion_mesa, .tabla_gestion_mesa thead, .tabla_gestion_mesa tbody, .tabla_gestion_mesa th, .tabla_gestion_mesa td, .tabla_gestion_mesa tr {
         display: block;
     }
@@ -988,6 +992,7 @@ input[type="submit"] {
 
 .input_cantidad_form {
     width: fit-content !important;
+    background-color: transparent;
     max-width: 1.5rem;
     border: 0px;
 }

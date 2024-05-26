@@ -74,6 +74,7 @@ class Carrito{
             this.total_pedido += plato.precio;
         }
         // Actualizar la tabla
+        
         this.actualizarTabla();
     }    
 
@@ -95,10 +96,25 @@ class Carrito{
             this.cant_articulos -= 1;
             this.total_pedido -= plato.precio;
             // Actualizar la tabla
+        
             this.actualizarTabla();
             return true
         }else{
             return false
+        }
+    }
+
+    actualizarCantidadInput(platoId, nuevaCantidad) {
+        // Buscar el elemento <li> con el data-id coincidente
+        const articulo = document.querySelector(`.articulo[data-id='${platoId}']`);
+        
+        if (articulo) {
+            // Encontrar el input dentro del <li>
+            const inputCantidad = articulo.querySelector('.input_cantidad');
+            if (inputCantidad) {
+                // Actualizar el valor del input
+                inputCantidad.value = nuevaCantidad;
+            }
         }
     }
 
@@ -107,17 +123,17 @@ class Carrito{
         this.tableBody.innerHTML = '';
 
         // Iterar sobre cada plato en el carrito y agregarlo a la tabla
-        this.platos.forEach((plato, index) => {
-            if(plato.cantidad > 0){
+        this.platos.forEach((plato) => {
+            if (plato.cantidad > 0) {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${plato.nombre}</td>
                     <td>${plato.descripcion}</td>
                     <td>${UtilsMaths.formatCurrency(plato.precio)}</td>
                     <td>
-                        <button class="btn_decrement_form" data-id="<?= $plato->getId(); ?>">-</button>
+                        <button class="btn_decrement_form" data-id="${plato.id}">-</button>
                         <input type="number" value="${plato.cantidad}" class="input_cantidad_form">
-                        <button class="btn_increment_form" data-id="<?= $plato->getId(); ?>">+</button>                        
+                        <button class="btn_increment_form" data-id="${plato.id}">+</button>
                     </td>
                     <td>${UtilsMaths.formatCurrency(plato.precio * plato.cantidad)}</td>
                 `;
@@ -128,11 +144,40 @@ class Carrito{
         // Actualizar el total de la compra
         this.totalCompra.textContent = `Total: ${UtilsMaths.formatCurrency(this.total_pedido)}`;
 
-        // Agregar eventos a los botones de eliminar
-        document.querySelectorAll('.btn_eliminar').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const index = parseInt(btn.dataset.index);
-                this.eliminarPlato(index);
+        // Agregar eventos a los botones de incrementar
+        document.querySelectorAll('.btn_increment_form').forEach(btn_increment => {
+            btn_increment.addEventListener('click', () => {
+                const platoId = btn_increment.dataset.id;
+                this.incrementarCantidadPlato(platoId);
+                console.log(this);
+
+                // Actualizar la cantidad en el input correspondiente
+                const inputCantidad = btn_increment.parentElement.querySelector('.input_cantidad_form');
+                inputCantidad.value = parseInt(inputCantidad.value) + 1;
+                this.actualizarCantidadInput(platoId, inputCantidad.value)
+                // Actualizar el contador de artículos
+                const cantidadArticulos = document.querySelector('.carrito');
+                cantidadArticulos.textContent = `Cantidad de Articulos: ${String(this.cant_articulos).padStart(2, '0')}`;
+            });
+        });
+
+        // Agregar eventos a los botones de decrementar
+        document.querySelectorAll('.btn_decrement_form').forEach(btn_decrement => {
+            btn_decrement.addEventListener('click', () => {
+                const platoId = btn_decrement.dataset.id;
+                if (this.decrementarCantidadPlato(platoId)) {
+                    console.log(this);
+
+                    // Actualizar la cantidad en el input correspondiente
+                    const inputCantidad = btn_decrement.parentElement.querySelector('.input_cantidad_form');
+                    inputCantidad.value = parseInt(inputCantidad.value) - 1;
+                    this.actualizarCantidadInput(platoId, inputCantidad.value)
+                    // Actualizar el contador de artículos
+                    const cantidadArticulos = document.querySelector('.carrito');
+                    cantidadArticulos.textContent = `Cantidad de Articulos: ${String(this.cant_articulos).padStart(2, '0')}`;
+                } else {
+                    console.log(`ya no se puede seguir decrementando`);
+                }
             });
         });
     }

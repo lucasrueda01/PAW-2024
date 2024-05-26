@@ -15,6 +15,7 @@ class PedidosCollection extends Model
         "confirmado" => ["despachar", "pasar-a-retirar"],
         "rechazado" => [],
         "despachado" => [],
+        "cancelado" => [],
         "pasar-a-retirar" => [],
         "en-preparacion" => ["finalizar", "cancelar"],
         "finalizado" => ["despachar", "pasar-a-retirar"]

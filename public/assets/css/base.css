@@ -39,6 +39,7 @@ header {
     justify-content: space-around;
     align-items: center;
     padding: 0.5rem;
+    background-color: white;
                  /*0.5 x 10px */
 }
 
@@ -646,7 +647,7 @@ main {
 
 .pie_pagina {
     background-color: #000000;
-    /* margin-top: 5%; */
+    margin-top: 5%;
 }
 
 .pie_pagina a {

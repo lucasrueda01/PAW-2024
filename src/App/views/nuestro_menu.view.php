@@ -134,29 +134,29 @@
 
                     <fieldset class="container container_formulario container_delivery">
 
-                        <label for="nombre">Ingrese su nombre</label>
+                        <label for="nombre">Nombre</label>
                         <input type="text" name="nombre" id="nombre" required>
                         
-                        <label for="tipo">Ingrese Tipo Pedido</label>
+                        <label for="tipo">Tipo Pedido</label>
                         <select id="tipo" name="tipo" required>
                             <option value="">Sin seleccionar</option>
                             <option value="delivery">Delivery</option>
                             <option value="en-el-local">Retiro por el Local</option>
                         </select>
 
-                        <label for="local">Selecciona la sucursal:</label>
+                        <label for="local">Sucursal:</label>
                         <select id="local" name="local">
                             <option value="Local A">Local A</option>
                             <option value="Local B">Local B</option>
                         </select>
 
-                        <label for="direccion" id="direccion_label">Ingrese su direccion</label>
+                        <label for="direccion" id="direccion_label">Direccion</label>
                         <input type="text" name="direccion" id="direccion" required>
 
                         <label for="observaciones">Observaciones</label>
                         <input type="text" name="observaciones" id="observaciones">
 
-                        <label for="forma-de-pago">Selecciona una forma de pago:</label>
+                        <label for="forma-de-pago">Forma de pago:</label>
                         <select id="forma-de-pago" name="forma-de-pago">
                             <option value="mercado_pago">Mercado Pago</option>
                             <option value="efectivo">Pago en efectivo</option>
