@@ -13,6 +13,7 @@ class UsuarioController extends Controller
 
     public Verificador $verificador;
     public ?string $modelName = Usuario::class;
+    public $tipoUsuario;
 
     public function __construct()
     {
@@ -32,6 +33,7 @@ class UsuarioController extends Controller
             if ($_SESSION['tipo'] === 'cliente') {
                 $menuEmpleado = [];
             }
+            $this->tipoUsuario = $_SESSION['tipo'];
         }else{
             $menuEmpleado = [];
             $menuPerfil = array_filter($menuPerfil, function ($item) {
@@ -60,7 +62,7 @@ class UsuarioController extends Controller
                 // Guardar los datos del usuario en la sesión
                 $_SESSION['usuario'] = $usuarioAutenticado['username'];
                 $_SESSION['tipo'] = $usuarioAutenticado['tipo'];
-
+                $this->tipoUsuario = $_SESSION['tipo'];
                 // Redirigir al usuario a la página principal
                 header('Location: /');
                 exit();
@@ -72,6 +74,11 @@ class UsuarioController extends Controller
             require $this->viewsDir . 'inicio_sesion.view.php';
         }
     
+    }
+
+    public function getTipoUsuario()
+    {
+        return $this->tipoUsuario;
     }
 
     public function registrar_usuario() {

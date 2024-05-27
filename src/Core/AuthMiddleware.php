@@ -6,9 +6,9 @@ use Paw\Core\Request;
 
 class AuthMiddleware
 {
+    // '/pedidos/estado', 
+    // '/pedidos/get-estado', 
     public $rutasSoloEmpleado = ['/pedidos_entrantes', 
-        '/pedidos/estado', 
-        '/pedidos/get-estado', 
         '/pedidos/estado/modificar',
         '/gestion_lista_mesas',
         '/gestion_mesa',

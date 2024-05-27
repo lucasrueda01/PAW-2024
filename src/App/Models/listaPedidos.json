@@ -240,5 +240,67 @@
         ],
         "Nro Pedido": 8,
         "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-27T16:01:11",
+        "Tipo": "cliente",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": 5160,
+        "articulos": [
+            {
+                "nombre": "bigpower",
+                "precio": 1800,
+                "cantidad": 1,
+                "subtotal": 1800
+            },
+            {
+                "nombre": "coca-cola",
+                "precio": 1560,
+                "cantidad": 1,
+                "subtotal": 1560
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 1,
+                "subtotal": 1800
+            }
+        ],
+        "Nro Pedido": 9,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-27T16:01:56",
+        "Tipo": "cliente",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": 5160,
+        "articulos": [
+            {
+                "nombre": "bigpower",
+                "precio": 1800,
+                "cantidad": 1,
+                "subtotal": 1800
+            },
+            {
+                "nombre": "coca-cola",
+                "precio": 1560,
+                "cantidad": 1,
+                "subtotal": 1560
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 1,
+                "subtotal": 1800
+            }
+        ],
+        "Nro Pedido": 10,
+        "Estado": "confirmado"
     }
 ]

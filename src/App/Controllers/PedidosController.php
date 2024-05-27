@@ -16,14 +16,15 @@ class PedidosController extends Controller
     public ?string $modelName = PedidosCollection::class;
 
     public Verificador $verificador;
+    public $usuario;
 
     public function __construct()
     {
         parent::__construct();
 
         $this->verificador = new Verificador;
-        $usuario = new UsuarioController();
-        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);    
+        $this->usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $this->usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);    
     }
 
     public function pedidos_entrantes()
@@ -52,8 +53,8 @@ class PedidosController extends Controller
         $pedido = $this->model->getById(intval($id));
 
 
-
-        $listaAcciones = PedidosCollection::$accionesPorEstado; //
+        $tipo = $this->usuario->getTipoUsuario();
+        $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
         $urlsAccion = PedidosCollection::$urlsAccion;
 
         $log->info("metodo getById: ", [$pedido]);
@@ -102,7 +103,7 @@ class PedidosController extends Controller
     public function new()
     {
         global $request, $log;
-        
+
         // Obtener la fecha y hora actual
         $fechaHora = date('Y-m-d\TH:i:s');
 
@@ -160,7 +161,9 @@ class PedidosController extends Controller
 
             $log->info("resultado['id']: ", [$resultado['id']]);
 
-            $listaAcciones = PedidosCollection::$accionesPorEstado; //
+            $tipo = $this->usuario->getTipoUsuario();
+            
+            $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
             $urlsAccion = PedidosCollection::$urlsAccion;
         } 
         

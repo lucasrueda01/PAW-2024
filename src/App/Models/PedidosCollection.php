@@ -10,18 +10,28 @@ use Exception;
 class PedidosCollection extends Model
 {
     public $indice = [];
-    static public $accionesPorEstado = [
-        "sin-confirmar" => ["confirmar", "rechazar"],
-        "confirmado" => ["despachar", "pasar-a-retirar"],
-        "rechazado" => [],
-        "despachado" => [],
-        "cancelado" => [],
-        "pasar-a-retirar" => [],
-        "en-preparacion" => ["finalizar", "cancelar"],
-        "finalizado" => ["despachar", "pasar-a-retirar"]
+
+    static public $accionesPorEstadoXTipoUsuario = [
+        "cliente" => [
+            "sin-confirmar" => ["cancelar"],    
+            "confirmado" => ["cancelar"],
+            "despachado" => [],
+            "cancelado" => [],
+            "pasar-a-retirar" => [],
+            "en-preparacion" => ["cancelar"],
+            "finalizado" => []
+        ],
+        "empleado" => [
+            "sin-confirmar" => ["confirmar", "rechazar"],
+            "confirmado" => ["despachar", "pasar-a-retirar"],
+            "rechazado" => [],
+            "despachado" => [],
+            "cancelado" => [],
+            "pasar-a-retirar" => [],
+            "en-preparacion" => ["finalizar", "cancelar"],
+            "finalizado" => ["despachar", "pasar-a-retirar"]
+        ]
     ];
-
-
     static public $urlsAccion  = [
         "confirmar" => "confirmado",
         "rechazar" => "rechazado",

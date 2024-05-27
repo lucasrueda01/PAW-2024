@@ -32,7 +32,7 @@
                 <p class="detalle"><strong>Monto Total:</strong> $ <?= is_null($pedido['Monto Total']) ? '(No especificado)' : number_format($pedido['Monto Total'], 2, ',', '.'); ?></p>
                 <p class="detalle estado" id="estado" data-estado="<?= $pedido['Estado']; ?>"><strong>Estado:</strong> <?= $pedido['Estado']; ?></p>
 
-                <?php foreach($listaAcciones[$pedido['Estado']] as $accion ): ?>
+                <?php foreach($listaAcciones[$tipo][$pedido['Estado']] as $accion ): ?>
                     <a class="boton boton_negro" href="/pedidos/estado/modificar?id=<?= $pedido['Nro Pedido']; ?>&estado=<?= $urlsAccion[$accion]?>"><?= $accion ?></a>
                 <?php endforeach; ?>    
 
