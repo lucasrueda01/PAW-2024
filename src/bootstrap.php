@@ -84,7 +84,6 @@ $router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // Pe
 $router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
 $router->post('/pedido/new', 'PedidosController@new'); // PedidoController
-
 $router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
 
 // MesaController

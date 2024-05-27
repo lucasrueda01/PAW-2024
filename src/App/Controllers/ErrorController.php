@@ -3,7 +3,7 @@
 namespace Paw\App\Controllers;
 
 use Paw\Core\Controller;
-
+use Paw\App\Controllers\UsuarioController;
 
 class ErrorController extends Controller
 {
@@ -12,6 +12,8 @@ class ErrorController extends Controller
         parent::__construct();
         
         $this->viewsDir = __DIR__ . '/../views/errors/';
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);   
     }
     
     public function notFound() {

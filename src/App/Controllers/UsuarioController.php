@@ -19,7 +19,7 @@ class UsuarioController extends Controller
         parent::__construct();
 
         $this->verificador = new Verificador;
-
+        list($this->menuPerfil, $this->menuEmpleado) = $this->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado); 
     }
 
     public function adjustMenuForSession($menuPerfil, $menuEmpleado) {

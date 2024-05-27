@@ -63,9 +63,6 @@ Class Router
     public function direct(Request $request)
     {
         try {
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();  // Inicia la sesión si no está iniciada
-            }
 
             list($path, $http_method) = $this->middleware->handle(...$request->route());     
 

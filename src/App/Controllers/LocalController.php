@@ -7,8 +7,9 @@ use Paw\App\Models\LocalesCollection;
 use Paw\App\Models\MesasCollection;
 use Paw\App\Models\ReservasCollection;
 use Paw\App\Models\Local;
-use Paw\App\Models\Mesa;
 
+
+use Paw\App\Controllers\UsuarioController;
 use Paw\Core\Controller;
 
 class LocalController extends Controller
@@ -23,6 +24,8 @@ class LocalController extends Controller
         parent::__construct();
 
         $this->verificador = new Verificador;
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);   
     }
 
     public function getMesas()
