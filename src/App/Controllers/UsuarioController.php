@@ -34,6 +34,8 @@ class UsuarioController extends Controller
                 $menuEmpleado = [];
             }
             $this->tipoUsuario = $_SESSION['tipo'];
+            setcookie('tipo_usuario', $this->tipoUsuario, time() + (86400 * 30), "/"); // La cookie expira en 30 días
+
         }else{
             $menuEmpleado = [];
             $menuPerfil = array_filter($menuPerfil, function ($item) {

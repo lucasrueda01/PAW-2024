@@ -49,14 +49,10 @@ class appPAW {
                         setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000)
                     });
                 }
-            // if(['pedidos_entrantes'].includes(window.location.pathname))
-            // {
-            //     PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
-            // }
 
             if(['/nuestro_menu'].includes(window.location.pathname)) 
                 {
-                    PAW.cargarScript("UtilsMaths", "/assets/js/components/UtilsMaths.js")
+                    PAW.cargarScript("Utils", "/assets/js/components/Utils.js")
                     PAW.cargarScript("Plato", "/assets/js/components/plato.js")
                     PAW.cargarScript("carrito", "/assets/js/components/carrito.js", () =>{
                         /**
@@ -141,57 +137,6 @@ class appPAW {
                     })
                 }
 
-            if(['/pedir'].includes(window.location.pathname))    
-                {
-                    PAW.cargarScript("Cart", "/assets/js/components/cart.js", () => {
-                 
-                        const cart = new Cart();
-                
-                        // Obtener las cookies
-                        const platosCookie = cart.getCookie('platos');
-                        console.log(platosCookie);
-                
-                        // Verificar si la cookie existe
-                        if (platosCookie) {
-                            // Convertir la cookie a un array de IDs de platos
-                            const platosIds = JSON.parse(platosCookie);
-                            
-                            // Realizar una solicitud fetch para obtener los detalles de los platos
-                            fetch('/plato-all-in-cart?lista_encoded=' + encodeURIComponent(platosCookie))
-                                .then(response => response.json())
-                                .then(data => {
-                                    // Manejar los datos devueltos
-                                    console.log(data);
-                                    const table = document.querySelector('table');
-                                    cart.updateCarrito(data, table);
-                                    
-                                    // Aquí puedes hacer lo que necesites con los datos de los platos
-                                })
-                                .catch(error => {
-                                    console.error('Error en la solicitud de platos-en-carrito: ' + error);
-                                });
-                        }
-                    });
-
-                    // Seleccionar el select y el campo de dirección
-                    const formaPagoSelect = document.querySelector("#forma_pago_take_away");
-                    const direccionInput = document.querySelector("#direccion");
-                    const direccionLabel = document.querySelector("#direccion_label");
-
-                    // Agregar un event listener al select para detectar cambios en su valor
-                    formaPagoSelect.addEventListener("change", function() {
-                        // Verificar el valor seleccionado
-                        if (this.value === "en-el-local") {
-                            // Ocultar el campo de dirección y su etiqueta
-                            direccionInput.style.display = "none";
-                            direccionLabel.style.display = "none";
-                        } else {
-                            // Mostrar el campo de dirección y su etiqueta
-                            direccionInput.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
-                            direccionLabel.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
-                        }
-                    });                    
-                }
         
             })
     }

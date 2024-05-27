@@ -8,8 +8,8 @@ class AuthMiddleware
 {
     // '/pedidos/estado', 
     // '/pedidos/get-estado', 
+    // '/pedidos/estado/modificar',
     public $rutasSoloEmpleado = ['/pedidos_entrantes', 
-        '/pedidos/estado/modificar',
         '/gestion_lista_mesas',
         '/gestion_mesa',
         '/plato/new',

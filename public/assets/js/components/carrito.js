@@ -130,20 +130,20 @@ class Carrito{
                 tr.innerHTML = `
                     <td>${plato.nombre}</td>
                     <td>${plato.descripcion}</td>
-                    <td>${UtilsMaths.formatCurrency(plato.precio)}</td>
+                    <td>${Utils.formatCurrency(plato.precio)}</td>
                     <td>
                         <button class="btn_decrement_form" data-id="${plato.id}">-</button>
                         <input type="number" value="${plato.cantidad}" class="input_cantidad_form">
                         <button class="btn_increment_form" data-id="${plato.id}">+</button>
                     </td>
-                    <td>${UtilsMaths.formatCurrency(plato.precio * plato.cantidad)}</td>
+                    <td>${Utils.formatCurrency(plato.precio * plato.cantidad)}</td>
                 `;
                 this.tableBody.appendChild(tr);
             }
         });
 
         // Actualizar el total de la compra
-        this.totalCompra.textContent = `Total: ${UtilsMaths.formatCurrency(this.total_pedido)}`;
+        this.totalCompra.textContent = `Total: ${Utils.formatCurrency(this.total_pedido)}`;
         
         const carritoInput = document.getElementById('carrito_data');
         carritoInput.value = JSON.stringify(this);
