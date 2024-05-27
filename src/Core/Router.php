@@ -11,6 +11,8 @@ Class Router
 {
     use Loggable;
 
+    private $middleware;
+
     public array $routes= [
         "GET" => [],
         "POST" => []
@@ -20,6 +22,7 @@ Class Router
     public string $internalError = 'internal_error';
 
     public function __construct(){
+        $this->middleware = new AuthMiddleware();
         $this->get($this->notFound, 'ErrorController@notFound');
         $this->get($this->internalError, 'ErrorController@internalError');
     }
@@ -64,16 +67,7 @@ Class Router
                 session_start();  // Inicia la sesión si no está iniciada
             }
 
-            list($path, $http_method) = $request->route();
-
-            // Verificar si hay una sesión iniciada
-            $sesionIniciada = !is_null($request->get('usuario'));
-            
-            // Si hay una sesión iniciada y se intenta acceder a /iniciar_sesion o /registrar_usuario, redirigir a /
-            if ($sesionIniciada && ($path === '/iniciar_sesion' || $path === '/registrar_usuario')) {
-                $path = '/';
-                $http_method = 'GET';
-            }            
+            list($path, $http_method) = $this->middleware->handle(...$request->route());     
 
             list($controller, $method) = $this->getController($path, $http_method);
             $this->logger

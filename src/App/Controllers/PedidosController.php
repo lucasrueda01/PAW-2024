@@ -8,6 +8,7 @@ use Paw\Core\Controller;
 use Paw\App\Models\Plato;
 
 use Paw\App\Models\PedidosCollection;
+use Paw\App\Controllers\UsuarioController;
 
 class PedidosController extends Controller
 {
@@ -21,6 +22,8 @@ class PedidosController extends Controller
         parent::__construct();
 
         $this->verificador = new Verificador;
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);    
     }
 
     public function pedidos_entrantes()
