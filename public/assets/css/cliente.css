@@ -274,7 +274,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .container_formulario aside {
-    position: absolute;
+    /* position: absolute; */
     right: 1rem;
     top: 3rem;
     border: .1rem solid gray;
