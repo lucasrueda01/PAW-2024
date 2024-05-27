@@ -9,7 +9,6 @@ class AuthMiddleware
     public $rutasSoloEmpleado = ['/pedidos_entrantes', 
         '/pedidos/estado', 
         '/pedidos/get-estado', 
-        '/pedido/new',
         '/pedidos/estado/modificar',
         '/gestion_lista_mesas',
         '/gestion_mesa',

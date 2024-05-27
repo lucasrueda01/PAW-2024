@@ -102,22 +102,21 @@ class PedidosController extends Controller
     public function new()
     {
         global $request, $log;
-
+        
         // Obtener la fecha y hora actual
         $fechaHora = date('Y-m-d\TH:i:s');
 
-        // Obtener los artículos de la superglobal $_COOKIE
         $articulos = [];
 
-        if (isset($_COOKIE['platos'])) {
-            $datos = json_decode($_COOKIE['platos'], true);
+        if (!is_null($request->get('carrito_data'))) {
+            $carrito = json_decode($request->get('carrito_data'), true);
             
             $total = 0;
 
-            foreach ($datos as $item) {
+            foreach ($carrito['platos'] as $plato) {
 
-                $id = intval($item['id']);
-                $cantidad = intval($item['cantidad']);
+                $id = intval($plato['id']);
+                $cantidad = intval($plato['cantidad']);
 
                 $log->info("id, cantidad :", [$id, $cantidad]);
 

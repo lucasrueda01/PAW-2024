@@ -209,5 +209,36 @@
         ],
         "Nro Pedido": 7,
         "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-05-27T00:47:30",
+        "Tipo": "empleado",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "Av San Juan 369",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": 11880,
+        "articulos": [
+            {
+                "nombre": "bigpower",
+                "precio": 1800,
+                "cantidad": 2,
+                "subtotal": 3600
+            },
+            {
+                "nombre": "coca-cola",
+                "precio": 1560,
+                "cantidad": 3,
+                "subtotal": 4680
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 2,
+                "subtotal": 3600
+            }
+        ],
+        "Nro Pedido": 8,
+        "Estado": "sin-confirmar"
     }
 ]

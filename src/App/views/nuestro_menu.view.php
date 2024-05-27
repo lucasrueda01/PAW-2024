@@ -164,7 +164,9 @@
 
                     </fieldset>
 
-                    <input type="submit" value="Pedir" class="boton boton_negro  btn-pedido"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO ELIGE LA OPCION PEDIR EN EL LUGAR -->
+                    <input type="text" name="carrito_data" id="carrito_data" value="nada" hidden>
+                    <input type="submit" value="Pedir" class="boton boton_negro  btn-pedido"> 
+
                 </form>
             </section>
 

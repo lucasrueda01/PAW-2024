@@ -51,9 +51,9 @@ class MenuController extends Controller
          * FALTA TRY CATCH 22052024
          */
         // Verificar si la variable lista_encoded está presente en la solicitud GET
-        if (isset($_GET['lista_encoded'])) {
+        if (!is_null($request->get('lista_encoded'))) {
         //     // Decodificar el JSON
-            $lista_platos_ids = json_decode($_GET['lista_encoded']);
+            $lista_platos_ids = json_decode($request->get('lista_encoded'));
             
             $log->info("lista_platos_ids: ",[$lista_platos_ids]);
             // Iterar sobre cada ID de plato en la lista

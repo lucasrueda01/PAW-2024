@@ -11,7 +11,7 @@ class Carrito{
     actualizarTabla() {
         // Limpiar el cuerpo de la tabla
         this.tableBody.innerHTML = '';
-
+        
         // Iterar sobre cada plato en el carrito y agregarlo a la tabla
         this.platos.forEach(plato => {
             const tr = document.createElement('tr');
@@ -26,6 +26,7 @@ class Carrito{
             `;
             this.tableBody.appendChild(tr);
         });
+
 
         // Actualizar el total de la compra
         this.totalCompra.textContent = `Total: $${this.total_pedido.toFixed(2)}`;
@@ -121,7 +122,7 @@ class Carrito{
     actualizarTabla() {
         // Limpiar el cuerpo de la tabla
         this.tableBody.innerHTML = '';
-
+        
         // Iterar sobre cada plato en el carrito y agregarlo a la tabla
         this.platos.forEach((plato) => {
             if (plato.cantidad > 0) {
@@ -143,6 +144,10 @@ class Carrito{
 
         // Actualizar el total de la compra
         this.totalCompra.textContent = `Total: ${UtilsMaths.formatCurrency(this.total_pedido)}`;
+        
+        const carritoInput = document.getElementById('carrito_data');
+        carritoInput.value = JSON.stringify(this);
+        console.log(carritoInput.value)
 
         // Agregar eventos a los botones de incrementar
         document.querySelectorAll('.btn_increment_form').forEach(btn_increment => {
