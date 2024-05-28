@@ -270,7 +270,7 @@
             }
         ],
         "Nro Pedido": 9,
-        "Estado": "sin-confirmar"
+        "Estado": "confirmado"
     },
     {
         "Fecha\/Hora": "2024-05-27T16:01:56",
@@ -301,6 +301,6 @@
             }
         ],
         "Nro Pedido": 10,
-        "Estado": "confirmado"
+        "Estado": "despachado"
     }
 ]
