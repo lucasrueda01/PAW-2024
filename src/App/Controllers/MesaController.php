@@ -5,6 +5,7 @@ namespace Paw\App\Controllers;
 use Paw\App\Utils\Verificador;
 use Paw\App\Controllers\UsuarioController;
 use Paw\Core\Controller;
+use Paw\App\Models\MesasCollection;
 
 class MesaController extends Controller
 {
@@ -66,6 +67,7 @@ class MesaController extends Controller
     ];    
 
     public Verificador $verificador;
+    public ?string $modelName = MesasCollection::class;
 
     public function __construct()
     {
@@ -90,12 +92,9 @@ class MesaController extends Controller
     public function getLocales()
     {
         header('Content-Type: application/json');
-        echo json_encode(self::$locales);
+        // echo json_encode(self::$locales);
+        echo json_encode($this->model->getReservas());
     }
-
-    // public function getLocales(){
-    //     return self::$locales;
-    // }
 
     public function reservar_cliente()
     {

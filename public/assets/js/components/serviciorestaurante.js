@@ -14,6 +14,7 @@ class ServicioRestaurante {
         data.getLocales()
             .then(locales => {
                 this.locales = locales;
+                console.log(this.locales)
             })
             .catch(error => {
                 console.error('Error al obtener los locales:', error);
