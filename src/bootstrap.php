@@ -6,6 +6,9 @@ use Monolog\Logger;
 use Monolog\Level;
 use Monolog\Handler\StreamHandler;
 use Dotenv\Dotenv;
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+use Twig\Extension\DebugExtension;
 
 use Paw\Core\Router;
 use Paw\Core\Config;
@@ -37,12 +40,9 @@ $log->info('Datos de Config', [
     "charset" => $config->get('DB_CHARSET'),
 ]);
 
-
 $connectionBuilder = new ConnectionBuilder;
 $connectionBuilder->setLogger($log);
 $connection = $connectionBuilder->make($config);
-
-
 
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
@@ -96,3 +96,22 @@ $router->get('/gestion_mesa', 'MesaController@gestion_mesa'); // MesaController
 $router->get('/sitemap', 'SEOController@generateSitemap');
 $router->get('/robot', 'SEOController@generateRobot');
 $router->get('/json-ld', 'SEOController@generateJsonLd');
+
+
+// Cargar motor de plantillas
+$templateDir = __DIR__ . $config->get('TEMPLATE_DIR');
+$cacheDir = __DIR__ . $config->get('TEMPLATE_CACHE_DIR');
+
+$log->info('Template Directory:', [$templateDir]);
+$log->info('Cache Directory:', [$cacheDir]);
+
+$loader = new FilesystemLoader($templateDir);
+
+$log->info('loader: ', [$loader, $templateDir]);
+
+$twig = new Environment($loader, [
+    'cache' => $cacheDir, 
+    'debug' => true,
+]);
+
+$twig->addExtension(new DebugExtension());

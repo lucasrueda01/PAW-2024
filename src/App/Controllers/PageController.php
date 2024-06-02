@@ -29,7 +29,12 @@ class PageController extends Controller
     public function index()
     {
         $titulo = "PAW POWER | HOME";
-        require $this->viewsDir . 'index.view.php';
+        // require $this->viewsDir . 'index.view.php';
+        view('index.view', [
+                    'menu' => $this->menu,
+                    'menuPerfil' => $this->menuPerfil,
+                    'menuEmpleado' => $this->menuEmpleado,
+                    'titulo' => $titulo]);
     }
 
 
