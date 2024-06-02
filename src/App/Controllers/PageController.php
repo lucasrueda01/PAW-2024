@@ -13,9 +13,12 @@ class PageController extends Controller
 
     public Uploader $uploader;
     public Verificador $verificador;
+    public $data;
 
     public function __construct()
     {
+        global $log;
+        
         parent::__construct();
 
         $this->uploader = new Uploader;
@@ -24,26 +27,25 @@ class PageController extends Controller
 
         $usuario = new UsuarioController();
         list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);
+
+        $this->data = [
+            'menu' => $this->menu,
+            'menuPerfil' => $this->menuPerfil,
+        ];
+        
+        if (!empty($this->menuEmpleado)) {
+            $this->data['menuEmpleado'] = $this->menuEmpleado;
+            $log->info('menuEmpleado: ' , [$this->menuEmpleado, !empty($this->menuEmpleado)]);
+        }
+
     }
 
     public function index()
     {
-        global $log;
-        $titulo = "PAW POWER | HOME";
-        // require $this->viewsDir . 'index.view.php';
 
-        $data = [
-            'menu' => $this->menu,
-            'menuPerfil' => $this->menuPerfil,
-            'titulo' => $titulo,
-        ];
-        
-        if (!empty($this->menuEmpleado)) {
-            $data['menuEmpleado'] = $this->menuEmpleado;
-            $log->info('menuEmpleado: ' , [$this->menuEmpleado, !empty($this->menuEmpleado)]);
-        }
+        $this->data['titulo'] = "PAW POWER | HOME";
 
-        view('index.view', $data);
+        view('index.view', $this->data);
     }
 
 

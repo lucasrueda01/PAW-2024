@@ -9,7 +9,18 @@ class ServicioRestaurante {
         /**
          * Mapa para almacenar la información de los locales
          */
-        this.locales = Datos.locales; 
+        // this.locales = Datos.locales; 
+
+        const data = new Datos()
+        data.getLocales()
+            .then(locales => {
+                this.locales = locales;
+                console.log(this.locales); // Ahora puedes ver los datos obtenidos
+                // Aquí puedes llamar a alguna función para inicializar o procesar los datos
+            })
+            .catch(error => {
+                console.error('Error al obtener los locales:', error);
+            });
         /**
          * inicializo para el caso q el cliente se arrepiente 
          * de la mesa elegida y cliquea otra. En cuyo caso,

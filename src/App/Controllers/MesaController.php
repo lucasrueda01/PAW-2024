@@ -87,9 +87,15 @@ class MesaController extends Controller
         require $this->viewsDir . 'empleado/gestion_mesa.view.php';
     }
 
-    public function getLocales(){
-        return self::$locales;
+    public function getLocales()
+    {
+        header('Content-Type: application/json');
+        echo json_encode(self::$locales);
     }
+
+    // public function getLocales(){
+    //     return self::$locales;
+    // }
 
     public function reservar_cliente()
     {
@@ -115,4 +121,5 @@ class MesaController extends Controller
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }
    
+
 }
