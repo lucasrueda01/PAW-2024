@@ -42,6 +42,7 @@ class UsuarioController extends Controller
                 return !in_array($item['href'], ['/perfil_usuario', '/cerrar_sesion']);
             });            
         }
+
         return [$menuPerfil, $menuEmpleado];
     }
 

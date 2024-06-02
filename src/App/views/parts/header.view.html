@@ -9,13 +9,8 @@
             
             {% include 'parts/nav.view.html' %}
 
-            <li class="opciones_nav">
-                <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
-                <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
-                <ul class="submenu submenuEmpleado">
-                    {% include 'parts/nav_empleado.view.html' %}
-                </ul>
-            </li>
+            {% include 'parts/nav_empleado.view.html' %}
+
         </ul>
         <ul class="nav_usuario">
             <li class="opciones_nav">
