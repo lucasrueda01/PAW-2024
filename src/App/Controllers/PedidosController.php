@@ -5,6 +5,7 @@ namespace Paw\App\Controllers;
 use Paw\App\Utils\Verificador;
 
 use Paw\Core\Controller;
+use Paw\Core\Controller\UsuarioController;
 
 use Paw\App\Models\PedidosCollection;
 
@@ -14,12 +15,28 @@ class PedidosController extends Controller
     public ?string $modelName = PedidosCollection::class;
 
     public Verificador $verificador;
+    public $usuario;
+    public $data;
 
     public function __construct()
     {
+        global $log;
+
         parent::__construct();
 
         $this->verificador = new Verificador;
+        $this->usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $this->usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);    
+
+        $this->data = [
+            'menu' => $this->menu,
+            'menuPerfil' => $this->menuPerfil,
+        ];
+        
+        if (!empty($this->menuEmpleado)) {
+            $this->data['menuEmpleado'] = $this->menuEmpleado;
+            $log->info('menuEmpleado: ' , [$this->menuEmpleado, !empty($this->menuEmpleado)]);
+        }
     }
 
     public function pedidos_entrantes()

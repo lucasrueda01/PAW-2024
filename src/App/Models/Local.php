@@ -21,7 +21,7 @@ class Local extends Model
         'ubicacion' => null
     ];
 
-    public function __construct($datosLocal=[])
+    public function __construct($datosLocal=[], $qb=null)
     {   
         if (!is_null($datosLocal) && is_array($datosLocal)) {
 
@@ -40,6 +40,9 @@ class Local extends Model
             } catch (Exception $e) {
                 echo "Error al crear el objeto Local: " . $e->getMessage();    
             }
+        }
+        if(is_null($this->queryBuilder) && $qb){
+            $this->queryBuilder = $qb;
         }
     }
 
@@ -88,9 +91,10 @@ class Local extends Model
         }
     }
 
-    public function loadByName()
+    public function loadByName($nombreLocal=null)
     {
-        $params = [ "nombre_local" => $this->getNombreLocal()];
+        $params = ["nombre_local" => ($nombreLocal == null) ? $this->getNombreLocal() : $nombreLocal];
+
         try{
             $record = current($this->queryBuilder->select($this->table, $params));
             if($record){

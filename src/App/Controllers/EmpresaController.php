@@ -10,12 +10,27 @@ class EmpresaController extends Controller
 {
 
     public Verificador $verificador;
+    public $data;
 
     public function __construct()
     {
+        global $log;
+
         parent::__construct();
 
         $this->verificador = new Verificador;
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);
+
+        $this->data = [
+            'menu' => $this->menu,
+            'menuPerfil' => $this->menuPerfil,
+        ];
+        
+        if (!empty($this->menuEmpleado)) {
+            $this->data['menuEmpleado'] = $this->menuEmpleado;
+            $log->info('menuEmpleado: ' , [$this->menuEmpleado, !empty($this->menuEmpleado)]);
+        }
     }
 
     public function sucursales()

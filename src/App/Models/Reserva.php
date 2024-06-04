@@ -10,6 +10,7 @@ use Paw\Core\Exceptions\InvalidValueFormatException;
 
 use Paw\App\Utils\Uploader;
 use Paw\App\Utils\Verificador;
+use PDOException;
 
 class Reserva extends Model
 {       
@@ -24,7 +25,7 @@ class Reserva extends Model
         'ocupada' => null
     ];
 
-    public function __construct($datosReserva=[])
+    public function __construct($datosReserva=[], $qb=null)
     {   
         if (!is_null($datosReserva) && is_array($datosReserva)) {
 
@@ -43,6 +44,10 @@ class Reserva extends Model
             } catch (Exception $e) {
                 echo "Error al crear el objeto Reserva: " . $e->getMessage();    
             }
+        }
+
+        if(is_null($this->queryBuilder) && $qb){
+            $this->queryBuilder = $qb;
         }
     }
 
@@ -137,5 +142,16 @@ class Reserva extends Model
             throw new Exception("Error no existe Id {$e}");
         }
     }  
+
+    public function insert($data)
+    {
+        try {
+            return $this->queryBuilder->insert($this->table, $data);
+        } catch (PDOException $e) {
+            
+            $this->queryBuilder->logger->error("Error al insertar la reserva: " . $e->getMessage());
+            return [null, false];
+        }
+    }
 
 }

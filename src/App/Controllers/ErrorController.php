@@ -7,11 +7,27 @@ use Paw\Core\Controller;
 
 class ErrorController extends Controller
 {
+    public $data;
 
     public function __construct(){
+
+        global $log;
+
         parent::__construct();
         
         $this->viewsDir = __DIR__ . '/../views/errors/';
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);   
+
+        $this->data = [
+            'menu' => $this->menu,
+            'menuPerfil' => $this->menuPerfil,
+        ];
+        
+        if (!empty($this->menuEmpleado)) {
+            $this->data['menuEmpleado'] = $this->menuEmpleado;
+            $log->info('menuEmpleado: ' , [$this->menuEmpleado, !empty($this->menuEmpleado)]);
+        }
     }
     
     public function notFound() {
