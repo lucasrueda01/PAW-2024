@@ -6,16 +6,12 @@
 }
 
 .container {
-    font-size: 2rem;
-    font-family: 'Century Gothic';
+    font-size: 1.5rem;
+    font-family: "Century Gothic";
     margin-top: 2rem;
     margin-right: 1rem;
     margin-left: 1rem;
     transition: .5s ease-in-out;
-}
-
-.container:hover {
-    background-color: var(--color-amarrillohover);
 }
 
 .container table {
@@ -161,8 +157,15 @@ input[type=number]::-webkit-inner-spin-button {
 .container_delivery {
     margin: 0 auto;
     width: 80vw;
+    background-color: var(--color-amarillo);
 }
 
+.container_delivery label {
+    font-family: "Century_Gothic";
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
 
 @media (min-width: 800px) {
     .container_delivery {
@@ -242,8 +245,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .container_formulario input,
-.container_formulario select {
-    font-size: 1.8rem;
+.container_formulario select,
+option {
+    font-size: 1.5rem;
 }
 
 .container_formulario label,
@@ -253,7 +257,19 @@ input[type=number]::-webkit-inner-spin-button {
     display: inline-block;
     width: 85%;
     margin-left: 2rem;
-    margin-bottom: 1rem;    
+    margin-bottom: 1rem;
+}
+
+.container_formulario select,
+.container_formulario input {
+    border: 0;    
+    border-bottom: 1px solid #000000;
+    outline: none;
+    background-color: transparent;
+}
+
+.contariner_formulario select:hover {
+    background-color: #eec53f;
 }
 
 .titulo_resumen {
