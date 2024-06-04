@@ -9,16 +9,17 @@
             <ul class="nav_menu"> 
 
                 <?php require __DIR__.'/nav.view.php' ?>            
+                <?php if($this->menuEmpleado != []) : ?>
+                    <li class="opciones_nav">
+                        <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
+                        <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
+                        <ul class="submenu submenuEmpleado">
 
-                <li class="opciones_nav">
-                    <input type="checkbox" name="menuGestionEmpleado" id="checkPerfilEmpleado">
-                    <label for="checkPerfilEmpleado" class="labelPerfilEmpleado">PERFIL EMPLEADO</label>
-                    <ul class="submenu submenuEmpleado">
+                            <?php require __DIR__.'/nav_empleado.view.php' ?>            
 
-                        <?php require __DIR__.'/nav_empleado.view.php' ?>            
-
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                <?php endif; ?>
             </ul>
              <ul class="nav_usuario">
                 <li class="opciones_nav">

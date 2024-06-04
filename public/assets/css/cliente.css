@@ -217,6 +217,10 @@ input[type=number]::-webkit-inner-spin-button {
     text-transform: uppercase;
 }
 
+.section_formulario {
+    margin-bottom: 1rem;
+}
+
 .section_formulario textarea {
     height: 5rem;
     resize: none;
@@ -251,7 +255,7 @@ option {
 }
 
 .container_formulario label,
-.container_formulario input,
+.container_formulario input:not([hidden]),
 .container_formulario legend,
 .container_formulario select {
     display: inline-block;
@@ -286,7 +290,7 @@ option {
 }
 
 .container_formulario aside {
-    position: absolute;
+    /* position: absolute; */
     right: 1rem;
     top: 3rem;
     border: .1rem solid gray;
@@ -921,7 +925,7 @@ input[type="submit"] {
 }
 
 /* Estilos responsive para la stacktable */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .tabla_gestion_mesa, .tabla_gestion_mesa thead, .tabla_gestion_mesa tbody, .tabla_gestion_mesa th, .tabla_gestion_mesa td, .tabla_gestion_mesa tr {
         display: block;
     }
@@ -1004,6 +1008,7 @@ input[type="submit"] {
 
 .input_cantidad_form {
     width: fit-content !important;
+    background-color: transparent;
     max-width: 1.5rem;
     border: 0px;
 }

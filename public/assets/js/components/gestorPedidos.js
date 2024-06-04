@@ -12,8 +12,9 @@ class GestorPedidos {
             animador.animar(estadoElement, 5000, 'animado');
             
             // Verificar si el nuevo estado es 'pasar-a-retirar' 
-            
-                const estados = Object.keys(Pedido.accionesPorEstado);
+                let tipoUsuario = getCookie('tipo_usuario');
+                
+                const estados = Object.keys(Pedido.accionesPorEstadoXTipoUsuario[tipoUsuario]);
                 if (estados.includes(nuevoEstado) && permisoNotificacion) {
                     // Verificar si el dispositivo es un celular y si admite la vibración
                     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
@@ -41,8 +42,9 @@ class GestorPedidos {
          * y agrego los botones correspondientes
          * como hijos de elemento section cuya clase es `detalles_pedido` 
          */
+        let tipoUsuario = getCookie('tipo_usuario');
 
-        console.log(Pedido.accionesPorEstado[estado])
+        console.log(Pedido.accionesPorEstadoXTipoUsuario[tipoUsuario][estado])
         // const listaAcciones = pedido.obtenerAcciones(estado)
 
         const detallesPedido = document.querySelector('.detalles_pedido');
@@ -55,7 +57,7 @@ class GestorPedidos {
             enlace.remove();
         });        
 
-        Pedido.accionesPorEstado[estado].forEach((accion) => {
+        Pedido.accionesPorEstadoXTipoUsuario[tipoUsuario][estado].forEach((accion) => {
             console.log(`accion: ${accion}`);
 
             // Crear un nuevo elemento <a>

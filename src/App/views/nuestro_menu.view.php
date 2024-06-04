@@ -137,14 +137,22 @@
                         <label for="nombre">Nombre</label>
                         <input type="text" name="nombre" id="nombre" required>
                         
+<<<<<<< HEAD
                         <label for="tipo">Tipo de pedido</label>
+=======
+                        <label for="tipo">Tipo Pedido</label>
+>>>>>>> 53643f40e63170e851c1fd40e7c8595bc50f18ef
                         <select id="tipo" name="tipo" required>
                             <option value="">Sin seleccionar</option>
                             <option value="delivery">Delivery</option>
                             <option value="en-el-local">Retiro por el Local</option>
                         </select>
 
+<<<<<<< HEAD
                         <label for="local">Sucursal</label>
+=======
+                        <label for="local">Sucursal:</label>
+>>>>>>> 53643f40e63170e851c1fd40e7c8595bc50f18ef
                         <select id="local" name="local">
                             <option value="Local A">Local A</option>
                             <option value="Local B">Local B</option>
@@ -156,7 +164,11 @@
                         <label for="observaciones">Observaciones</label>
                         <input type="text" name="observaciones" id="observaciones">
 
+<<<<<<< HEAD
                         <label for="forma-de-pago">Forma de pago</label>
+=======
+                        <label for="forma-de-pago">Forma de pago:</label>
+>>>>>>> 53643f40e63170e851c1fd40e7c8595bc50f18ef
                         <select id="forma-de-pago" name="forma-de-pago">
                             <option value="mercado_pago">Mercado Pago</option>
                             <option value="efectivo">Pago en efectivo</option>
@@ -164,7 +176,9 @@
 
                     </fieldset>
 
-                    <input type="submit" value="Pedir" class="boton boton_negro  btn-pedido"> <!--ESTA ACTIVO SOLO CUANDO EL USUARIO ELIGE LA OPCION PEDIR EN EL LUGAR -->
+                    <input type="text" name="carrito_data" id="carrito_data" value="nada" hidden>
+                    <input type="submit" value="Pedir" class="boton boton_negro  btn-pedido"> 
+
                 </form>
             </section>
 

@@ -139,6 +139,32 @@
     font-size: 2rem;
 }
 
+
+@media (max-width: 1280px) {
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.5rem;
+    }
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 1142px) {
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.2rem;
+    }
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 1050px) {
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.1rem;
+    }
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.1rem;
+    }
+}
+
 .tabla_gestion_mesa tfoot td {
     text-align: center;
     padding-right: 1rem;
@@ -254,3 +280,18 @@
     background-color: #0056b3;
 }
 
+.estado-sin-confirmar {
+    background-color: red;
+}
+
+.estado-en-preparacion {
+    background-color: blue;
+}
+
+.estado-confirmado, .estado-pasar-a-retirar {
+    background-color: green;
+}
+
+.estado-rechazado, .estado-cancelado, .estado-despachado {
+    background-color: gray;
+}

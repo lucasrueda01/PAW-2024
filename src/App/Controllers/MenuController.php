@@ -10,6 +10,7 @@ use Paw\Core\Controller;
 use Paw\App\Models\PlatosCollection;
 use Paw\App\Models\Plato;
 use Paw\Core\Model;
+use Paw\App\Controllers\UsuarioController;
 
 class MenuController extends Controller
 {
@@ -27,6 +28,8 @@ class MenuController extends Controller
         $this->uploader = new Uploader;
 
         $this->verificador = new Verificador;
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);        
     }
 
     public function nuestroMenu()
@@ -48,9 +51,9 @@ class MenuController extends Controller
          * FALTA TRY CATCH 22052024
          */
         // Verificar si la variable lista_encoded está presente en la solicitud GET
-        if (isset($_GET['lista_encoded'])) {
+        if (!is_null($request->get('lista_encoded'))) {
         //     // Decodificar el JSON
-            $lista_platos_ids = json_decode($_GET['lista_encoded']);
+            $lista_platos_ids = json_decode($request->get('lista_encoded'));
             
             $log->info("lista_platos_ids: ",[$lista_platos_ids]);
             // Iterar sobre cada ID de plato en la lista

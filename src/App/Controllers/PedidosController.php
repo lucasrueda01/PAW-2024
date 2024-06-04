@@ -5,9 +5,11 @@ namespace Paw\App\Controllers;
 use Paw\App\Utils\Verificador;
 
 use Paw\Core\Controller;
+use Paw\Core\Controller\UsuarioController;
 use Paw\App\Models\Plato;
 
 use Paw\App\Models\PedidosCollection;
+use Paw\App\Controllers\UsuarioController;
 
 class PedidosController extends Controller
 {
@@ -15,12 +17,28 @@ class PedidosController extends Controller
     public ?string $modelName = PedidosCollection::class;
 
     public Verificador $verificador;
+    public $usuario;
+    public $data;
 
     public function __construct()
     {
+        global $log;
+
         parent::__construct();
 
         $this->verificador = new Verificador;
+        $this->usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $this->usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);    
+
+        $this->data = [
+            'menu' => $this->menu,
+            'menuPerfil' => $this->menuPerfil,
+        ];
+        
+        if (!empty($this->menuEmpleado)) {
+            $this->data['menuEmpleado'] = $this->menuEmpleado;
+            $log->info('menuEmpleado: ' , [$this->menuEmpleado, !empty($this->menuEmpleado)]);
+        }
     }
 
     public function pedidos_entrantes()
@@ -49,8 +67,8 @@ class PedidosController extends Controller
         $pedido = $this->model->getById(intval($id));
 
 
-
-        $listaAcciones = PedidosCollection::$accionesPorEstado; //
+        $tipo = $this->usuario->getTipoUsuario();
+        $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
         $urlsAccion = PedidosCollection::$urlsAccion;
 
         $log->info("metodo getById: ", [$pedido]);
@@ -103,18 +121,17 @@ class PedidosController extends Controller
         // Obtener la fecha y hora actual
         $fechaHora = date('Y-m-d\TH:i:s');
 
-        // Obtener los artículos de la superglobal $_COOKIE
         $articulos = [];
 
-        if (isset($_COOKIE['platos'])) {
-            $datos = json_decode($_COOKIE['platos'], true);
+        if (!is_null($request->get('carrito_data'))) {
+            $carrito = json_decode($request->get('carrito_data'), true);
             
             $total = 0;
 
-            foreach ($datos as $item) {
+            foreach ($carrito['platos'] as $plato) {
 
-                $id = intval($item['id']);
-                $cantidad = intval($item['cantidad']);
+                $id = intval($plato['id']);
+                $cantidad = intval($plato['cantidad']);
 
                 $log->info("id, cantidad :", [$id, $cantidad]);
 
@@ -158,7 +175,9 @@ class PedidosController extends Controller
 
             $log->info("resultado['id']: ", [$resultado['id']]);
 
-            $listaAcciones = PedidosCollection::$accionesPorEstado; //
+            $tipo = $this->usuario->getTipoUsuario();
+            
+            $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
             $urlsAccion = PedidosCollection::$urlsAccion;
         } 
         

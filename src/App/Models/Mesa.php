@@ -10,10 +10,11 @@ use Paw\Core\Exceptions\InvalidValueFormatException;
 
 use Paw\App\Utils\Uploader;
 use Paw\App\Utils\Verificador;
+use PDOException;
 
 class Mesa extends Model
 {       
-    public $table = 'mesa';
+    public $table = 'mesas';
 
     public $fields = [
         'id' => null,
@@ -22,7 +23,7 @@ class Mesa extends Model
         'local' => null
     ];
 
-    public function __construct($datosMesa=[])
+    public function __construct($datosMesa=[], $qb=null)
     {   
         if (!is_null($datosMesa) && is_array($datosMesa)) {
 
@@ -41,6 +42,10 @@ class Mesa extends Model
             } catch (Exception $e) {
                 echo "Error al crear el objeto Mesa: " . $e->getMessage();    
             }
+        }
+
+        if(is_null($this->queryBuilder) && $qb){
+            $this->queryBuilder = $qb;
         }
     }
 
@@ -97,5 +102,41 @@ class Mesa extends Model
             $this->$method($value);
         }
     }    
+
+    public function loadByName($nombreMesa=null)
+    {
+        $params = ["nombre" => ($nombreMesa == null) ? $this->getNombreMesa() : $nombreMesa];
+
+        try{
+            $record = current($this->queryBuilder->select($this->table, $params));
+            if($record){
+                $this->set($record);
+            }else{
+                return [
+                    'error' => true,
+                    'description' => 'No Existe el Name buscado'
+                ];
+            }
+        }catch(Exception $e){
+            throw new Exception("Error no existe Name {$e}");
+        }
+    } 
+
+    public function getIdByNameAndLocal($mesa_nombre, $local_id)
+    {
+        global $log;
+
+        try {
+            $params = ['nombre' => $mesa_nombre, 'local_id' => $local_id];
+            $result = $this->queryBuilder->select($this->table, $params);
+
+            return $result ? $result[0]['id'] : null;
+        } catch (PDOException $e) {
+
+            $log->error("Error al obtener el ID de la mesa: " . $e->getMessage());
+
+            return null;
+        }
+    }
 
 }

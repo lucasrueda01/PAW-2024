@@ -5,22 +5,33 @@ namespace Paw\App\Models;
 
 use Paw\Core\Model;
 use Exception;
-
+use Paw\App\Controllers\UsuarioController;
 
 class PedidosCollection extends Model
 {
     public $indice = [];
-    static public $accionesPorEstado = [
-        "sin-confirmar" => ["confirmar", "rechazar"],
-        "confirmado" => ["despachar", "pasar-a-retirar"],
-        "rechazado" => [],
-        "despachado" => [],
-        "pasar-a-retirar" => [],
-        "en-preparacion" => ["finalizar", "cancelar"],
-        "finalizado" => ["despachar", "pasar-a-retirar"]
+
+    static public $accionesPorEstadoXTipoUsuario = [
+        "cliente" => [
+            "sin-confirmar" => ["cancelar"],    
+            "confirmado" => ["cancelar"],
+            "despachado" => [],
+            "cancelado" => [],
+            "pasar-a-retirar" => [],
+            "en-preparacion" => ["cancelar"],
+            "finalizado" => []
+        ],
+        "empleado" => [
+            "sin-confirmar" => ["confirmar", "rechazar"],
+            "confirmado" => ["despachar", "pasar-a-retirar"],
+            "rechazado" => [],
+            "despachado" => [],
+            "cancelado" => [],
+            "pasar-a-retirar" => [],
+            "en-preparacion" => ["finalizar", "cancelar"],
+            "finalizado" => ["despachar", "pasar-a-retirar"]
+        ]
     ];
-
-
     static public $urlsAccion  = [
         "confirmar" => "confirmado",
         "rechazar" => "rechazado",
@@ -29,6 +40,7 @@ class PedidosCollection extends Model
         "despachar" => "despachado",        
         "pasar-a-retirar" => "pasar-a-retirar"
     ];
+    public $usuario;
 
     public function __construct()
     {
@@ -41,7 +53,9 @@ class PedidosCollection extends Model
         foreach ($pedidos as $pedido) {
             $this->indice[$pedido['Nro Pedido']] = $pedido;
         }
-                
+            
+        $this->usuario = new UsuarioController();
+
     }
 
     public function getAll()
@@ -100,7 +114,8 @@ class PedidosCollection extends Model
     // Verificar si se encontró el pedido
     if ($pedidoEncontrado) {
 
-        if(!isset(self::$accionesPorEstado[$estado])){
+        
+        if(!isset(self::$accionesPorEstadoXTipoUsuario[$this->usuario->getTipoUsuario()][$estado])){
             return ["error" => "El estado para el pedido no esta permitido"];
         }
         // Convertir el array modificado a JSON
