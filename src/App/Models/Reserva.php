@@ -14,7 +14,7 @@ use PDOException;
 
 class Reserva extends Model
 {       
-    public $table = 'reserva';
+    public $table = 'reservas';
 
     public $fields = [
         'id' => null,
@@ -127,7 +127,7 @@ class Reserva extends Model
 
     public function load($idLocal, $idMesa)
     {
-        $params = [ "id_local" => $idLocal, "id_mesa" => $idMesa];
+        $params = [ "id_local" => $idLocal, "mesa_id" => $idMesa];
         try{
             $record = current($this->queryBuilder->select($this->table, $params));
             if($record){

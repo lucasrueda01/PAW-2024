@@ -13,12 +13,13 @@ use Paw\App\Utils\Verificador;
 
 class Local extends Model
 {       
-    public $table = 'local';
+    public $table = 'locales';
 
     public $fields = [
         'id' => null,
-        'nombre_local' => null,
-        'ubicacion' => null
+        'nombre' => null,
+        'hora_apertura' => null,
+        'hora_cierre' => null
     ];
 
     public function __construct($datosLocal=[], $qb=null)
@@ -56,24 +57,34 @@ class Local extends Model
         return $this->fields['id'];
     }
 
-    public function setNombreLocal($nombre)
+    public function setNombre($nombre)
     {
         $this->fields['nombre_local'] = $nombre;
     }
 
-    public function getNombreLocal()
+    public function getNombre()
     {
         return $this->fields['nombre_local'];
     }
 
-    public function setUbicacion($ubicacion)
+    public function setHoraApertura($horaApertura)
     {
-        $this->fields['ubicacion'] = $ubicacion;
+        $this->fields['hora_apertura'] = $horaApertura;
     }
 
-    public function getUbicacion()
+    public function getHoraApertura()
     {
-        return $this->fields['ubicacion'];
+        return $this->fields['hora_apertura'];
+    }
+
+    public function setHoraCierre($horaCierre)
+    {
+        $this->fields['hora_cierre'] = $horaCierre;
+    }
+
+    public function getHoraCierre()
+    {
+        return $this->fields['hora_cierre'];
     }
   
 
@@ -93,8 +104,11 @@ class Local extends Model
 
     public function loadByName($nombreLocal=null)
     {
-        $params = ["nombre_local" => ($nombreLocal == null) ? $this->getNombreLocal() : $nombreLocal];
+        global $log;
 
+        $params = ["nombre" => ($nombreLocal == null) ? $this->getNombreLocal() : $nombreLocal];
+
+        $log->info("params: ", [$params, $this->table]);
         try{
             $record = current($this->queryBuilder->select($this->table, $params));
             if($record){

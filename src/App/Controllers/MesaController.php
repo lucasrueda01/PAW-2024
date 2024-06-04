@@ -105,9 +105,17 @@ class MesaController extends Controller
         $titulo = 'PAW POWER | GESTION MESA';
         require $this->viewsDir . 'empleado/gestion_mesa.view.php';
     }
-    public function new()
+
+    public function getLocales()
     {
-        global $request;
+        header('Content-Type: application/json');
+        // echo json_encode(self::$locales);
+        echo json_encode($this->model->getReservas());
+    }
+
+    public function reservar_cliente()
+    {
+        global $request, $log;
 
         $titulo = 'PAW POWER | RESERVAR CLIENTE';
 
@@ -152,6 +160,7 @@ class MesaController extends Controller
                             "success" => true,
                             "message" => "Reserva realizada con éxito."
                         ];
+                        
                     } else {
                         $resultado = [
                             "success" => false,
@@ -172,7 +181,7 @@ class MesaController extends Controller
                 ];
             }
         }
-
+        $log->info("resultado: " , [$resultado]);
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }
 }

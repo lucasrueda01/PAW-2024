@@ -14,7 +14,7 @@ use PDOException;
 
 class Mesa extends Model
 {       
-    public $table = 'mesa';
+    public $table = 'mesas';
 
     public $fields = [
         'id' => null,
@@ -105,7 +105,7 @@ class Mesa extends Model
 
     public function loadByName($nombreMesa=null)
     {
-        $params = ["nombre_local" => ($nombreMesa == null) ? $this->getNombreMesa() : $nombreMesa];
+        $params = ["nombre" => ($nombreMesa == null) ? $this->getNombreMesa() : $nombreMesa];
 
         try{
             $record = current($this->queryBuilder->select($this->table, $params));
