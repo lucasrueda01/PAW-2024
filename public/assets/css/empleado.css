@@ -139,6 +139,32 @@
     font-size: 2rem;
 }
 
+
+@media (max-width: 1280px) {
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.5rem;
+    }
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 1142px) {
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.2rem;
+    }
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 1050px) {
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.1rem;
+    }
+    .tabla_gestion_mesa td:nth-child(5){
+        font-size: 1.1rem;
+    }
+}
+
 .tabla_gestion_mesa tfoot td {
     text-align: center;
     padding-right: 1rem;
@@ -189,8 +215,8 @@
     margin: 2rem 2rem;
 }
 
-#nromesa-elegida {
-    display: none;
+.input_oculto, #nromesa-elegida {
+    display: none !important;
 }
 
 
@@ -198,8 +224,7 @@
 
 /* Estilos para la sección de detalles del pedido */
 .detalles_pedido {
-    
-    width: 30vw;
+    width: fit-content;
     border: 1px solid #ccc;
     padding: 20px;
     margin: 10rem auto;
@@ -213,15 +238,20 @@
 
 /* Estilos para el número de pedido */
 .nro_pedido {
-    font-size: 5rem;
+    font-size: 3rem;
     color: #333;
     margin-bottom: 10px;
+    background-color: red;
 }
 
 /* Estilos para los detalles del pedido */
 .detalle {
     margin-bottom: 5px;
-    font-size: 2.5rem;
+    font-size: 2rem;
+}
+
+.estado {
+    background-color: var(--color-amarillo);
 }
 
 @keyframes brillo {
@@ -248,4 +278,20 @@
 
 .btn_accion:hover {
     background-color: #0056b3;
+}
+
+.estado-sin-confirmar {
+    background-color: red;
+}
+
+.estado-en-preparacion {
+    background-color: blue;
+}
+
+.estado-confirmado, .estado-pasar-a-retirar {
+    background-color: green;
+}
+
+.estado-rechazado, .estado-cancelado, .estado-despachado {
+    background-color: gray;
 }

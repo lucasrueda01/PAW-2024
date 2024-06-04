@@ -52,5 +52,21 @@ final class PrimerasTablasMigration extends AbstractMigration
                 ->addForeignKey('id_local', 'local', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
                 ->addForeignKey('id_mesa', 'mesa', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
                 ->create();
+
+        // Create the users table
+        $table = $this->table('users');
+        
+        // Add columns
+        $table->addColumn('username', 'string', ['limit' => 50])
+              ->addColumn('email', 'string', ['limit' => 100])
+              ->addColumn('password', 'string', ['limit' => 255])
+              ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
+              ->addColumn('updated_at', 'timestamp', [
+                  'null' => true,
+                  'default' => 'CURRENT_TIMESTAMP',
+                  'update' => 'CURRENT_TIMESTAMP'
+              ])
+              ->addIndex(['email'], ['unique' => true])
+              ->create();                
     }
 }

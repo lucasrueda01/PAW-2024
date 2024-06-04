@@ -10,6 +10,7 @@ use Paw\Core\Controller;
 use Paw\App\Models\PlatosCollection;
 use Paw\App\Models\Plato;
 use Paw\Core\Model;
+use Paw\App\Controllers\UsuarioController;
 
 class MenuController extends Controller
 {
@@ -27,6 +28,8 @@ class MenuController extends Controller
         $this->uploader = new Uploader;
 
         $this->verificador = new Verificador;
+        $usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);        
     }
 
     public function nuestroMenu()
@@ -37,6 +40,41 @@ class MenuController extends Controller
         $platos = $this->model->getAll();
         $log->info("(nuestroMenu) this->model: ", [$this->model]);
         require $this->viewsDir . 'nuestro_menu.view.php';
+    }
+
+    public function getPlatosInCart()
+    {
+        global $request, $log;
+            
+        $lista_platos = [];
+        /**
+         * FALTA TRY CATCH 22052024
+         */
+        // Verificar si la variable lista_encoded está presente en la solicitud GET
+        if (!is_null($request->get('lista_encoded'))) {
+        //     // Decodificar el JSON
+            $lista_platos_ids = json_decode($request->get('lista_encoded'));
+            
+            $log->info("lista_platos_ids: ",[$lista_platos_ids]);
+            // Iterar sobre cada ID de plato en la lista
+            foreach ($lista_platos_ids as $platoData) {
+                $platoId = $platoData->id; // Obtener el ID del plato
+                $cantidad = $platoData->cantidad; // Obtener la cantidad del plato                
+                // Obtener los datos del plato
+                list($resultado, $plato) = $this->model->get($platoId);
+        
+                // Verificar si hubo un error al obtener los datos del plato
+                if (!isset($resultado['error'])) {
+                    // Agregar los datos del plato a la lista
+                    $lista_platos[] = $plato->fields;
+                }
+            }
+        }
+        $response_json = json_encode($lista_platos);
+        $log->info("response_json: ",[$response_json]);
+        // Enviar la respuesta
+        header('Content-Type: application/json');
+        echo $response_json;
     }
 
     public function promociones()

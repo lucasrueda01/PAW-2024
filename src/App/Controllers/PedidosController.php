@@ -6,8 +6,10 @@ use Paw\App\Utils\Verificador;
 
 use Paw\Core\Controller;
 use Paw\Core\Controller\UsuarioController;
+use Paw\App\Models\Plato;
 
 use Paw\App\Models\PedidosCollection;
+use Paw\App\Controllers\UsuarioController;
 
 class PedidosController extends Controller
 {
@@ -51,20 +53,32 @@ class PedidosController extends Controller
     public function pedir()
     {
         $titulo = 'PAW POWER | PEDIR';
-        require $this->viewsDirCliente . 'pedir.view.php';
+        require $this->viewsDir . 'pedir.view.php';
     }
 
     public function get()
     {
-        global $request;
+        global $request, $log;
 
         $id = $request->get('id');
 
-        $pedido = $this->model->getById($id);
+        $log->info("id: ", [$id]);
 
-        $listaAcciones = PedidosCollection::$accionesPorEstado; //
+        $pedido = $this->model->getById(intval($id));
+
+
+        $tipo = $this->usuario->getTipoUsuario();
+        $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
         $urlsAccion = PedidosCollection::$urlsAccion;
 
+        $log->info("metodo getById: ", [$pedido]);
+
+        if(isset($pedido['error'])){
+            $resultado['error'] = $pedido['error'];
+        }
+
+        // var_dump($pedido);
+        // echo("<pre>");
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
 
@@ -98,5 +112,76 @@ class PedidosController extends Controller
         }
         $pedidos = $this->model->getAll();
         require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
+    }
+
+    public function new()
+    {
+        global $request, $log;
+
+        // Obtener la fecha y hora actual
+        $fechaHora = date('Y-m-d\TH:i:s');
+
+        $articulos = [];
+
+        if (!is_null($request->get('carrito_data'))) {
+            $carrito = json_decode($request->get('carrito_data'), true);
+            
+            $total = 0;
+
+            foreach ($carrito['platos'] as $plato) {
+
+                $id = intval($plato['id']);
+                $cantidad = intval($plato['cantidad']);
+
+                $log->info("id, cantidad :", [$id, $cantidad]);
+
+                $platoPedido = new Plato;
+                $platoPedido->setQueryBuilder($this->qb);
+                $platoPedido->load($id);
+
+                $subtotal = $platoPedido->getPrecio() * $cantidad;
+
+                $articulos[] = [
+                    "nombre" => $platoPedido->getNombrePlato(),
+                    "precio"  => floatval($platoPedido->getPrecio()),
+                    "cantidad" => $cantidad,
+                    "subtotal" => $subtotal,
+                ];
+                $total = $total + $subtotal;
+            }
+        }
+
+        // Crear el nuevo pedido
+        $nuevoPedido = [
+            "Fecha/Hora" => $fechaHora,
+            "Tipo" => $request->get("tipo"),
+            "Nombre" => htmlspecialchars($request->get("nombre")),
+            "Metodo de Pago" => $request->get("forma-de-pago"),
+            "Direccion" => htmlspecialchars($request->get("direccion")),
+            "Observaciones" => htmlspecialchars($request->get("observaciones")),
+            "Monto Total" => $total,
+            "articulos" => $articulos,
+        ];
+
+        
+        $log->info("articulos, total ,nuevoPedido :", [$articulos, $total ,$nuevoPedido]);
+
+        // Agregar el nuevo pedido a la colección
+        $resultado = $this->model->new($nuevoPedido);
+        
+        
+        if (isset($resultado['exito'])) {
+            $pedido = $this->model->getById($resultado['id']);
+
+            $log->info("resultado['id']: ", [$resultado['id']]);
+
+            $tipo = $this->usuario->getTipoUsuario();
+            
+            $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
+            $urlsAccion = PedidosCollection::$urlsAccion;
+        } 
+        
+        require $this->viewsDir . 'empleado/pedido.show.view.php';
+        
     }
 }

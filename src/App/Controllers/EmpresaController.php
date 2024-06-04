@@ -3,7 +3,7 @@
 namespace Paw\App\Controllers;
 
 use Paw\App\Utils\Verificador;
-
+use Paw\App\Controllers\UsuarioController;
 use Paw\Core\Controller;
 
 class EmpresaController extends Controller

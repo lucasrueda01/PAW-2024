@@ -39,6 +39,7 @@ header {
     justify-content: space-around;
     align-items: center;
     padding: 0.5rem;
+    background-color: white;
                  /*0.5 x 10px */
 }
 
@@ -202,10 +203,10 @@ main {
 
     .logo_grande_mobile {
         display: block;
-        width: 18rem;
-        height: 5rem;
+        width: 14rem;
+        height: 3.8rem;
         background-image: url(../imgs/svg/Imagotipo_PAWPOWER-negro.svg);
-        margin-left: 20%;
+        margin-left: 25%;
     }
 
     #menuMobile {
@@ -347,6 +348,19 @@ main {
     width: 16rem;
     color: white;
     background-color: black;
+    padding: 1rem 1rem;
+}
+
+.btn-pedido {
+    margin-left: 13rem;
+    grid-area: btn-submit;
+}
+
+.boton_negro_carrito {
+    width: 5rem;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
 }
 
 .boton_negro:hover {
@@ -480,7 +494,8 @@ main {
 
 .destacados {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    height: auto;
     max-width: 100em;
     overflow: hidden;
     margin: 0 auto;
@@ -632,7 +647,7 @@ main {
 
 .pie_pagina {
     background-color: #000000;
-    /* margin-top: 5%; */
+    margin-top: 5%;
 }
 
 .pie_pagina a {

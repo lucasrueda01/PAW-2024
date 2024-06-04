@@ -8,6 +8,7 @@ use Monolog\Handler\StreamHandler;
 use Dotenv\Dotenv;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
+use Twig\Extension\DebugExtension;
 
 use Paw\Core\App;
 use Paw\Core\Router;
@@ -40,12 +41,9 @@ $log->info('Datos de Config', [
     "charset" => $config->get('DB_CHARSET'),
 ]);
 
-
 $connectionBuilder = new ConnectionBuilder;
 $connectionBuilder->setLogger($log);
 $connection = $connectionBuilder->make($config);
-
-
 
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
@@ -67,7 +65,10 @@ $twig = new Environment($loader, array(
 
 // UsuarioController
 $router->get('/iniciar_sesion', 'UsuarioController@inicio_sesion');
+$router->post('/iniciar_sesion', 'UsuarioController@inicio_sesion');
+$router->get('/cerrar_sesion', 'UsuarioController@cerrar_sesion');
 $router->get('/registrar_usuario', 'UsuarioController@registrar_usuario');
+$router->post('/registrar_usuario', 'UsuarioController@registrar_usuario');
 $router->get('/perfil_usuario', 'UsuarioController@perfil');
 // PageController
 $router->get('/', 'PageController@index');
@@ -80,22 +81,47 @@ $router->get('/sobre_nosotros', 'EmpresaController@sobre_nosotros');
 $router->get('/promociones', 'MenuController@promociones'); // MenuController
 $router->get('/nuestro_menu', 'MenuController@nuestroMenu'); // MenuController
 $router->get('/plato', 'MenuController@get'); // MenuController
+$router->get('/plato-all-in-cart', 'MenuController@getPlatosInCart'); // MenuController
 $router->get('/plato/verDetalle', 'MenuController@verDetalle'); // MenuController
 $router->get('/plato/new', 'MenuController@new'); // MenuController
 $router->post('/plato/new', 'MenuController@new'); // MenuController
+$router->post('/plato/add-to-cart', 'MenuController@addToCart'); // MenuController
+
 // LocalController
 $router->get('/local/mesas', 'LocalController@getMesas'); // LocalController
 // PedidoController
-$router->get('/pedir', 'PedidosController@pedir'); // PedidoController
 $router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // PedidoController
 $router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
-
+$router->post('/pedido/new', 'PedidosController@new'); // PedidoController
 $router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
 
 // MesaController
-$router->get('/reservar_cliente', 'MesaController@new'); // MesaController
-$router->post('/reservar_cliente', 'MesaController@new'); // MesaController
+$router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
+$router->post('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
+$router->get('/locales/get', 'MesaController@getLocales'); // MesaController
 $router->get('/gestion_lista_mesas', 'MesaController@gestion_lista_mesas'); // MesaController
 $router->get('/gestion_mesa', 'MesaController@gestion_mesa'); // MesaController
 
+$router->get('/sitemap', 'SEOController@generateSitemap');
+$router->get('/robot', 'SEOController@generateRobot');
+$router->get('/json-ld', 'SEOController@generateJsonLd');
+
+
+// Cargar motor de plantillas
+$templateDir = __DIR__ . $config->get('TEMPLATE_DIR');
+$cacheDir = __DIR__ . $config->get('TEMPLATE_CACHE_DIR');
+
+$log->info('Template Directory:', [$templateDir]);
+$log->info('Cache Directory:', [$cacheDir]);
+
+$loader = new FilesystemLoader($templateDir);
+
+$log->info('loader: ', [$loader, $templateDir]);
+
+$twig = new Environment($loader, [
+    'cache' => $cacheDir, 
+    'debug' => true,
+]);
+
+$twig->addExtension(new DebugExtension());

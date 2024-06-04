@@ -26,10 +26,14 @@
         </section>
 
 
+        <!-- carrousel  -->
         <section class="destacados">
             <h2 class="subtitulo">Los destacados de Power</h2>
             
         </section>
+
+        
+
 
         <section class="sucursales"> <!--NUESTRAS SUCURSALES-->
             <h2 class="subtitulo">Nuestras Sucursales</h2>

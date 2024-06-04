@@ -1,12 +1,26 @@
 class Pedido {
 
-    static accionesPorEstado = {
-        "sin-confirmar" : ["confirmar", "rechazar"],
-        "confirmado" : ["despachar", "pasar-a-retirar"],
-        "rechazado" : [],
-        "en-preparacion" : ["finalizar", "cancelar"],
-        "finalizado" : ["despachar", "pasar-a-retirar"]
-    }
+    static accionesPorEstadoXTipoUsuario = {
+        "cliente": {
+            "sin-confirmar": ["cancelar"],
+            "confirmado": ["cancelar"],
+            "despachado": [],
+            "cancelado": [],
+            "pasar-a-retirar": [],
+            "en-preparacion": ["cancelar"],
+            "finalizado": []
+        },
+        "empleado": {
+            "sin-confirmar": ["confirmar", "rechazar"],
+            "confirmado": ["despachar", "pasar-a-retirar"],
+            "rechazado": [],
+            "despachado": [],
+            "cancelado": [],
+            "pasar-a-retirar": [],
+            "en-preparacion": ["finalizar", "cancelar"],
+            "finalizado": ["despachar", "pasar-a-retirar"]
+        }
+    };
 
     static urlsAccion = {
         "confirmar" : "confirmado",
@@ -20,9 +34,11 @@ class Pedido {
 
     async getEstado(id) {
         try {
+            console.log(`/pedidos/get-estado?id=${id}`);
             // Realizar la solicitud usando fetch
-            const response = await fetch(`get-estado?id=${id}`);
+            const response = await fetch(`/pedidos/get-estado?id=${id}`);
             
+            console.log(response)
             // Verificar si la solicitud fue exitosa
             if (!response.ok) {
                 throw new Error(`Error al obtener el estado del pedido: ${response.status} - ${response.statusText}`);
@@ -40,7 +56,7 @@ class Pedido {
         } catch (error) {
             // Manejar errores de red u otros errores
             console.error('Error al obtener el estado del pedido:', error);
-            throw error; // Puedes lanzar el error nuevamente o manejarlo de alguna otra forma según tus necesidades.
+            throw error; 
         }
     }
 

@@ -11,6 +11,8 @@ Class Router
 {
     use Loggable;
 
+    private $middleware;
+
     public array $routes= [
         "GET" => [],
         "POST" => []
@@ -20,6 +22,7 @@ Class Router
     public string $internalError = 'internal_error';
 
     public function __construct(){
+        $this->middleware = new AuthMiddleware();
         $this->get($this->notFound, 'ErrorController@notFound');
         $this->get($this->internalError, 'ErrorController@internalError');
     }
@@ -60,7 +63,9 @@ Class Router
     public function direct(Request $request)
     {
         try {
-            list($path, $http_method) = $request->route();
+
+            list($path, $http_method) = $this->middleware->handle(...$request->route());     
+
             list($controller, $method) = $this->getController($path, $http_method);
             $this->logger
                 ->info(
@@ -68,7 +73,8 @@ Class Router
                     [
                         "Path" => $path,
                         "Controller" => $controller,
-                        "Method" => $method
+                        "Method" => $method,
+                        "array-get" => $_GET
                     ]
                 );
                 

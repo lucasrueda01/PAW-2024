@@ -57,5 +57,25 @@ class Datos {
         }
     }
   }
-          
+
+    getLocales() {
+      return fetch('/locales/get', {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => {
+          // Verificar si la respuesta es correcta
+          if (!response.ok) {
+              throw new Error('La respuesta de la red no fue correcta: ' + response.statusText);
+          }
+          return response.json();
+      })
+      .catch(error => {
+          console.error('Ha habido un problema con su operación de recuperación: ', error);
+          // Puede lanzar el error nuevamente si deseas manejarlo fuera de esta función
+          throw error;
+      });
+  }
 } 

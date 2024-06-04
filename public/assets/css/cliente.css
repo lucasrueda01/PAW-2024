@@ -1,11 +1,8 @@
 .formulario_pedido {
-    display: grid;
-    grid-template-areas:
-        "area_carrito"
-        "nav_fieldsets"
-        "area_pedido";
-    justify-content: center;
-
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 
 .container {
@@ -23,7 +20,7 @@
 
 .container table {
     border-collapse: collapse;
-    width: 60vw;
+    /* width: 60vw; */
 }
 
 .container table,
@@ -83,7 +80,7 @@ input[type=number]::-webkit-inner-spin-button {
     position: relative;
     margin-top: 5rem;
     margin-bottom: 2rem;
-    width: 70%;
+    /* width: 70%; */
 }
 
 .titulo_fieldset_delivery input {
@@ -97,7 +94,7 @@ input[type=number]::-webkit-inner-spin-button {
     flex-direction: column;
     position: relative;
     padding-bottom: 2rem;
-    width: 97.8%;
+    width: 95vw;
     margin-top: 5rem;
     padding-top: 1.5rem;
     border: 1px solid var(--color-grishover);  
@@ -110,10 +107,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .titulo_fieldset {
-    position: absolute;
-    top: -42px;
-    left: .2rem;
+    /* position: absolute; */
+    /* top: -42px; */
+    /* left: .2rem; */
     padding: 1rem;
+    margin-left: 13rem;
 }
 
 .titulo_fieldset_take_away {
@@ -140,10 +138,13 @@ input[type=number]::-webkit-inner-spin-button {
     flex-direction: row;
     justify-content: flex-start;
     padding-left: 1rem;
+    width: 95vw;
 }
 
 .selector_fieldset {
     grid-area: nav_fieldsets;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .selector_fieldset h3 {
@@ -154,12 +155,20 @@ input[type=number]::-webkit-inner-spin-button {
 
 .container_carrito table {
     margin: 1rem 1rem;
+    width: 80vw;
 }
 
 .container_delivery {
-    margin-top: 0;
+    margin: 0 auto;
+    width: 80vw;
 }
 
+
+@media (min-width: 800px) {
+    .container_delivery {
+        width: 30vw;
+    }
+}
 
 .titulo_carrito::after {
     content: '';
@@ -205,6 +214,10 @@ input[type=number]::-webkit-inner-spin-button {
     text-transform: uppercase;
 }
 
+.section_formulario {
+    margin-bottom: 1rem;
+}
+
 .section_formulario textarea {
     height: 5rem;
     resize: none;
@@ -242,7 +255,7 @@ input[type=number]::-webkit-inner-spin-button {
 .container_formulario legend,
 .container_formulario select {
     display: inline-block;
-    width: 35rem;
+    width: 85%;
     margin-left: 2rem;
     margin-bottom: 1rem;    
 }
@@ -261,7 +274,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .container_formulario aside {
-    position: absolute;
+    /* position: absolute; */
     right: 1rem;
     top: 3rem;
     border: .1rem solid gray;
@@ -533,7 +546,15 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--color-amarillo);
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
+.selector_tipo_articulo ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .selector_tipo_articulo li {
@@ -543,6 +564,10 @@ input[type=number]::-webkit-inner-spin-button {
 
 .selector_tipo_articulo ul li:first-child {
     border-right: 1px solid rgb(202, 131, 0);
+}
+
+.selector_tipo_articulo ul li:nth-child(3){
+    border-left: 1px solid rgb(202, 131, 0);
 }
 
 .selector_tipo_articulo ul li:last-child {
@@ -560,6 +585,24 @@ input[type=number]::-webkit-inner-spin-button {
     text-transform: uppercase;
     font-weight: 800;
 
+}
+
+.carrito {
+    position: relative;
+}
+
+.carrito::after {
+    content: '';
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../imgs/svg/icono-carrito-negro.svg');
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    right: -4rem;
+    top: -.7rem;
+    border: none;
 }
 
 .articulo h3, .articulo p {
@@ -596,6 +639,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 4rem;
     margin: 2rem;
     padding: 1rem;
+    background-color: var(--color-amarillo);
     border-bottom: 1px solid var(--color-amarillo);
 }
 
@@ -721,7 +765,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .articulo_precio {
     font-size: 1.5rem;
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 
 .boton_gris a {
@@ -783,4 +827,172 @@ input[type="submit"] {
         padding-left: 22%;
         font-size: 4rem;
     }
+}
+
+
+/* Estilos específicos para la tabla con clase stacked-table */
+.stacked-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stacked-table th, .stacked-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.stacked-table thead {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para apilar las filas en pantallas pequeñas */
+@media (max-width: 768px) {
+
+    .titulo_fieldset {
+        margin-left: 3rem;
+    }    
+
+    .btn-pedido {
+        margin-left: 3.6rem;
+    }
+    .stacked-table thead {
+        display: none;
+    }
+    .stacked-table tbody tr {
+        display: block;
+        margin-bottom: 0.625rem;
+    }
+    .stacked-table tbody tr td {
+        display: block;
+        text-align: right;
+        border-top: 1px solid #dee2e6;
+        position: relative;
+        padding-left: 50%;
+    }
+    .stacked-table tbody tr td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+    .stacked-table tfoot tr {
+        display: block;
+    }
+    .stacked-table tfoot td {
+        display: block;
+        text-align: right;
+    }
+    td[data-label="Nombre"] {
+        background-color: #f0f0f0;
+    }
+}
+
+
+/* Estilos existentes para la tabla */
+.tabla_gestion_mesa {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla_gestion_mesa th, .tabla_gestion_mesa td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tabla_gestion_mesa thead {
+    background-color: #f2f2f2;
+}
+
+/* Estilos responsive para la stacktable */
+@media (max-width: 800px) {
+    .tabla_gestion_mesa, .tabla_gestion_mesa thead, .tabla_gestion_mesa tbody, .tabla_gestion_mesa th, .tabla_gestion_mesa td, .tabla_gestion_mesa tr {
+        display: block;
+    }
+
+    .tabla_gestion_mesa thead tr {
+        display: none;
+    }
+
+    .tabla_gestion_mesa tr {
+        margin-bottom: 10px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .tabla_gestion_mesa td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .tabla_gestion_mesa td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        white-space: nowrap;
+        font-weight: bold;
+    }
+
+    /* Aplicar fondo gris a los <td> con data-label="Nro Pedido" */
+    .tabla_gestion_mesa td[data-label="Nro Pedido"] {
+        background-color: #f0f0f0;
+    }
+}
+
+.agregar-carrito::after {
+    content: attr(data-cantidad) ;
+    display: inline-block;
+    margin-left: 5px; /* Ajusta según sea necesario */
+    background-color: black;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.btn_decrement, .btn_increment {
+    background-color: var(--color-amarillo);
+    border: 0px;
+    width: 30px;
+    height: auto;
+    text-align: center;
+}
+
+.btn_decrement {
+    margin-left: 1rem;
+}
+
+.input_cantidad {
+    display: inline-block;
+    width: 2rem;
+    margin: 0;
+    text-align: center;
+    border: 0;
+}
+
+.control_cantidad {
+    margin-left: 1rem;
+}
+
+.btn_increment_form, .btn_decrement_form {
+    margin: 0 !important;
+    border: 0 !important;
+    width: 3rem !important;
+    font-size: 1.2rem !important;
+    height: auto;
+}
+
+.input_cantidad_form {
+    width: fit-content !important;
+    background-color: transparent;
+    max-width: 1.5rem;
+    border: 0px;
 }

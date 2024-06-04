@@ -3,7 +3,7 @@
 namespace Paw\App\Controllers;
 
 use Paw\Core\Controller;
-
+use Paw\App\Controllers\UsuarioController;
 
 class ErrorController extends Controller
 {

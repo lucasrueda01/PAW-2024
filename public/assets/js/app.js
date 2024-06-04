@@ -38,7 +38,7 @@ class appPAW {
                     });
                 }
 
-            if (['/pedidos/estado'].includes(window.location.pathname))
+            if (['/pedidos_entrantes','/pedidos/estado', '/pedido/new'].includes(window.location.pathname))
                 {
                     PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
                     PAW.cargarScript("Animador", "/assets/js/components/animador.js");
@@ -49,11 +49,96 @@ class appPAW {
                         setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000)
                     });
                 }
-            if(['pedidos_entrantes'].includes(window.location.pathname))
+
+            if(['/nuestro_menu'].includes(window.location.pathname)) 
                 {
-                    PAW.cargarScript("Pedido", "/assets/js/components/pedido.js");
+                    PAW.cargarScript("Utils", "/assets/js/components/Utils.js")
+                    PAW.cargarScript("Plato", "/assets/js/components/plato.js")
+                    PAW.cargarScript("carrito", "/assets/js/components/carrito.js", () =>{
+                        /**
+                         * instanciar un carrito
+                         */
+                        const carrito = new Carrito()
+                        /**
+                         * cargarPlatos en memoria, con cantidad vacia
+                         */
+                        carrito.cargarPlatos()
+                        /**
+                         * recorrer todos los botones btn-increment, por cada
+                         * uno agregar evento de incrementarCarrito
+                         * y a ese plato incrementar cantidad tambien
+                         */
+                        document.querySelectorAll('.btn_increment').forEach(btn_increment => {
+                            btn_increment.addEventListener('click', function() {
+                                const platoId = this.dataset.id;
+                                carrito.incrementarCantidadPlato(platoId);
+                                console.log(carrito)
+                                // // Actualizar la cantidad en el input correspondiente
+                                const inputCantidad = this.parentElement.querySelector('.input_cantidad');
+                                inputCantidad.value = parseInt(inputCantidad.value) + 1;
+    
+    
+                                const cantidadArticulos = document.querySelector('.carrito');
+                                cantidadArticulos.textContent = `Cantidad de Articulos: ${String(carrito.cant_articulos).padStart(2, '0')}`;
+                               
+                            });
+                        });
+    
+                        /**
+                         * recorrer todos los botones btn-decrement, por cada
+                         * uno agregar evento de decrementarCarrito
+                         * y a ese plato decrementar cantidad tambien
+                         */                    
+                        document.querySelectorAll('.btn_decrement').forEach(btn_decrement => {
+                            btn_decrement.addEventListener('click', function() {
+                                const platoId = this.dataset.id;
+                                
+                                if(carrito.decrementarCantidadPlato(platoId)){
+                                    console.log(carrito);
+                            
+                                    // Actualizar la cantidad en el input correspondiente
+                                    const inputCantidad = this.parentElement.querySelector('.input_cantidad');
+                                    console.log(`parseInt(inputCantidad.value): ${parseInt(inputCantidad.value)}`)
+                                    inputCantidad.value = parseInt(inputCantidad.value) - 1;
+                            
+                                    const cantidadArticulos = document.querySelector('.carrito');
+                                    cantidadArticulos.textContent = `Cantidad de Articulos: ${String(carrito.cant_articulos).padStart(2, '0')}`;
+                                }else{
+                                    console.log(`ya no se puede seguir decrementando`)
+                                }
+                            });
+                        });     
+                        
+                        /**
+                         * interacciones con el formulario
+                         */
+    
+                        // Seleccionar el select y el campo de dirección
+                        const formaPagoSelect = document.querySelector("#tipo");
+                        const direccionInput = document.querySelector("#direccion");
+                        const direccionLabel = document.querySelector("#direccion_label");
+    
+                        // Agregar un event listener al select para detectar cambios en su valor
+                        formaPagoSelect.addEventListener("change", function() {
+                            // Verificar el valor seleccionado
+                            if (this.value === "en-el-local") {
+                                // Ocultar el campo de dirección y su etiqueta
+                                direccionInput.style.display = "none";
+                                direccionLabel.style.display = "none";
+                                direccionInput.removeAttribute("required");
+                            } else {
+                                // Mostrar el campo de dirección y su etiqueta
+                                direccionInput.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
+                                direccionLabel.style.display = "block"; // O "inline-block", dependiendo del diseño deseado
+                            }
+                        }); 
+
+
+                    })
                 }
-        });
+
+        
+            })
     }
 }
 
