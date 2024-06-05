@@ -121,7 +121,7 @@ class MesaController extends Controller
         $titulo = 'PAW POWER | RESERVAR CLIENTE';
     
         // Verificar si hay sesión iniciada
-        if (!$this->isUserLoggedIn()) {
+        if (!$this->usuario->isUserLoggedIn()) {
             $resultado = [
                 "success" => false,
                 "message" => "Debe iniciar sesión para realizar una reserva."
@@ -159,7 +159,7 @@ class MesaController extends Controller
                         'hora_inicio' => $hora_inicio,
                         'hora_fin' => $hora_fin,
                         'id_local' => $local_id,
-                        'id_usuario' => $this->getUserId(), // Usar el método para obtener el ID de usuario
+                        'id_usuario' => $this->usuario->getUserId(), // Usar el método para obtener el ID de usuario
                     ];
     
                     [$idGenerado, $result] = $reserva->insert($reservaData);
@@ -207,3 +207,4 @@ class MesaController extends Controller
         }
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }
+}
