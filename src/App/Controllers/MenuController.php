@@ -172,6 +172,9 @@ class MenuController extends Controller
                     throw new Exception("Faltan datos para crear el objeto Plato.");
                 } else {
                     $platos = $this->model->getAll();
+                    if(!is_null($request->get('devMode'))){
+                        echo "Inserciones realizadas con exito..";
+                    }
                     require $this->viewsDirEmpleado . 'plato_cargado.view.php';
                 }
             } catch (Exception $e) {

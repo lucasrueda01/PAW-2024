@@ -47,6 +47,21 @@ class UsuarioController extends Controller
     }
 
 
+    public function isUserLoggedIn()
+    {
+        return isset($_SESSION['usuario']);
+    }
+
+    public function getUserId()
+    {
+        return $_SESSION['usuario_id'] ?? null;
+    }
+
+    public function getUserType()
+    {
+        return $_SESSION['tipo'] ?? 'anonimo';
+    }
+
     public function inicio_sesion() {
         $titulo = 'PAW POWER | SESION';
     
@@ -66,6 +81,7 @@ class UsuarioController extends Controller
                 $_SESSION['usuario'] = $usuarioAutenticado['username'];
                 $_SESSION['tipo'] = $usuarioAutenticado['tipo'];
                 $this->tipoUsuario = $_SESSION['tipo'];
+                $_SESSION['usuario_id'] = $usuarioAutenticado['id'];
                 // Redirigir al usuario a la página principal
                 header('Location: /');
                 exit();
@@ -80,10 +96,6 @@ class UsuarioController extends Controller
     
     }
 
-    public function getTipoUsuario()
-    {
-        return $this->tipoUsuario;
-    }
 
     public function registrar_usuario() {
         $titulo = 'PAW POWER | REGISTRO';

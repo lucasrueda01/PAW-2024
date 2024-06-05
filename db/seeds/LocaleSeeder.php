@@ -62,77 +62,28 @@ class LocaleSeeder extends AbstractSeed
         $mesas = $this->table('mesas');
         $mesas->insert($mesasData)->saveData();
 
+        // Users data
+        $users = $this->fetchAll('SELECT id FROM users');
+        $userIds = array_column($users, 'id');
+
         // Reservas data
         $reservasData = [];
-        $reservasLocales = [
-            'Local A' => [
-                '2024/05/07' => [
-                    'mesa-143' => [
-                        ['horaInicio' => '09:00', 'horaFin' => '10:30'],
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '15:00', 'horaFin' => '16:30']
-                    ],
-                    'mesa-161' => [
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '15:00', 'horaFin' => '16:30']
-                    ],
-                    'mesa-144' => [
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '15:00', 'horaFin' => '16:30']
-                    ]
-                ],
-                '2024/05/08' => [
-                    'mesa-143' => [
-                        ['horaInicio' => '09:00', 'horaFin' => '10:30'],
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '19:00', 'horaFin' => '20:30']
-                    ],
-                    'mesa-161' => [
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '15:00', 'horaFin' => '16:30']
-                    ],
-                    'mesa-144' => [
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '15:00', 'horaFin' => '16:30']
-                    ]
-                ]
-            ],
-            'Local B' => [
-                '2024/05/08' => [
-                    'mesa-143' => [
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '15:00', 'horaFin' => '16:30']
-                    ],
-                    'mesa-161' => [
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '15:00', 'horaFin' => '16:30']
-                    ],
-                    'mesa-144' => [
-                        ['horaInicio' => '13:00', 'horaFin' => '14:30'],
-                        ['horaInicio' => '15:00', 'horaFin' => '16:30']
-                    ]
-                ]
-            ]
-        ];
-
-        foreach ($reservasLocales as $localName => $fechas) {
-            foreach ($fechas as $fecha => $mesas) {
-                foreach ($mesas as $mesaName => $reservas) {
-                    foreach ($reservas as $reserva) {
-                        $reservasData[] = [
-                            'mesa_id' => $mesasMap[$localName][$mesaName],
-                            'fecha' => $fecha,
-                            'hora_inicio' => $reserva['horaInicio'],
-                            'hora_fin' => $reserva['horaFin']
-                        ];
-                    }
-                }
+        foreach ($localesAndMesas as $localName => $mesas) {
+            foreach ($mesas as $mesaName) {
+                $userId = $userIds[array_rand($userIds)]; // Seleccionar un ID de usuario aleatorio
+                $reservasData[] = [
+                    'mesa_id' => $mesasMap[$localName][$mesaName],
+                    'id_user' => $userId,
+                    'id_local' => $localesMap[$localName],
+                    'fecha' => date('Y-m-d'),
+                    'hora_inicio' => '09:00', // Hora de inicio de la reserva
+                    'hora_fin' => '10:30' // Hora de fin de la reserva
+                ];
             }
         }
 
         // Insert reservas data
         $reservas = $this->table('reservas');
         $reservas->insert($reservasData)->saveData();
-
     }
 }
