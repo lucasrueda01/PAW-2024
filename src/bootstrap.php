@@ -125,3 +125,4 @@ $twig = new Environment($loader, [
 ]);
 
 $twig->addExtension(new DebugExtension());
+
