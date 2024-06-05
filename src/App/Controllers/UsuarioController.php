@@ -70,6 +70,7 @@ class UsuarioController extends Controller
                 header('Location: /');
                 exit();
             } else {
+                $this->tipoUsuario = 'anonimo';
                 $resultado['error'] = 'Usuario o contraseña incorrectos';
                 require $this->viewsDir . 'inicio_sesion.view.php';
             }

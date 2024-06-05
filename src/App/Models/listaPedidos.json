@@ -333,5 +333,98 @@
         ],
         "Nro Pedido": 11,
         "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-06-04T23:27:51",
+        "Tipo": "delivery",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "Av San Juan 369",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": 3600,
+        "articulos": [
+            {
+                "nombre": "bigpower",
+                "precio": 1800,
+                "cantidad": 2,
+                "subtotal": 3600
+            },
+            {
+                "nombre": "coca-cola",
+                "precio": 1560,
+                "cantidad": 0,
+                "subtotal": 0
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 0,
+                "subtotal": 0
+            }
+        ],
+        "Nro Pedido": 12,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-06-04T23:28:27",
+        "Tipo": "delivery",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "Av San Juan 369",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": 3600,
+        "articulos": [
+            {
+                "nombre": "bigpower",
+                "precio": 1800,
+                "cantidad": 2,
+                "subtotal": 3600
+            },
+            {
+                "nombre": "coca-cola",
+                "precio": 1560,
+                "cantidad": 0,
+                "subtotal": 0
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 0,
+                "subtotal": 0
+            }
+        ],
+        "Nro Pedido": 13,
+        "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-06-04T23:31:47",
+        "Tipo": "cliente",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "es un tipo depto tipo casa",
+        "Monto Total": 6720,
+        "articulos": [
+            {
+                "nombre": "bigpower",
+                "precio": 1800,
+                "cantidad": 2,
+                "subtotal": 3600
+            },
+            {
+                "nombre": "coca-cola",
+                "precio": 1560,
+                "cantidad": 2,
+                "subtotal": 3120
+            },
+            {
+                "nombre": "BASTONCITOS DE QUESO",
+                "precio": 1800,
+                "cantidad": 0,
+                "subtotal": 0
+            }
+        ],
+        "Nro Pedido": 14,
+        "Estado": "sin-confirmar"
     }
 ]
