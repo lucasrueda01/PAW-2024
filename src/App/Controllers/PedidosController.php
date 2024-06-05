@@ -113,6 +113,80 @@ class PedidosController extends Controller
         require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
     }
 
+    // public function new()
+    // {
+    //     global $request, $log;
+
+    //     // Obtener la fecha y hora actual
+    //     $fechaHora = date('Y-m-d\TH:i:s');
+
+    //     $articulos = [];
+
+    //     if (!is_null($request->get('carrito_data'))) {
+    //         $carrito = json_decode($request->get('carrito_data'), true);
+            
+    //         $total = 0;
+
+    //         foreach ($carrito['platos'] as $plato) {
+
+    //             $id = intval($plato['id']);
+    //             $cantidad = intval($plato['cantidad']);
+
+    //             if($cantidad > 0){
+
+    //                 $log->info("id, cantidad :", [$id, $cantidad]);
+    
+    //                 $platoPedido = new Plato;
+    //                 $platoPedido->setQueryBuilder($this->qb);
+    //                 $platoPedido->load($id);
+    
+    //                 $subtotal = $platoPedido->getPrecio() * $cantidad;
+
+    //                 $articulos[] = [
+    //                     "nombre" => $platoPedido->getNombrePlato(),
+    //                     "precio"  => floatval($platoPedido->getPrecio()),
+    //                     "cantidad" => $cantidad,
+    //                     "subtotal" => $subtotal,
+    //                 ];
+    //                 $total = $total + $subtotal;
+    //             }
+    //         }
+    //     }
+
+    //     // Crear el nuevo pedido
+    //     $nuevoPedido = [
+    //         "Fecha/Hora" => $fechaHora,
+    //         "Tipo" => $request->get("tipo"),
+    //         "Nombre" => htmlspecialchars($request->get("nombre")),
+    //         "Metodo de Pago" => $request->get("forma-de-pago"),
+    //         "Direccion" => htmlspecialchars($request->get("direccion")),
+    //         "Observaciones" => htmlspecialchars($request->get("observaciones")),
+    //         "Monto Total" => $total,
+    //         "articulos" => $articulos,
+    //     ];
+
+        
+    //     $log->info("articulos, total ,nuevoPedido :", [$articulos, $total ,$nuevoPedido]);
+
+    //     // Agregar el nuevo pedido a la colección
+    //     $resultado = $this->model->new($nuevoPedido);
+        
+        
+    //     if (isset($resultado['exito'])) {
+    //         $pedido = $this->model->getById($resultado['id']);
+
+    //         $log->info("resultado['id']: ", [$resultado['id']]);
+
+    //         $tipo = $this->usuario->getUserType();
+            
+    //         $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
+    //         $urlsAccion = PedidosCollection::$urlsAccion;
+    //     } 
+        
+    //     require $this->viewsDir . 'empleado/pedido.show.view.php';
+        
+    // }
+
     public function new()
     {
         global $request, $log;
@@ -120,11 +194,24 @@ class PedidosController extends Controller
         // Obtener la fecha y hora actual
         $fechaHora = date('Y-m-d\TH:i:s');
 
+
+        $log->info("isUserLoggedIn :", [$this->usuario->isUserLoggedIn()]);
         $articulos = [];
+        // Verificar si hay sesión iniciada
+        if (!$this->usuario->isUserLoggedIn()) {
+            $resultado = [
+                "success" => false,
+                "message" => "Debe iniciar sesión para realizar una reserva."
+            ];
+            $log->info("Intento de pedido sin sesión iniciada.");
+            require $this->viewsDir . 'nuestro_menu.view.php';
+            return;
+        }
 
         if (!is_null($request->get('carrito_data'))) {
             $carrito = json_decode($request->get('carrito_data'), true);
             
+
             $total = 0;
 
             foreach ($carrito['platos'] as $plato) {
@@ -135,15 +222,15 @@ class PedidosController extends Controller
                 if($cantidad > 0){
 
                     $log->info("id, cantidad :", [$id, $cantidad]);
-    
+
                     $platoPedido = new Plato;
                     $platoPedido->setQueryBuilder($this->qb);
                     $platoPedido->load($id);
-    
+
                     $subtotal = $platoPedido->getPrecio() * $cantidad;
 
                     $articulos[] = [
-                        "nombre" => $platoPedido->getNombrePlato(),
+                        "nombre_articulo" => $platoPedido->getNombrePlato(),
                         "precio"  => floatval($platoPedido->getPrecio()),
                         "cantidad" => $cantidad,
                         "subtotal" => $subtotal,
@@ -153,37 +240,27 @@ class PedidosController extends Controller
             }
         }
 
-        // Crear el nuevo pedido
-        $nuevoPedido = [
+        // Preparar los datos del pedido
+        $datosPedido = [
             "Fecha/Hora" => $fechaHora,
             "Tipo" => $request->get("tipo"),
-            "Nombre" => htmlspecialchars($request->get("nombre")),
+            "id_usuario" => $this->usuario->getUserId(),
             "Metodo de Pago" => $request->get("forma-de-pago"),
             "Direccion" => htmlspecialchars($request->get("direccion")),
             "Observaciones" => htmlspecialchars($request->get("observaciones")),
-            "Monto Total" => $total,
-            "articulos" => $articulos,
+            "estado" => "sin-confirmar",
+            "Monto Total" => $total
         ];
 
-        
-        $log->info("articulos, total ,nuevoPedido :", [$articulos, $total ,$nuevoPedido]);
+        // Insertar el nuevo pedido utilizando PedidosCollection
+        $resultadoInsercion = $this->model->new($datosPedido, $articulos);
 
-        // Agregar el nuevo pedido a la colección
-        $resultado = $this->model->new($nuevoPedido);
-        
-        
-        if (isset($resultado['exito'])) {
-            $pedido = $this->model->getById($resultado['id']);
-
-            $log->info("resultado['id']: ", [$resultado['id']]);
-
-            $tipo = $this->usuario->getUserType();
-            
-            $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
-            $urlsAccion = PedidosCollection::$urlsAccion;
-        } 
-        
-        require $this->viewsDir . 'empleado/pedido.show.view.php';
-        
+        // Verificar el resultado de la inserción
+        if ($resultadoInsercion !== false) {
+            $idPedidoGenerado = $resultadoInsercion[0];
+            // Hacer algo con el ID del pedido generado
+        } else {
+            // Manejar el caso en que ocurrió un error al insertar el pedido
+        }
     }
 }
