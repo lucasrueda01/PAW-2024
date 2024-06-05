@@ -136,6 +136,7 @@ class MesaController extends Controller
                 $mesa_id = $mesa->getIdByNameAndLocal($mesa_nombre, $local_id);
 
                 if($local_id && $mesa_id) {
+                    $log->info("1-existe local y mesa: ",[$local_id, $mesa_id]);
                     $hora_fin = date('H:i:s', strtotime($hora_inicio) + 1 * 3600); 
 
                     $reservaData = [
@@ -147,6 +148,7 @@ class MesaController extends Controller
 
                     [$idGenerado, $result] = $reserva->insert($reservaData);
 
+                    $log->info("2-resultadoInsert: " , [$result]);
                     if($result) {
                         $resultado = [
                             "resumen" => [
@@ -160,18 +162,20 @@ class MesaController extends Controller
                             "success" => true,
                             "message" => "Reserva realizada con éxito."
                         ];
-                        
+                        $log->info("3-resultado SUCCESS: " , [$resultado]);
                     } else {
                         $resultado = [
                             "success" => false,
                             "message" => "Error al realizar la reserva."
                         ];
+                        $log->info("3.b-resultado fallo: " , [$resultado]);
                     }
                 } else {
                     $resultado = [
                         "success" => false,
                         "message" => "Local o mesa no encontrados."
                     ];
+                    $log->info("2.b-resultado fallo: " , [$resultado]);
                 }
             } catch (PDOException $e) {
                 $this->qb->logger->error("Error al realizar la reserva: " . $e->getMessage());
@@ -181,7 +185,9 @@ class MesaController extends Controller
                 ];
             }
         }
-        $log->info("resultado: " , [$resultado]);
+        if (isset($resultado)){
+            $log->info("resultado: " , [$resultado]);
+        }
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }
 }

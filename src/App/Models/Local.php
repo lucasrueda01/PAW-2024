@@ -121,6 +121,7 @@ class Local extends Model
             }
         }catch(Exception $e){
             throw new Exception("Error no existe Name {$e}");
+            $log->error("error: ", [$e]);
         }
     }    
 }
