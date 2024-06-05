@@ -9,7 +9,6 @@ use Paw\App\Utils\Uploader;
 use Paw\Core\Controller;
 use Paw\App\Models\PlatosCollection;
 use Paw\App\Models\Plato;
-use Paw\Core\Model;
 use Paw\App\Controllers\UsuarioController;
 
 class MenuController extends Controller

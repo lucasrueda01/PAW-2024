@@ -5,7 +5,6 @@ namespace Paw\App\Controllers;
 use Paw\App\Utils\Verificador;
 
 use Paw\Core\Controller;
-use Paw\Core\Controller\UsuarioController;
 use Paw\App\Models\Plato;
 
 use Paw\App\Models\PedidosCollection;
