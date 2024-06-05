@@ -133,6 +133,31 @@ class appPAW {
                             }
                         }); 
 
+                        const formPedido = document.querySelector('.formulario_pedido');
+                        console.log(formPedido)
+                        const errorCargaCarrito = document.querySelector('.error_carga_carrito');
+                    
+                        formPedido.addEventListener('submit', function(event) {
+                            // Evitar que el formulario se envíe automáticamente
+                            event.preventDefault();
+                    
+                            // Verificar si el carrito tiene al menos un artículo
+                            const cantidadArticulos = carrito.cant_articulos;
+                            if (parseInt(cantidadArticulos) === 0) {
+                                // Mostrar el mensaje de error
+                                errorCargaCarrito.style.display = 'flex';
+                            } else {
+                                // Ocultar el mensaje de error y enviar el formulario
+                                errorCargaCarrito.style.display = 'none';
+                                this.submit();
+                            }
+                        });
+                    
+                        // Agregar evento al botón de aceptar en el mensaje de error
+                        const btnAceptarError = document.querySelector('#btn_aceptar_msj_error_carrito');
+                        btnAceptarError.addEventListener('click', function() {
+                            errorCargaCarrito.style.display = 'none';
+                        });                        
 
                     })
                 }

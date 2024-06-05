@@ -132,21 +132,24 @@ class PedidosController extends Controller
                 $id = intval($plato['id']);
                 $cantidad = intval($plato['cantidad']);
 
-                $log->info("id, cantidad :", [$id, $cantidad]);
+                if($cantidad > 0){
 
-                $platoPedido = new Plato;
-                $platoPedido->setQueryBuilder($this->qb);
-                $platoPedido->load($id);
+                    $log->info("id, cantidad :", [$id, $cantidad]);
+    
+                    $platoPedido = new Plato;
+                    $platoPedido->setQueryBuilder($this->qb);
+                    $platoPedido->load($id);
+    
+                    $subtotal = $platoPedido->getPrecio() * $cantidad;
 
-                $subtotal = $platoPedido->getPrecio() * $cantidad;
-
-                $articulos[] = [
-                    "nombre" => $platoPedido->getNombrePlato(),
-                    "precio"  => floatval($platoPedido->getPrecio()),
-                    "cantidad" => $cantidad,
-                    "subtotal" => $subtotal,
-                ];
-                $total = $total + $subtotal;
+                    $articulos[] = [
+                        "nombre" => $platoPedido->getNombrePlato(),
+                        "precio"  => floatval($platoPedido->getPrecio()),
+                        "cantidad" => $cantidad,
+                        "subtotal" => $subtotal,
+                    ];
+                    $total = $total + $subtotal;
+                }
             }
         }
 
@@ -174,7 +177,7 @@ class PedidosController extends Controller
 
             $log->info("resultado['id']: ", [$resultado['id']]);
 
-            $tipo = $this->usuario->getTipoUsuario();
+            $tipo = $this->usuario->getUserType();
             
             $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
             $urlsAccion = PedidosCollection::$urlsAccion;
