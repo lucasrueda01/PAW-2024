@@ -66,7 +66,7 @@ class PedidosController extends Controller
         $pedido = $this->model->getById(intval($id));
 
 
-        $tipo = $this->usuario->getTipoUsuario();
+        $tipo = $this->usuario->getUserType();
         $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
         $urlsAccion = PedidosCollection::$urlsAccion;
 

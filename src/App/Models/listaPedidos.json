@@ -42,5 +42,73 @@
         ],
         "Nro Pedido": 2,
         "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-06-05T20:10:00",
+        "Tipo": "empleado",
+        "Nombre": "JUAN",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "LA CASA ES UN DEPTO TIPO CASA",
+        "Monto Total": 18500,
+        "articulos": [
+            {
+                "nombre": "Fanta Chica",
+                "precio": 1000,
+                "cantidad": 3,
+                "subtotal": 3000
+            },
+            {
+                "nombre": "Coca-Cola 1",
+                "precio": 1500,
+                "cantidad": 2,
+                "subtotal": 3000
+            },
+            {
+                "nombre": "Coca-Cola 1",
+                "precio": 1500,
+                "cantidad": 2,
+                "subtotal": 3000
+            },
+            {
+                "nombre": "Coca-Cola 1",
+                "precio": 1500,
+                "cantidad": 3,
+                "subtotal": 4500
+            },
+            {
+                "nombre": "Muzarelitas",
+                "precio": 2500,
+                "cantidad": 2,
+                "subtotal": 5000
+            }
+        ],
+        "Nro Pedido": 3,
+        "Estado": "confirmado"
+    },
+    {
+        "Fecha\/Hora": "2024-06-05T20:14:31",
+        "Tipo": "cliente",
+        "Nombre": "juan",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884 caba",
+        "Observaciones": "alguna observacion",
+        "Monto Total": 10500,
+        "articulos": [
+            {
+                "nombre": "Fanta Chica",
+                "precio": 1000,
+                "cantidad": 3,
+                "subtotal": 3000
+            },
+            {
+                "nombre": "Muzarelitas",
+                "precio": 2500,
+                "cantidad": 3,
+                "subtotal": 7500
+            }
+        ],
+        "Nro Pedido": 4,
+        "Estado": "confirmado"
     }
 ]

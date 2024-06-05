@@ -115,7 +115,7 @@ class PedidosCollection extends Model
     if ($pedidoEncontrado) {
 
         
-        if(!isset(self::$accionesPorEstadoXTipoUsuario[$this->usuario->getTipoUsuario()][$estado])){
+        if(!isset(self::$accionesPorEstadoXTipoUsuario[$this->usuario->getUserType()][$estado])){
             return ["error" => "El estado para el pedido no esta permitido"];
         }
         // Convertir el array modificado a JSON
