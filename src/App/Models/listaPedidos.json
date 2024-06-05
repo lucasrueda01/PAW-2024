@@ -23,5 +23,24 @@
         ],
         "Nro Pedido": 1,
         "Estado": "sin-confirmar"
+    },
+    {
+        "Fecha\/Hora": "2024-06-05T19:48:15",
+        "Tipo": "empleado",
+        "Nombre": "JUAN",
+        "Metodo de Pago": "mercado_pago",
+        "Direccion": "mafalda 884",
+        "Observaciones": "con papas el cafe con leche",
+        "Monto Total": 2500,
+        "articulos": [
+            {
+                "nombre": "Muzarelitas",
+                "precio": 2500,
+                "cantidad": 1,
+                "subtotal": 2500
+            }
+        ],
+        "Nro Pedido": 2,
+        "Estado": "sin-confirmar"
     }
 ]

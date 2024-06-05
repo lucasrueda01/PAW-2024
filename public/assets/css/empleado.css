@@ -310,9 +310,9 @@
     background-color: #b95252;
     color: #FFFFFF;  
     position: fixed;
-    width: 33%;
+    width: 30%;
     top: 30%;
-    left: 33%;
+    left: 34vw;
     z-index: 1000;
 }
 
@@ -327,13 +327,13 @@
     background-image: url(../imgs/icons/icono-error-carga-carrito.png);
     background-size: cover;
 }
-
+*/
 @media (max-width: 1000px) {
-    .error_carga_carrito::after {
-        top: 4rem;
-        left: 2rem;
+    .error_carga_carrito {
+        width: 80vw;
+        left: 6vw;
     }
-} */
+} 
 
 
 .error_carga_carrito h3{
