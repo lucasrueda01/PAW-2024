@@ -18,9 +18,8 @@ class Mesa extends Model
 
     public $fields = [
         'id' => null,
-        'nombre_mesa' => null,
-        'capacidad' => null,
-        'local' => null
+        'local_id' => null,
+        'nombre' => null
     ];
 
     public function __construct($datosMesa=[], $qb=null)
@@ -49,9 +48,10 @@ class Mesa extends Model
         }
     }
 
+    // Getters y Setters
     public function setId($id)
     {
-        $this->fields[$id] = $id;
+        $this->fields['id'] = $id;
     }
 
     public function getId()
@@ -59,34 +59,24 @@ class Mesa extends Model
         return $this->fields['id'];
     }
 
-    public function setNombreMesa($nombreMesa)
+    public function setLocalId($localId)
     {
-        $this->fields['nombre_mesa'] = $nombreMesa;
+        $this->fields['local_id'] = $localId;
     }
 
-    public function getNombreMesa()
+    public function getLocalId()
     {
-        return $this->fields['nombre_mesa'];
+        return $this->fields['local_id'];
     }
 
-    public function setCapacidad($capacidad)
+    public function setNombre($nombre)
     {
-        $this->fields['capacidad'] = $capacidad;
+        $this->fields['nombre'] = $nombre;
     }
 
-    public function getCapacidad()
+    public function getNombre()
     {
-        return $this->fields['capacidad'];
-    }
-
-    public function setIdLocal($idLocal)
-    {
-        $this->fields['id_local'] = $idLocal;
-    }
-
-    public function getIdLocal()
-    {
-        return $this->fields['id_local'];
+        return $this->fields['nombre'];
     }
 
     public function set(array $values)

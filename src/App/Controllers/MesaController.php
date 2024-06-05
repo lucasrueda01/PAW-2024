@@ -132,18 +132,21 @@ class MesaController extends Controller
             $reserva = new Reserva([], $this->qb);
 
             try {
-                $local_id = $local->loadByName($local_nombre);
-                $mesa_id = $mesa->getIdByNameAndLocal($mesa_nombre, $local_id);
-
+                $local->loadByName($local_nombre);
+                $local_id = $local->getId();
+                $mesa->loadByName($mesa_nombre);
+                $mesa_id = $mesa->getId();
+                $log->info("0- local y mesa: ",[$local_id, $mesa_id]);
                 if($local_id && $mesa_id) {
                     $log->info("1-existe local y mesa: ",[$local_id, $mesa_id]);
-                    $hora_fin = date('H:i:s', strtotime($hora_inicio) + 1 * 3600); 
+                    $hora_fin = date('H:i:s', strtotime($hora_inicio) + 1.5 * 3600);
 
                     $reservaData = [
                         'mesa_id' => $mesa_id,
                         'fecha' => $fecha,
                         'hora_inicio' => $hora_inicio,
                         'hora_fin' => $hora_fin,
+                        'id_local' => $local_id,
                     ];
 
                     [$idGenerado, $result] = $reserva->insert($reservaData);
@@ -154,10 +157,11 @@ class MesaController extends Controller
                             "resumen" => [
                                 "nombre" => $nombre,
                                 "dni" => $dni,
-                                "local" => $local,
+                                "local" => $local_nombre,
                                 "date" => $fecha,
                                 "time" => $hora_inicio,
-                                "mesa-elegida" => $mesa_nombre
+                                "mesa-elegida" => $mesa_nombre,
+                                "limite_reserva" => $hora_fin
                             ],
                             "success" => true,
                             "message" => "Reserva realizada con éxito."

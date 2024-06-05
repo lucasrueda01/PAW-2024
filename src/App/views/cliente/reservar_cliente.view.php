@@ -51,15 +51,11 @@
                     <aside class="resumen">
                         <h4 class="titulo_resumen">Resumen de reserva</h4>
                         <ul>
-                          <?php  
-                            if(isset($resultado['resumen'])) :
-                              foreach ($resultado['resumen'] as $clave => $valor) : ?>
-
-                             <li><?= ucfirst($clave) ?> : <?= $valor ?> </li>
-
-                          <?php endforeach; 
-                             endif;   
-                          ?>                            
+                            <?php if(isset($resultado['resumen'])) : ?>
+                                <?php foreach ($resultado['resumen'] as $clave => $valor) : ?>
+                                <li><?= ucfirst($clave) ?> : <?= htmlspecialchars($valor, ENT_QUOTES, 'UTF-8') ?> </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </ul>
                     </aside>
 
