@@ -18,7 +18,8 @@ class MenuController extends Controller
 
     public Verificador $verificador;
     public Uploader $uploader;
-
+    public $usuario;
+    
     public function __construct()
     {
 
@@ -27,8 +28,8 @@ class MenuController extends Controller
         $this->uploader = new Uploader;
 
         $this->verificador = new Verificador;
-        $usuario = new UsuarioController();
-        list($this->menuPerfil, $this->menuEmpleado) = $usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);        
+        $this->usuario = new UsuarioController();
+        list($this->menuPerfil, $this->menuEmpleado) = $this->usuario->adjustMenuForSession($this->menuPerfil, $this->menuEmpleado);        
     }
 
     public function nuestroMenu()
@@ -142,6 +143,16 @@ class MenuController extends Controller
         global $log;
         $titulo = 'PAW POWER | NUEVO PLATO';
 
+        // Verificar si hay sesión iniciada
+        if (!$this->usuario->isUserLoggedIn()) {
+            $resultado = [
+                "success" => false,
+                "message" => "Debe iniciar sesión para realizar una reserva."
+            ];
+            $log->info("Intento de reserva sin sesión iniciada.");
+            require $this->viewsDir . 'inicio_sesion.view.php';
+            return;
+        }        
 
         if ($request->method() == 'GET') {
             require $this->viewsDir . 'empleado/plato.new.view.php';

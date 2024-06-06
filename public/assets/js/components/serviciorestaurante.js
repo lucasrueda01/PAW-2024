@@ -84,7 +84,7 @@ class ServicioRestaurante {
     }
 
     /**
-     * 
+     * si todos los input de local, fecha y hora cambiaron
      * @param {string} localValue 
      * @param {date} dateValue 
      * @param {time} timeValue 
@@ -95,13 +95,13 @@ class ServicioRestaurante {
         if(this.controlarLocalFechaYHora(localValue, dateValue, timeValue))
         {
             /* debo formatear la fecha porque viene con guiones 
-            * y lo paso a / ejeplo: 2024-05-06 => 2024/05/06
+            * y lo paso a / ejemplo: 2024-05-06 => 2024/05/06
             */
             dateValue = this.formatearFecha(dateValue);
         
-            // console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}`);
+            console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}`);
             const estadoMesas = this.buscarMesas(localValue, dateValue, timeValue);
-            // console.log(estadoMesas);
+            console.log(estadoMesas);
             this.marcarMesas(estadoMesas.mesasReservadas, "Ocupada");
             this.marcarMesas(estadoMesas.mesasDisponibles, "Disponible");
         }else{
@@ -230,11 +230,11 @@ class ServicioRestaurante {
      */
     marcarMesas(listadoMesas, estado) {
         // Iterar sobre el mapa estadoMesas
-        // console.log(listadoMesas);
+        console.log(listadoMesas);
 
         listadoMesas.forEach(nombreMesa => {
             // Obtener el elemento de la mesa con el nombre correspondiente
-            // console.log(`#${nombreMesa} .mesa // estado: ${estado}`);
+            console.log(`#${nombreMesa} .mesa // estado: ${estado}`);
             var groupMesaElemento = document.querySelector(`#${nombreMesa}`); // selecciono el group q identifica a la mesa
             var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`); // selecciono el circulo q identifica la mesa
             
@@ -288,44 +288,67 @@ class ServicioRestaurante {
      * de acuerdo al local, fecha y hora elegidos
      */
     buscarMesas(local, fecha, hora) {
-        if (this.locales[local]) {
-            let mesasDisponibles = [];
-            let mesasOcupadas = [];
-    
-            if (this.locales[local][fecha]) {
-                let mesasDelLocal = this.locales[local].mesa;
-                for (let mesa of mesasDelLocal) {
-                    if (this.locales[local][fecha][mesa]) {
-                        let reservasMesa = this.locales[local][fecha][mesa];
-                        let disponible = true;
-                        for (let reserva of reservasMesa) {
-                            let inicioReserva = new Date('1970-01-01T' + reserva.horaInicio);
-                            let finReserva = new Date('1970-01-01T' + reserva.horaFin);
-                            let horaConsulta = new Date('1970-01-01T' + hora);
-    
-                            if (horaConsulta >= inicioReserva && horaConsulta < finReserva) {
-                                disponible = false;
-                                mesasOcupadas.push(mesa);
-                                break;
-                            }
-                        }
-    
-                        if (disponible) {
-                            mesasDisponibles.push(mesa);
-                        }
-                    } else {
-                        mesasDisponibles.push(mesa);
-                    }
-                }
-            } else {
-                mesasDisponibles = this.locales[local].mesa;
+        return fetch('/get-reservas', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ local, fecha, hora })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error fetching data: ' + response.statusText);
             }
-    
-            return { mesasDisponibles: mesasDisponibles, mesasReservadas: mesasOcupadas };
-        } else {
+            return response.json();
+        })
+        .then(data => {
+            return { mesasDisponibles: data.mesasDisponibles, mesasReservadas: data.mesasReservadas };
+        })
+        .catch(error => {
+            console.error('Error:', error);
             return { mesasDisponibles: [], mesasReservadas: [] };
-        }
-    }    
+        });
+    }
+
+    // buscarMesas(local, fecha, hora) {
+    //     if (this.locales[local]) {
+    //         let mesasDisponibles = [];
+    //         let mesasOcupadas = [];
+    
+    //         if (this.locales[local][fecha]) {
+    //             let mesasDelLocal = this.locales[local].mesa;
+    //             for (let mesa of mesasDelLocal) {
+    //                 if (this.locales[local][fecha][mesa]) {
+    //                     let reservasMesa = this.locales[local][fecha][mesa];
+    //                     let disponible = true;
+    //                     for (let reserva of reservasMesa) {
+    //                         let inicioReserva = new Date('1970-01-01T' + reserva.horaInicio);
+    //                         let finReserva = new Date('1970-01-01T' + reserva.horaFin);
+    //                         let horaConsulta = new Date('1970-01-01T' + hora);
+    
+    //                         if (horaConsulta >= inicioReserva && horaConsulta < finReserva) {
+    //                             disponible = false;
+    //                             mesasOcupadas.push(mesa);
+    //                             break;
+    //                         }
+    //                     }
+    
+    //                     if (disponible) {
+    //                         mesasDisponibles.push(mesa);
+    //                     }
+    //                 } else {
+    //                     mesasDisponibles.push(mesa);
+    //                 }
+    //             }
+    //         } else {
+    //             mesasDisponibles = this.locales[local].mesa;
+    //         }
+    
+    //         return { mesasDisponibles: mesasDisponibles, mesasReservadas: mesasOcupadas };
+    //     } else {
+    //         return { mesasDisponibles: [], mesasReservadas: [] };
+    //     }
+    // }    
 
 
 

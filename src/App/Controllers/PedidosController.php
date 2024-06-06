@@ -220,15 +220,8 @@ class PedidosController extends Controller
         $log->info("isUserLoggedIn :", [$this->usuario->isUserLoggedIn()]);
         $articulos = [];
         // Verificar si hay sesión iniciada
-        if (!$this->usuario->isUserLoggedIn()) {
-            $resultado = [
-                "success" => false,
-                "message" => "Debe iniciar sesión para realizar una reserva."
-            ];
-            $log->info("Intento de pedido sin sesión iniciada.");
-            require $this->viewsDir . 'nuestro_menu.view.php';
-            return;
-        }
+        $this->usuario->verificarSesion();
+ 
 
         if (!is_null($request->get('carrito_data'))) {
             $carrito = json_decode($request->get('carrito_data'), true);

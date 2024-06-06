@@ -86,6 +86,10 @@ class Controller
                 'name' => 'Ver mi pedido'
             ],
             [
+                'href' => '/ver_mi_reserva',
+                'name' => 'Ver mi Reserva'
+            ],
+            [
                 'href' => '/registrar_usuario',
                 'name' => 'Registrar Usuario Sesion'
             ],

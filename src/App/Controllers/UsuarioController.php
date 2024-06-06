@@ -40,7 +40,7 @@ class UsuarioController extends Controller
         }else{
             $menuEmpleado = [];
             $menuPerfil = array_filter($menuPerfil, function ($item) {
-                return !in_array($item['href'], ['/perfil_usuario', '/cerrar_sesion', '/ver_mi_pedido']);
+                return !in_array($item['href'], ['/perfil_usuario', '/cerrar_sesion', '/ver_mi_pedido', '/ver_mi_reserva']);
             });            
         }
 
@@ -179,7 +179,7 @@ class UsuarioController extends Controller
     }
 
     public function perfil() {
-        
+
         $titulo = 'PAW POWER | PERFIL';
 
         $userId = $this->getUserId(); // Ajusta esto según cómo manejes la sesión
@@ -189,6 +189,21 @@ class UsuarioController extends Controller
 
         // Pasar los datos del usuario a la vista
         require $this->viewsDir . 'mi_perfil.view.php';
+    }
+
+
+    public function verificarSesion()
+    {
+        global $log;
+        if (!$this->isUserLoggedIn()) {
+            $resultado = [
+                "success" => false,
+                "message" => "Debe iniciar sesión para realizar una reserva o pedido."
+            ];
+            $log->info("Intento de reserva sin sesión iniciada.");
+            require $this->viewsDir . 'inicio_sesion.view.php';
+            return;
+        }          
     }
 
 }

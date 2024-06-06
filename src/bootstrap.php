@@ -79,11 +79,14 @@ $router->get('/noticias', 'EmpresaController@noticias');
 $router->get('/sobre_nosotros', 'EmpresaController@sobre_nosotros');
 // MenuController
 $router->get('/promociones', 'MenuController@promociones'); // MenuController
+
 $router->get('/nuestro_menu', 'MenuController@nuestroMenu'); // MenuController
+$router->post('/pedido/new', 'PedidosController@new'); // PedidoController
+
+$router->get('/plato/new', 'MenuController@new'); // MenuController
 $router->get('/plato', 'MenuController@get'); // MenuController
 $router->get('/plato-all-in-cart', 'MenuController@getPlatosInCart'); // MenuController
 $router->get('/plato/verDetalle', 'MenuController@verDetalle'); // MenuController
-$router->get('/plato/new', 'MenuController@new'); // MenuController
 $router->post('/plato/new', 'MenuController@new'); // MenuController
 $router->post('/plato/add-to-cart', 'MenuController@addToCart'); // MenuController
 
@@ -93,7 +96,6 @@ $router->get('/local/mesas', 'LocalController@getMesas'); // LocalController
 $router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // PedidoController
 $router->get('/pedidos/estado', 'PedidosController@verPedido'); // PedidoController
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
-$router->post('/pedido/new', 'PedidosController@new'); // PedidoController
 $router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
 $router->get('/ver_mi_pedido', 'PedidosController@verPedido'); // empleado
 
