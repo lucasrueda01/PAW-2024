@@ -95,6 +95,7 @@ $router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
 $router->post('/pedido/new', 'PedidosController@new'); // PedidoController
 $router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
+$router->get('/ver_mi_pedido', 'PedidosController@verPedido'); // empleado
 
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController

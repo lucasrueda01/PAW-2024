@@ -55,6 +55,44 @@ class PedidosController extends Controller
         require $this->viewsDir . 'pedir.view.php';
     }
 
+    public function verPedido()
+    {
+        global $log;
+    
+        // Verificar si hay sesión iniciada
+        if (!$this->usuario->isUserLoggedIn()) {
+            $resultado = [
+                "success" => false,
+                "message" => "Debe iniciar sesión para ver su pedido."
+            ];
+            $log->info("Intento de ver pedido sin sesión iniciada.");
+            require $this->viewsDirCliente . 'login.view.php'; // Redirigir a la página de inicio de sesión
+            return;
+        }
+    
+        // Obtener el ID del usuario desde la sesión
+        $idUser = $this->usuario->getUserId();
+    
+        $log->info("Usuario ID: ", [$idUser]);
+    
+        // Recuperar el último pedido asociado al ID del usuario
+        $pedido = $this->model->getLastPedidoByUserId(intval($idUser));
+    
+        $tipo = $this->usuario->getUserType();
+        $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario;
+        $urlsAccion = PedidosCollection::$urlsAccion;
+    
+        $log->info("Método getLastPedidoByUserId: ", [$pedido]);
+    
+        if (isset($pedido['error'])) {
+            $resultado['error'] = $pedido['error'];
+        }
+    
+
+        require $this->viewsDir . 'empleado/pedido.show.view.php';
+    }
+    
+
     public function get()
     {
         global $request, $log;
@@ -102,7 +140,7 @@ class PedidosController extends Controller
         if ($request->get('id') != null && $request->get('estado') != null) {
             $id = $request->get('id');
             $estado = $request->get('estado');
-            $pedido = $this->model->modificarEstado($id, $estado, );
+            $pedido = $this->model->modificarEstado($id, $estado);
 
             isset($pedido['error']) ? $error['description'] = $pedido['error'] : null;
         } else {
@@ -112,80 +150,6 @@ class PedidosController extends Controller
         $pedidos = $this->model->getAll();
         require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
     }
-
-    // public function new()
-    // {
-    //     global $request, $log;
-
-    //     // Obtener la fecha y hora actual
-    //     $fechaHora = date('Y-m-d\TH:i:s');
-
-    //     $articulos = [];
-
-    //     if (!is_null($request->get('carrito_data'))) {
-    //         $carrito = json_decode($request->get('carrito_data'), true);
-            
-    //         $total = 0;
-
-    //         foreach ($carrito['platos'] as $plato) {
-
-    //             $id = intval($plato['id']);
-    //             $cantidad = intval($plato['cantidad']);
-
-    //             if($cantidad > 0){
-
-    //                 $log->info("id, cantidad :", [$id, $cantidad]);
-    
-    //                 $platoPedido = new Plato;
-    //                 $platoPedido->setQueryBuilder($this->qb);
-    //                 $platoPedido->load($id);
-    
-    //                 $subtotal = $platoPedido->getPrecio() * $cantidad;
-
-    //                 $articulos[] = [
-    //                     "nombre" => $platoPedido->getNombrePlato(),
-    //                     "precio"  => floatval($platoPedido->getPrecio()),
-    //                     "cantidad" => $cantidad,
-    //                     "subtotal" => $subtotal,
-    //                 ];
-    //                 $total = $total + $subtotal;
-    //             }
-    //         }
-    //     }
-
-    //     // Crear el nuevo pedido
-    //     $nuevoPedido = [
-    //         "Fecha/Hora" => $fechaHora,
-    //         "Tipo" => $request->get("tipo"),
-    //         "Nombre" => htmlspecialchars($request->get("nombre")),
-    //         "Metodo de Pago" => $request->get("forma-de-pago"),
-    //         "Direccion" => htmlspecialchars($request->get("direccion")),
-    //         "Observaciones" => htmlspecialchars($request->get("observaciones")),
-    //         "Monto Total" => $total,
-    //         "articulos" => $articulos,
-    //     ];
-
-        
-    //     $log->info("articulos, total ,nuevoPedido :", [$articulos, $total ,$nuevoPedido]);
-
-    //     // Agregar el nuevo pedido a la colección
-    //     $resultado = $this->model->new($nuevoPedido);
-        
-        
-    //     if (isset($resultado['exito'])) {
-    //         $pedido = $this->model->getById($resultado['id']);
-
-    //         $log->info("resultado['id']: ", [$resultado['id']]);
-
-    //         $tipo = $this->usuario->getUserType();
-            
-    //         $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
-    //         $urlsAccion = PedidosCollection::$urlsAccion;
-    //     } 
-        
-    //     require $this->viewsDir . 'empleado/pedido.show.view.php';
-        
-    // }
 
     public function new()
     {
@@ -268,7 +232,7 @@ class PedidosController extends Controller
 
         // Verificar el resultado de la inserción
         if ($resultadoInsercion !== false) {
-            $idPedidoGenerado = $resultadoInsercion[0];
+            $this->verPedido();
             // Hacer algo con el ID del pedido generado
         } else {
             // Manejar el caso en que ocurrió un error al insertar el pedido

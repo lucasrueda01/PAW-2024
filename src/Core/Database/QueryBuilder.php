@@ -101,13 +101,69 @@ class QueryBuilder
     }
 
 
-    public function update()
+    public function selectWithOrderAndLimit($table, $params = [], $orderBy = '', $orderDirection = 'ASC', $limit = null)
     {
-
+        try {
+            // Inicializar la condición WHERE
+            $where = "1 = 1";
+    
+            // Añadir condiciones según los parámetros
+            $whereConditions = [];
+            $bindParams = [];
+    
+            foreach ($params as $key => $value) {
+                $whereConditions[] = "$key = :$key";
+                $bindParams[":$key"] = $value;
+            }
+    
+            if (!empty($whereConditions)) {
+                $where = implode(' AND ', $whereConditions);
+            }
+    
+            // Construir la consulta SQL con la condición WHERE, ORDER BY y LIMIT
+            $query = "SELECT * FROM {$table} WHERE {$where}";
+            if ($orderBy) {
+                $query .= " ORDER BY {$orderBy} {$orderDirection}";
+            }
+            if ($limit) {
+                $query .= " LIMIT {$limit}";
+            }
+    
+            // Loggear la consulta SQL
+            if ($this->logger) {
+                $this->logger->info($query);
+            }
+    
+            // Preparar la consulta SQL
+            $sentencia = $this->pdo->prepare($query);
+    
+            // Asignar valores a los parámetros de la consulta
+            foreach ($bindParams as $param => $value) {
+                $sentencia->bindValue($param, $value);
+            }
+    
+            // Establecer el modo de recuperación de datos y ejecutar la consulta
+            $sentencia->setFetchMode(PDO::FETCH_ASSOC);
+            $sentencia->execute();
+    
+            // Obtener los resultados de la consulta
+            $resultadoConsulta = $sentencia->fetchAll();
+    
+            // Loggear los resultados de la consulta
+            if ($this->logger) {
+                $this->logger->info("resultadoConsulta: ", [$resultadoConsulta]);
+            }
+    
+            // Devolver los resultados de la consulta
+            return $resultadoConsulta;
+        } catch (PDOException $e) {
+            // Capturar excepción y manejarla
+            if ($this->logger) {
+                $this->logger->error("Error al ejecutar la consulta: " . $e->getMessage());
+            }
+            return false; // O devuelve un valor que indique que hubo un error
+        }
     }
+}    
 
-    public function delete()
-    {
 
-    }
-}

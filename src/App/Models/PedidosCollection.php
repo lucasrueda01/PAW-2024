@@ -131,10 +131,33 @@ class PedidosCollection extends Model
 
     }
 
-    public function calcularMonto($articulos)
-    {   
-
+    public function getLastPedidoByUserId($idUser)
+    {
+        try {
+            // Recuperar el último pedido del usuario utilizando el QueryBuilder
+            $pedidos = $this->queryBuilder->selectWithOrderAndLimit('pedidos', ['id_usuario' => $idUser], 'created_at', 'DESC', 1);
+    
+            if ($pedidos) {
+                $pedido = $pedidos[0]; // El pedido más reciente
+    
+                // Recuperar los artículos asociados a este pedido
+                $articulos = $this->queryBuilder->select('detalle_pedidos', ['id_pedido' => $pedido['id']]);
+    
+                $pedido['articulos'] = $articulos;
+                return $pedido;
+            } else {
+                return ['error' => 'No se encontró ningún pedido para este usuario.'];
+            }
+        } catch (\Exception $e) {
+            if ($this->logger) {
+                $this->logger->error("Error al recuperar el pedido: " . $e->getMessage());
+            }
+            return ['error' => $e->getMessage()];
+        }
     }
+    
+    
+    
 
     // public function new($pedido)
     // {
@@ -198,7 +221,7 @@ class PedidosCollection extends Model
         try {
             global $log;
             // Insertar el nuevo pedido en la tabla 'pedidos'
-            
+
             [$idPedidoGenerado, $resultado] = $this->queryBuilder->insert('pedidos', $datosPedido);
     
             if ($resultado) {
