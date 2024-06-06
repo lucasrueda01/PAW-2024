@@ -11,7 +11,7 @@ function view($name, $data = [])
     global $log, $twig;
 
     try {
-        $log->debug('Datos en la vista', [$name, $data, $twig]);
+        // $log->debug('Datos en la vista', [$name, $data, $twig]);
         echo $twig->render("{$name}.html", $data);
     } catch (\Twig\Error\Error $e) {
         $log->error('Error al renderizar la plantilla', ['exception' => $e]);

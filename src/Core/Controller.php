@@ -82,6 +82,10 @@ class Controller
                 'name' => 'Iniciar Sesion'
             ],
             [
+                'href' => '/ver_mi_pedido',
+                'name' => 'Ver mi pedido'
+            ],
+            [
                 'href' => '/registrar_usuario',
                 'name' => 'Registrar Usuario Sesion'
             ],

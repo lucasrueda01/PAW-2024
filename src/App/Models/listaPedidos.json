@@ -1,306 +1,114 @@
 [
     {
-        "Fecha\/Hora": "2024-05-22T21:07:20",
-        "Tipo": "delivery",
-        "Nombre": "JUAN",
-        "Metodo de Pago": "efectivo",
+        "Fecha\/Hora": "2024-06-05T19:18:26",
+        "Tipo": "empleado",
+        "Nombre": "juan manuel natello",
+        "Metodo de Pago": "mercado_pago",
         "Direccion": "mafalda 884",
-        "Observaciones": "LA CASA ES UN DEPTO TIPO CASA",
-        "Monto Total": 6740,
+        "Observaciones": "con papas el cafe con leche",
+        "Monto Total": 7500,
         "articulos": [
             {
-                "nombre": "CHEESEBURGUER",
-                "precio": 1500,
-                "cantidad": 1,
-                "subtotal": 1500
-            },
-            {
-                "nombre": "SPRITE",
-                "precio": 2000,
+                "nombre": "Muzarelitas",
+                "precio": 2500,
                 "cantidad": 2,
-                "subtotal": 4000
+                "subtotal": 5000
             },
             {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1240,
+                "nombre": "Muzarelitas",
+                "precio": 2500,
                 "cantidad": 1,
-                "subtotal": 1240
+                "subtotal": 2500
             }
         ],
         "Nro Pedido": 1,
         "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-22T21:07:57",
-        "Tipo": "delivery",
+        "Fecha\/Hora": "2024-06-05T19:48:15",
+        "Tipo": "empleado",
         "Nombre": "JUAN",
-        "Metodo de Pago": "efectivo",
+        "Metodo de Pago": "mercado_pago",
         "Direccion": "mafalda 884",
-        "Observaciones": "LA CASA ES UN DEPTO TIPO CASA",
-        "Monto Total": 6740,
+        "Observaciones": "con papas el cafe con leche",
+        "Monto Total": 2500,
         "articulos": [
             {
-                "nombre": "CHEESEBURGUER",
-                "precio": 1500,
+                "nombre": "Muzarelitas",
+                "precio": 2500,
                 "cantidad": 1,
-                "subtotal": 1500
-            },
-            {
-                "nombre": "SPRITE",
-                "precio": 2000,
-                "cantidad": 2,
-                "subtotal": 4000
-            },
-            {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1240,
-                "cantidad": 1,
-                "subtotal": 1240
+                "subtotal": 2500
             }
         ],
         "Nro Pedido": 2,
         "Estado": "sin-confirmar"
     },
     {
-        "Fecha\/Hora": "2024-05-22T22:17:24",
-        "Tipo": "en-el-local",
+        "Fecha\/Hora": "2024-06-05T20:10:00",
+        "Tipo": "empleado",
         "Nombre": "JUAN",
         "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 3500,
+        "Direccion": "mafalda 884",
+        "Observaciones": "LA CASA ES UN DEPTO TIPO CASA",
+        "Monto Total": 18500,
         "articulos": [
             {
-                "nombre": "SPRITE",
-                "precio": 2000,
-                "cantidad": 1,
-                "subtotal": 2000
+                "nombre": "Fanta Chica",
+                "precio": 1000,
+                "cantidad": 3,
+                "subtotal": 3000
             },
             {
-                "nombre": "CHEESEBURGUER",
+                "nombre": "Coca-Cola 1",
                 "precio": 1500,
-                "cantidad": 1,
-                "subtotal": 1500
+                "cantidad": 2,
+                "subtotal": 3000
+            },
+            {
+                "nombre": "Coca-Cola 1",
+                "precio": 1500,
+                "cantidad": 2,
+                "subtotal": 3000
+            },
+            {
+                "nombre": "Coca-Cola 1",
+                "precio": 1500,
+                "cantidad": 3,
+                "subtotal": 4500
+            },
+            {
+                "nombre": "Muzarelitas",
+                "precio": 2500,
+                "cantidad": 2,
+                "subtotal": 5000
             }
         ],
         "Nro Pedido": 3,
-        "Estado": "pasar-a-retirar"
+        "Estado": "confirmado"
     },
     {
-        "Fecha\/Hora": "2024-05-23T13:42:35",
-        "Tipo": "en-el-local",
-        "Nombre": "JUAN",
+        "Fecha\/Hora": "2024-06-05T20:14:31",
+        "Tipo": "cliente",
+        "Nombre": "juan",
         "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "con papas el cafe con leche",
-        "Monto Total": 7250,
+        "Direccion": "mafalda 884 caba",
+        "Observaciones": "alguna observacion",
+        "Monto Total": 10500,
         "articulos": [
             {
-                "nombre": "coca-cola",
-                "precio": 2000,
-                "cantidad": 1,
-                "subtotal": 2000
+                "nombre": "Fanta Chica",
+                "precio": 1000,
+                "cantidad": 3,
+                "subtotal": 3000
             },
             {
-                "nombre": "CHEESEBURGUER",
-                "precio": 1650,
-                "cantidad": 1,
-                "subtotal": 1650
-            },
-            {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1800,
-                "cantidad": 2,
-                "subtotal": 3600
+                "nombre": "Muzarelitas",
+                "precio": 2500,
+                "cantidad": 3,
+                "subtotal": 7500
             }
         ],
         "Nro Pedido": 4,
         "Estado": "confirmado"
-    },
-    {
-        "Fecha\/Hora": "2024-05-23T13:52:05",
-        "Tipo": "en-el-local",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Av San Juan 369",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": 5450,
-        "articulos": [
-            {
-                "nombre": "CHEESEBURGUER",
-                "precio": 1650,
-                "cantidad": 1,
-                "subtotal": 1650
-            },
-            {
-                "nombre": "coca-cola",
-                "precio": 2000,
-                "cantidad": 1,
-                "subtotal": 2000
-            },
-            {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1800,
-                "cantidad": 1,
-                "subtotal": 1800
-            }
-        ],
-        "Nro Pedido": 5,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-23T13:55:11",
-        "Tipo": "delivery",
-        "Nombre": "natello juan manuel",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": 5450,
-        "articulos": [
-            {
-                "nombre": "CHEESEBURGUER",
-                "precio": 1650,
-                "cantidad": 1,
-                "subtotal": 1650
-            },
-            {
-                "nombre": "coca-cola",
-                "precio": 2000,
-                "cantidad": 1,
-                "subtotal": 2000
-            },
-            {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1800,
-                "cantidad": 1,
-                "subtotal": 1800
-            }
-        ],
-        "Nro Pedido": 6,
-        "Estado": "rechazado"
-    },
-    {
-        "Fecha\/Hora": "2024-05-23T13:57:13",
-        "Tipo": "delivery",
-        "Nombre": "natello juan manuel",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "mafalda 884",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": 5450,
-        "articulos": [
-            {
-                "nombre": "CHEESEBURGUER",
-                "precio": 1650,
-                "cantidad": 1,
-                "subtotal": 1650
-            },
-            {
-                "nombre": "coca-cola",
-                "precio": 2000,
-                "cantidad": 1,
-                "subtotal": 2000
-            },
-            {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1800,
-                "cantidad": 1,
-                "subtotal": 1800
-            }
-        ],
-        "Nro Pedido": 7,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-27T00:47:30",
-        "Tipo": "empleado",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "Av San Juan 369",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": 11880,
-        "articulos": [
-            {
-                "nombre": "bigpower",
-                "precio": 1800,
-                "cantidad": 2,
-                "subtotal": 3600
-            },
-            {
-                "nombre": "coca-cola",
-                "precio": 1560,
-                "cantidad": 3,
-                "subtotal": 4680
-            },
-            {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1800,
-                "cantidad": 2,
-                "subtotal": 3600
-            }
-        ],
-        "Nro Pedido": 8,
-        "Estado": "sin-confirmar"
-    },
-    {
-        "Fecha\/Hora": "2024-05-27T16:01:11",
-        "Tipo": "cliente",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": 5160,
-        "articulos": [
-            {
-                "nombre": "bigpower",
-                "precio": 1800,
-                "cantidad": 1,
-                "subtotal": 1800
-            },
-            {
-                "nombre": "coca-cola",
-                "precio": 1560,
-                "cantidad": 1,
-                "subtotal": 1560
-            },
-            {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1800,
-                "cantidad": 1,
-                "subtotal": 1800
-            }
-        ],
-        "Nro Pedido": 9,
-        "Estado": "confirmado"
-    },
-    {
-        "Fecha\/Hora": "2024-05-27T16:01:56",
-        "Tipo": "cliente",
-        "Nombre": "juan",
-        "Metodo de Pago": "mercado_pago",
-        "Direccion": "",
-        "Observaciones": "es un tipo depto tipo casa",
-        "Monto Total": 5160,
-        "articulos": [
-            {
-                "nombre": "bigpower",
-                "precio": 1800,
-                "cantidad": 1,
-                "subtotal": 1800
-            },
-            {
-                "nombre": "coca-cola",
-                "precio": 1560,
-                "cantidad": 1,
-                "subtotal": 1560
-            },
-            {
-                "nombre": "BASTONCITOS DE QUESO",
-                "precio": 1800,
-                "cantidad": 1,
-                "subtotal": 1800
-            }
-        ],
-        "Nro Pedido": 10,
-        "Estado": "despachado"
     }
 ]

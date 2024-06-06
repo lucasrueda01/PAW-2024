@@ -58,39 +58,97 @@ class PedidosCollection extends Model
 
     }
 
+    // public function getAll()
+    // {
+    //     // Leer el contenido del archivo JSON
+    //     $json_data = file_get_contents( __DIR__ . '\listaPedidos.json');
+
+    //     // Convertir el JSON 
+    //     $pedidosCollection = json_decode($json_data, true);
+
+    //     // Verificar si la decodificación fue exitosa
+    //     if ($pedidosCollection === null) {
+    //         echo "Error al decodificar el archivo JSON.";
+    //     } else {
+    //         return $pedidosCollection;
+    //     }
+    // }
+
     public function getAll()
     {
-        // Leer el contenido del archivo JSON
-        $json_data = file_get_contents( __DIR__ . '\listaPedidos.json');
+        try {
+            // Obtener todos los pedidos usando QueryBuilder
+            $pedidos = $this->queryBuilder->select('pedidos');
 
-        // Convertir el JSON 
-        $pedidosCollection = json_decode($json_data, true);
+            // Verificar si se obtuvieron los pedidos
+            if ($pedidos === false) {
+                throw new \Exception('Error al recuperar los pedidos de la base de datos.');
+            }
 
-        // Verificar si la decodificación fue exitosa
-        if ($pedidosCollection === null) {
-            echo "Error al decodificar el archivo JSON.";
-        } else {
-            return $pedidosCollection;
+            // Formatear cada pedido para incluir sus artículos
+            foreach ($pedidos as &$pedido) {
+                // Obtener los artículos asociados a este pedido
+                $articulos = $this->queryBuilder->select('detalle_pedidos', ['id_pedido' => $pedido['id']]);
+                $pedido['articulos'] = $articulos;
+            }
+
+            return $pedidos;
+        } catch (\Exception $e) {
+            if ($this->logger) {
+                $this->logger->error("Error al recuperar los pedidos: " . $e->getMessage());
+            }
+            return ['error' => $e->getMessage()];
         }
     }
 
-    public function getById($id)
+    public function getById($idPedido)
     {
-        global $log;
-        
         try {
-            // Verificar si el índice existe
-            if (!isset($this->indice[$id])) {
-                throw new Exception("NRO DE PEDIDO NO ENCONTRADO");
+            // Obtener el pedido por ID
+            $pedidos = $this->queryBuilder->select('pedidos', ['id' => $idPedido]);
+    
+            // Verificar si se encontró el pedido
+            if (empty($pedidos)) {
+                return ['error' => 'No se encontró ningún pedido con ese ID.'];
             }
     
-            return $this->indice[$id];
-        } catch (Exception $e) {
-            // Manejar la excepción si el ID no existe en el índice
-            $log->info("error: ", [$e->getMessage()]);
-            return [
-                "error" => "NRO DE PEDIDO NO ENCONTRADO. " . $e->getMessage()
-            ];
+            $pedido = $pedidos[0];
+    
+            // Obtener los artículos asociados a este pedido
+            $articulos = $this->queryBuilder->select('detalle_pedidos', ['id_pedido' => $pedido['id']]);
+            $pedido['articulos'] = $articulos;
+    
+            return $pedido;
+        } catch (\Exception $e) {
+            if ($this->logger) {
+                $this->logger->error("Error al recuperar el pedido: " . $e->getMessage());
+            }
+            return ['error' => $e->getMessage()];
+        }
+    }
+
+    public function getPedidoByUserAndId($idUser, $idPedido)
+    {
+        try {
+            // Recuperar el pedido por ID y ID de usuario
+            $pedido = $this->queryBuilder->select('pedidos', ['id' => $idPedido, 'id_usuario' => $idUser]);
+    
+            if (empty($pedido)) {
+                return ['error' => 'Pedido no encontrado o no pertenece al usuario.'];
+            }
+    
+            $pedido = $pedido[0]; // Asumiendo que select retorna un array de resultados
+    
+            // Recuperar los artículos asociados a este pedido
+            $articulos = $this->queryBuilder->select('detalle_pedidos', ['id_pedido' => $idPedido]);
+            $pedido['articulos'] = $articulos;
+    
+            return $pedido;
+        } catch (\Exception $e) {
+            if ($this->logger) {
+                $this->logger->error("Error al recuperar el pedido: " . $e->getMessage());
+            }
+            return ['error' => $e->getMessage()];
         }
     }
 
@@ -115,7 +173,7 @@ class PedidosCollection extends Model
     if ($pedidoEncontrado) {
 
         
-        if(!isset(self::$accionesPorEstadoXTipoUsuario[$this->usuario->getTipoUsuario()][$estado])){
+        if(!isset(self::$accionesPorEstadoXTipoUsuario[$this->usuario->getUserType()][$estado])){
             return ["error" => "El estado para el pedido no esta permitido"];
         }
         // Convertir el array modificado a JSON
@@ -131,65 +189,55 @@ class PedidosCollection extends Model
 
     }
 
-    public function calcularMonto($articulos)
-    {   
-
-    }
-
-    public function new($pedido)
+    public function getLastPedidoByUserId($idUser)
     {
         try {
-            // Leer el contenido del archivo JSON y convertirlo en un array PHP
-            $json_data = file_get_contents(__DIR__ . '/listaPedidos.json');
-            if ($json_data === false) {
-                throw new \Exception("Error al leer el archivo JSON.");
+            // Recuperar el último pedido del usuario utilizando el QueryBuilder
+            $pedidos = $this->queryBuilder->selectWithOrderAndLimit('pedidos', ['id_usuario' => $idUser], 'created_at', 'DESC', 1);
+    
+            if ($pedidos) {
+                $pedido = $pedidos[0]; // El pedido más reciente
+    
+                // Recuperar los artículos asociados a este pedido
+                $articulos = $this->queryBuilder->select('detalle_pedidos', ['id_pedido' => $pedido['id']]);
+    
+                $pedido['articulos'] = $articulos;
+                return $pedido;
+            } else {
+                return ['error' => 'No se encontró ningún pedido para este usuario.'];
             }
-
-            $pedidos = json_decode($json_data, true);
-            if ($pedidos === null) {
-                throw new \Exception("Error al decodificar el archivo JSON.");
-            }
-
-            // Generar un nuevo número de pedido único
-            $nuevoNroPedido = count($pedidos) + 1;
-            while (isset($this->indice[$nuevoNroPedido])) {
-                $nuevoNroPedido++;
-            }
-
-            // Añadir el nuevo número de pedido al pedido
-            $pedido['Nro Pedido'] = $nuevoNroPedido;
-
-            // Establecer el estado inicial del pedido
-            $pedido['Estado'] = 'sin-confirmar';
-
-            // Validar que los campos necesarios no estén vacíos
-            if (empty($pedido['Fecha/Hora']) || empty($pedido['Tipo']) || empty($pedido['Metodo de Pago'])) {
-                throw new \Exception("Faltan datos obligatorios para el pedido.");
-            }
-
-            // Añadir el nuevo pedido al array de pedidos
-            $pedidos[] = $pedido;
-            $this->indice[$nuevoNroPedido] = $pedido;
-
-            // Convertir el array modificado a JSON
-            $json_data = json_encode($pedidos, JSON_PRETTY_PRINT);
-            if ($json_data === false) {
-                throw new \Exception("Error al codificar los datos a JSON.");
-            }
-
-            // Guardar el JSON modificado en el archivo
-            if (file_put_contents(__DIR__ . '/listaPedidos.json', $json_data) === false) {
-                throw new \Exception("Error al guardar el archivo JSON.");
-            }
-
-            return [
-                "exito" => "El nuevo pedido ha sido creado con éxito con el ID $nuevoNroPedido.",
-                "id" => $nuevoNroPedido
-            ];
         } catch (\Exception $e) {
-            return [
-                "error" => $e->getMessage()
-            ];
+            if ($this->logger) {
+                $this->logger->error("Error al recuperar el pedido: " . $e->getMessage());
+            }
+            return ['error' => $e->getMessage()];
+        }
+    }
+    
+
+    public function new($datosPedido, $articulos)
+    {
+        try {
+            global $log;
+            // Insertar el nuevo pedido en la tabla 'pedidos'
+
+            [$idPedidoGenerado, $resultado] = $this->queryBuilder->insert('pedidos', $datosPedido);
+    
+            if ($resultado) {
+                // Insertar los artículos del pedido en la tabla 'pedido_articulos'
+                foreach ($articulos as $articulo) {
+                    $articulo['id_pedido'] = $idPedidoGenerado;
+                    $this->queryBuilder->insert('detalle_pedidos', $articulo);
+                }
+                return [$idPedidoGenerado, $resultado];
+            } else {
+                throw new \Exception("Error al insertar el pedido.");
+            }
+        } catch (\Exception $e) {
+            if ($this->logger) {
+                $this->logger->error("Error al crear el pedido: " . $e->getMessage());
+            }
+            return false;
         }
     }
 }

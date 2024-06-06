@@ -18,22 +18,22 @@
             <p>Estado del pedido y gestión</p>
         </section>
         
-        <?php if (isset($pedido['Nro Pedido'])) :?>
+        <?php if (isset($pedido['id'])) :?>
 
             <section class="detalles_pedido">
 
-                <h2 class="nro_pedido" id="pedido-nro-<?= $pedido['Nro Pedido']; ?>">Pedido Nro: #0000<?= $pedido['Nro Pedido']; ?></h2>
-                <p class="detalle"><strong>Fecha/Hora:</strong> <?= $pedido['Fecha/Hora']; ?></p>
-                <p class="detalle"><strong>Tipo:</strong> <?= $pedido['Tipo']; ?></p>
-                <p class="detalle"><strong>Nombre:</strong> <?= empty($pedido['Nombre']) ? '(No especificado)' : $pedido['Nombre']; ?></p>
-                <p class="detalle"><strong>Método de Pago:</strong> <?= $pedido['Metodo de Pago']; ?></p>
-                <p class="detalle"><strong>Dirección:</strong> <?= empty($pedido['Direccion']) ? '(No especificado)' : $pedido['Direccion']; ?></p>
-                <p class="detalle"><strong>Observaciones:</strong> <?= empty($pedido['Observaciones']) ? '(No especificado)' : $pedido['Observaciones']; ?></p>
-                <p class="detalle"><strong>Monto Total:</strong> $ <?= is_null($pedido['Monto Total']) ? '(No especificado)' : number_format($pedido['Monto Total'], 2, ',', '.'); ?></p>
-                <p class="detalle estado" id="estado" data-estado="<?= $pedido['Estado']; ?>"><strong>Estado:</strong> <?= $pedido['Estado']; ?></p>
+                <h2 class="nro_pedido" id="pedido-nro-<?= $pedido['id']; ?>">Pedido Nro: #0000<?= $pedido['id']; ?></h2>
+                <p class="detalle"><strong>Fecha/Hora:</strong> <?= $pedido['created_at']; ?></p>
+                <p class="detalle"><strong>Tipo:</strong> <?= $pedido['tipo']; ?></p>
+                <p class="detalle"><strong>Nombre:</strong> <?= empty($pedido['nombre']) ? '(No especificado)' : $pedido['nombre']; ?></p>
+                <p class="detalle"><strong>Método de Pago:</strong> <?= $pedido['metodo_pago']; ?></p>
+                <p class="detalle"><strong>Dirección:</strong> <?= empty($pedido['direccion']) ? '(No especificado)' : $pedido['direccion']; ?></p>
+                <p class="detalle"><strong>Observaciones:</strong> <?= empty($pedido['observaciones']) ? '(No especificado)' : $pedido['observaciones']; ?></p>
+                <p class="detalle"><strong>Monto Total:</strong> $ <?= is_null($pedido['monto_total']) ? '(No especificado)' : number_format($pedido['monto_total'], 2, ',', '.'); ?></p>
+                <p class="detalle estado" id="estado" data-estado="<?= $pedido['estado']; ?>"><strong>Estado:</strong> <?= $pedido['estado']; ?></p>
 
-                <?php foreach($listaAcciones[$tipo][$pedido['Estado']] as $accion ): ?>
-                    <a class="boton boton_negro" href="/pedidos/estado/modificar?id=<?= $pedido['Nro Pedido']; ?>&estado=<?= $urlsAccion[$accion]?>"><?= $accion ?></a>
+                <?php foreach($listaAcciones[$tipo][$pedido['estado']] as $accion ): ?>
+                    <a class="boton boton_negro" href="/pedidos/estado/modificar?id=<?= $pedido['id']; ?>&estado=<?= $urlsAccion[$accion]?>"><?= $accion ?></a>
                 <?php endforeach; ?>    
 
                 <table class="stacked-table">
@@ -48,7 +48,7 @@
                     <tbody>
                         <?php foreach($pedido["articulos"] as $articulo) : ?>
                             <tr>
-                                <td><?= $articulo['nombre']; ?></td>
+                                <td><?= $articulo['nombre_articulo']; ?></td>
                                 <td>$ <?= number_format($articulo['precio'], 2, ',', '.'); ?></td>
                                 <td><?= $articulo['cantidad']; ?></td>
                                 <td>$ <?= number_format($articulo['subtotal'], 2, ',', '.'); ?></td>
@@ -58,7 +58,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="3">Total:</td>
-                            <td>$ <?= number_format($pedido['Monto Total'], 2, ',', '.'); ?></td>
+                            <td>$ <?= number_format($pedido['monto_total'], 2, ',', '.'); ?></td>
                         </tr>
                     </tfoot>
                 </table>

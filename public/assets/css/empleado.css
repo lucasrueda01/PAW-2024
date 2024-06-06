@@ -295,3 +295,60 @@
 .estado-rechazado, .estado-cancelado, .estado-despachado {
     background-color: gray;
 }
+
+
+.error_carga_carrito {
+    display: none; /*flex*/
+    flex-direction: column;
+    justify-content: left;
+    align-items:center;
+    font-family: Century_Gothic;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 2rem;
+    padding: 1rem;
+    background-color: #b95252;
+    color: #FFFFFF;  
+    position: fixed;
+    width: 30%;
+    top: 30%;
+    left: 34vw;
+    z-index: 1000;
+}
+
+/* .error_carga_carrito::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 4rem;
+    left: 25rem;
+    width: 10rem;
+    height: 11rem;
+    background-image: url(../imgs/icons/icono-error-carga-carrito.png);
+    background-size: cover;
+}
+*/
+@media (max-width: 1000px) {
+    .error_carga_carrito {
+        width: 80vw;
+        left: 6vw;
+    }
+} 
+
+
+.error_carga_carrito h3{
+    padding-top: 50px;
+    color: black;
+}
+
+.error_carga_carrito p{
+    padding: 2rem 0 2rem 0;
+    text-align: center;
+}
+
+.error_carga_carrito button{
+    height: 5rem;
+    border: none;
+    border-radius: 5%;
+    position: relative;
+}

@@ -9,7 +9,6 @@ use Paw\App\Utils\Uploader;
 use Paw\Core\Controller;
 use Paw\App\Models\PlatosCollection;
 use Paw\App\Models\Plato;
-use Paw\Core\Model;
 use Paw\App\Controllers\UsuarioController;
 
 class MenuController extends Controller
@@ -34,12 +33,23 @@ class MenuController extends Controller
 
     public function nuestroMenu()
     {
-        global $log;
 
+        
+        global $log;
+        global $request; // Asegúrate de que $request esté disponible.
+    
         $titulo = "PAW POWER | MENU";
         $platos = $this->model->getAll();
         $log->info("(nuestroMenu) this->model: ", [$this->model]);
-        require $this->viewsDir . 'nuestro_menu.view.php';
+    
+        // Verificar si el formato solicitado es CSV
+        if (!is_null($request->get('export')) && $request->get('export') === 'csv') {
+            $log->info("generar csv", [$request->get('format'), $_GET]);
+            $this->model->exportToCsv($platos);
+            exit; // Asegurarse de que no haya salida adicional
+        } else {
+            require $this->viewsDir . 'nuestro_menu.view.php';
+        }
     }
 
     public function getPlatosInCart()
@@ -162,6 +172,9 @@ class MenuController extends Controller
                     throw new Exception("Faltan datos para crear el objeto Plato.");
                 } else {
                     $platos = $this->model->getAll();
+                    if(!is_null($request->get('devMode'))){
+                        echo "Inserciones realizadas con exito..";
+                    }
                     require $this->viewsDirEmpleado . 'plato_cargado.view.php';
                 }
             } catch (Exception $e) {

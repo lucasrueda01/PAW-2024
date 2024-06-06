@@ -183,7 +183,14 @@
             </section>
 
 
+            <section class="error_carga_carrito">
+                <h3>Error en la carga del Carrito</h3>
+                <p>El carrito debe tener al menos un articulo para enviar el pedido</p>
+                <button id="btn_aceptar_msj_error_carrito" class="boton_amarillo">Aceptar</button>
+            </section>
+
         </section>                       
+
 
     </main>
 

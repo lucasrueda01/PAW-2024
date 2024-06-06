@@ -4,10 +4,6 @@ namespace Paw\App\Controllers;
 
 use Paw\App\Utils\Verificador;
 use Paw\App\Models\LocalesCollection;
-use Paw\App\Models\MesasCollection;
-use Paw\App\Models\ReservasCollection;
-use Paw\App\Models\Local;
-
 
 use Paw\App\Controllers\UsuarioController;
 use Paw\Core\Controller;

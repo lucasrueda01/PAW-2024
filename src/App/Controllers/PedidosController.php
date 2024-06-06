@@ -5,7 +5,6 @@ namespace Paw\App\Controllers;
 use Paw\App\Utils\Verificador;
 
 use Paw\Core\Controller;
-use Paw\Core\Controller\UsuarioController;
 use Paw\App\Models\Plato;
 
 use Paw\App\Models\PedidosCollection;
@@ -43,10 +42,26 @@ class PedidosController extends Controller
 
     public function pedidos_entrantes()
     {
+        global $log;
+    
+        // Verificar si el usuario es empleado
+        if ($this->usuario->getUserType() !== 'empleado') {
+            // Log the unauthorized access attempt
+            $log->info('Acceso no autorizado a pedidos entrantes.');
+            
+            // Mostrar página de error 404
+            http_response_code(404);
+            require $this->viewsDir . 'errors/404.view.php';
+            return;
+        }
+    
         $titulo = 'PAW POWER | PEDIDOS';
-
+    
+        // Obtener todos los pedidos
         $pedidos = $this->model->getAll();
-
+    
+        $log->info("Pedidos: ",[$pedidos]);
+        // Enviar a la vista de pedidos entrantes
         require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
     }
 
@@ -55,6 +70,86 @@ class PedidosController extends Controller
         $titulo = 'PAW POWER | PEDIR';
         require $this->viewsDir . 'pedir.view.php';
     }
+
+    public function verPedido()
+    {
+        global $request, $log;
+    
+        // Verificar si hay sesión iniciada
+        if (!$this->usuario->isUserLoggedIn()) {
+            $resultado = [
+                "success" => false,
+                "message" => "Debe iniciar sesión para ver el pedido."
+            ];
+            $log->info("Intento de ver pedido sin sesión iniciada.");
+            require $this->viewsDir . 'inicio_sesion.view.php'; // Redirigir a la página de inicio de sesión
+            return;
+        }
+    
+        // Obtener el ID del usuario desde la sesión
+        $idUser = $this->usuario->getUserId();
+    
+        // Obtener el ID del pedido desde el parámetro de la URL
+        $idPedido = $request->get('id');
+    
+        $log->info("Usuario ID: ", [$idUser]);
+        $log->info("Tipo Usuario: ", [$this->usuario->getUserType()]);
+        $log->info("Pedido ID: ", [$idPedido]);
+    
+        // Verificar el tipo de usuario
+        $userType = $this->usuario->getUserType();
+        if ($userType === 'empleado') {
+            // El usuario es empleado, recuperar el pedido sin verificar el usuario
+            if (is_null($idPedido)) {
+                $log->info("ID de pedido no proporcionado.");
+                http_response_code(404);
+                require $this->viewsDir . 'errors/not-found.view.php';
+                return;
+            }
+            $pedido = $this->model->getById(intval($idPedido));
+        } elseif ($userType === 'cliente') {
+            // El usuario es cliente
+            if (is_null($idPedido)) {
+                // Si no hay ID de pedido proporcionado, recuperar el último pedido del cliente
+                $pedido = $this->model->getLastPedidoByUserId(intval($idUser));
+                if (isset($pedido['error'])) {
+                    $log->info("Error al obtener el último pedido: ", [$pedido['error']]);
+                    http_response_code(404);
+                    require $this->viewsDir . 'errors/not-found.view.php';
+                    return;
+                }
+                $idPedido = $pedido['id'];
+            } else {
+                // Recuperar el pedido verificando que le pertenece al cliente
+                $pedido = $this->model->getPedidoByUserAndId(intval($idUser), intval($idPedido));
+                if (isset($pedido['error'])) {
+                    $log->info("Error al obtener pedido: ", [$pedido['error']]);
+                    http_response_code(404);
+                    require $this->viewsDir . 'errors/not-found.view.php';
+                    return;
+                }
+            }
+        } else {
+            // Tipo de usuario no autorizado, mostrar página de error 404
+            $log->info('Tipo de usuario no autorizado.');
+            http_response_code(404);
+            require $this->viewsDir . 'errors/not-found.view.php';
+            return;
+        }
+    
+        $tipo = $this->usuario->getUserType();
+        $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario;
+        $urlsAccion = PedidosCollection::$urlsAccion;
+    
+        $log->info("Pedido recuperado: ", [$pedido]);
+    
+        // Mostrar la vista del pedido
+        require $this->viewsDir . 'empleado/pedido.show.view.php';
+    }
+    
+    
+    
+    
 
     public function get()
     {
@@ -67,7 +162,7 @@ class PedidosController extends Controller
         $pedido = $this->model->getById(intval($id));
 
 
-        $tipo = $this->usuario->getTipoUsuario();
+        $tipo = $this->usuario->getUserType();
         $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
         $urlsAccion = PedidosCollection::$urlsAccion;
 
@@ -103,7 +198,7 @@ class PedidosController extends Controller
         if ($request->get('id') != null && $request->get('estado') != null) {
             $id = $request->get('id');
             $estado = $request->get('estado');
-            $pedido = $this->model->modificarEstado($id, $estado, );
+            $pedido = $this->model->modificarEstado($id, $estado);
 
             isset($pedido['error']) ? $error['description'] = $pedido['error'] : null;
         } else {
@@ -121,11 +216,24 @@ class PedidosController extends Controller
         // Obtener la fecha y hora actual
         $fechaHora = date('Y-m-d\TH:i:s');
 
+
+        $log->info("isUserLoggedIn :", [$this->usuario->isUserLoggedIn()]);
         $articulos = [];
+        // Verificar si hay sesión iniciada
+        if (!$this->usuario->isUserLoggedIn()) {
+            $resultado = [
+                "success" => false,
+                "message" => "Debe iniciar sesión para realizar una reserva."
+            ];
+            $log->info("Intento de pedido sin sesión iniciada.");
+            require $this->viewsDir . 'nuestro_menu.view.php';
+            return;
+        }
 
         if (!is_null($request->get('carrito_data'))) {
             $carrito = json_decode($request->get('carrito_data'), true);
             
+
             $total = 0;
 
             foreach ($carrito['platos'] as $plato) {
@@ -133,55 +241,59 @@ class PedidosController extends Controller
                 $id = intval($plato['id']);
                 $cantidad = intval($plato['cantidad']);
 
-                $log->info("id, cantidad :", [$id, $cantidad]);
+                if($cantidad > 0){
 
-                $platoPedido = new Plato;
-                $platoPedido->setQueryBuilder($this->qb);
-                $platoPedido->load($id);
+                    $log->info("id, cantidad :", [$id, $cantidad]);
 
-                $subtotal = $platoPedido->getPrecio() * $cantidad;
+                    $platoPedido = new Plato;
+                    $platoPedido->setQueryBuilder($this->qb);
+                    $platoPedido->load($id);
 
-                $articulos[] = [
-                    "nombre" => $platoPedido->getNombrePlato(),
-                    "precio"  => floatval($platoPedido->getPrecio()),
-                    "cantidad" => $cantidad,
-                    "subtotal" => $subtotal,
-                ];
-                $total = $total + $subtotal;
+                    $subtotal = $platoPedido->getPrecio() * $cantidad;
+
+                    $articulos[] = [
+                        "nombre_articulo" => $platoPedido->getNombrePlato(),
+                        "precio"  => floatval($platoPedido->getPrecio()),
+                        "cantidad" => $cantidad,
+                        "subtotal" => $subtotal,
+                    ];
+                    $total = $total + $subtotal;
+                }
             }
         }
 
-        // Crear el nuevo pedido
-        $nuevoPedido = [
-            "Fecha/Hora" => $fechaHora,
-            "Tipo" => $request->get("tipo"),
-            "Nombre" => htmlspecialchars($request->get("nombre")),
-            "Metodo de Pago" => $request->get("forma-de-pago"),
-            "Direccion" => htmlspecialchars($request->get("direccion")),
-            "Observaciones" => htmlspecialchars($request->get("observaciones")),
-            "Monto Total" => $total,
-            "articulos" => $articulos,
+        // Preparar los datos del pedido
+        $datosPedido = [
+            "fecha_hora" => $fechaHora,
+            "tipo" => $request->get("tipo"),
+            "id_usuario" => $this->usuario->getUserId(),
+            "metodo_pago" => $request->get("forma-de-pago"),
+            "direccion" => htmlspecialchars($request->get("direccion")),
+            "observaciones" => htmlspecialchars($request->get("observaciones")),
+            "monto_total" => $total,
+            "estado" => "sin-confirmar"
         ];
 
-        
-        $log->info("articulos, total ,nuevoPedido :", [$articulos, $total ,$nuevoPedido]);
+        // Verificar si $datosPedido es JSON y convertirlo a array si es necesario
+        if (is_string($datosPedido)) {
+            $datosPedido = json_decode($datosPedido, true);
+        }
 
-        // Agregar el nuevo pedido a la colección
-        $resultado = $this->model->new($nuevoPedido);
-        
-        
-        if (isset($resultado['exito'])) {
-            $pedido = $this->model->getById($resultado['id']);
+        // Verificar si $articulos es JSON y convertirlo a array si es necesario
+        if (is_string($articulos)) {
+            $articulos = json_decode($articulos, true);
+        }        
 
-            $log->info("resultado['id']: ", [$resultado['id']]);
+        $log->info("datosPedido, articulos: ",[$datosPedido, $articulos]);
+        // Insertar el nuevo pedido utilizando PedidosCollection
+        $resultadoInsercion = $this->model->new($datosPedido, $articulos);
 
-            $tipo = $this->usuario->getTipoUsuario();
-            
-            $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
-            $urlsAccion = PedidosCollection::$urlsAccion;
-        } 
-        
-        require $this->viewsDir . 'empleado/pedido.show.view.php';
-        
+        // Verificar el resultado de la inserción
+        if ($resultadoInsercion !== false) {
+            $this->verPedido();
+            // Hacer algo con el ID del pedido generado
+        } else {
+            // Manejar el caso en que ocurrió un error al insertar el pedido
+        }
     }
 }

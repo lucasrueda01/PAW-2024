@@ -33,13 +33,13 @@ $handler->setLevel(Level::Debug);
 
 $log->pushHandler($handler);
 
-$log->info('Datos de Config', [
-    "adapter" => $config->get('DB_ADAPTER'),
-    "hostname" => $config->get('DB_HOSTNAME'),
-    "dbname" => $config->get('DB_DBNAME'),
-    "port" => $config->get('DB_PORT'),
-    "charset" => $config->get('DB_CHARSET'),
-]);
+// $log->info('Datos de Config', [
+//     "adapter" => $config->get('DB_ADAPTER'),
+//     "hostname" => $config->get('DB_HOSTNAME'),
+//     "dbname" => $config->get('DB_DBNAME'),
+//     "port" => $config->get('DB_PORT'),
+//     "charset" => $config->get('DB_CHARSET'),
+// ]);
 
 $connectionBuilder = new ConnectionBuilder;
 $connectionBuilder->setLogger($log);
@@ -91,10 +91,11 @@ $router->post('/plato/add-to-cart', 'MenuController@addToCart'); // MenuControll
 $router->get('/local/mesas', 'LocalController@getMesas'); // LocalController
 // PedidoController
 $router->get('/pedidos_entrantes', 'PedidosController@pedidos_entrantes'); // PedidoController
-$router->get('/pedidos/estado', 'PedidosController@get'); // PedidoController
+$router->get('/pedidos/estado', 'PedidosController@verPedido'); // PedidoController
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
 $router->post('/pedido/new', 'PedidosController@new'); // PedidoController
 $router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
+$router->get('/ver_mi_pedido', 'PedidosController@verPedido'); // empleado
 
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
@@ -112,12 +113,12 @@ $router->get('/json-ld', 'SEOController@generateJsonLd');
 $templateDir = __DIR__ . $config->get('TEMPLATE_DIR');
 $cacheDir = __DIR__ . $config->get('TEMPLATE_CACHE_DIR');
 
-$log->info('Template Directory:', [$templateDir]);
-$log->info('Cache Directory:', [$cacheDir]);
+// $log->info('Template Directory:', [$templateDir]);
+// $log->info('Cache Directory:', [$cacheDir]);
 
 $loader = new FilesystemLoader($templateDir);
 
-$log->info('loader: ', [$loader, $templateDir]);
+// $log->info('loader: ', [$loader, $templateDir]);
 
 $twig = new Environment($loader, [
     'cache' => $cacheDir, 
@@ -125,3 +126,4 @@ $twig = new Environment($loader, [
 ]);
 
 $twig->addExtension(new DebugExtension());
+
