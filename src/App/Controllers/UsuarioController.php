@@ -14,6 +14,7 @@ class UsuarioController extends Controller
     public Verificador $verificador;
     public ?string $modelName = Usuario::class;
     public $tipoUsuario;
+    public $usuario;
 
     public function __construct()
     {
@@ -178,7 +179,15 @@ class UsuarioController extends Controller
     }
 
     public function perfil() {
+        
         $titulo = 'PAW POWER | PERFIL';
+
+        $userId = $this->getUserId(); // Ajusta esto según cómo manejes la sesión
+
+        // Obtener los datos del usuario
+        $usuario = $this->model->findById($userId);
+
+        // Pasar los datos del usuario a la vista
         require $this->viewsDir . 'mi_perfil.view.php';
     }
 

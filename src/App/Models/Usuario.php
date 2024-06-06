@@ -43,4 +43,23 @@ class Usuario extends Model
          }
      }
 
+     public function findById($id) {
+        global $log;
+        try {
+            $log->info("id: ", [$id]);
+            $result = $this->queryBuilder->select('users', ['id' => $id]);
+            if ($result && count($result) > 0) {
+                $log->info("result: ", [$result[0]]);
+                return $result[0];
+            }
+            return null;
+        } catch (PDOException $e) {
+            // Manejo de la excepción
+            if ($this->logger) { // Asumiendo que tienes un logger configurado en tu modelo
+                $this->logger->error("Error al obtener el usuario por ID: " . $id, ['exception' => $e]);
+            }
+            return null; 
+        }
+    }  
+
 }

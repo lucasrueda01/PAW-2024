@@ -127,7 +127,7 @@ class MesaController extends Controller
                 "message" => "Debe iniciar sesión para realizar una reserva."
             ];
             $log->info("Intento de reserva sin sesión iniciada.");
-            require $this->viewsDirCliente . 'reservar_cliente.view.php';
+            require $this->viewsDir . 'inicio_sesion.view.php';
             return;
         }
     
@@ -159,7 +159,7 @@ class MesaController extends Controller
                         'hora_inicio' => $hora_inicio,
                         'hora_fin' => $hora_fin,
                         'id_local' => $local_id,
-                        'id_usuario' => $this->usuario->getUserId(), // Usar el método para obtener el ID de usuario
+                        'id_user' => $this->usuario->getUserId(), // Usar el método para obtener el ID de usuario
                     ];
     
                     [$idGenerado, $result] = $reserva->insert($reservaData);
