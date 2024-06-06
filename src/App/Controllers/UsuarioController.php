@@ -39,7 +39,7 @@ class UsuarioController extends Controller
         }else{
             $menuEmpleado = [];
             $menuPerfil = array_filter($menuPerfil, function ($item) {
-                return !in_array($item['href'], ['/perfil_usuario', '/cerrar_sesion']);
+                return !in_array($item['href'], ['/perfil_usuario', '/cerrar_sesion', '/ver_mi_pedido']);
             });            
         }
 
