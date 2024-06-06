@@ -18,9 +18,9 @@
             <p>Para acceder a nuestros servicios</p>
         </section>
 
-        <?php if(isset($resultado['error'])) : ?>
+        <?php if(isset($resultado['success']) && !($resultado['success'])) : ?>
             <h4 class="msj msj_error">
-                   <?= $resultado['error']; ?>
+                   <?= $resultado['message']; ?>
             </h4>
         <?php endif ?>
 
