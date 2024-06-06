@@ -127,6 +127,31 @@ class PedidosCollection extends Model
         }
     }
 
+    public function getPedidoByUserAndId($idUser, $idPedido)
+    {
+        try {
+            // Recuperar el pedido por ID y ID de usuario
+            $pedido = $this->queryBuilder->select('pedidos', ['id' => $idPedido, 'id_usuario' => $idUser]);
+    
+            if (empty($pedido)) {
+                return ['error' => 'Pedido no encontrado o no pertenece al usuario.'];
+            }
+    
+            $pedido = $pedido[0]; // Asumiendo que select retorna un array de resultados
+    
+            // Recuperar los artículos asociados a este pedido
+            $articulos = $this->queryBuilder->select('detalle_pedidos', ['id_pedido' => $idPedido]);
+            $pedido['articulos'] = $articulos;
+    
+            return $pedido;
+        } catch (\Exception $e) {
+            if ($this->logger) {
+                $this->logger->error("Error al recuperar el pedido: " . $e->getMessage());
+            }
+            return ['error' => $e->getMessage()];
+        }
+    }
+
     public function modificarEstado($id, $estado)
     {
     // Leer el contenido del archivo JSON y convertirlo en un array PHP

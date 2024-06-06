@@ -97,32 +97,58 @@ class PedidosController extends Controller
         $log->info("Pedido ID: ", [$idPedido]);
     
         // Verificar el tipo de usuario
-        if ($this->usuario->getUserType() !== 'empleado') {
-            // Log the unauthorized access attempt
-            $log->info('Acceso no autorizado a ver pedido.');
-            
-            // Mostrar página de error 404
+        $userType = $this->usuario->getUserType();
+        if ($userType === 'empleado') {
+            // El usuario es empleado, recuperar el pedido sin verificar el usuario
+            if (is_null($idPedido)) {
+                $log->info("ID de pedido no proporcionado.");
+                http_response_code(404);
+                require $this->viewsDir . 'errors/not-found.view.php';
+                return;
+            }
+            $pedido = $this->model->getById(intval($idPedido));
+        } elseif ($userType === 'cliente') {
+            // El usuario es cliente
+            if (is_null($idPedido)) {
+                // Si no hay ID de pedido proporcionado, recuperar el último pedido del cliente
+                $pedido = $this->model->getLastPedidoByUserId(intval($idUser));
+                if (isset($pedido['error'])) {
+                    $log->info("Error al obtener el último pedido: ", [$pedido['error']]);
+                    http_response_code(404);
+                    require $this->viewsDir . 'errors/not-found.view.php';
+                    return;
+                }
+                $idPedido = $pedido['id'];
+            } else {
+                // Recuperar el pedido verificando que le pertenece al cliente
+                $pedido = $this->model->getPedidoByUserAndId(intval($idUser), intval($idPedido));
+                if (isset($pedido['error'])) {
+                    $log->info("Error al obtener pedido: ", [$pedido['error']]);
+                    http_response_code(404);
+                    require $this->viewsDir . 'errors/not-found.view.php';
+                    return;
+                }
+            }
+        } else {
+            // Tipo de usuario no autorizado, mostrar página de error 404
+            $log->info('Tipo de usuario no autorizado.');
             http_response_code(404);
-            require $this->viewsDir . 'errors/404.view.php';
+            require $this->viewsDir . 'errors/not-found.view.php';
             return;
         }
-    
-        // Recuperar el pedido asociado al ID del pedido
-        $pedido = $this->model->getById(intval($idPedido));
     
         $tipo = $this->usuario->getUserType();
         $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario;
         $urlsAccion = PedidosCollection::$urlsAccion;
     
-        $log->info("Método getById: ", [$pedido]);
-    
-        if (isset($pedido['error'])) {
-            $resultado['error'] = $pedido['error'];
-        }
+        $log->info("Pedido recuperado: ", [$pedido]);
     
         // Mostrar la vista del pedido
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
+    
+    
+    
     
 
     public function get()
