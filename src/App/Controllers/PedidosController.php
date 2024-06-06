@@ -242,16 +242,27 @@ class PedidosController extends Controller
 
         // Preparar los datos del pedido
         $datosPedido = [
-            "Fecha/Hora" => $fechaHora,
-            "Tipo" => $request->get("tipo"),
+            "fecha_hora" => $fechaHora,
+            "tipo" => $request->get("tipo"),
             "id_usuario" => $this->usuario->getUserId(),
-            "Metodo de Pago" => $request->get("forma-de-pago"),
-            "Direccion" => htmlspecialchars($request->get("direccion")),
-            "Observaciones" => htmlspecialchars($request->get("observaciones")),
-            "estado" => "sin-confirmar",
-            "Monto Total" => $total
+            "metodo_pago" => $request->get("forma-de-pago"),
+            "direccion" => htmlspecialchars($request->get("direccion")),
+            "observaciones" => htmlspecialchars($request->get("observaciones")),
+            "monto_total" => $total,
+            "estado" => "sin-confirmar"
         ];
 
+        // Verificar si $datosPedido es JSON y convertirlo a array si es necesario
+        if (is_string($datosPedido)) {
+            $datosPedido = json_decode($datosPedido, true);
+        }
+
+        // Verificar si $articulos es JSON y convertirlo a array si es necesario
+        if (is_string($articulos)) {
+            $articulos = json_decode($articulos, true);
+        }        
+
+        $log->info("datosPedido, articulos: ",[$datosPedido, $articulos]);
         // Insertar el nuevo pedido utilizando PedidosCollection
         $resultadoInsercion = $this->model->new($datosPedido, $articulos);
 

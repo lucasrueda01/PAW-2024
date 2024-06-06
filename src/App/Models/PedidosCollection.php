@@ -196,7 +196,9 @@ class PedidosCollection extends Model
     public function new($datosPedido, $articulos)
     {
         try {
+            global $log;
             // Insertar el nuevo pedido en la tabla 'pedidos'
+            
             [$idPedidoGenerado, $resultado] = $this->queryBuilder->insert('pedidos', $datosPedido);
     
             if ($resultado) {
