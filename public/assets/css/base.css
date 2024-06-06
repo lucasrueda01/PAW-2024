@@ -848,3 +848,42 @@ main {
     max-width: 100%;
 }
 
+
+.mi_perfil {
+    display: flex;
+    justify-content: center;
+}
+
+.mi_perfil_content {
+    width: 30%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 3rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    font-family: 'Century_Gothic';
+    background: #FDC830;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-box-shadow: 15px 16px 50px 5px rgba(87,87,87,1);
+    -moz-box-shadow: 15px 16px 50px 5px rgba(87,87,87,1);
+    box-shadow: 15px 16px 50px 5px rgba(87,87,87,1);
+}
+
+.mi_perfil h3 {
+    background-color: white;
+    text-transform: uppercase;
+    padding: .5rem;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 4rem;
+    color: var(--color-amarillo);
+    margin-bottom: 1rem;
+
+}
+
+.mi_perfil_content li {
+    margin: .5rem;
+}

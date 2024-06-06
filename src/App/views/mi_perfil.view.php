@@ -11,13 +11,15 @@
             <p>Aquí podrás ver tus datos personales</p>
         </section>
         
-        <section>
-            <h3>Mis Datos</h3>
-            <ul>
-            <li>Nombre de usuario: <?= htmlspecialchars($usuario['username'] ?? 'No hay') ?></li>
-                <li>Email: <?= htmlspecialchars($usuario['email'] ?? 'No hay') ?></li>
-                <li>Tipo: <?= htmlspecialchars($usuario['tipo'] ?? 'No hay') ?></li>
-            </ul>
+        <section class="mi_perfil">
+            <section class="mi_perfil_content">
+                <h3>Mis Datos</h3>
+                <ul>
+                <li>Nombre de usuario: <?= htmlspecialchars($usuario['username'] ?? 'No hay') ?></li>
+                    <li>Email: <?= htmlspecialchars($usuario['email'] ?? 'No hay') ?></li>
+                    <li>Tipo: <?= htmlspecialchars($usuario['tipo'] ?? 'No hay') ?></li>
+                </ul>
+            </section>
         </section>
     </main>
     <?php require __DIR__.'/parts/footer.view.php' ?>
