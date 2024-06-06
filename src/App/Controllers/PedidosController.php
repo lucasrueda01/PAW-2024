@@ -42,10 +42,26 @@ class PedidosController extends Controller
 
     public function pedidos_entrantes()
     {
+        global $log;
+    
+        // Verificar si el usuario es empleado
+        if ($this->usuario->getUserType() !== 'empleado') {
+            // Log the unauthorized access attempt
+            $log->info('Acceso no autorizado a pedidos entrantes.');
+            
+            // Mostrar página de error 404
+            http_response_code(404);
+            require $this->viewsDir . 'errors/404.view.php';
+            return;
+        }
+    
         $titulo = 'PAW POWER | PEDIDOS';
-
+    
+        // Obtener todos los pedidos
         $pedidos = $this->model->getAll();
-
+    
+        $log->info("Pedidos: ",[$pedidos]);
+        // Enviar a la vista de pedidos entrantes
         require $this->viewsDir . 'empleado/pedidos_entrantes.view.php';
     }
 
@@ -66,7 +82,7 @@ class PedidosController extends Controller
                 "message" => "Debe iniciar sesión para ver su pedido."
             ];
             $log->info("Intento de ver pedido sin sesión iniciada.");
-            require $this->viewsDirCliente . 'login.view.php'; // Redirigir a la página de inicio de sesión
+            require $this->viewsDir . 'inicio_sesion.view.php'; // Redirigir a la página de inicio de sesión
             return;
         }
     
