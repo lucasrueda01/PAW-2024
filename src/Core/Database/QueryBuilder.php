@@ -40,9 +40,9 @@ class QueryBuilder
             $query = "SELECT * FROM {$table} WHERE {$where}";
     
             // Loggear la consulta SQL
-            if ($this->logger) {
-                $this->logger->info($query);
-            }
+            // if ($this->logger) {
+            //     $this->logger->info($query);
+            // }
     
             // Preparar la consulta SQL
             $sentencia = $this->pdo->prepare($query);
@@ -60,9 +60,9 @@ class QueryBuilder
             $resultadoConsulta = $sentencia->fetchAll();
     
             // Loggear los resultados de la consulta
-            if ($this->logger) {
-                $this->logger->info("resultadoConsulta: ", [$resultadoConsulta]);
-            }
+            // if ($this->logger) {
+            //     $this->logger->info("resultadoConsulta: ", [$resultadoConsulta]);
+            // }
     
             // Devolver los resultados de la consulta
             return $resultadoConsulta;

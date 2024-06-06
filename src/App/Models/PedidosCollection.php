@@ -101,23 +101,29 @@ class PedidosCollection extends Model
         }
     }
 
-    public function getById($id)
+    public function getById($idPedido)
     {
-        global $log;
-        
         try {
-            // Verificar si el índice existe
-            if (!isset($this->indice[$id])) {
-                throw new Exception("NRO DE PEDIDO NO ENCONTRADO");
+            // Obtener el pedido por ID
+            $pedidos = $this->queryBuilder->select('pedidos', ['id' => $idPedido]);
+    
+            // Verificar si se encontró el pedido
+            if (empty($pedidos)) {
+                return ['error' => 'No se encontró ningún pedido con ese ID.'];
             }
     
-            return $this->indice[$id];
-        } catch (Exception $e) {
-            // Manejar la excepción si el ID no existe en el índice
-            $log->info("error: ", [$e->getMessage()]);
-            return [
-                "error" => "NRO DE PEDIDO NO ENCONTRADO. " . $e->getMessage()
-            ];
+            $pedido = $pedidos[0];
+    
+            // Obtener los artículos asociados a este pedido
+            $articulos = $this->queryBuilder->select('detalle_pedidos', ['id_pedido' => $pedido['id']]);
+            $pedido['articulos'] = $articulos;
+    
+            return $pedido;
+        } catch (\Exception $e) {
+            if ($this->logger) {
+                $this->logger->error("Error al recuperar el pedido: " . $e->getMessage());
+            }
+            return ['error' => $e->getMessage()];
         }
     }
 

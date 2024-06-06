@@ -73,13 +73,13 @@ class PedidosController extends Controller
 
     public function verPedido()
     {
-        global $log;
+        global $request, $log;
     
         // Verificar si hay sesión iniciada
         if (!$this->usuario->isUserLoggedIn()) {
             $resultado = [
                 "success" => false,
-                "message" => "Debe iniciar sesión para ver su pedido."
+                "message" => "Debe iniciar sesión para ver el pedido."
             ];
             $log->info("Intento de ver pedido sin sesión iniciada.");
             require $this->viewsDir . 'inicio_sesion.view.php'; // Redirigir a la página de inicio de sesión
@@ -89,22 +89,38 @@ class PedidosController extends Controller
         // Obtener el ID del usuario desde la sesión
         $idUser = $this->usuario->getUserId();
     
-        $log->info("Usuario ID: ", [$idUser]);
+        // Obtener el ID del pedido desde el parámetro de la URL
+        $idPedido = $request->get('id');
     
-        // Recuperar el último pedido asociado al ID del usuario
-        $pedido = $this->model->getLastPedidoByUserId(intval($idUser));
+        $log->info("Usuario ID: ", [$idUser]);
+        $log->info("Tipo Usuario: ", [$this->usuario->getUserType()]);
+        $log->info("Pedido ID: ", [$idPedido]);
+    
+        // Verificar el tipo de usuario
+        if ($this->usuario->getUserType() !== 'empleado') {
+            // Log the unauthorized access attempt
+            $log->info('Acceso no autorizado a ver pedido.');
+            
+            // Mostrar página de error 404
+            http_response_code(404);
+            require $this->viewsDir . 'errors/404.view.php';
+            return;
+        }
+    
+        // Recuperar el pedido asociado al ID del pedido
+        $pedido = $this->model->getById(intval($idPedido));
     
         $tipo = $this->usuario->getUserType();
         $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario;
         $urlsAccion = PedidosCollection::$urlsAccion;
     
-        $log->info("Método getLastPedidoByUserId: ", [$pedido]);
+        $log->info("Método getById: ", [$pedido]);
     
         if (isset($pedido['error'])) {
             $resultado['error'] = $pedido['error'];
         }
     
-
+        // Mostrar la vista del pedido
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
     

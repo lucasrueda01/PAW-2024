@@ -33,13 +33,13 @@ $handler->setLevel(Level::Debug);
 
 $log->pushHandler($handler);
 
-$log->info('Datos de Config', [
-    "adapter" => $config->get('DB_ADAPTER'),
-    "hostname" => $config->get('DB_HOSTNAME'),
-    "dbname" => $config->get('DB_DBNAME'),
-    "port" => $config->get('DB_PORT'),
-    "charset" => $config->get('DB_CHARSET'),
-]);
+// $log->info('Datos de Config', [
+//     "adapter" => $config->get('DB_ADAPTER'),
+//     "hostname" => $config->get('DB_HOSTNAME'),
+//     "dbname" => $config->get('DB_DBNAME'),
+//     "port" => $config->get('DB_PORT'),
+//     "charset" => $config->get('DB_CHARSET'),
+// ]);
 
 $connectionBuilder = new ConnectionBuilder;
 $connectionBuilder->setLogger($log);
@@ -113,12 +113,12 @@ $router->get('/json-ld', 'SEOController@generateJsonLd');
 $templateDir = __DIR__ . $config->get('TEMPLATE_DIR');
 $cacheDir = __DIR__ . $config->get('TEMPLATE_CACHE_DIR');
 
-$log->info('Template Directory:', [$templateDir]);
-$log->info('Cache Directory:', [$cacheDir]);
+// $log->info('Template Directory:', [$templateDir]);
+// $log->info('Cache Directory:', [$cacheDir]);
 
 $loader = new FilesystemLoader($templateDir);
 
-$log->info('loader: ', [$loader, $templateDir]);
+// $log->info('loader: ', [$loader, $templateDir]);
 
 $twig = new Environment($loader, [
     'cache' => $cacheDir, 
