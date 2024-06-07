@@ -10,7 +10,7 @@
                 </li>
                 <li class="col col_i31"><a href="/unete_al_equipo">Trabaja con Nosotros</a></li>
                 <li class="col col_i32"><a href="/promociones">Promociones</a></li>
-                <li class="col col_i33"><a href="/pedir">Pedi Online</a></li>
+                <li class="col col_i33"><a href="/nuestro_menu">Pedi Online</a></li>
             </ul>
         </nav>
 

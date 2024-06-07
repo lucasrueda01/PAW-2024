@@ -30,6 +30,17 @@
                 </h4>        
             <?php endif ?>            
 
+            <?php if(isset($resultado['resumen'])) : ?>
+            <section class="resumen">
+                <h4 class="titulo_resumen">Resumen de reserva</h4>
+                <ul>
+                    <?php foreach ($resultado['resumen'] as $clave => $valor) : ?>
+                    <li><?= ucfirst($clave) ?> : <?= htmlspecialchars($valor, ENT_QUOTES, 'UTF-8') ?> </li>
+                    <?php endforeach; ?>
+                </ul>
+            </section>
+            <?php endif; ?>
+
             <form action="/reservar_cliente" class="form_reserva" method="post">
                 <fieldset class="container container_formulario container_delivery">
                     <label for="nombre">Ingrese su nombre completo</label>
@@ -47,18 +58,6 @@
                     <label for="time">Seleccione hora:</label>
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
-
-                    <aside class="resumen">
-                        <h4 class="titulo_resumen">Resumen de reserva</h4>
-                        <ul>
-                            <?php if(isset($resultado['resumen'])) : ?>
-                                <?php foreach ($resultado['resumen'] as $clave => $valor) : ?>
-                                <li><?= ucfirst($clave) ?> : <?= htmlspecialchars($valor, ENT_QUOTES, 'UTF-8') ?> </li>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </ul>
-                    </aside>
-
                     <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
                     <input type="text" id="nromesa-elegida" name="nromesa-elegida">

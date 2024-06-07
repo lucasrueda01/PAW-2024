@@ -7,3 +7,14 @@
 ## [WireFrame del Sitio](https://www.figma.com/file/inLYqyIMxmiy6WxPlx6cey/wireframe-grupo-paw?type=design&node-id=1-48&mode=design&t=FRZzKBVkGpIr7CmU-0)
 
 ## [PASOS PARA SU INSTALACION](Instalacion.md)
+
+
+# Funcionalidades:
+### 1. Alta Plato:
+    - Loguearse como Empleado: 
+    Puede usar como prueba
+        - usuario: `empleado1`
+        - contraseña: `password3`
+    Navegar hasta "PERFIL EMPLEADO"/Nuevo Plato o directamente en el navegador a la url `http://[dominio]:[puerto]/plato/new` 
+    Para testeos en entornos locales puede usar como dominio: `localhost` y puerto `8080`
+     
