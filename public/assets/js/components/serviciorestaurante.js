@@ -110,7 +110,7 @@ class ServicioRestaurante {
                     // Por ejemplo, marcar las mesas según su estado
                     this.estadoMesas.mesasDisponibles = estadoMesas.mesasDisponibles
                     this.estadoMesas.mesasReservadas = estadoMesas.mesasReservadas
-                    
+
                     this.marcarMesas(estadoMesas.mesasDisponibles);
                     this.marcarMesas(estadoMesas.mesasReservadas);
                 })
@@ -137,10 +137,12 @@ class ServicioRestaurante {
                  }else{
                     this.marcarMesas(this.locales[localValue].mesa, "Reset");
                     console.log("fallo al comprobar hora");
+                    this.cantMesasElegidas = ServicioRestaurante.MAXIMO_PERMITIDO
                     return false;    
                 }
                }else{
                     this.marcarMesas(this.locales[localValue].mesa, "Reset");
+                    this.cantMesasElegidas = ServicioRestaurante.MAXIMO_PERMITIDO
                     console.log("fallo al comprobar fecha");
                     return false;
                }
@@ -243,34 +245,54 @@ class ServicioRestaurante {
      * @param {array} listadoMesas 
      * @param {string} estado 
      */
-    marcarMesas(listadoMesas) {
-        // Iterar sobre el mapa estadoMesas
-        console.log(listadoMesas);
-        
-        listadoMesas.forEach(nombreMesa => {
-            // Obtener el elemento de la mesa con el nombre correspondiente
-            console.log(`#${nombreMesa.nombre_mesa} .mesa // estado: ${nombreMesa.estado}`);
-            var groupMesaElemento = document.querySelector(`#${nombreMesa.nombre_mesa}`); // selecciono el group q identifica a la mesa
-            console.log(groupMesaElemento)
-
-            var mesaElemento = document.querySelector(`#${nombreMesa.nombre_mesa} .mesa`); // selecciono el circulo q identifica la mesa
+    marcarMesas(listadoMesas, estado=null) {
+        // Iterar sobre el listado de mesas
+        listadoMesas.forEach(item => {
+            let idMesa, estadoMesa;
+            if (estado === 'Reset') {
+                // En caso de reinicio, el listadoMesas es un array de strings
+                idMesa = item;
+                estadoMesa = null; // Estado nulo
+            } else {
+                // En otro caso, listadoMesas es un array de objetos con propiedades específicas
+                idMesa = item.nombre_mesa;
+                estadoMesa = item.estado;
+            }
+    
+            // Obtener el elemento de la mesa y su grupo correspondientes
+            const groupMesaElemento = document.querySelector(`#${idMesa}`);
+            const mesaElemento = document.querySelector(`#${idMesa} .mesa`);
             
-            console.log(mesaElemento.style.fill)
-            // Verificar si la mesa está ocupada o disponible y aplicar el color correspondiente
-            if (mesaElemento) {
-                if (nombreMesa.estado === 'reservada') {
-                    // Marcar la mesa como roja si está ocupada
-                    mesaElemento.style.fill = "red";
-                } else if (nombreMesa.estado === 'disponible') {
-                    // Marcar la mesa como azul si está disponible
-                    mesaElemento.style.fill = "blue";
-                    this.agregarEventoClic(groupMesaElemento, mesaElemento, nombreMesa);
-                }else if (estado === 'Reset'){
+            // Verificar si se debe marcar la mesa con un color específico
+            if (estado !== 'Reset') {
+                // Eliminar el oyente de evento de clic si existe
+                groupMesaElemento.removeEventListener('click', this.agregarEventoClic);
+                
+                // Aplicar el color correspondiente a la mesa
+                if (mesaElemento) {
+                    if (estadoMesa === 'reservada') {
+                        mesaElemento.style.fill = "red";
+                    } else if (estadoMesa === 'disponible') {
+                        mesaElemento.style.fill = "blue";
+                        // Agregar el evento de clic
+                        // groupMesaElemento.addEventListener('click', () => {
+                        this.agregarEventoClic(groupMesaElemento, mesaElemento);
+                        // });
+                    }
+                }
+            } else {
+                // Eliminar el oyente de evento de clic si existe
+                groupMesaElemento.removeEventListener('click', this.agregarEventoClic);  
+                console.log(`Se eliminó el evento de clic de la mesa ${groupMesaElemento.id}`)              
+                // Marcar la mesa con blanco
+                if (mesaElemento) {
                     mesaElemento.style.fill = "#fff";
                 }
             }
         });
-    } 
+    }
+    
+        
 
     /**
      * por cada mesa, la funcion recibe el div G 
@@ -281,31 +303,41 @@ class ServicioRestaurante {
      * @param {string} mesaElemento 
      * se usa para colorear de rojo las ocupadas
      */
-    agregarEventoClic(groupMesaElemento, mesaElemento, nombreMesa)
-    {            
+    agregarEventoClic(groupMesaElemento, mesaElemento) {            
         console.log("Dentro de agregar eventoClic")
         groupMesaElemento.addEventListener("click", () => {
-            const mesaReservada = this.estadoMesas.mesasReservadas.includes(groupMesaElemento.id)
+            const mesaReservada = this.estadoMesas.mesasReservadas.includes(groupMesaElemento.id);
+            
             if (mesaReservada) {
                 console.log('La mesa está reservada.');
-            } else {
-                console.log('La mesa no está reservada.');
+                return; // No realizar más acciones si la mesa está reservada
+            } 
+            
+            if (this.cantMesasElegidas >= ServicioRestaurante.MAXIMO_PERMITIDO) {
+                console.log("Excedió el máximo número de mesas permitido");
+                this.cantMesasElegidas = ServicioRestaurante.MAXIMO_PERMITIDO
+                return; // No realizar más acciones si se excede el máximo número de mesas
             }
-
-            if(this.cantMesasElegidas <= ServicioRestaurante.MAXIMO_PERMITIDO && !mesaReservada){
-                console.log(`marco RED a mesa ${nombreMesa}`)
-                console.log(mesaElemento)
+            
+            console.log(`this.cantMesasElegidas: ${this.cantMesasElegidas}`)
+            if(this.cantMesasElegidas < ServicioRestaurante.MAXIMO_PERMITIDO ){
+                // Marcar la mesa como seleccionada (roja)
                 mesaElemento.style.fill = "red";
+        
+                // Actualizar la mesa seleccionada
                 let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
+                console.log(`Cambio inputHiddenMesaSeleccionada ${inputHiddenMesaSeleccionada}`)
                 inputHiddenMesaSeleccionada.value = groupMesaElemento.id;
                 this.mesaElegida = groupMesaElemento.id;
-                console.log(`${this.mesaElegida}`);
-                this.cantMesasElegidas++
-            }else{
-                console.log("Excedio maximo numero de mesas")
+        
+                // Incrementar el contador de mesas elegidas
+                this.cantMesasElegidas++;
+        
+                console.log(`Mesa seleccionada: ${this.mesaElegida}`);
             }
-        })
+        });
     }
+    
 
     /**
      * 
