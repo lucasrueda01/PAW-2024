@@ -108,6 +108,9 @@ class ServicioRestaurante {
                     console.log(estadoMesas);
                     // Aquí puedes realizar cualquier operación que necesites con estadoMesas
                     // Por ejemplo, marcar las mesas según su estado
+                    this.estadoMesas.mesasDisponibles = estadoMesas.mesasDisponibles
+                    this.estadoMesas.mesasReservadas = estadoMesas.mesasReservadas
+                    
                     this.marcarMesas(estadoMesas.mesasDisponibles);
                     this.marcarMesas(estadoMesas.mesasReservadas);
                 })
