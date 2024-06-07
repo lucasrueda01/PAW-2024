@@ -50,8 +50,8 @@
                     <label for="local">Selecciona un local:</label>
                     <select id="local" name="local" required>
                         <option value="ninguna">Ninguna Seleccionada</option>
-                        <option value="Local A">Local A</option>
-                        <option value="Local B">Local B</option>
+                        <option value="1">Local A</option>
+                        <option value="2">Local B</option>
                     </select>
                     <label for="date">Seleccione fecha:</label>
                     <input type="date" name="date" id="date" required>

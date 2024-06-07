@@ -150,4 +150,22 @@ class MesaController extends Controller
         }
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }
+
+    public function getReservas()
+    {
+        $local = $this->request->get('local');
+        $fecha = $this->request->get('fecha');
+        $hora = $this->request->get('hora');
+
+        if (!$local || !$fecha || !$hora) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Faltan parámetros']);
+            return;
+        }
+
+        $reservas = $this->model->getMesasDisponiblesYReservadas($local, $fecha, $hora);
+
+        header('Content-Type: application/json');
+        echo json_encode($reservas);
+    }
 }

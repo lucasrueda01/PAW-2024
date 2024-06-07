@@ -105,6 +105,7 @@ $router->post('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaCo
 $router->get('/locales/get', 'MesaController@getLocales'); // MesaController
 $router->get('/gestion_lista_mesas', 'MesaController@gestion_lista_mesas'); // MesaController
 $router->get('/gestion_mesa', 'MesaController@gestion_mesa'); // MesaController
+$router->get('/get-reservas', 'MesaController@getReservas'); // MesaController
 
 $router->get('/sitemap', 'SEOController@generateSitemap');
 $router->get('/robot', 'SEOController@generateRobot');

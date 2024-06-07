@@ -4,19 +4,19 @@
  * para reservar una mesa. 
  */
 class ServicioRestaurante {
-   
-
+    static MAXIMO_PERMITIDO = 1;
+    
     constructor() {
         /**
          * Mapa para almacenar la información de los locales
-         */
-
-        const data = new Datos()
-        data.getLocales()
-            .then(locales => {
-                this.locales = locales;
-                console.log(this.locales)
-            })
+        */
+       
+       const data = new Datos()
+       data.getLocales()
+       .then(locales => {
+           this.locales = locales;
+           console.log(this.locales)
+           })
             .catch(error => {
                 console.error('Error al obtener los locales:', error);
             });
@@ -27,6 +27,8 @@ class ServicioRestaurante {
          *  */ 
         this.mesaElegida = "";
         this.estadoMesas = []
+        this.cantMesasElegidas = 0
+
     }
 
     /**
@@ -70,16 +72,19 @@ class ServicioRestaurante {
 
         local.addEventListener("change", () => {
             localValue = local.value;
+            this.cantMesasElegidas = 0;
             this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
         });
 
         date.addEventListener("change", () => {
             dateValue = date.value;
+            this.cantMesasElegidas = 0;
             this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
         });
 
         time.addEventListener("change", () => {
             timeValue = time.value;
+            this.cantMesasElegidas = 0;
             this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
         });
 
@@ -91,25 +96,27 @@ class ServicioRestaurante {
      * @param {date} dateValue 
      * @param {time} timeValue 
      */
-    buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue) 
-    {
-
-        if(this.controlarLocalFechaYHora(localValue, dateValue, timeValue))
-        {
-            /* debo formatear la fecha porque viene con guiones 
-            * y lo paso a / ejemplo: 2024-05-06 => 2024/05/06
-            */
-            const dateValueConFormatoGuiones = dateValue
+    buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue) {
+        if (this.controlarLocalFechaYHora(localValue, dateValue, timeValue)) {
+            const dateValueConFormatoGuiones = dateValue;
             dateValue = this.formatearFecha(dateValue);
-        
-            console.log(`Estado de las mesas en el local ${localValue} el ${dateValue} a las ${timeValue}`);
-            this.estadoMesas = this.buscarMesas(localValue, dateValueConFormatoGuiones, timeValue);
-            // const estadoMesas = this.buscarMesasEnElBack(localValue, dateValueConFormatoGuiones, timeValue);
-            console.log(this.estadoMesas);
-            this.marcarMesas(this.estadoMesas.mesasReservadas, "Ocupada");
-            this.marcarMesas(this.estadoMesas.mesasDisponibles, "Disponible");
-        }else{
-            console.log(`localValue: ${localValue}, dateValue: ${dateValue}, timeValue: ${timeValue}`)
+    
+            console.log(`Estado de las mesas en el local ${localValue} el ${dateValueConFormatoGuiones} a las ${timeValue}`);
+            
+            this.buscarMesasEnElBack(localValue, dateValueConFormatoGuiones, timeValue)
+                .then(estadoMesas => {
+                    console.log(estadoMesas);
+                    // Aquí puedes realizar cualquier operación que necesites con estadoMesas
+                    // Por ejemplo, marcar las mesas según su estado
+                    this.marcarMesas(estadoMesas.mesasDisponibles);
+                    this.marcarMesas(estadoMesas.mesasReservadas);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Manejar el error de la solicitud si es necesario
+                });
+        } else {
+            console.log(`localValue: ${localValue}, dateValue: ${dateValue}, timeValue: ${timeValue}`);
         }
     }
 
@@ -233,22 +240,25 @@ class ServicioRestaurante {
      * @param {array} listadoMesas 
      * @param {string} estado 
      */
-    marcarMesas(listadoMesas, estado) {
+    marcarMesas(listadoMesas) {
         // Iterar sobre el mapa estadoMesas
         console.log(listadoMesas);
-
+        
         listadoMesas.forEach(nombreMesa => {
             // Obtener el elemento de la mesa con el nombre correspondiente
-            console.log(`#${nombreMesa} .mesa // estado: ${estado}`);
-            var groupMesaElemento = document.querySelector(`#${nombreMesa}`); // selecciono el group q identifica a la mesa
-            var mesaElemento = document.querySelector(`#${nombreMesa} .mesa`); // selecciono el circulo q identifica la mesa
+            console.log(`#${nombreMesa.nombre_mesa} .mesa // estado: ${nombreMesa.estado}`);
+            var groupMesaElemento = document.querySelector(`#${nombreMesa.nombre_mesa}`); // selecciono el group q identifica a la mesa
+            console.log(groupMesaElemento)
+
+            var mesaElemento = document.querySelector(`#${nombreMesa.nombre_mesa} .mesa`); // selecciono el circulo q identifica la mesa
             
+            console.log(mesaElemento.style.fill)
             // Verificar si la mesa está ocupada o disponible y aplicar el color correspondiente
             if (mesaElemento) {
-                if (estado === 'Ocupada') {
+                if (nombreMesa.estado === 'reservada') {
                     // Marcar la mesa como roja si está ocupada
                     mesaElemento.style.fill = "red";
-                } else if (estado === 'Disponible') {
+                } else if (nombreMesa.estado === 'disponible') {
                     // Marcar la mesa como azul si está disponible
                     mesaElemento.style.fill = "blue";
                     this.agregarEventoClic(groupMesaElemento, mesaElemento, nombreMesa);
@@ -272,20 +282,25 @@ class ServicioRestaurante {
     {            
         console.log("Dentro de agregar eventoClic")
         groupMesaElemento.addEventListener("click", () => {
-            console.log(this.estadoMesas.mesasReservadas); 
-            if (this.mesaElegida !== "" && mesaElemento.style.fill !== "red") {
-                console.log(`marco BLUE a mesa ${nombreMesa}`)
+            const mesaReservada = this.estadoMesas.mesasReservadas.includes(groupMesaElemento.id)
+            if (mesaReservada) {
+                console.log('La mesa está reservada.');
+            } else {
+                console.log('La mesa no está reservada.');
+            }
+
+            if(this.cantMesasElegidas <= ServicioRestaurante.MAXIMO_PERMITIDO && !mesaReservada){
+                console.log(`marco RED a mesa ${nombreMesa}`)
                 console.log(mesaElemento)
-                let anteriorMesaSeleccionada = document.querySelector(`#${this.mesaElegida} .mesa`);
-                anteriorMesaSeleccionada.style.fill = "blue"; // VUELVO A COLOREARLA COMO DISPONIBLE
-                }
-            console.log(`marco RED a mesa ${nombreMesa}`)
-            console.log(mesaElemento)
-            mesaElemento.style.fill = "red";
-            let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
-            inputHiddenMesaSeleccionada.value = groupMesaElemento.id;
-            this.mesaElegida = groupMesaElemento.id;
-            console.log(`${this.mesaElegida}`);
+                mesaElemento.style.fill = "red";
+                let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
+                inputHiddenMesaSeleccionada.value = groupMesaElemento.id;
+                this.mesaElegida = groupMesaElemento.id;
+                console.log(`${this.mesaElegida}`);
+                this.cantMesasElegidas++
+            }else{
+                console.log("Excedio maximo numero de mesas")
+            }
         })
     }
 
@@ -297,29 +312,28 @@ class ServicioRestaurante {
      * @returns {array, array} mesas disponibles y ocupadas 
      * de acuerdo al local, fecha y hora elegidos
      */
-    // buscarMesas(local, fecha, hora) {
-    //     return fetch('/get-reservas', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ local, fecha, hora })
-    //     })
-    //     .then(response => {
-    //         if (!response.ok) {
-    //             throw new Error('Error fetching data: ' + response.statusText);
-    //         }
-    //         return response.json();
-    //     })
-    //     .then(data => {
-    //         return { mesasDisponibles: data.mesasDisponibles, mesasReservadas: data.mesasReservadas };
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //         return { mesasDisponibles: [], mesasReservadas: [] };
-    //     });
-    // }
-
+    buscarMesasEnElBack(local, fecha, hora) {
+        // Codificar el nombre del local
+        const localCodificado = encodeURIComponent(local).toLowerCase();
+    
+        // Generar la URL con los parámetros
+        const url = `/get-reservas?local=${localCodificado}&fecha=${fecha}&hora=${hora}`;
+        
+        console.log(url);
+        
+        // Realizar la solicitud GET
+        return fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error fetching data: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                return { mesasDisponibles: [], mesasReservadas: [] };
+            });
+    }
     buscarMesas(local, fecha, hora) {
         if (this.locales[local]) {
             let mesasDisponibles = [];

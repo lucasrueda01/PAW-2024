@@ -34,6 +34,7 @@ class appPAW {
                          * carga los input local, fecha y hora con el evento click
                          * y controla cuando se hayan cliqueado todos
                          */
+                        
                         servicioRestaurante.cargarFormularioYComprobar()
                     });
                 }
