@@ -266,10 +266,15 @@ class ServicioRestaurante {
     agregarEventoClic(groupMesaElemento, mesaElemento)
     {            
         groupMesaElemento.addEventListener("click", () => {
-            if (this.mesaElegida !== "") {
+            console.log(this.estadoMesas.mesasReservadas); 
+            if (this.mesaElegida !== "" && !this.estadoMesas.mesasReservadas.includes(groupMesaElemento.id)) {
+                console.log(`marco BLUE a mesa ${nombreMesa}`)
+                console.log(groupMesaElemento);
                 let anteriorMesaSeleccionada = document.querySelector(`#${this.mesaElegida} .mesa`);
                 anteriorMesaSeleccionada.style.fill = "blue"; // VUELVO A COLOREARLA COMO DISPONIBLE
-            }
+                }
+            console.log(`marco RED a mesa ${nombreMesa}`)
+            console.log(groupMesaElemento);
             mesaElemento.style.fill = "red";
             let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
             inputHiddenMesaSeleccionada.value = groupMesaElemento.id;
