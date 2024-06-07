@@ -13,63 +13,6 @@ use PDOException;
 
 class MesaController extends Controller
 {
-    public static $locales = [
-        "Local A" => [
-            "horaApertura" => "09:00",
-            "horaCierre" => "21:00",
-            "mesa" => ["mesa-162", "mesa-161", "mesa-144", "mesa-143", "mesa-142", "mesa-141", "mesa-126", "mesa-125", "mesa-124", "mesa-123", "mesa-122", "mesa-121", "mesa-342", "mesa-341", "mesa-322", "mesa-321", "mesa-262", "mesa-261", "mesa-241", "mesa-223", "mesa-222", "mesa-221"],
-            "2024/05/07" => [
-                "mesa-143" => [
-                    ["horaInicio" => '09:00', "horaFin" => '10:30'],
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '15:00', "horaFin" => '16:30']
-                ],
-                "mesa-161" => [
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '15:00', "horaFin" => '16:30']
-                ],
-                "mesa-144" => [
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '15:00', "horaFin" => '16:30']
-                ]
-            ],
-            "2024/05/08" => [
-                "mesa-143" => [
-                    ["horaInicio" => '09:00', "horaFin" => '10:30'],
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '19:00', "horaFin" => '20:30']
-                ],
-                "mesa-161" => [
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '15:00', "horaFin" => '16:30']
-                ],
-                "mesa-144" => [
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '15:00', "horaFin" => '16:30']
-                ]
-            ]
-        ],
-        "Local B" => [
-            "horaApertura" => "09:00",
-            "horaCierre" => "21:00",
-            "mesa" => ["mesa-162", "mesa-161", "mesa-144", "mesa-143", "mesa-142", "mesa-141", "mesa-126", "mesa-125", "mesa-124", "mesa-123", "mesa-122", "mesa-121", "mesa-342", "mesa-341", "mesa-322", "mesa-321", "mesa-262", "mesa-261", "mesa-241", "mesa-223", "mesa-222", "mesa-221"],
-            "2024/05/08" => [
-                "mesa-143" => [
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '15:00', "horaFin" => '16:30']
-                ],
-                "mesa-161" => [
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '15:00', "horaFin" => '16:30']
-                ],
-                "mesa-144" => [
-                    ["horaInicio" => '13:00', "horaFin" => '14:30'],
-                    ["horaInicio" => '15:00', "horaFin" => '16:30']
-                ]
-            ]
-        ]
-    ];    
-
     public Verificador $verificador;
     public ?string $modelName = MesasCollection::class;
     public $data;
@@ -116,7 +59,7 @@ class MesaController extends Controller
 
     public function reservar_cliente()
     {
-        global $request, $log;
+        global $log;
     
         $titulo = 'PAW POWER | RESERVAR CLIENTE';
     
@@ -131,13 +74,13 @@ class MesaController extends Controller
             return;
         }
     
-        if ($request->method() == 'POST') {
-            $nombre = $request->get('nombre');
-            $dni = $request->get('dni');
-            $local_nombre = $request->get('local');
-            $fecha = $request->get('date');
-            $hora_inicio = $request->get('time');
-            $mesa_nombre = $request->get('nromesa-elegida');
+        if ($this->request->method() == 'POST') {
+            $nombre = $this->request->get('nombre');
+            $dni = $this->request->get('dni');
+            $local_nombre = $this->request->get('local');
+            $fecha = $this->request->get('date');
+            $hora_inicio = $this->request->get('time');
+            $mesa_nombre = $this->request->get('nromesa-elegida');
             
             $local = new Local([], $this->qb);
             $mesa = new Mesa([], $this->qb);

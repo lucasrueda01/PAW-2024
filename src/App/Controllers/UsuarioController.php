@@ -14,7 +14,6 @@ class UsuarioController extends Controller
     public Verificador $verificador;
     public ?string $modelName = Usuario::class;
     public $tipoUsuario;
-    public $usuario;
 
     public function __construct()
     {

@@ -73,7 +73,7 @@ class PedidosController extends Controller
 
     public function verPedido()
     {
-        global $request, $log;
+        global $log;
     
         // Verificar si hay sesión iniciada
         if (!$this->usuario->isUserLoggedIn()) {
@@ -90,7 +90,7 @@ class PedidosController extends Controller
         $idUser = $this->usuario->getUserId();
     
         // Obtener el ID del pedido desde el parámetro de la URL
-        $idPedido = $request->get('id');
+        $idPedido = $this->request->get('id');
     
         $log->info("Usuario ID: ", [$idUser]);
         $log->info("Tipo Usuario: ", [$this->usuario->getUserType()]);
@@ -147,15 +147,11 @@ class PedidosController extends Controller
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
     
-    
-    
-    
-
     public function get()
     {
-        global $request, $log;
+        global $log;
 
-        $id = $request->get('id');
+        $id = $this->request->get('id');
 
         $log->info("id: ", [$id]);
 
@@ -172,16 +168,12 @@ class PedidosController extends Controller
             $resultado['error'] = $pedido['error'];
         }
 
-        // var_dump($pedido);
-        // echo("<pre>");
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
 
     public function getEstado()
     {
-        global $request;
-
-        $id = $request->get('id');
+        $id = $this->request->get('id');
 
         $pedido = $this->model->getById($id);
 
@@ -195,9 +187,9 @@ class PedidosController extends Controller
         global $request;
 
         // Verificar si se recibieron los parámetros esperados
-        if ($request->get('id') != null && $request->get('estado') != null) {
-            $id = $request->get('id');
-            $estado = $request->get('estado');
+        if ($this->request->get('id') != null && $this->request->get('estado') != null) {
+            $id = $this->request->get('id');
+            $estado = $this->request->get('estado');
             $pedido = $this->model->modificarEstado($id, $estado);
 
             isset($pedido['error']) ? $error['description'] = $pedido['error'] : null;
@@ -211,7 +203,7 @@ class PedidosController extends Controller
 
     public function new()
     {
-        global $request, $log;
+        global $log;
 
         // Obtener la fecha y hora actual
         $fechaHora = date('Y-m-d\TH:i:s');
@@ -223,10 +215,9 @@ class PedidosController extends Controller
         $this->usuario->verificarSesion();
  
 
-        if (!is_null($request->get('carrito_data'))) {
+        if (!is_null($this->request->get('carrito_data'))) {
             $carrito = json_decode($request->get('carrito_data'), true);
             
-
             $total = 0;
 
             foreach ($carrito['platos'] as $plato) {
@@ -258,11 +249,11 @@ class PedidosController extends Controller
         // Preparar los datos del pedido
         $datosPedido = [
             "fecha_hora" => $fechaHora,
-            "tipo" => $request->get("tipo"),
+            "tipo" => $this->request->get("tipo"),
             "id_usuario" => $this->usuario->getUserId(),
-            "metodo_pago" => $request->get("forma-de-pago"),
-            "direccion" => htmlspecialchars($request->get("direccion")),
-            "observaciones" => htmlspecialchars($request->get("observaciones")),
+            "metodo_pago" => $this->request->get("forma-de-pago"),
+            "direccion" => htmlspecialchars($this->request->get("direccion")),
+            "observaciones" => htmlspecialchars($this->request->get("observaciones")),
             "monto_total" => $total,
             "estado" => "sin-confirmar"
         ];

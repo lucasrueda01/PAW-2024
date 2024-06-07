@@ -25,11 +25,9 @@ class LocalController extends Controller
     }
 
     public function getMesas()
-    {
-        global $request;
-         
+    {        
 
-        if($request->method() == 'GET'){
+        if($this->request->method() == 'GET'){
            
             // Verificar si se recibieron los datos esperados
 

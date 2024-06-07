@@ -20,6 +20,7 @@ class Controller
     protected $model;
     use Loggable;
     public $qb;
+    public $request;
 
     public function __construct(){
         
@@ -100,6 +101,7 @@ class Controller
         ];     
         
         $this->qb = new QueryBuilder($connection, $log);
+        $this->request = new Request();
 
         if(!is_null($this->modelName)){
             $model = new $this->modelName;
