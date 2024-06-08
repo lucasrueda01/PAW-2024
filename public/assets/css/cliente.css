@@ -661,6 +661,7 @@ option {
 
 .msj {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     font-family: Century_Gothic;
     font-size: 2rem;
@@ -673,7 +674,9 @@ option {
 .msj_exito {
     background-color: #7bc274;
     color: #FFFFFF;
-    width: 95%;   
+    width: 50%;
+    margin: 1rem auto;  
+    align-items: center;
 }
 
 .msj_error {
@@ -1068,4 +1071,7 @@ input[type="submit"] {
     background-color: #f9f9f9;
 }
 
+.control_input {
+    display: none;
+}
 

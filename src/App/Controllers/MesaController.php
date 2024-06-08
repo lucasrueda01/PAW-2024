@@ -115,12 +115,15 @@ class MesaController extends Controller
                             "local" => $local->getNombre(),
                             "fecha" => $fecha,
                             "hora_inicio" => $hora_inicio,
-                            "mesa_id" => $mesa_nombre,
+                            "nombre_mesa" => $mesa_nombre,
                             "limite_reserva" => $hora_fin
                         ];
                         $resultado = [
                             "success" => true,
-                            "message" => "Reserva realizada con éxito."
+                            "message" => "Reserva realizada con éxito. 
+                                        Puede ver su reserva en Mis Reservas 
+                                        Dentro de Su Perfil, o haciendo clic aqui 
+                                    "
                         ];
                         $log->info("3-resultado SUCCESS: ", [$resultado]);
                     } else {
@@ -147,7 +150,7 @@ class MesaController extends Controller
         }
         if (isset($resultado) && $resultado['success']) {
             $log->info("resultado: sucess", [$resultado]);
-            require $this->viewsDir . 'mi_reserva.view.php';
+            require $this->viewsDirCliente . 'reservar_cliente.view.php';
         }
 
 
@@ -174,7 +177,11 @@ class MesaController extends Controller
     
         // Obtener la última reserva del usuario
         $reserva = $this->model->getLastReservation($userId);
-    
+        $mesa = new Mesa([], $this->qb);
+        $mesa->load($reserva['mesa_id']);
+        
+        $reserva['nombre_mesa'] = $mesa->getNombre();
+        $log->info("reserva: ",[$reserva]);
         // Pasar la reserva a la vista
         require $this->viewsDir . 'mi_reserva.view.php';
     }

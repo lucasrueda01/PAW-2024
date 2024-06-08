@@ -7,7 +7,7 @@ class appPAW {
              * cargo la clase Datos, contiene los datos de prueba
              * para la carga del formulario
              *  */
-            if (['/reservar_cliente'].includes(window.location.pathname))        
+            if (['/reservar_cliente', '/ver_mi_reserva'].includes(window.location.pathname))        
                 PAW.cargarScript("Datos", "/assets/js/components/datos.js");
 
             if (['/'].includes(window.location.pathname))
@@ -25,6 +25,20 @@ class appPAW {
                     })                   
                 }
 
+            if (['/ver_mi_reserva'].includes(window.location.pathname))
+                {
+                    
+                    PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {
+                    
+                    console.log("Estoy en mi reserva")
+                    const servicioRestaurante = new ServicioRestaurante()
+                    
+                    servicioRestaurante.marcarMesaReservada();
+
+                })  
+                }
+    
+
             if (['/reservar_cliente'].includes(window.location.pathname))
                 {
                     PAW.cargarScript("ServicioRestaurante", "/assets/js/components/serviciorestaurante.js", () => {
@@ -36,6 +50,8 @@ class appPAW {
                          */
                         
                         servicioRestaurante.cargarFormularioYComprobar()
+
+                        
                     });
                 }
 

@@ -20,44 +20,38 @@
 
         <section>
 
-            <?php if(isset($resultado['exito'])) : ?>
+            <?php if(isset($resultado['success'])) : ?>
                 <h4 class="msj msj_exito">
-                    <?= $resultado['description']; ?>
+                    <?= $resultado['message']; ?>
+                    <a href="/ver_mi_reserva">Ver mi Reserva</a>
                 </h4>
-            <?php elseif(isset($resultado['error'])): ?>
+            <?php elseif(isset($resultado['success'])): ?>
                 <h4 class="msj msj_error">
-                    <?= $resultado['description']; ?>
+                    <?= $resultado['message']; ?>
                 </h4>        
             <?php endif ?>            
 
-            <?php if(isset($resultado['resumen'])) : ?>
-            <section class="resumen">
-                <h4 class="titulo_resumen">Resumen de reserva</h4>
-                <ul>
-                    <?php foreach ($resultado['resumen'] as $clave => $valor) : ?>
-                    <li><?= ucfirst($clave) ?> : <?= htmlspecialchars($valor, ENT_QUOTES, 'UTF-8') ?> </li>
-                    <?php endforeach; ?>
-                </ul>
-            </section>
-            <?php endif; ?>
-
-            <form action="/reservar_cliente" class="form_reserva" method="post">
+            <form action="/reservar_cliente" class="form_reserva" id="formReserva" method="post">
                 <fieldset class="container container_formulario container_delivery">
                     <label for="nombre">Ingrese su nombre completo</label>
                     <input type="text" name="nombre" id="nombre" required>
                     <label for="dni">Ingrese su DNI</label>
                     <input type="number" name="dni" id="dni" required>
                     <label for="local">Selecciona un local:</label>
+                    <p class="control_input campo_local"></p> <!-- controles de input, estaran en hidden --> 
                     <select id="local" name="local" required>
                         <option value="ninguna">Ninguna Seleccionada</option>
                         <option value="1">Local A</option>
                         <option value="2">Local B</option>
                     </select>
+                    <p class="control_input campo_fecha"></p> <!-- controles de input, estaran en hidden --> 
                     <label for="date">Seleccione fecha:</label>
                     <input type="date" name="date" id="date" required>
-                    <label for="time">Seleccione hora:</label>
+                    <p class="control_input campo_hora"></p>  <!-- controles de input, estaran en hidden -->
+                     <label for="time">Seleccione hora:</label>
                     <input type="time" name="time" id="time" required>
                     <label for="mesas_disponibles">Mesas Disponibles</label>
+                    <p class="control_input campo_plano"></p>  <!-- controles de input, estaran en hidden -->
                     <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
                     <input type="text" id="nromesa-elegida" name="nromesa-elegida">

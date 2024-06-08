@@ -18,7 +18,9 @@
                 <li>ID de Reserva: <?= htmlspecialchars($reserva['id'] ?? 'No disponible') ?></li>
                 <li>Fecha de Reserva: <?= htmlspecialchars($reserva['fecha'] ?? 'No disponible') ?></li>
                 <li>Hora de Reserva: <?= htmlspecialchars($reserva['hora_inicio'] ?? 'No disponible') ?></li>
-                <li>Mesa Nro: <?= htmlspecialchars($reserva['mesa_id'] ?? 'No disponible') ?></li>
+                
+                <li id="nombre_mesa" data-id="<?= htmlspecialchars($reserva['nombre_mesa']);?>">Mesa Nro: <?= ucwords(str_replace('-', ' ', $reserva['nombre_mesa'])) ?></li>
+                <?php require __DIR__ . '/parts/plano.view.php' ?>
             </ul>
         </section>
     </main>

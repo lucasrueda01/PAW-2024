@@ -69,25 +69,55 @@ class ServicioRestaurante {
         let local = document.querySelector("#local");
         let date = document.querySelector("#date");
         let time = document.querySelector("#time");
+        const form = document.querySelector("#formReserva");
+        const mesaElegidaInput = document.getElementById('nromesa-elegida');
+        const campoPlano = document.querySelector('.campo_plano');
+
+        form.addEventListener('submit', function (event) {
+            const mesaElegida = mesaElegidaInput.value;
+        
+            // Prevenir el envío del formulario inicialmente
+            event.preventDefault();
+        
+            // Verificar si el largo del input es de 8 caracteres
+            if (mesaElegida.length === 8) {
+                // Si la longitud es 8, enviar el formulario
+                form.submit();
+            } else {
+                // Si la longitud no es 8, mostrar el mensaje de error
+                campoPlano.style.display = 'block';
+                campoPlano.textContent = 'Por favor, elija una mesa antes de enviar el formulario.';
+            }
+        });
 
         local.addEventListener("change", () => {
             localValue = local.value;
             this.cantMesasElegidas = 0;
+            this.resetCampoInputMesaElegida()
             this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
         });
 
         date.addEventListener("change", () => {
             dateValue = date.value;
             this.cantMesasElegidas = 0;
+            this.resetCampoInputMesaElegida()
             this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
         });
 
         time.addEventListener("change", () => {
             timeValue = time.value;
             this.cantMesasElegidas = 0;
+            this.resetCampoInputMesaElegida()
             this.buscarMesasSiTodosCambiaron(localValue, dateValue, timeValue);
         });
 
+    }
+
+    resetCampoInputMesaElegida()
+    {
+        const campoPlano = document.querySelector('.campo_plano');
+        campoPlano.style.display = 'none';
+        campoPlano.textContent = '';        
     }
 
     /**
@@ -123,39 +153,91 @@ class ServicioRestaurante {
         }
     }
 
-    controlarLocalFechaYHora(localValue, dateValue, timeValue)
-    {   
-        if (localValue !== null && dateValue !== null && timeValue !== null) 
-        {
-            if(this.locales[localValue]){
-              if(this.comprobarFecha(dateValue)){
-                 console.log("superado control de fecha")
-                 if(this.comprobarHora(localValue, timeValue)){
-                    console.log("superado control de horario")
-                    console.log("todos los controles superados..");
-                    return true;
-                 }else{
+    marcarMesaReservada()
+    {
+        console.log("estoy en marcarMesaReservada")
+        const mesaElemento = document.querySelector('#nombre_mesa');
+        console.log(mesaElemento)    
+        if (mesaElemento) {
+            const idMesa = mesaElemento.getAttribute('data-id');
+            console.log(idMesa)
+            const mesaReservada = document.querySelector(`#${idMesa} .mesa`);
+            
+            if (mesaReservada) {
+                mesaReservada.style.fill = "red"; // Cambiar el estilo del elemento a rojo
+            } else {
+                console.error(`Elemento con id="${idMesa}" no encontrado.`);
+            }
+        } else {
+            console.error("Elemento con id 'nombre_mesa' no encontrado.");
+        }
+    }
+
+    controlarLocalFechaYHora(localValue, dateValue, timeValue) {
+        const localControl = document.querySelector('.campo_local');
+        const fechaControl = document.querySelector('.campo_fecha');
+        const horaControl = document.querySelector('.campo_hora');
+
+        // Reset the messages
+        localControl.style.display = 'none';
+        fechaControl.style.display = 'none';
+        horaControl.style.display = 'none';
+
+        if (localValue !== null && dateValue !== null && timeValue !== null) {
+            if (this.locales[localValue]) {
+                localControl.style.display = 'block';
+                localControl.textContent = 'Local validado.';
+
+                if (this.comprobarFecha(dateValue)) {
+                    fechaControl.style.display = 'block';
+                    fechaControl.textContent = 'Fecha validada.';
+                    console.log("superado control de fecha");
+
+                    if (this.comprobarHora(localValue, timeValue)) {
+                        horaControl.style.display = 'block';
+                        horaControl.textContent = 'Hora validada.';
+                        console.log("superado control de horario");
+                        console.log("todos los controles superados..");
+                        return true;
+                    } else {
+                        horaControl.style.display = 'block';
+                        horaControl.textContent = 'Hora no válida.';
+                        this.marcarMesas(this.locales[localValue].mesa, "Reset");
+                        console.log("fallo al comprobar hora");
+                        this.cantMesasElegidas = ServicioRestaurante.MAXIMO_PERMITIDO;
+                        return false;
+                    }
+                } else {
+                    fechaControl.style.display = 'block';
+                    fechaControl.textContent = 'Fecha no válida.';
                     this.marcarMesas(this.locales[localValue].mesa, "Reset");
-                    console.log("fallo al comprobar hora");
-                    this.cantMesasElegidas = ServicioRestaurante.MAXIMO_PERMITIDO
-                    return false;    
-                }
-               }else{
-                    this.marcarMesas(this.locales[localValue].mesa, "Reset");
-                    this.cantMesasElegidas = ServicioRestaurante.MAXIMO_PERMITIDO
+                    this.cantMesasElegidas = ServicioRestaurante.MAXIMO_PERMITIDO;
                     console.log("fallo al comprobar fecha");
                     return false;
-               }
-            }else{
+                }
+            } else {
+                localControl.style.display = 'block';
+                localControl.textContent = 'Local no válido.';
                 console.log("no existe local");
                 return false;
             }
-        }else{
+        } else {
+            if (localValue === null) {
+                localControl.style.display = 'block';
+                localControl.textContent = 'Seleccione un local.';
+            }
+            if (dateValue === null) {
+                fechaControl.style.display = 'block';
+                fechaControl.textContent = 'Seleccione una fecha.';
+            }
+            if (timeValue === null) {
+                horaControl.style.display = 'block';
+                horaControl.textContent = 'Seleccione una hora.';
+            }
             console.log("uno de los input nulo");
             return false;
         }
     }
-
     /**
      * 
      * @param {date} cadenaFecha 
@@ -323,7 +405,9 @@ class ServicioRestaurante {
             if(this.cantMesasElegidas < ServicioRestaurante.MAXIMO_PERMITIDO ){
                 // Marcar la mesa como seleccionada (roja)
                 mesaElemento.style.fill = "red";
-        
+
+                this.resetCampoInputMesaElegida()
+
                 // Actualizar la mesa seleccionada
                 let inputHiddenMesaSeleccionada = document.querySelector(`#nromesa-elegida`);
                 console.log(`Cambio inputHiddenMesaSeleccionada ${inputHiddenMesaSeleccionada}`)
@@ -369,51 +453,4 @@ class ServicioRestaurante {
                 return { mesasDisponibles: [], mesasReservadas: [] };
             });
     }
-    buscarMesas(local, fecha, hora) {
-        if (this.locales[local]) {
-            let mesasDisponibles = [];
-            let mesasOcupadas = [];
-            console.log("Encontre Local..")
-            console.log(`Fecha..${fecha}`)
-            if (this.locales[local][fecha]) {
-                let mesasDelLocal = this.locales[local].mesa;
-                console.log("Encontre mesasDelLocal:")
-                console.log(mesasDelLocal)                
-                for (let mesa of mesasDelLocal) {
-                    if (this.locales[local][fecha][mesa]) {
-                        let reservasMesa = this.locales[local][fecha][mesa];
-                        console.log("Encontre Reservas:")
-                        console.log(reservasMesa)
-                        let disponible = true;
-                        for (let reserva of reservasMesa) {
-                            let inicioReserva = new Date('1970-01-01T' + reserva.horaInicio);
-                            let finReserva = new Date('1970-01-01T' + reserva.horaFin);
-                            let horaConsulta = new Date('1970-01-01T' + hora);
-    
-                            if (horaConsulta >= inicioReserva && horaConsulta < finReserva) {
-                                disponible = false;
-                                mesasOcupadas.push(mesa);
-                                break;
-                            }
-                        }
-    
-                        if (disponible) {
-                            mesasDisponibles.push(mesa);
-                        }
-                    } else {
-                        mesasDisponibles.push(mesa);
-                    }
-                }
-            } else {
-                mesasDisponibles = this.locales[local].mesa;
-            }
-    
-            return { mesasDisponibles: mesasDisponibles, mesasReservadas: mesasOcupadas };
-        } else {
-            return { mesasDisponibles: [], mesasReservadas: [] };
-        }
-    }    
-
-
-
 }

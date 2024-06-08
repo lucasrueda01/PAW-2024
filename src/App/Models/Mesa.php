@@ -93,6 +93,7 @@ class Mesa extends Model
         }
     }    
 
+    
     public function loadByName($nombreMesa=null)
     {
         $params = ["nombre" => ($nombreMesa == null) ? $this->getNombreMesa() : $nombreMesa];
@@ -111,7 +112,24 @@ class Mesa extends Model
             throw new Exception("Error no existe Name {$e}");
         }
     } 
+    public function load($id)
+    {
+        $params = ["id" => $id];
 
+        try{
+            $record = current($this->queryBuilder->select($this->table, $params));
+            if($record){
+                $this->set($record);
+            }else{
+                return [
+                    'error' => true,
+                    'description' => 'No Existe el Name buscado'
+                ];
+            }
+        }catch(Exception $e){
+            throw new Exception("Error no existe Name {$e}");
+        }
+    } 
     public function getIdByNameAndLocal($mesa_nombre, $local_id)
     {
         global $log;
