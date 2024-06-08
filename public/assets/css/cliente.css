@@ -663,19 +663,20 @@ option {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-family: Century_Gothic;
     font-size: 2rem;
     font-weight: 800;
     margin: 2rem;
     padding: 1rem;
-
+    width: 50%;
+    margin: 1rem auto;  
 }
 
 .msj_exito {
     background-color: #7bc274;
     color: #FFFFFF;
-    width: 50%;
-    margin: 1rem auto;  
+    
     align-items: center;
 }
 

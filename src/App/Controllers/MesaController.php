@@ -81,7 +81,7 @@ class MesaController extends Controller
             $fecha = $this->request->get('date');
             $hora_inicio = $this->request->get('time');
             $mesa_nombre = $this->request->get('nromesa-elegida');
-            
+    
             $local = new Local([], $this->qb);
             $mesa = new Mesa([], $this->qb);
             $reserva = new Reserva([], $this->qb);
@@ -120,10 +120,7 @@ class MesaController extends Controller
                         ];
                         $resultado = [
                             "success" => true,
-                            "message" => "Reserva realizada con éxito. 
-                                        Puede ver su reserva en Mis Reservas 
-                                        Dentro de Su Perfil, o haciendo clic aqui 
-                                    "
+                            "message" => "Reserva realizada con éxito. Puede ver su reserva en Mis Reservas dentro de su perfil, o haciendo clic aquí."
                         ];
                         $log->info("3-resultado SUCCESS: ", [$resultado]);
                     } else {
@@ -147,15 +144,23 @@ class MesaController extends Controller
                     "message" => "Ocurrió un error al procesar su solicitud. Por favor, inténtelo de nuevo más tarde."
                 ];
             }
+    
+            // Redirigir después de procesar el formulario
+            header('Location: /reservar_cliente?success=' . $resultado['success'] . '&message=' . urlencode($resultado['message']));
+            exit;
         }
-        if (isset($resultado) && $resultado['success']) {
-            $log->info("resultado: sucess", [$resultado]);
-            require $this->viewsDirCliente . 'reservar_cliente.view.php';
+    
+        // Mostrar resultado si está presente
+        if (isset($_GET['success']) && isset($_GET['message'])) {
+            $resultado = [
+                "success" => filter_var($_GET['success'], FILTER_VALIDATE_BOOLEAN),
+                "message" => $_GET['message']
+            ];
         }
-
-
+    
         require $this->viewsDirCliente . 'reservar_cliente.view.php';
     }
+    
 
     public function verMiReserva()
     {
