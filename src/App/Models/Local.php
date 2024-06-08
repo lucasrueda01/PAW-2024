@@ -59,12 +59,12 @@ class Local extends Model
 
     public function setNombre($nombre)
     {
-        $this->fields['nombre_local'] = $nombre;
+        $this->fields['nombre'] = $nombre;
     }
 
     public function getNombre()
     {
-        return $this->fields['nombre_local'];
+        return $this->fields['nombre'];
     }
 
     public function setHoraApertura($horaApertura)
@@ -124,4 +124,26 @@ class Local extends Model
             $log->error("error: ", [$e]);
         }
     }    
+    public function load($id)
+    {
+        global $log;
+
+        $params = ["id" => $id];
+
+        $log->info("params: ", [$params, $this->table]);
+        try{
+            $record = current($this->queryBuilder->select($this->table, $params));
+            if($record){
+                $this->set($record);
+            }else{
+                return [
+                    'error' => true,
+                    'description' => 'No Existe el Name buscado'
+                ];
+            }
+        }catch(Exception $e){
+            throw new Exception("Error no existe Name {$e}");
+            $log->error("error: ", [$e]);
+        }
+    }     
 }

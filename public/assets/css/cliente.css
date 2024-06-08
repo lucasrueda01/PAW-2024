@@ -1012,3 +1012,60 @@ input[type="submit"] {
     max-width: 1.5rem;
     border: 0px;
 }
+
+/* Estilos específicos para mi_reserva */
+.mi_reserva {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.mi_reserva .titulo {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+.mi_reserva .titulo h2 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.mi_reserva .titulo p {
+    margin: 0;
+    font-size: 1em;
+    color: #666;
+}
+
+.mi_reserva .mi_reserva_content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.mi_reserva .mi_reserva_content h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.mi_reserva .mi_reserva_content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.mi_reserva .mi_reserva_content ul li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.mi_reserva .mi_reserva_content ul li:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+

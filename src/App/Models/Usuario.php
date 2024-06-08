@@ -43,7 +43,9 @@ class Usuario extends Model
          }
      }
 
-     public function findById($id) {
+
+
+    public function findById($id) {
         global $log;
         try {
             $log->info("id: ", [$id]);

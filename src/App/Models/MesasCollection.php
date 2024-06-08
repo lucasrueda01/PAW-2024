@@ -5,6 +5,7 @@ namespace Paw\App\Models;
 
 use Paw\Core\Model;
 use Paw\App\Models\Mesa;
+use Exception;
 
 class MesasCollection extends Model
 {
@@ -94,6 +95,21 @@ class MesasCollection extends Model
         }
 
         return $locales;
+    }
+
+    public function getLastReservation($userId) {
+        try {
+            $params = ['id_user' => $userId];
+            $orderBy = 'fecha, hora_inicio';
+            $orderDirection = 'DESC';
+            $limit = 1;
+
+            $result = $this->queryBuilder->selectWithOrderAndLimit('reservas', $params, $orderBy, $orderDirection, $limit);
+            return $result ? $result[0] : null;
+        } catch (Exception $e) {
+            $this->logger->error("Error al obtener la última reserva: " . $e->getMessage());
+            return null;
+        }
     }
 
     public function getMesasDisponiblesYReservadas($local, $fecha, $hora)
