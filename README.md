@@ -10,11 +10,24 @@
 
 
 # Funcionalidades:
+
 ### 1. Alta Plato:
-    - Loguearse como Empleado: 
-    Puede usar como prueba
-        - usuario: `empleado1`
-        - contraseña: `password3`
-    Navegar hasta "PERFIL EMPLEADO"/Nuevo Plato o directamente en el navegador a la url `http://[dominio]:[puerto]/plato/new` 
-    Para testeos en entornos locales puede usar como dominio: `localhost` y puerto `8080`
-     
+- **Loguearse como Empleado**: 
+    - Puede usar como prueba:
+        - Usuario: `empleado1`
+        - Contraseña: `password3`
+    - Navegar hasta "PERFIL EMPLEADO"/Nuevo Plato o directamente en el navegador a la URL: `http://[dominio]:[puerto]/plato/new`
+    - Para testeos en entornos locales puede usar como dominio: `localhost` y puerto `8080`
+
+### 2. Reserva Mesa:
+- **Navegar hasta RESERVAR**
+- **Loguearse como Cliente o Empleado**:
+    - Puede usar como prueba:
+        - Usuario: `empleado1`
+        - Contraseña: `password3`
+    - O:
+        - Usuario: `cliente1`
+        - Contraseña: `password1`
+- **Navegar hasta RESERVAS** y realizar la reserva:
+    - Se controla que el local, fecha y hora sean los correctos. Caso contrario, muestra los mensajes de error correspondientes, con tag `p` que están ocultos.
+    - Se controla que haya sido seleccionada una mesa. Por el momento, solo se contempla la reserva de una mesa.
