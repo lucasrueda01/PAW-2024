@@ -51,7 +51,7 @@ class PedidosController extends Controller
             
             // Mostrar página de error 404
             http_response_code(404);
-            require $this->viewsDir . 'errors/404.view.php';
+            require $this->viewsDir . 'errors/not-found.view.php';
             return;
         }
     

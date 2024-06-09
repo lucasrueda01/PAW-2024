@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+    <link rel="stylesheet" href="estilos.css"> <!-- Enlaza tu archivo de estilos CSS -->
     <?php require __DIR__ . '/../parts/head.view.php'; ?>
 </head>
 
@@ -14,42 +15,29 @@
             <p>Nuestras hamburguesas te esperan cerca tuyo</p>
         </section>
 
-        <section class="container_gestion_mesa">
+        <section class="pedidos-grid">
+
             <?php if (isset($error['description'])) : ?>
                 <h4 class="msj msj_error">
                     <?= $error['description']; ?>
                 </h4>
             <?php endif ?>
-            <table class="tabla_gestion_mesa">
-                <thead>
-                    <tr>
-                        <th>Nro Pedido</th>
-                        <th>Fecha/Hora</th>
-                        <th>Tipo</th>
-                        <th>Direccion</th>
-                        <th>Monto Total</th>
-                        <th>Metodo de Pago</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($pedidos as $pedido): ?>
-                    <tr>
-                        <td data-label="Nro Pedido" id="pedido-nro-<?= $pedido['id']; ?>">#0000<?= $pedido['id']; ?></td>
-                        <td data-label="Fecha/Hora"><?= $pedido['created_at']; ?></td>
-                        <td data-label="Tipo"><?= $pedido['tipo']; ?></td>
-                        <td data-label="Direccion"><?= $pedido['direccion']; ?></td>
-                        <td data-label="Monto Total">$ <?= number_format($pedido['monto_total'], 2, ',', '.'); ?></td>
-                        <td data-label="Metodo de Pago"><?= $pedido['metodo_pago']; ?></td>
-                        <td data-label="Estado" class="estado-<?= $pedido['estado']; ?>"><?= $pedido['estado']; ?></td>
-                        <td data-label="Acciones">
-                            <a href="/pedidos/estado?id=<?= $pedido['id'] ?>" class="icon icon_detalle">Aceptar</a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <?php foreach ($pedidos as $pedido): ?>
+                <article class="pedido-item status-<?= strtolower($pedido['estado']); ?>">
+                <h2 class="pedido-titulo">Pedido #<?= str_pad($pedido['id'], 4, '0', STR_PAD_LEFT); ?></h2>
+                    <div class="pedido-datos">
+                        <p>Fecha/Hora: <?= $pedido['created_at']; ?></p>
+                        <p>Tipo: <?= $pedido['tipo']; ?></p>
+                        <p>Dirección: <?= $pedido['direccion']; ?></p>
+                        <p>Monto Total: $ <?= number_format($pedido['monto_total'], 2, ',', '.'); ?></p>
+                        <p>Método de Pago: <?= $pedido['metodo_pago']; ?></p>
+                        <p class="status">Estado: <?= $pedido['estado']; ?></p>
+                    </div>
+                    <div class="acciones">
+                        <a href="/pedidos/estado?id=<?= $pedido['id'] ?>" class="icon icon_detalle">Aceptar</a>
+                    </div>
+                </article>
+            <?php endforeach; ?>
         </section>
     </main>
 

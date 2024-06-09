@@ -31,3 +31,7 @@
 - **Navegar hasta RESERVAS** y realizar la reserva:
     - Se controla que el local, fecha y hora sean los correctos. Caso contrario, muestra los mensajes de error correspondientes, con tag `p` que están ocultos.
     - Se controla que haya sido seleccionada una mesa. Por el momento, solo se contempla la reserva de una mesa.
+### 3. Turnero:
+- **Vista Cliente**:
+    - Logueo 
+- **Vista Empleado**
