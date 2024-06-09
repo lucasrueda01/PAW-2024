@@ -157,14 +157,18 @@ class PedidosController extends Controller
             $estadoActual = $this->request->get('estado');
     
             // Llamar al método actualizarEstado de la colección de pedidos
-            $nextStatus = $this->model->actualizarEstado($pedidoId, $estadoActual);
+            list($nextStatus, $nextStatusId, $nextStatusProxName, $nextStatusIdProx) = $this->model->actualizarEstado($pedidoId, $estadoActual);
     
             $log->info("nextStatus: ",[$nextStatus]);
     
             // Devolver el próximo estado como respuesta con el header Content-Type
             http_response_code(200);
             header('Content-Type: application/json');
-            echo json_encode(['next_status' => $nextStatus]);
+            echo json_encode([  'next_status' => $nextStatus, 
+                                'next_status_id' => $nextStatusId, 
+                                'next_status_to_next_status' => $nextStatusProxName,
+                                'next_status_to_next_status_id' => $nextStatusIdProx,
+                            ]);
         } catch (\Exception $e) {
             // Capturar excepción y manejarla
             http_response_code(500); // Error interno del servidor

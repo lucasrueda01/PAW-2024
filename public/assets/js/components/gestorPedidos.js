@@ -118,6 +118,7 @@ class GestorPedidos {
         // Crear la URL con los parámetros de la solicitud
         const url = `/pedido/actualizar-estado?id=${pedidoId}&estado=${estadoActual}`;
     
+        console.log(url)
         // Enviar la solicitud al servidor
         fetch(url)
         .then(response => {
@@ -131,29 +132,48 @@ class GestorPedidos {
         .then(data => {
 
             const estadoActualElement = sectionElement.querySelector('p:nth-child(7)')
-            // Actualizar el botón con el próximo estado recibido del servidor
-            console.log(`estado Actual: ${estadoActualElement}`);
 
-            // Ajustar el próximo estado para "Pasar a retirar"
-            console.log(`siguiente estado: ${data.next_status}`);
-
+            console.log(data)
+            // console.log(data.next_status === "Pasar a retirar")
             let proximoEstado = "" 
             if(data.next_status === "Pasar a retirar"){
                 proximoEstado += "pasar-a-retirar"
+                sectionElement.classList.add(`status-${proximoEstado}`);
+                console.log(sectionElement)                
             }else{
                 proximoEstado += data.next_status 
+                sectionElement.classList.add(`status-${proximoEstado.replace(' ', '-').toLowerCase()}`);
+                console.log(sectionElement)                    
             }
 
-            estadoActualElement.textContent = estadoActualElement.textContent + "</br> Proximo Estado: " + data.next_status
-
+            estadoActualElement.textContent = estadoActualElement.textContent
+           
             const botonPedido = sectionElement.querySelector('a');
-            console.log(botonPedido);
-            botonPedido.innerHTML = `Pasar a: ${proximoEstado}`;
+
+            if(data.next_status_to_next_status){            
+                botonPedido.innerHTML = `Pasar a: ${data.next_status_to_next_status}`;
+                botonPedido.setAttribute('data-estado', data.next_status_id); // Actualiza data-estado
+            } else {
+
+                    if (botonPedido) {
+                        botonPedido.remove();
+                    }
+                    const p1 = document.createElement('p');
+                    p1.className = 'cartel-finalizado';
+                    p1.textContent = 'PEDIDO COMPLETADO';
+                
+                    const p2 = document.createElement('p');
+                    p2.className = 'cartel-finalizado';
+                    p2.textContent = '(Pasar a Retirar)';
+                
+                    sectionElement.appendChild(p1);
+                    sectionElement.appendChild(p2);
+
+            }
 
             // Cambiar la clase del elemento <article> para reflejar el estado actualizado
             // event.target.parentNode.classList.remove(`status-${estadoActual.replace(' ', '-').toLowerCase()}`);
-            event.target.parentNode.classList.add(`status-${proximoEstado.replace(' ', '-').toLowerCase()}`);
-            console.log(event.target.parentNode.classList)
+
         })
         .catch(error => {
             console.error('Error al actualizar el estado del pedido:', error);

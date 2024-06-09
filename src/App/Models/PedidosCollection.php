@@ -166,6 +166,9 @@ class PedidosCollection extends Model
             // Obtener el próximo estado del pedido
             list($nextStatus, $nextStatusId) = $this->getNextStatus($estadoActual);
 
+            list($nextStatusProxName, $nextStatusIdProx) = $this->getNextStatus($nextStatusId);
+
+
             // Verificar si se obtuvo el próximo estado
             if (!$nextStatus) {
                 throw new \Exception('No se pudo obtener el próximo estado del pedido.');
@@ -177,7 +180,7 @@ class PedidosCollection extends Model
             // Verificar si la actualización fue exitosa
             if ($updateResult) {
                 // Devolver el próximo estado como respuesta
-                return $nextStatus;
+                return [$nextStatus, $nextStatusId, $nextStatusProxName, $nextStatusIdProx];
             } else {
                 throw new \Exception('Error al actualizar el estado del pedido en la base de datos.');
             }
