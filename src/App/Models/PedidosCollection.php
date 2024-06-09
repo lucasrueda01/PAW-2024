@@ -76,6 +76,7 @@ class PedidosCollection extends Model
 
     public function getAll()
     {
+        global $log;
         try {
             // Obtener todos los pedidos usando QueryBuilder
             $pedidos = $this->queryBuilder->select('pedidos');
@@ -90,6 +91,20 @@ class PedidosCollection extends Model
                 // Obtener los artículos asociados a este pedido
                 $articulos = $this->queryBuilder->select('detalle_pedidos', ['id_pedido' => $pedido['id']]);
                 $pedido['articulos'] = $articulos;
+
+                $log->info("pedido: " , [$pedido]);
+                
+                // Obtener el estado actual del pedido
+                $estadoActual = $pedido['estado_id'];
+
+                // Obtener el próximo estado del pedido usando QueryBuilder
+                
+                $pedido['current_status'] = $this->getOrderStatus($estadoActual);                
+                
+                list($pedido['next_status'], $pedido['next_status_id']) = $this->getNextStatus($estadoActual);
+
+
+                $log->info("Estados variables: ", [$estadoActual, $pedido['current_status'], $pedido['next_status']]);
             }
 
             return $pedidos;
@@ -100,6 +115,78 @@ class PedidosCollection extends Model
             return ['error' => $e->getMessage()];
         }
     }
+
+    public function getOrderStatus($estatusId)
+    {
+        try {
+
+            $estado = $this->queryBuilder->select('estado_pedido', ['id' => $estatusId]);
+    
+            // Verificar si se encontró el estado
+            if (empty($estado)) {
+                throw new \Exception('Estado del pedido no encontrado en la base de datos.');
+            }
+    
+            // Devolver el nombre del estado actual
+            return $estado[0]['status_name'];
+
+        } catch (\Exception $e) {
+            if ($this->logger) {
+                $this->logger->error("Error al recuperar el estado del pedido: " . $e->getMessage());
+            }
+            return ['error' => $e->getMessage()];
+        }
+    }    
+
+    private function getNextStatus($currentStatusId)
+    {
+        // Obtener el estado actual de la tabla estado_pedido
+        $currentStatus = $this->queryBuilder->select('estado_pedido', ['id' => $currentStatusId]);
+    
+        if (empty($currentStatus)) {
+            throw new \Exception('Estado actual no encontrado en la tabla estado_pedido.');
+        }
+    
+        // Obtener el próximo estado, asumiendo que el próximo estado tiene el siguiente id
+        // Si tu lógica para determinar el próximo estado es diferente, deberás ajustarla aquí
+        $nextStatusId = $currentStatusId + 1;
+        $nextStatus = $this->queryBuilder->select('estado_pedido', ['id' => $nextStatusId]);
+    
+        // Verificar si se encontró el próximo estado
+        if (empty($nextStatus)) {
+            return [null, null]; // No hay próximo estado disponible
+        }
+    
+        return [$nextStatus[0]['status_name'],$nextStatus[0]['id']];
+    }
+
+    public function actualizarEstado($pedidoId, $estadoActual)
+    {
+        try {
+            // Obtener el próximo estado del pedido
+            list($nextStatus, $nextStatusId) = $this->getNextStatus($estadoActual);
+
+            // Verificar si se obtuvo el próximo estado
+            if (!$nextStatus) {
+                throw new \Exception('No se pudo obtener el próximo estado del pedido.');
+            }
+
+            // Realizar la actualización del estado en la base de datos
+            $updateResult = $this->queryBuilder->update('pedidos', ['estado_id' => $nextStatusId], ['id' => $pedidoId]);
+
+            // Verificar si la actualización fue exitosa
+            if ($updateResult) {
+                // Devolver el próximo estado como respuesta
+                return $nextStatus;
+            } else {
+                throw new \Exception('Error al actualizar el estado del pedido en la base de datos.');
+            }
+        } catch (\Exception $e) {
+            // Manejar cualquier error que ocurra
+            return $e->getMessage();
+        }
+    }
+
 
     public function getById($idPedido)
     {

@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-    <link rel="stylesheet" href="estilos.css"> <!-- Enlaza tu archivo de estilos CSS -->
     <?php require __DIR__ . '/../parts/head.view.php'; ?>
 </head>
 
@@ -23,19 +22,21 @@
                 </h4>
             <?php endif ?>
             <?php foreach ($pedidos as $pedido): ?>
-                <article class="pedido-item status-<?= strtolower($pedido['estado']); ?>">
+                <article class="pedido-item status-<?= str_replace(' ', '-', strtolower($pedido['current_status'])); ?>" id="pedido-<?= $pedido['id'] ?>">
                 <h2 class="pedido-titulo">Pedido #<?= str_pad($pedido['id'], 4, '0', STR_PAD_LEFT); ?></h2>
-                    <div class="pedido-datos">
+
                         <p>Fecha/Hora: <?= $pedido['created_at']; ?></p>
                         <p>Tipo: <?= $pedido['tipo']; ?></p>
                         <p>Dirección: <?= $pedido['direccion']; ?></p>
                         <p>Monto Total: $ <?= number_format($pedido['monto_total'], 2, ',', '.'); ?></p>
                         <p>Método de Pago: <?= $pedido['metodo_pago']; ?></p>
-                        <p class="status">Estado: <?= $pedido['estado']; ?></p>
-                    </div>
-                    <div class="acciones">
-                        <a href="/pedidos/estado?id=<?= $pedido['id'] ?>" class="icon icon_detalle">Aceptar</a>
-                    </div>
+                        <p>Estado Actual: <?= $pedido['current_status']; ?></p>
+                        <?php if ($pedido['estado_id'] != 5): ?>
+                            <a href="#" class="boton boton_accion" id="actualizarEstadoBtn-<?= $pedido['id'] ?>" data-id="<?= $pedido['id'] ?>" data-estado="<?= $pedido['estado_id'] ?>">Pasar a: <?= $pedido['next_status']; ?></a>  
+                        <?php else: ?>
+                            <p class="cartel-finalizado">PEDIDO COMPLETADO</p>
+                            <p class="cartel-finalizado">(Pasar a Retirar)</p>
+                        <?php endif; ?>
                 </article>
             <?php endforeach; ?>
         </section>

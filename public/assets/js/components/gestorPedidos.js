@@ -104,7 +104,61 @@ class GestorPedidos {
             console.error('Error al obtener el estado del pedido:', error);
         }      
     }
+      
+    actualizarEstado(event) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
     
+        // Obtener los datos del pedido del atributo data
+        const pedidoId = event.target.getAttribute('data-id');
+        const estadoActual = event.target.getAttribute('data-estado');
+    
+        console.log(event.target.parentNode.classList)
+        // Obtener la referencia al elemento <section>
+        const sectionElement = event.target.parentNode;
+        // Crear la URL con los parámetros de la solicitud
+        const url = `/pedido/actualizar-estado?id=${pedidoId}&estado=${estadoActual}`;
+    
+        // Enviar la solicitud al servidor
+        fetch(url)
+        .then(response => {
+            // Verificar si la respuesta es exitosa
+            if (!response.ok) {
+                throw new Error('Error al actualizar el estado del pedido');
+            }
+            // Devolver los datos de la respuesta en formato JSON
+            return response.json();
+        })
+        .then(data => {
+
+            const estadoActualElement = sectionElement.querySelector('p:nth-child(7)')
+            // Actualizar el botón con el próximo estado recibido del servidor
+            console.log(`estado Actual: ${estadoActualElement}`);
+
+            // Ajustar el próximo estado para "Pasar a retirar"
+            console.log(`siguiente estado: ${data.next_status}`);
+
+            let proximoEstado = "" 
+            if(data.next_status === "Pasar a retirar"){
+                proximoEstado += "pasar-a-retirar"
+            }else{
+                proximoEstado += data.next_status 
+            }
+
+            estadoActualElement.textContent = estadoActualElement.textContent + "</br> Proximo Estado: " + data.next_status
+
+            const botonPedido = sectionElement.querySelector('a');
+            console.log(botonPedido);
+            botonPedido.innerHTML = `Pasar a: ${proximoEstado}`;
+
+            // Cambiar la clase del elemento <article> para reflejar el estado actualizado
+            // event.target.parentNode.classList.remove(`status-${estadoActual.replace(' ', '-').toLowerCase()}`);
+            event.target.parentNode.classList.add(`status-${proximoEstado.replace(' ', '-').toLowerCase()}`);
+            console.log(event.target.parentNode.classList)
+        })
+        .catch(error => {
+            console.error('Error al actualizar el estado del pedido:', error);
+        });
+    }
 
     async getEstadosPedidos() {
         /**

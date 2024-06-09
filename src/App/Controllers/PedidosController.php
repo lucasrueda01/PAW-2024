@@ -146,7 +146,33 @@ class PedidosController extends Controller
         // Mostrar la vista del pedido
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
+
+
+    public function actualizarEstado()
+    {
+        global $log;
+        try {
+            // Obtener los datos del pedido del request
+            $pedidoId = $this->request->get('id');
+            $estadoActual = $this->request->get('estado');
     
+            // Llamar al método actualizarEstado de la colección de pedidos
+            $nextStatus = $this->model->actualizarEstado($pedidoId, $estadoActual);
+    
+            $log->info("nextStatus: ",[$nextStatus]);
+    
+            // Devolver el próximo estado como respuesta con el header Content-Type
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode(['next_status' => $nextStatus]);
+        } catch (\Exception $e) {
+            // Capturar excepción y manejarla
+            http_response_code(500); // Error interno del servidor
+            header('Content-Type: application/json');
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
     public function get()
     {
         global $log;

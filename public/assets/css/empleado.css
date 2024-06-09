@@ -358,7 +358,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    max-width: 70vw; /* Limita el ancho al 70% del ancho visible */
+    max-width: 80vw; /* Limita el ancho al 70% del ancho visible */
     margin: 0 auto; /* Centra horizontalmente */
     padding: 20px; /* Añade un espacio interno para evitar que el color de fondo se ajuste demasiado */
 }
@@ -369,6 +369,10 @@
     padding: 20px;
     margin-bottom: 20px;
     transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 20rem;
 }
 
 .pedido-item:hover {
@@ -378,7 +382,7 @@
 
 .pedido-titulo {
     font-size: 2.2rem;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .pedido-datos p {
@@ -395,21 +399,38 @@
 
 /* Estilos para diferentes estados */
 .status-sin-confirmar { background-color: #ffcc00; color: #333; } /* Amarillo */
-.status-pasar-a-retirar { background-color: #ff9999; color: #fff; } /* Rojo */
-.status-despachado { background-color: #99ff99; color: #333; } /* Verde */
 .status-en-preparacion { background-color: #99ccff; color: #333; } /* Azul */
-.status-pedido-aceptado { background-color: #ffff99; color: #333; } /* Amarillo claro */
 .status-finalizado { background-color: #cccccc; color: #333; } /* Gris */
+.status-despachado { background-color: #99ff99; color: #333; } /* Verde */
+.status-pedido-aceptado { background-color: #ffff99; color: #333; } /* Amarillo claro */
+.status-pasar-a-retirar { background-color: #ff9999; color: #fff; } /* Rojo */
 
 /* Media queries para hacer el diseño responsive */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 884px) {
     .pedidos-grid {
         grid-template-columns: repeat(2, 1fr); /* Cambia a dos columnas en pantallas más pequeñas */
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 570px) {
     .pedidos-grid {
         grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas aún más pequeñas */
     }
+}
+
+.cartel-finalizado{
+    width: 100%;
+    height: 30%;
+    margin: 20px 0 0 0;
+    text-align: center;
+    align-content: center;
+    font-size: medium;
+    color: black;
+}
+
+.boton_accion {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 5px solid rgba(0, 0, 0, 0.5); /* 50% de opacidad */
+    color: black;
+    font-weight: 100;
 }

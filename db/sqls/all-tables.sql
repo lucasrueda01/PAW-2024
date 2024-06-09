@@ -26,3 +26,17 @@ CREATE TABLE `reservas` (
   CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`mesa_id`) REFERENCES `mesas` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 
+
+
+CREATE TABLE estado_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    status_name VARCHAR(50) NOT NULL
+);
+
+
+INSERT INTO estado_pedido (status_name) VALUES
+('Pedido aceptado'),
+('En preparacion'),
+('Finalizado'),
+('Despachado'),
+('Pasar a retirar');

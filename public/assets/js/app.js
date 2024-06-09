@@ -61,7 +61,12 @@ class appPAW {
                     PAW.cargarScript("Animador", "/assets/js/components/animador.js");
                     PAW.cargarScript("gestorPedidos", "/assets/js/components/gestorPedidos.js", () => {
                         let gestorPedidos = new GestorPedidos()
-                        
+
+                        const actualizarEstadoBtns = document.querySelectorAll('[id*="actualizarEstadoBtn"]');
+
+                        actualizarEstadoBtns.forEach(boton => {
+                            boton.addEventListener('click', gestorPedidos.actualizarEstado.bind(gestorPedidos));
+                        });
                         // Llamar a la función obtenerEstadoPedido() cada 10 segundos
                         setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000)
                     });

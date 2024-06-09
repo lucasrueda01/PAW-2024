@@ -235,7 +235,55 @@ class QueryBuilder
             return false;
         }
     }
+    public function update($table, $data, $conditions)
+    {
+        try {
+            // Crear la cadena de actualización de columnas
+            $setClause = '';
+            foreach ($data as $key => $value) {
+                $setClause .= "$key = :$key, ";
+            }
+            $setClause = rtrim($setClause, ', ');
     
+            // Crear la cadena de condiciones WHERE
+            $whereClause = '';
+            foreach ($conditions as $key => $value) {
+                $whereClause .= "$key = :$key AND ";
+            }
+            $whereClause = rtrim($whereClause, ' AND ');
+    
+            // Construir la consulta SQL
+            $query = "UPDATE $table SET $setClause WHERE $whereClause";
+    
+            // Loggear la consulta SQL
+            if ($this->logger) {
+                $this->logger->info($query);
+            }
+    
+            // Preparar la consulta SQL
+            $statement = $this->pdo->prepare($query);
+    
+            // Asignar valores a los parámetros
+            foreach ($data as $key => $value) {
+                $statement->bindValue(":$key", $value);
+            }
+            foreach ($conditions as $key => $value) {
+                $statement->bindValue(":$key", $value);
+            }
+    
+            // Ejecutar la consulta
+            $result = $statement->execute();
+    
+            // Devolver el resultado de la ejecución de la consulta
+            return $result;
+        } catch (PDOException $e) {
+            // Capturar excepción y manejarla
+            if ($this->logger) {
+                $this->logger->error("Error al ejecutar la consulta: " . $e->getMessage());
+            }
+            return false;
+        }
+    }
 }    
 
 

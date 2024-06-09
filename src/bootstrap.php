@@ -98,6 +98,8 @@ $router->get('/pedidos/estado', 'PedidosController@verPedido'); // PedidoControl
 $router->get('/pedidos/get-estado', 'PedidosController@getEstado'); // PedidoController
 $router->get('/pedidos/estado/modificar', 'PedidosController@modificarEstado'); // empleado
 $router->get('/ver_mi_pedido', 'PedidosController@verPedido'); // empleado
+$router->get('/pedido/actualizar-estado', 'PedidosController@actualizarEstado'); // empleado
+
 
 // MesaController
 $router->get('/reservar_cliente', 'MesaController@reservar_cliente'); // MesaController
