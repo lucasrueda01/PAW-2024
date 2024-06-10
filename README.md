@@ -11,6 +11,13 @@
 
 # Funcionalidades:
 
+## PUESTA EN FUNCIONAMIENTO:
+### Requisitos previos:
+    - Debe existir la base de datos `mvc-paw-power`
+    - Debe existir el archivo `.env` el cual contiene los datos de configuracion del sistema
+    - Debe existir la carpeta `/uploads`
+* Si aun no realizo alguno de estos pasos, le solicitamos ir a la seccion de [pasos para su instalacion](Instalacion.md), para proseguir con la puesta en marcha
+
 ### 1. Alta Plato:
 - **Loguearse como Empleado**: 
     - Puede usar como prueba:
@@ -19,20 +26,26 @@
 - **Navegar hasta PERFIL EMPLEADO > NUEVO PLATO**        
     - Navegar hasta "PERFIL EMPLEADO"/Nuevo Plato o directamente en el navegador a la URL: `http://[dominio]:[puerto]/plato/new`
     - Para testeos en entornos locales puede usar como dominio: `localhost` y puerto `8080`
+    #### Proceso de Alta:
+        - 1) Llenar el formulario con los datos de la comida
+        - 2) Enviar el formulario 
+        - 3) Puede ver los platos dados de alta, navegando hasta **MENU**
 
 ### 2. Reserva Mesa:
-- **Navegar hasta RESERVAR**
+
 - **Loguearse como Cliente o Empleado**:
     - Puede usar como prueba:
-        - Usuario: `empleado1`
-        - Contraseña: `password3`
-    - O:
         - Usuario: `cliente1`
         - Contraseña: `password1`
+
 - **Navegar hasta RESERVAS** y realizar la reserva:
     - Se controla que el local, fecha y hora sean los correctos. Caso contrario, muestra los mensajes de error correspondientes, con tag `p` que están ocultos.
     - Se controla que haya sido seleccionada una mesa. Por el momento, solo se contempla la reserva de una mesa.
+
 ### 3. Turnero:
+
+**Primero loguearse como cliente y hacer el pedido**
+
 - **Vista Cliente**:
 - Puede usar como prueba:
         - Usuario: `cliente1`
@@ -43,8 +56,12 @@
     - 3) Enviar el formulario
         - 3.1) Controles: Se controla que el carrito tenga al menos un item, que el formulario de pedido este con los input completos.  
     - 4) Funcionalidad: 
-        - Se puede ver el estado del pedido el cual cambia en tiempo real
+        - El cliente puede ver el estado del pedido, el cual cambia en tiempo real
         - Tiene la opcion para que el sistema de aviso, al momento de que el pedido cambia de estado. 
+
+**Segundo loguearse como empleado y navegar hasta pedidos entrantes**
+- Cambiar el estado de los pedidos recibido. 
+
 - **Vista Empleado**
     - Puede usar como prueba:
         - Usuario: `empleado1`
