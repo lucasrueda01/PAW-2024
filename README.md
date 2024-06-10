@@ -11,6 +11,13 @@
 
 # Funcionalidades:
 
+## PUESTA EN FUNCIONAMIENTO:
+### Requisitos previos:
+    - Debe existir la base de datos `mvc-paw-power`
+    - Debe existir el archivo `.env` el cual contiene los datos de configuracion del sistema
+    - Debe existir la carpeta `/uploads`
+* Si aun no realizo alguno de estos pasos, le solicitamos ir a la seccion de [pasos para su instalacion](Instalacion.md), para proseguir con la puesta en marcha
+
 ### 1. Alta Plato:
 - **Loguearse como Empleado**: 
     - Puede usar como prueba:
@@ -19,6 +26,9 @@
 - **Navegar hasta PERFIL EMPLEADO > NUEVO PLATO**        
     - Navegar hasta "PERFIL EMPLEADO"/Nuevo Plato o directamente en el navegador a la URL: `http://[dominio]:[puerto]/plato/new`
     - Para testeos en entornos locales puede usar como dominio: `localhost` y puerto `8080`
+    #### Proceso de Alta:
+        - 1) Llenar el formulario con los datos de la comida
+        (Paso 1)[public/assets/imgs/pasos-instalacion/alta-nuevo-plato-paso-1.png]
 
 ### 2. Reserva Mesa:
 - **Navegar hasta RESERVAR**

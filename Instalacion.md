@@ -39,7 +39,7 @@ Luego ejecutar `phinx` desde `vendor/bin/phinx`
 * `composer install`.
 * `cp .env.example .env` # Editar el .env con los valores deseados.
 * Ejecutar migrations: `phinx migrate -e development`.
-* Crear la carpeta `public/uploads/` para el guardado de las imágenes.
+* Crear la carpeta `/uploads` para el guardado de las imágenes.
 * Ejecutar `php -S localhost:8080 -t public/`.
 
 ### 6) Instalacion de Ngrok 
