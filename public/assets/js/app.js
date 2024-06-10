@@ -140,6 +140,32 @@ class appPAW {
                                     // notificationMessage.style.display = 'none';
                                 } else {
                                     console.log('Permiso de notificación denegado');
+                                    notificationInterval = setInterval(async () => {
+
+                                        /**
+                                         *  metodo que controla si cambio el estado del pedido
+                                         */
+
+                                            gestorPedidos.cambioEstadoPedido(estadoId, pedidoId)
+                                                .then(([estado_name, haCambiado]) => {
+                                                    console.log('Estado:', estado_name);
+                                                    console.log('¿Ha cambiado el estado?', haCambiado);
+                                                    if(haCambiado) {
+
+                                                        // Obtener el elemento HTML
+                                                        const estadoElement = document.querySelector('#estado');
+                                                        
+                                                        console.log(estadoElement.textContent)
+                                                        // Actualizar el contenido del elemento con el nuevo estado_name
+                                                        estadoElement.textContent = `Estado: ${estado_name}`;                                                
+
+                                                     }                                                    
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+            
+                                    }, 2000);                                    
                                 }
                             } catch (error) {
                                 console.log('Error solicitando permiso de notificación', error);
@@ -147,6 +173,33 @@ class appPAW {
                         }
                     });
             
+                    notificationInterval = setInterval(async () => {
+
+                        /**
+                         *  metodo que controla si cambio el estado del pedido
+                         */
+
+                            gestorPedidos.cambioEstadoPedido(estadoId, pedidoId)
+                                .then(([estado_name, haCambiado]) => {
+                                    console.log('Estado:', estado_name);
+                                    console.log('¿Ha cambiado el estado?', haCambiado);
+                                    if(haCambiado) {
+
+                                        // Obtener el elemento HTML
+                                        const estadoElement = document.querySelector('#estado');
+                                        
+                                        console.log(estadoElement.textContent)
+                                        // Actualizar el contenido del elemento con el nuevo estado_name
+                                        estadoElement.textContent = `Estado: ${estado_name}`;                                                
+
+                                     }                                                    
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                });
+
+                    }, 2000);  
+
                     setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000);
                 });
             }

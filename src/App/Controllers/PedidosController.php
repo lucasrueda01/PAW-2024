@@ -311,10 +311,12 @@ class PedidosController extends Controller
 
         // Verificar el resultado de la inserción
         if ($resultadoInsercion !== false) {
-            $this->verPedido();
-            // Hacer algo con el ID del pedido generado
+            // El pedido se insertó correctamente, redirigir a la vista de plato.show.view
+            header('Location: /ver_mi_pedido');
+            exit; // Terminar el script para evitar que se siga ejecutando
         } else {
             // Manejar el caso en que ocurrió un error al insertar el pedido
-        }
+            // ...
+    }
     }
 }
