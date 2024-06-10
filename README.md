@@ -16,6 +16,7 @@
     - Puede usar como prueba:
         - Usuario: `empleado1`
         - Contraseña: `password3`
+- **Navegar hasta PERFIL EMPLEADO > NUEVO PLATO**        
     - Navegar hasta "PERFIL EMPLEADO"/Nuevo Plato o directamente en el navegador a la URL: `http://[dominio]:[puerto]/plato/new`
     - Para testeos en entornos locales puede usar como dominio: `localhost` y puerto `8080`
 
@@ -33,5 +34,20 @@
     - Se controla que haya sido seleccionada una mesa. Por el momento, solo se contempla la reserva de una mesa.
 ### 3. Turnero:
 - **Vista Cliente**:
-    - Logueo 
+- Puede usar como prueba:
+        - Usuario: `cliente1`
+        - Contraseña: `password1`
+- **Navegar hasta MENU**        
+    - 1) Elegir los productos
+    - 2) Llenar el formulario de pedido
+    - 3) Enviar el formulario
+        - 3.1) Controles: Se controla que el carrito tenga al menos un item, que el formulario de pedido este con los input completos.  
+    - 4) Funcionalidad: 
+        - Se puede ver el estado del pedido el cual cambia en tiempo real
+        - Tiene la opcion para que el sistema de aviso, al momento de que el pedido cambia de estado. 
 - **Vista Empleado**
+    - Puede usar como prueba:
+        - Usuario: `empleado1`
+        - Contraseña: `password3`
+- **Navegar hasta PERFIL EMPLEADO > PEDIDOS ENTRANTES**
+    - Funcionalidad: En pedidos entrantes se puede cambiar el estado del pedido sin cambiar de vista. El mismo interactua con el servidor mediante peticiones ajax.    

@@ -54,14 +54,14 @@ class Controller
         ];
 
         $this->menuEmpleado = [
-            [
-                'href' => '/gestion_lista_mesas',
-                'name' => 'GESTION MESAS'
-            ],
-            [
-                'href' => '/gestion_mesa',
-                'name' => 'GESTION MESA'
-            ],
+            // [
+            //     'href' => '/gestion_lista_mesas',
+            //     'name' => 'GESTION MESAS'
+            // ],
+            // [
+            //     'href' => '/gestion_mesa',
+            //     'name' => 'GESTION MESA'
+            // ],
             [
                 'href' => '/pedidos_entrantes',
                 'name' => 'PEDIDOS ENTRANTES'
