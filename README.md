@@ -28,7 +28,7 @@
     - Para testeos en entornos locales puede usar como dominio: `localhost` y puerto `8080`
     #### Proceso de Alta:
         - 1) Llenar el formulario con los datos de la comida
-        ![Paso 1](alta-nuevo-plato-paso-1.png)
+        [alta plato, paso 1](alta-nuevo-plato-paso-1.png)
 
 ### 2. Reserva Mesa:
 - **Navegar hasta RESERVAR**
