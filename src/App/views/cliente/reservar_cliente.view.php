@@ -37,26 +37,26 @@
                     <input type="text" name="nombre" id="nombre" required>
                     <label for="dni">Ingrese su DNI</label>
                     <input type="number" name="dni" id="dni" required>
-                    <label for="local">Selecciona un local:</label>
-                    <p class="control_input campo_local"></p> <!-- controles de input, estaran en hidden --> 
+                    <label for="local">Selecciona un local:</label> 
                     <select id="local" name="local" required>
                         <option value="ninguna">Ninguna Seleccionada</option>
                         <option value="1">Local A</option>
                         <option value="2">Local B</option>
                     </select>
-                    <p class="control_input campo_fecha"></p> <!-- controles de input, estaran en hidden --> 
+                    <p class="control_input campo_local"></p> <!-- controles de input, estaran en hidden -->
                     <label for="date">Seleccione fecha:</label>
                     <input type="date" name="date" id="date" required>
-                    <p class="control_input campo_hora"></p>  <!-- controles de input, estaran en hidden -->
+                    <p class="control_input campo_fecha"></p> <!-- controles de input, estaran en hidden --> 
                      <label for="time">Seleccione hora:</label>
                     <input type="time" name="time" id="time" required>
+                    <p class="control_input campo_hora"></p>  <!-- controles de input, estaran en hidden -->
                     <label for="mesas_disponibles">Mesas Disponibles</label>
                     <p class="control_input campo_plano"></p>  <!-- controles de input, estaran en hidden -->
                     <?php require __DIR__ . '\../parts/plano.view.php' ?>
 
                     <input type="text" id="nromesa-elegida" name="nromesa-elegida">
                     
-                    <input type="submit" value="Reservar" class="boton boton_verde">
+                    <input type="submit" value="Reservar" class="boton boton_negro">
                 </fieldset>
 
             </form>

@@ -93,8 +93,11 @@ input[type=number]::-webkit-inner-spin-button {
     width: 95vw;
     margin-top: 5rem;
     padding-top: 1.5rem;
-    border: 1px solid var(--color-grishover);  
     border-radius: 20px;
+    border: 1px solid #dddddd;
+    -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.25);
+    box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.25);
 }
 
 .container_en_el_lugar,
@@ -157,7 +160,7 @@ input[type=number]::-webkit-inner-spin-button {
 .container_delivery {
     margin: 0 auto;
     width: 80vw;
-    background-color: var(--color-amarillo);
+    background-color: #eeeeee;
 }
 
 .container_delivery label {
@@ -264,16 +267,21 @@ option {
     margin-bottom: 1rem;
 }
 
-.container_formulario select,
-.container_formulario input {
+.container_formulario select{
     border: 0;    
     border-bottom: 1px solid #000000;
     outline: none;
     background-color: transparent;
 }
 
+
 .contariner_formulario select:hover {
     background-color: #eec53f;
+}
+
+.container_formulario .boton {
+    display: inline-block;
+    align-items: center;
 }
 
 .titulo_resumen {
@@ -800,7 +808,7 @@ option {
     margin: auto;
     font-size: inherit;
     padding-bottom: 5rem;
-    width: 75vw;
+    width: 75vw;   
 }
 
 .form_reserva fieldset {
@@ -1074,6 +1082,13 @@ input[type="submit"] {
 
 .control_input {
     display: none;
+    color: #e20000;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    margin-right: 4rem;
+    background-color: #ffbcbc;
+    padding: 0.2rem;
+
 }
 
 #notificationContainer{

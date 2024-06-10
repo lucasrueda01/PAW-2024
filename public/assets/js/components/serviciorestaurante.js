@@ -185,17 +185,11 @@ class ServicioRestaurante {
 
         if (localValue !== null && dateValue !== null && timeValue !== null) {
             if (this.locales[localValue]) {
-                localControl.style.display = 'block';
-                localControl.textContent = 'Local validado.';
 
                 if (this.comprobarFecha(dateValue)) {
-                    fechaControl.style.display = 'block';
-                    fechaControl.textContent = 'Fecha validada.';
                     console.log("superado control de fecha");
 
                     if (this.comprobarHora(localValue, timeValue)) {
-                        horaControl.style.display = 'block';
-                        horaControl.textContent = 'Hora validada.';
                         console.log("superado control de horario");
                         console.log("todos los controles superados..");
                         return true;
