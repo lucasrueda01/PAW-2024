@@ -87,7 +87,7 @@ class GestorPedidos {
             }
             const data = await response.json();
             console.log(`data.estado_name: ${data.estado_name}, ${data.estado_id} !== ${estadoId}? : ${parseInt(data.estado_id) !== parseInt(estadoId)}`)
-            return [data.estado_name, parseInt(data.estado_id) !== parseInt(estadoId)];
+            return [data.estado_name, data.estado_id, parseInt(data.estado_id) !== parseInt(estadoId)];
         } catch (error) {
             console.error('Error al obtener el estado del pedido:', error);
             return false;

@@ -50,7 +50,8 @@ class appPAW {
                     const toggleIcon = document.getElementById('toggleIcon');
                     const notificationMessage = document.getElementById('notificationMessage');
 
-                    const estadoId = document.querySelector('#estado').getAttribute('data-estado');
+                    const estadoElement = document.querySelector('#estado');
+                    const estadoId = estadoElement.getAttribute('data-estado');
                     const pedidoId = document.querySelector('.nro_pedido').getAttribute('data-estado');
                                                             
 
@@ -92,21 +93,21 @@ class appPAW {
                                          */
 
                                             gestorPedidos.cambioEstadoPedido(estadoId, pedidoId)
-                                                .then(([estado_name, haCambiado]) => {
+                                                .then(([estado_name, estado_id, haCambiado]) => {
                                                     console.log('Estado:', estado_name);
                                                     console.log('¿Ha cambiado el estado?', haCambiado);
                                                     if(haCambiado) {
 
                                                         // Obtener el elemento HTML
-                                                        const estadoElement = document.querySelector('#estado');
                                                         
                                                         console.log(estadoElement.textContent)
                                                         // Actualizar el contenido del elemento con el nuevo estado_name
                                                         estadoElement.textContent = `Estado: ${estado_name}`;                                                
                                                         // Hacer vibrar el dispositivo
                                                         if (navigator.vibrate) {
-                                                            navigator.vibrate(200); // Vibrar durante 200 ms
+                                                            navigator.vibrate(2000); // Vibrar durante 200 ms
                                                             console.log('El dispositivo está vibrando');
+                                                            estadoElement.setAttribute('data-estado', estado_id);
                                                         } else {
                                                             console.log('La API de Vibración no es soportada por este dispositivo');
                                                         }
