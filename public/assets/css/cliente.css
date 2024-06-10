@@ -1076,3 +1076,19 @@ input[type="submit"] {
     display: none;
 }
 
+#notificationContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0 0 0;
+}
+
+#toggleIcon {
+    width: 4.7rem;
+    height: auto;
+}
+
+
+#notificationMessage{
+    width: 20rem;
+}

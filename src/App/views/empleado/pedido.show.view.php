@@ -22,7 +22,7 @@
 
             <section class="detalles_pedido">
 
-                <h2 class="nro_pedido" id="pedido-nro-<?= $pedido['id']; ?>">Pedido Nro: #0000<?= $pedido['id']; ?></h2>
+                <h2 class="nro_pedido" data-estado="<?= $pedido['id']; ?>" id="pedido-nro-<?= $pedido['id']; ?>">Pedido Nro: #0000<?= $pedido['id']; ?></h2>
                 <p class="detalle"><strong>Fecha/Hora:</strong> <?= $pedido['created_at']; ?></p>
                 <p class="detalle"><strong>Tipo:</strong> <?= $pedido['tipo']; ?></p>
                 <p class="detalle"><strong>Nombre:</strong> <?= empty($pedido['nombre']) ? '(No especificado)' : $pedido['nombre']; ?></p>
@@ -30,12 +30,8 @@
                 <p class="detalle"><strong>Dirección:</strong> <?= empty($pedido['direccion']) ? '(No especificado)' : $pedido['direccion']; ?></p>
                 <p class="detalle"><strong>Observaciones:</strong> <?= empty($pedido['observaciones']) ? '(No especificado)' : $pedido['observaciones']; ?></p>
                 <p class="detalle"><strong>Monto Total:</strong> $ <?= is_null($pedido['monto_total']) ? '(No especificado)' : number_format($pedido['monto_total'], 2, ',', '.'); ?></p>
-                <p class="detalle estado" id="estado" data-estado="<?= $pedido['estado']; ?>"><strong>Estado:</strong> <?= $pedido['estado']; ?></p>
-
-                <?php foreach($listaAcciones[$tipo][$pedido['estado']] as $accion ): ?>
-                    <a class="boton boton_negro" href="/pedidos/estado/modificar?id=<?= $pedido['id']; ?>&estado=<?= $urlsAccion[$accion]?>"><?= $accion ?></a>
-                <?php endforeach; ?>    
-
+                <p class="detalle estado" id="estado" data-estado="<?= $pedido['estado_id']; ?>"><strong>Estado:</strong> <?= $pedido['estado_name']; ?></p>               
+                
                 <table class="stacked-table">
                     <thead>
                         <tr>
@@ -62,6 +58,11 @@
                         </tr>
                     </tfoot>
                 </table>
+
+                <article id="notificationContainer">
+                    <p id="notificationMessage">Quieres que te avise como va tu pedido? Dame permiso haciendo click en la campanita</p>
+                    <img id="toggleIcon" src="assets/imgs/svg/campana-de-notificacion-off.svg" alt="Toggle Notifications" style="cursor: pointer;">
+                </article>                
 
             </section>
         

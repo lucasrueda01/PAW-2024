@@ -313,6 +313,9 @@ class PedidosCollection extends Model
 
             [$idPedidoGenerado, $resultado] = $this->queryBuilder->insert('pedidos', $datosPedido);
     
+            $log->info("idPedidoGenerado: ", [$idPedidoGenerado]);
+            $log->info("resultado insercion: ", [$resultado]);
+
             if ($resultado) {
                 // Insertar los artículos del pedido en la tabla 'pedido_articulos'
                 foreach ($articulos as $articulo) {

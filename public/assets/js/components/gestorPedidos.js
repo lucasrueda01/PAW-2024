@@ -76,6 +76,23 @@ class GestorPedidos {
 
     }
 
+    async cambioEstadoPedido(estadoId, pedidoId) {
+        const url = `/pedidos/get-estado?id=${pedidoId}`;
+    
+        // Realizar la solicitud de estado del pedido usando fetch y then
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('No se pudo obtener el estado del pedido');
+            }
+            const data = await response.json();
+            console.log(`data.estado_name: ${data.estado_name}, ${data.estado_id} !== ${estadoId}? : ${parseInt(data.estado_id) !== parseInt(estadoId)}`)
+            return [data.estado_name, parseInt(data.estado_id) !== parseInt(estadoId)];
+        } catch (error) {
+            console.error('Error al obtener el estado del pedido:', error);
+            return false;
+        }
+    }
     
 
     async getEstadoPedido() {
@@ -112,7 +129,6 @@ class GestorPedidos {
         const pedidoId = event.target.getAttribute('data-id');
         const estadoActual = event.target.getAttribute('data-estado');
     
-        console.log(event.target.parentNode.classList)
         // Obtener la referencia al elemento <section>
         const sectionElement = event.target.parentNode;
         // Crear la URL con los parámetros de la solicitud

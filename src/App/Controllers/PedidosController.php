@@ -122,12 +122,14 @@ class PedidosController extends Controller
             } else {
                 // Recuperar el pedido verificando que le pertenece al cliente
                 $pedido = $this->model->getPedidoByUserAndId(intval($idUser), intval($idPedido));
+
                 if (isset($pedido['error'])) {
                     $log->info("Error al obtener pedido: ", [$pedido['error']]);
                     http_response_code(404);
                     require $this->viewsDir . 'errors/not-found.view.php';
                     return;
-                }
+                }               
+
             }
         } else {
             // Tipo de usuario no autorizado, mostrar página de error 404
@@ -142,7 +144,9 @@ class PedidosController extends Controller
         $urlsAccion = PedidosCollection::$urlsAccion;
     
         $log->info("Pedido recuperado: ", [$pedido]);
-    
+        
+        $pedido['estado_name'] = $this->model->getOrderStatus($pedido['estado_id']);
+
         // Mostrar la vista del pedido
         require $this->viewsDir . 'empleado/pedido.show.view.php';
     }
@@ -187,6 +191,7 @@ class PedidosController extends Controller
 
         $pedido = $this->model->getById(intval($id));
 
+        $pedido['estado_name'] = $this->model->getOrderStatus($pedido['estado_id']);
 
         $tipo = $this->usuario->getUserType();
         $listaAcciones = PedidosCollection::$accionesPorEstadoXTipoUsuario; //
@@ -206,6 +211,8 @@ class PedidosController extends Controller
         $id = $this->request->get('id');
 
         $pedido = $this->model->getById($id);
+
+        $pedido['estado_name'] = $this->model->getOrderStatus($pedido['estado_id']);
 
         // Convertir el array a formato JSON
         $json_pedido = json_encode($pedido);    
@@ -246,7 +253,7 @@ class PedidosController extends Controller
  
 
         if (!is_null($this->request->get('carrito_data'))) {
-            $carrito = json_decode($request->get('carrito_data'), true);
+            $carrito = json_decode($this->request->get('carrito_data'), true);
             
             $total = 0;
 
@@ -285,7 +292,7 @@ class PedidosController extends Controller
             "direccion" => htmlspecialchars($this->request->get("direccion")),
             "observaciones" => htmlspecialchars($this->request->get("observaciones")),
             "monto_total" => $total,
-            "estado" => "sin-confirmar"
+            "estado_id" => 1
         ];
 
         // Verificar si $datosPedido es JSON y convertirlo a array si es necesario

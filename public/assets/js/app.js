@@ -38,6 +38,126 @@ class appPAW {
                 })  
                 }
     
+            if (['/ver_mi_pedido'].includes(window.location.pathname)) {
+                PAW.cargarScript("Animador", "/assets/js/components/animador.js");
+                PAW.cargarScript("gestorPedidos", "/assets/js/components/gestorPedidos.js", () => {
+            
+                    let gestorPedidos = new GestorPedidos();
+                    let notificationInterval = null;
+                    let isNotifying = false;
+                    let audio = null;
+            
+                    const toggleIcon = document.getElementById('toggleIcon');
+                    const notificationMessage = document.getElementById('notificationMessage');
+
+                    const estadoId = document.querySelector('#estado').getAttribute('data-estado');
+                    const pedidoId = document.querySelector('.nro_pedido').getAttribute('data-estado');
+                                                            
+
+                    toggleIcon.addEventListener('click', async () => {
+                        if (isNotifying) {
+                            // Detener las notificaciones
+                            clearInterval(notificationInterval);
+                            isNotifying = false;
+                            toggleIcon.src = "/assets/imgs/svg/campana-de-notificacion-off.svg"; // Cambiar a icono de iniciar
+                            console.log('Notificaciones detenidas');
+            
+                            // Detener el sonido inmediatamente
+                            if (audio) {
+                                audio.pause();
+                                audio.currentTime = 0; // Reiniciar el sonido
+                            }
+            
+                            // Detener la vibración inmediatamente
+                            if (navigator.vibrate) {
+                                navigator.vibrate(0); // Parar la vibración
+                            }
+
+                            notificationMessage.textContent = 'Quieres que te avise como va tu pedido? Dame permiso haciendo click en la campanita'
+            
+                        } else {
+                            // Solicitar permiso de notificación
+                            try {
+                                let permission = await Notification.requestPermission();
+                                if (permission === 'granted') {
+                                    console.log('Permiso de notificación concedido');
+            
+                                    // Iniciar la vibración y sonido cada 2 segundos
+                                    notificationInterval = setInterval(async () => {
+
+                                        /**
+                                         *  metodo que controle si cambio el estado del pedido
+                                         *  SOLO en caso positivo: 
+                                         *      - Vibrar y sonar
+                                         */
+
+                                            gestorPedidos.cambioEstadoPedido(estadoId, pedidoId)
+                                                .then(([estado_name, haCambiado]) => {
+                                                    console.log('Estado:', estado_name);
+                                                    console.log('¿Ha cambiado el estado?', haCambiado);
+                                                    if(haCambiado) {
+
+                                                        // Obtener el elemento HTML
+                                                        const estadoElement = document.querySelector('#estado');
+                                                        
+                                                        console.log(estadoElement.textContent)
+                                                        // Actualizar el contenido del elemento con el nuevo estado_name
+                                                        estadoElement.textContent = `Estado: ${estado_name}`;                                                
+                                                        // Hacer vibrar el dispositivo
+                                                        if (navigator.vibrate) {
+                                                            navigator.vibrate(200); // Vibrar durante 200 ms
+                                                            console.log('El dispositivo está vibrando');
+                                                        } else {
+                                                            console.log('La API de Vibración no es soportada por este dispositivo');
+                                                        }
+                                                        
+                                                        // Reproducir un sonido (opcional)
+                                                        try {
+                                                            audio = new Audio('/assets/audios/play-comida-lista.mp3');                                            
+        
+                                                            audio.play().catch(error => {
+                                                                console.error('Error reproduciendo el sonido:', error);
+                                                            });
+                                                        } catch (error) {
+                                                            console.error('Error creando el objeto de audio:', error);
+                                                        }
+                                                     }                                                    
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+
+                                         
+
+            
+                                    }, 2000);
+            
+                                    isNotifying = true;
+                                    toggleIcon.src = "/assets/imgs/svg/campana-de-notificacion-on.svg"; // Cambiar a icono de detener
+            
+                                    // Ocultar el mensaje después de la primera interacción
+                                    notificationMessage.textContent = 'Dale, te mantendre al tanto !';
+                                    // notificationMessage.style.display = 'none';
+                                } else {
+                                    console.log('Permiso de notificación denegado');
+                                }
+                            } catch (error) {
+                                console.log('Error solicitando permiso de notificación', error);
+                            }
+                        }
+                    });
+            
+                    setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000);
+                });
+            }
+                
+                
+                
+                
+                
+                
+                
+
 
             if (['/reservar_cliente'].includes(window.location.pathname))
                 {
@@ -65,8 +185,11 @@ class appPAW {
                         const actualizarEstadoBtns = document.querySelectorAll('[id*="actualizarEstadoBtn"]');
 
                         actualizarEstadoBtns.forEach(boton => {
-                            boton.addEventListener('click', gestorPedidos.actualizarEstado.bind(gestorPedidos));
+                            boton.addEventListener('touchstart', gestorPedidos.actualizarEstado.bind(gestorPedidos));
+                            boton.addEventListener('click', gestorPedidos.actualizarEstado.bind(gestorPedidos));                            
                         });
+
+
                         // Llamar a la función obtenerEstadoPedido() cada 10 segundos
                         setInterval(gestorPedidos.getEstadoPedido.bind(gestorPedidos), 10000)
                     });

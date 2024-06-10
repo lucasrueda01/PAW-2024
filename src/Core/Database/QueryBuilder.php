@@ -78,22 +78,39 @@ class QueryBuilder
 
     public function insert($table, $data)
     {
+        // Construir la consulta
         $columnas = implode(', ', array_keys($data));
         $valores = ':' . implode(', :', array_keys($data));
         $query = "INSERT INTO $table ($columnas) VALUES ($valores)";
-        $sentencia = $this->pdo->prepare($query);
-    
-        // Asignar valores a los parámetros
-        foreach ($data as $clave => $valor) {
-            $sentencia->bindValue(":$clave", $valor);
-        }
-    
-        $resultado = $sentencia->execute();
         
-        $idGenerado = $this->pdo->lastInsertId();
-
-        return [$idGenerado, $resultado];
+        try {
+            // Preparar la sentencia
+            $sentencia = $this->pdo->prepare($query);
+    
+            // Asignar valores a los parámetros
+            foreach ($data as $clave => $valor) {
+                $sentencia->bindValue(":$clave", $valor);
+            }
+    
+            // Ejecutar la sentencia
+            $resultado = $sentencia->execute();
+    
+            // Obtener el último ID insertado
+            $idGenerado = $this->pdo->lastInsertId();
+    
+            return [$idGenerado, $resultado];
+        } catch (PDOException $e) {
+            // Loggear el error
+            $this->logger->error("Error al insertar en la tabla $table: " . $e->getMessage());
+            
+            // Opcional: Puedes re-lanzar la excepción si deseas que el error se propague
+            // throw $e;
+    
+            // Retornar un valor indicativo del fallo
+            return [null, false];
+        }
     }
+    
 
     public function getLastQuery()
     {
