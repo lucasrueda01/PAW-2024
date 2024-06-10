@@ -16,6 +16,15 @@
     - Debe existir la base de datos `mvc-paw-power`
     - Debe existir el archivo `.env` el cual contiene los datos de configuracion del sistema
     - Debe existir la carpeta `/uploads`
+    - Realizar las migraciones y las seeds para crear y cargar las tablas necesarias para el funcionamiento del sistema.
+        - La tablas son: 
+            - `estado_pedido`: que tiene los estados del pedido 
+            - `users` : que tiene los datos de los usuarios iniciales para realizar las prebas
+            - `locales`: carga de locales
+            - `mesas` : nombres de mesas que luego se asocia a los locales
+            - `reservas` : se cargan una cantidad de reservas como prueba y testeo. Esto es a fin de que se pueda ir probando las diferentes fechas y comparar cuando hay 
+            mesas disponibles por fecha y local 
+
 * Si aun no realizo alguno de estos pasos, le solicitamos ir a la seccion de [pasos para su instalacion](Instalacion.md), para proseguir con la puesta en marcha
 
 ### 1. Alta Plato:
