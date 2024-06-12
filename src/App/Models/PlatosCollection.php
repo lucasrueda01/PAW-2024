@@ -100,6 +100,6 @@ class PlatosCollection extends Model
         
         $log->info("resultado insert: ", [$resultado, $idPlato]);
 
-        return $resultado;
+        return [$resultado, $idPlato];
     }    
 }

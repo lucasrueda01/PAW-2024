@@ -123,8 +123,10 @@ class MenuController extends Controller
     }
     public function verDetalle()
     {
+        global $log;
         $platoId = $this->request->get('id');
         list($resultado, $plato) = $this->model->get($platoId);
+        $log->info("PLATO: ",[$plato]);
         $titulo = "Plato";
         require $this->viewsDir . 'empleado/plato.show.view.php';
     }
@@ -176,15 +178,16 @@ class MenuController extends Controller
                 if (!$resultado['exito']) {
                     throw new Exception("Error al subir la imagen del plato: " . $resultado['description']);
                 }
-
-                if (!$this->model->insert($newPlato)) {
+                list($resultado, $idPlato) = $this->model->insert($newPlato);
+                if (!$resultado) {
                     throw new Exception("Faltan datos para crear el objeto Plato.");
                 } else {
-                    $platos = $this->model->getAll();
+                    // $platos = $this->model->getAll();
                     if(!is_null($this->request->get('devMode'))){
                         echo "Inserciones realizadas con exito..";
                     }
-                    require $this->viewsDirEmpleado . 'plato_cargado.view.php';
+                    header('Location: /plato/verDetalle?id='.$idPlato);
+                    exit();
                 }
             } catch (Exception $e) {
 
